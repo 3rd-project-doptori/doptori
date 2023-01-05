@@ -29,7 +29,7 @@
 		</bean>
 		
 		<!-- 사용할 수 있도록 BoardMapper 인터페이스를 메모리에 올린다!(scan) -->
-		<mybatis-spring:scan base-package="kr.doptori.mapper"/>
+		<mybatis-spring:scan base-package="com.doptori.mapper"/>
 		
 		
 </beans>
