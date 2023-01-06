@@ -13,8 +13,7 @@
 <body>
 <%
 	// response.sendRedirect("boardList.do");
-	// jstl 몰랐을때 사용했던 방법
-
+	// jstl 몰랐을때 사용했던 방법!!
 %>
 
 <c:redirect url="Main.do" />
