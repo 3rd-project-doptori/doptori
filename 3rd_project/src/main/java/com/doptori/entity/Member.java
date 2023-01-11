@@ -7,10 +7,15 @@ public class Member {
 	private	String mb_id;
 	private	String mb_pw;
 	private	String mb_nick;
+	private	String mb_age;
+	private	int mb_point;
+	private	int mb_accuracy;	
 	private	String mb_friend;
 	private	String mb_room;
 	private	String mb_sentence;
 	
+	
+
 
 	// getter, setter 만들기
 	public int getMb_num() {
@@ -42,6 +47,24 @@ public class Member {
 	}
 	public void setMb_nick(String mb_nick) {
 		this.mb_nick = mb_nick;
+	}
+	public String getMb_age() {
+		return mb_age;
+	}
+	public void setMb_age(String mb_age) {
+		this.mb_age = mb_age;
+	}
+	public int getMb_point() {
+		return mb_point;
+	}
+	public void setMb_point(int mb_point) {
+		this.mb_point = mb_point;
+	}
+	public int getMb_accuracy() {
+		return mb_accuracy;
+	}
+	public void setMb_accuracy(int mb_accuracy) {
+		this.mb_accuracy = mb_accuracy;
 	}
 	public String getMb_friend() {
 		return mb_friend;
