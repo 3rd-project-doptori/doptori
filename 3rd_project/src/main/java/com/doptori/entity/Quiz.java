@@ -5,6 +5,7 @@ public class Quiz {
 	private	int qz_num;
 	private	String qz_question;
 	private	String qz_answer;
+	private int qz_point;
 
 	// getter, setter 만들기
 	
@@ -26,5 +27,12 @@ public class Quiz {
 	public void setQz_answer(String qz_answer) {
 		this.qz_answer = qz_answer;
 	}
+	public int getQz_point() {
+		return qz_point;
+	}
+	public void setQz_point(int qz_point) {
+		this.qz_point = qz_point;
+	}
+	
 	
 }
