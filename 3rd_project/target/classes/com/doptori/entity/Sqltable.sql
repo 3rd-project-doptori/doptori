@@ -1,7 +1,3 @@
-drop table member;
-drop table room;
-drop table quiz;
-
 CREATE TABLE member (
  mb_num INT(4) NOT NULL AUTO_INCREMENT,
  mb_code INT(4) NOT NULL default 0, 
