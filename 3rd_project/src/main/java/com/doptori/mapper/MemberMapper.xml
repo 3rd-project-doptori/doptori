@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 여러 mapper.xml이 있는 경우, id 겹치면 혼란이  되는 것을 방지하기 위해 -->
+<mapper namespace="com.doptori.mapper.MemberMapper">
+    <!-- 태그의 id는 mapper 인터페이스의 메소드 이름으로 한다. -->
+  <select id="MemberList" resultType="com.doptori.entity.Member">
+  	select * from member
+  </select>
+  
+  <insert id="MemberInsert" parameterType="com.doptori.entity.Member">
+  	insert into member(mb_id, mb_pw, mb_nick, mb_age)
+  	values(#{mb_id},#{mb_pw},#{mb_nick},#{mb_age})
+  </insert>
+  
+  <update id="MemberUpdate" parameterType="com.doptori.entity.Member">
+      update member set mb_pw=#{mb_pw}, mb_nick=#{mb_nick}, mb_age=#{mb_age}, mb_friend=#{mb_friend} 
+      where mb_num=#{mb_num}
+  </update>
+  
+  <delete id="MemberDelete" parameterType="int">
+      delete from member where mb_num=#{mb_num}
+  </delete>
+  
+</mapper>

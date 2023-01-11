@@ -4,7 +4,7 @@ drop table quiz;
 
 CREATE TABLE member (
  mb_num INT(4) NOT NULL AUTO_INCREMENT,
- mb_code INT(4) NOT NULL, 
+ mb_code INT(4) NOT NULL default 0, 
  mb_id VARCHAR(100) NOT NULL,
  mb_pw VARCHAR(2000) NOT NULL,
  mb_nick VARCHAR(100) NOT NULL,
@@ -59,3 +59,8 @@ CREATE TABLE quiz (
  qz_point INT(4) NOT NULL,
   PRIMARY KEY(qz_num)
 );
+
+
+INSERT INTO member (mb_id, mb_pw, mb_nick, mb_age) VALUES ('segy322', '1234', 'segy', '20대');
+
+select * from member;
