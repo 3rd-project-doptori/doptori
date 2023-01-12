@@ -108,7 +108,7 @@
 		</div>
 		<div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-10">
-		      <button type="submit" class="btn btn-success" onclick="InsertMb()">회원가입</button>
+		      <button type="button" class="btn btn-success" onclick="InsertMb()">회원가입</button>
 		      <button type="reset" class="btn btn-danger" id="reset">지우기</button>
 		    </div>
 		  </div>
