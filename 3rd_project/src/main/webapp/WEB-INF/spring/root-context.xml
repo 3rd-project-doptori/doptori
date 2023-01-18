@@ -11,8 +11,8 @@
 		<!-- bean  : 객체를 생성하는 태그 -->
 		<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/3rd_project?useSSL=false&amp;serverTimezone=UTC" />
-		    <property name="username" value="root" />
+		    <property name="jdbcUrl" value="jdbc:mysql://project-db-stu.ddns.net:3307/doptori?useSSL=false&amp;serverTimezone=UTC" />
+		    <property name="username" value="doptori" />
 		    <property name="password" value="12345" />
 		</bean>
 		
