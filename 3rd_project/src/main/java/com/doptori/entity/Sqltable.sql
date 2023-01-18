@@ -56,7 +56,4 @@ CREATE TABLE quiz (
   PRIMARY KEY(qz_num)
 );
 
-
-INSERT INTO member (mb_id, mb_pw, mb_nick, mb_age) VALUES ('segy322', '1234', 'segy', '20대');
-
 select * from member;
