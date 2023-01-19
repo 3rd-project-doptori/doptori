@@ -8,8 +8,9 @@ import com.doptori.entity.Member;
 public interface MemberMapper {
 
 	public void MemberInsert(Member vo);
-	
-	
-	
+
+	public void PhotoUpdate(Member vo);
+
+	public Member MemberLogin(Member mvo);
 	
 }

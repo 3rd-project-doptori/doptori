@@ -27,6 +27,7 @@
 			data:MemberData,
 			success: function(){
 				alert("회원가입 성공");
+				location.reload();
 			},
 			error: function(){
 				alert("회원가입 실패");
@@ -35,6 +36,29 @@
 		});// insert ajax 끝!!
 		
 	}// InsertMb 끝!!
+	
+	
+	function UpdatePhoto(){
+		
+		var title = $("#photo").val();
+		
+		$.ajax({
+			url:"${cpath}/member",
+			type:"post",
+			data:MemberData,
+			success: function(){
+				alert("회원가입 성공");
+				location.reload();
+			},
+			error: function(){
+				alert("회원가입 실패");
+			}
+			
+		});// insert ajax 끝!!
+		
+	}// InsertPhoto 끝!!
+	
+	
   
 	</script>
 </head>
@@ -48,19 +72,27 @@
     		<c:when test="${empty loginMember}">
 				<form class="form-inline" action="${cpath}/Login.do" method="post">
 				    <div class="form-group">
-					    <label for="memId">ID:</label>
-					    <input type="text" class="form-control" id="memId" name="memId">
+					    <label for="mb_id">ID:</label>
+					    <input type="text" class="form-control" id="mb_id" name="mb_id">
 				    </div>
 				    <div class="form-group">
-					    <label for="memPw">Password:</label>
-					    <input type="password" class="form-control" id="memPw" name="memPw">
+					    <label for="mb_pw">Password:</label>
+					    <input type="password" class="form-control" id="mb_pw" name="mb_pw">
 				    </div>
 				    <button type="submit" class="btn btn-default">로그인</button>
 				</form>
 			</c:when>
 			<c:otherwise>
 				<div class="form-group">
-					<span>${loginMember.memName}님 환영합니다~</span>
+					<c:choose>
+					<c:when test="${empty loginMember.mb_photo}">
+						<a href="${cpath}/Mypage.do"><span><img src="resources/images/default2.png"></span></a>
+					</c:when>
+					<c:otherwise>
+						<a href="${cpath}/Mypage.do"><span>${loginMember.mb_photo}</span></a>
+					</c:otherwise>
+					</c:choose>
+					<span>${loginMember.mb_nick}님 환영합니다~</span>
 					<a class="btn btn-sm btn-default" href="${cpath}/Logout.do">로그아웃</a>
 				</div>
 			</c:otherwise>
@@ -112,6 +144,22 @@
 		      <button type="reset" class="btn btn-danger" id="reset">지우기</button>
 		    </div>
 		  </div>
+		</form>
+	</div>
+	<div class="panel-body">
+		<form class="form-horizontal" id="photo">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="mb_photo">사진 등록:</label>
+			    <div class="col-sm-10">
+			      <input type="file" class="form-control" name="mb_photo" id="mb_photo">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <button type="button" class="btn btn-success" onclick="InsertPhoto()">사진등록</button>
+			      <button type="reset" class="btn btn-danger" id="reset">지우기</button>
+			    </div>
+		  	</div>
 		</form>
 	</div>
     <div class="panel-footer">로그인 회원가입 보기😊</div>

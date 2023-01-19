@@ -19,8 +19,17 @@
       where mb_num=#{mb_num}
   </update>
   
+  <update id="PhotoUpdate" parameterType="com.doptori.entity.Member">
+      update member set mb_photo=#{mb_photo} 
+      where mb_num=#{mb_num}
+  </update>
+  
   <delete id="MemberDelete" parameterType="int">
       delete from member where mb_num=#{mb_num}
   </delete>
+  
+  <select id="MemberLogin" parameterType="com.doptori.entity.Member" resultType="com.doptori.entity.Member">
+  	select * from member where mb_id=#{mb_id} and mb_pw=#{mb_pw}
+  </select>
   
 </mapper>

@@ -8,6 +8,7 @@ public class Member {
 	private	String mb_pw;
 	private	String mb_nick;
 	private	String mb_age;
+	private	String mb_photo;
 	private	int mb_point;
 	private	int mb_accuracy;	
 	private	String mb_friend;
@@ -53,6 +54,12 @@ public class Member {
 	}
 	public void setMb_age(String mb_age) {
 		this.mb_age = mb_age;
+	}
+	public String getMb_photo() {
+		return mb_photo;
+	}
+	public void setMb_photo(String mb_photo) {
+		this.mb_photo = mb_photo;
 	}
 	public int getMb_point() {
 		return mb_point;
