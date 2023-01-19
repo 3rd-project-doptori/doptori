@@ -96,7 +96,7 @@
 		    <label class="control-label col-sm-2" for="mb_age">나이:</label>
 		    <div class="col-sm-10">
 		      <select name="mb_age">
-                    <option >나이 선택</option>
+                    <option value="choose">나이 선택</option>
                     <option value="10대">10대</option>
 	                <option value="20대">20대</option>
 	                <option value="30대">30대</option>

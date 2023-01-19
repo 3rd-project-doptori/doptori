@@ -56,4 +56,7 @@ CREATE TABLE quiz (
   PRIMARY KEY(qz_num)
 );
 
+
+
+
 select * from member;
