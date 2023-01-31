@@ -64,8 +64,7 @@ CREATE TABLE Chat (
  ch_date DATETIME NOT NULL DEFAULT NOW(),
  ch_cont VARCHAR(4000),
  ch_re_num INT(4),
-  PRIMARY KEY(ch_num),
-  FOREIGN KEY (ch_re_num) REFERENCES Reserve(re_num)
+  PRIMARY KEY(ch_num)
 );
 
 CREATE TABLE Reserve (
@@ -91,4 +90,11 @@ CREATE TABLE Board (
   PRIMARY KEY(bd_num)
 );
 
-select * from Address;
+CREATE TABLE Comment (
+ co_num INT(4) NOT NULL AUTO_INCREMENT,
+ co_bd_num INT(4) NOT NULL,
+ co_mb_num VARCHAR(200) NOT NULL,
+ co_date DATETIME NOT NULL DEFAULT NOW(),
+ co_cont VARCHAR(3000),
+  PRIMARY KEY(co_num)
+);
