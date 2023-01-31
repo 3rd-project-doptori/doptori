@@ -91,4 +91,4 @@ CREATE TABLE Board (
   PRIMARY KEY(bd_num)
 );
 
-select * from address;
+select * from Address;
