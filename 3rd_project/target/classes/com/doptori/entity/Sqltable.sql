@@ -5,7 +5,7 @@ CREATE TABLE member (
  mb_pw VARCHAR(200) NOT NULL,
  mb_nick VARCHAR(200) NOT NULL,
  mb_ad_num INT(8),
- mb_fm_num INT(4),
+ mb_fm_num VARCHAR(3000),
  mb_chatlist VARCHAR(3000),
  mb_pic LONGBLOB,
   PRIMARY KEY(mb_num),
@@ -90,3 +90,5 @@ CREATE TABLE Board (
  bd_pic LONGBLOB,
   PRIMARY KEY(bd_num)
 );
+
+select * from address;

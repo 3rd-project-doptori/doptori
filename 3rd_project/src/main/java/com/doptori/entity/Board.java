@@ -4,15 +4,14 @@ public class Board {
 	
 	private	int bd_num;
 	private	int bd_type;
-	private	int bd_state;
+	private	int bd_mb_num;
+	private	String bd_date;
 	private	String bd_title;
-	private	String bd_content;
-	private	String bd_time;
-	private	String bd_writer;
+	private	String bd_cont;
+	private	String bd_pic;
 	
 
 	// getter, setter 만들기
-	
 	public int getBd_num() {
 		return bd_num;
 	}
@@ -25,11 +24,17 @@ public class Board {
 	public void setBd_type(int bd_type) {
 		this.bd_type = bd_type;
 	}
-	public int getBd_state() {
-		return bd_state;
+	public int getBd_mb_num() {
+		return bd_mb_num;
 	}
-	public void setBd_state(int bd_state) {
-		this.bd_state = bd_state;
+	public void setBd_mb_num(int bd_mb_num) {
+		this.bd_mb_num = bd_mb_num;
+	}
+	public String getBd_date() {
+		return bd_date;
+	}
+	public void setBd_date(String bd_date) {
+		this.bd_date = bd_date;
 	}
 	public String getBd_title() {
 		return bd_title;
@@ -37,23 +42,18 @@ public class Board {
 	public void setBd_title(String bd_title) {
 		this.bd_title = bd_title;
 	}
-	public String getBd_content() {
-		return bd_content;
+	public String getBd_cont() {
+		return bd_cont;
 	}
-	public void setBd_content(String bd_content) {
-		this.bd_content = bd_content;
+	public void setBd_cont(String bd_cont) {
+		this.bd_cont = bd_cont;
 	}
-	public String getBd_time() {
-		return bd_time;
+	public String getBd_pic() {
+		return bd_pic;
 	}
-	public void setBd_time(String bd_time) {
-		this.bd_time = bd_time;
+	public void setBd_pic(String bd_pic) {
+		this.bd_pic = bd_pic;
 	}
-	public String getBd_writer() {
-		return bd_writer;
-	}
-	public void setBd_writer(String bd_writer) {
-		this.bd_writer = bd_writer;
-	}
+	
 
 }
