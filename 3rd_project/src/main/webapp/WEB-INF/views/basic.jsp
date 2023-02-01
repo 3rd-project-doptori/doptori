@@ -57,9 +57,11 @@
 		});// insert ajax 끝!!
 		
 	}// InsertPhoto 끝!!
-	
-	
-  
+
+	function FarmList(){
+		location.href = "${cpath}/FarmList.do"
+	}
+
 	</script>
 </head>
 
@@ -162,7 +164,7 @@
 		  	</div>
 		</form>
 	</div>
-    <div class="panel-footer">로그인 회원가입 보기😊</div>
+    <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="FarmList()">내농장</button></div>
   </div>
 </div>
 </body>
