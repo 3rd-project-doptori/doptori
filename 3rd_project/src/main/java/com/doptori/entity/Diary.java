@@ -4,7 +4,6 @@ public class Diary {
 	
 	private	int di_num;
 	private	int di_mb_num;
-	private	int di_mb_type;
 	private	int di_fm_num;
 	private	String di_date;
 	private	String di_cont;
@@ -12,7 +11,6 @@ public class Diary {
 	private	String di_pic;
 	private	double di_tem;
 	private	double di_hum;
-	
 	
 	// getter, setter 만들기
 	public int getDi_num() {
@@ -26,12 +24,6 @@ public class Diary {
 	}
 	public void setDi_mb_num(int di_mb_num) {
 		this.di_mb_num = di_mb_num;
-	}
-	public int getDi_mb_type() {
-		return di_mb_type;
-	}
-	public void setDi_mb_type(int di_mb_type) {
-		this.di_mb_type = di_mb_type;
 	}
 	public int getDi_fm_num() {
 		return di_fm_num;
@@ -76,5 +68,5 @@ public class Diary {
 		this.di_hum = di_hum;
 	}
 	
-
+	
 }

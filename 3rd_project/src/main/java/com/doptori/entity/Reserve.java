@@ -6,11 +6,12 @@ public class Reserve {
 	private	int re_mb_nums;
 	private	int re_mb_numb;
 	private	String re_date;
-	private	String re_time;
-	private	String re_name;
-	private	double re_kg;
+	private	String re_selldate;
+	private	String re_place;
+	private	String re_cp_name;
+	private	double re_weight;
 	private	int re_price;
-	
+	private	String re_memo;
 	
 	// getter, setter 만들기
 	public int getRe_num() {
@@ -37,29 +38,41 @@ public class Reserve {
 	public void setRe_date(String re_date) {
 		this.re_date = re_date;
 	}
-	public String getRe_time() {
-		return re_time;
+	public String getRe_selldate() {
+		return re_selldate;
 	}
-	public void setRe_time(String re_time) {
-		this.re_time = re_time;
+	public void setRe_selldate(String re_selldate) {
+		this.re_selldate = re_selldate;
 	}
-	public String getRe_name() {
-		return re_name;
+	public String getRe_place() {
+		return re_place;
 	}
-	public void setRe_name(String re_name) {
-		this.re_name = re_name;
+	public void setRe_place(String re_place) {
+		this.re_place = re_place;
 	}
-	public double getRe_kg() {
-		return re_kg;
+	public String getRe_cp_name() {
+		return re_cp_name;
 	}
-	public void setRe_kg(double re_kg) {
-		this.re_kg = re_kg;
+	public void setRe_cp_name(String re_cp_name) {
+		this.re_cp_name = re_cp_name;
+	}
+	public double getRe_weight() {
+		return re_weight;
+	}
+	public void setRe_weight(double re_weight) {
+		this.re_weight = re_weight;
 	}
 	public int getRe_price() {
 		return re_price;
 	}
 	public void setRe_price(int re_price) {
 		this.re_price = re_price;
+	}
+	public String getRe_memo() {
+		return re_memo;
+	}
+	public void setRe_memo(String re_memo) {
+		this.re_memo = re_memo;
 	}
 	
 	

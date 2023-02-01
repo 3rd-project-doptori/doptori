@@ -10,6 +10,10 @@ public class Member {
 	private	String mb_fm_num;
 	private	String mb_chatlist;
 	private	String mb_pic;
+	private	String mb_file;
+	private	String mb_re_num;
+	private	String mb_date;
+	
 	
 	
 	// getter, setter 만들기
@@ -61,6 +65,23 @@ public class Member {
 	public void setMb_pic(String mb_pic) {
 		this.mb_pic = mb_pic;
 	}
-	
+	public String getMb_file() {
+		return mb_file;
+	}
+	public void setMb_file(String mb_file) {
+		this.mb_file = mb_file;
+	}
+	public String getMb_re_num() {
+		return mb_re_num;
+	}
+	public void setMb_re_num(String mb_re_num) {
+		this.mb_re_num = mb_re_num;
+	}
+	public String getMb_date() {
+		return mb_date;
+	}
+	public void setMb_date(String mb_date) {
+		this.mb_date = mb_date;
+	}
 	
 }

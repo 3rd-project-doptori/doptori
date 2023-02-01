@@ -5,8 +5,8 @@ public class Comment {
 	private	int co_num;
 	private int co_bd_num;
 	private	String co_mb_num;
-	private	String co_date;
 	private	String co_cont;
+	private	String co_date;
 	
 	// getter, setter 만들기
 	public int getCo_num() {

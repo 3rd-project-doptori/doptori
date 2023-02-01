@@ -8,7 +8,6 @@ CREATE TABLE Member (
  mb_chatlist VARCHAR(3000),
  mb_pic VARCHAR(3000),
  mb_file VARCHAR(3000),
- mb_re_num VARCHAR(3000),
  mb_date DATETIME NOT NULL DEFAULT NOW(),
   PRIMARY KEY(mb_num),
   UNIQUE KEY(mb_id),

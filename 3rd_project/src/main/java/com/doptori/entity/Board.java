@@ -9,7 +9,7 @@ public class Board {
 	private	String bd_title;
 	private	String bd_cont;
 	private	String bd_pic;
-	
+	private	int bd_cnt;
 
 	// getter, setter 만들기
 	public int getBd_num() {
@@ -53,6 +53,12 @@ public class Board {
 	}
 	public void setBd_pic(String bd_pic) {
 		this.bd_pic = bd_pic;
+	}
+	public int getBd_cnt() {
+		return bd_cnt;
+	}
+	public void setBd_cnt(int bd_cnt) {
+		this.bd_cnt = bd_cnt;
 	}
 	
 

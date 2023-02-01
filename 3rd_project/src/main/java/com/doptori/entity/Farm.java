@@ -5,10 +5,11 @@ public class Farm {
 	private	int fm_num;
 	private	int fm_mb_num;
 	private	int fm_ad_num;
+	private	String fm_detail;
 	private	String fm_name;
 	private	String fm_dong;
-	private	int fm_size;
-	private	String fm_crop;
+	private	double fm_area;
+	private	int fm_cp_num;
 	
 	
 	// getter, setter 만들기
@@ -30,6 +31,12 @@ public class Farm {
 	public void setFm_ad_num(int fm_ad_num) {
 		this.fm_ad_num = fm_ad_num;
 	}
+	public String getFm_detail() {
+		return fm_detail;
+	}
+	public void setFm_detail(String fm_detail) {
+		this.fm_detail = fm_detail;
+	}
 	public String getFm_name() {
 		return fm_name;
 	}
@@ -42,17 +49,17 @@ public class Farm {
 	public void setFm_dong(String fm_dong) {
 		this.fm_dong = fm_dong;
 	}
-	public int getFm_size() {
-		return fm_size;
+	public double getFm_area() {
+		return fm_area;
 	}
-	public void setFm_size(int fm_size) {
-		this.fm_size = fm_size;
+	public void setFm_area(double fm_area) {
+		this.fm_area = fm_area;
 	}
-	public String getFm_crop() {
-		return fm_crop;
+	public int getFm_cp_num() {
+		return fm_cp_num;
 	}
-	public void setFm_crop(String fm_crop) {
-		this.fm_crop = fm_crop;
+	public void setFm_cp_num(int fm_cp_num) {
+		this.fm_cp_num = fm_cp_num;
 	}
 
 	
