@@ -5,8 +5,16 @@
   <!-- 여러 mapper.xml이 있는 경우, id 겹치면 혼란이  되는 것을 방지하기 위해 -->
 <mapper namespace="com.doptori.mapper.FarmMapper">
     <!-- 태그의 id는 mapper 인터페이스의 메소드 이름으로 한다. -->
-  <select id="FarmList" resultType="com.doptori.entity.Farm">
+  <select id="AllFarmList" resultType="com.doptori.entity.Farm">
   	select * from Farm
+  </select>
+  
+    <select id="FarmList" parameterType="int" resultType="com.doptori.entity.Farm">
+  	select * from Farm where fm_mb_num=#{fm_mb_num}
+  </select>
+  
+  <select id="CropNum2Name" parameterType="int" resultType="String">
+  	select cp_name from Crop where cp_num=#{cp_num} 
   </select>
   
 </mapper>

@@ -61,6 +61,13 @@
 	function FarmList(){
 		location.href = "${cpath}/FarmList.do"
 	}
+	
+	
+	function Calendar(){
+		location.href = "${cpath}/Diary_Calendar.do"
+	}
+
+	
 
 	</script>
 </head>
@@ -161,6 +168,7 @@
 		</form>
 	</div>
     <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="FarmList()">내농장</button></div>
+    <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="Calendar()">캘린더</button></div>
   </div>
 </div>
 </body>

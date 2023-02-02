@@ -27,8 +27,8 @@ CREATE TABLE Address (
 
 select * from Farm;
 INSERT INTO Member (mb_type, mb_id, mb_pw, mb_nick) VALUE('1', 'test1',  '1234', 'test1');
-INSERT INTO Farm (fm_mb_num, fm_ad_num, fm_detail, fm_name, fm_dong, fm_area, fm_cp_num) VALUE('1', '1', '세부 주소', '농장이름', '동이름', '1.5', '1');
-INSERT INTO Crop (cp_name, cp_type, cp_title, cp_cont) VALUE('딸기', '1',  '병해충', '내용설명');
+INSERT INTO Farm (fm_mb_num, fm_ad_num, fm_detail, fm_name, fm_dong, fm_area, fm_cp_num) VALUE('1', '2', '세부 주소', '농장이름', '동이름', '1.5', '2');
+INSERT INTO Crop (cp_name, cp_type, cp_title, cp_cont) VALUE('토마토', '1',  '병해충', '내용설명');
 
 CREATE TABLE Farm (
  fm_num INT(4) NOT NULL AUTO_INCREMENT,
