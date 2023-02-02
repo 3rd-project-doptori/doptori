@@ -17,6 +17,15 @@
 <body>
 
 <script type="text/javascript">
+
+$(document).ready(function(){
+		// boardList라고 하는 함수가 실행!
+		// 자바스크립트의 호이스팅
+		FarmList();
+		
+	});
+
+
 	function MakeFarm(){
 		location.href = "${cpath}/MakeFarm.do"
 	}
@@ -38,18 +47,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${list}" var="vo">
-					<c:choose>
-						<c:when test="${loginMember.mb_id} == vo.fm_mb_num">
+				<c:forEach items="${FarmList}" var="fl">
+				<c:if test="${loginMember.mb_num == fl.fm_mb_num}">
 							<tr>
-								<td>${vo.fm_name}</td>
-								<td>${vo.fm_dong}</td>
-								<td>${vo.fm_crop}</td>
-								<td>${vo.fm_size}</td>
-								<td>${vo.fm_ad_num}</td>
+								<td>${fl.fm_name}</td>
+								<td>${fl.fm_dong}</td>
+								<td>${fl.fm_cp_num}</td>
+								<td>${fl.fm_area}</td>
+								<td>${fl.fm_ad_num}</td>
 							</tr>
-						</c:when>
-					</c:choose>
+							</c:if>
 				</c:forEach>
 					<tr>
 						<td colspan="5"><button class="btn btn-sm btn-success" onclick="MakeFarm()">농장 만들기</button></td>

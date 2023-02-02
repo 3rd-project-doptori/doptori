@@ -87,11 +87,11 @@
 			<c:otherwise>
 				<div class="form-group">
 					<c:choose>
-					<c:when test="${empty loginMember.mb_photo}">
+					<c:when test="${empty loginMember.mb_pic}">
 						<a href="${cpath}/Mypage.do"><span><img src="resources/images/default2.png"></span></a>
 					</c:when>
 					<c:otherwise>
-						<a href="${cpath}/Mypage.do"><span>${loginMember.mb_photo}</span></a>
+						<a href="${cpath}/Mypage.do"><span>${loginMember.mb_pic}</span></a>
 					</c:otherwise>
 					</c:choose>
 					<span>${loginMember.mb_nick}님 환영합니다~</span>

@@ -25,6 +25,11 @@ CREATE TABLE Address (
   PRIMARY KEY(ad_num)
 );
 
+select * from Farm;
+INSERT INTO Member (mb_type, mb_id, mb_pw, mb_nick) VALUE('1', 'test1',  '1234', 'test1');
+INSERT INTO Farm (fm_mb_num, fm_ad_num, fm_detail, fm_name, fm_dong, fm_area, fm_cp_num) VALUE('1', '1', '세부 주소', '농장이름', '동이름', '1.5', '1');
+INSERT INTO Crop (cp_name, cp_type, cp_title, cp_cont) VALUE('딸기', '1',  '병해충', '내용설명');
+
 CREATE TABLE Farm (
  fm_num INT(4) NOT NULL AUTO_INCREMENT,
  fm_mb_num INT(4) NOT NULL,
@@ -106,7 +111,7 @@ CREATE TABLE Board (
  bd_title VARCHAR(2000) NOT NULL,
  bd_cont TEXT NOT NULL,
  bd_pic VARCHAR(3000),
- bd_cnt INT(4),
+ bd_cnt INT(4) ,
   PRIMARY KEY(bd_num),
   FOREIGN KEY (bd_mb_num) REFERENCES Member (mb_num)
 );
@@ -121,3 +126,5 @@ CREATE TABLE Comment (
   FOREIGN KEY (co_bd_num) REFERENCES Board (bd_num),
   FOREIGN KEY (co_mb_num) REFERENCES Member (mb_num)
 );
+
+INSERT INTO member_table (mb_id, mb_pw, address, mb_tell) VALUE('build', 'build1',  '서울특별시 강남구 도곡동', '010-1234-1234');

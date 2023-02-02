@@ -21,9 +21,9 @@ public class FarmController {
 	@RequestMapping("/FarmList.do")
 	public String FarmList(Model model) {
 		
-		List<Farm> list = mapper.FarmList();
+		List<Farm> FarmList = mapper.FarmList();
 		
-		model.addAttribute("list", list);
+		model.addAttribute("FarmList", FarmList);
 		
 		return "FarmList";
 	}
