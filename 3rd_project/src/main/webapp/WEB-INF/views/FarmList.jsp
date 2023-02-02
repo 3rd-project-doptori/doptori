@@ -30,7 +30,6 @@ $(document).ready(function(){
 		location.href = "${cpath}/MakeFarm.do"
 	}
 </script>
-
 <div class="container">
   <h2>DCX분석서비스 개발자과정</h2>
   <div class="panel panel-default">
@@ -47,16 +46,15 @@ $(document).ready(function(){
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${FarmList}" var="fl">
-				<c:if test="${loginMember.mb_num == fl.fm_mb_num}">
-							<tr>
-								<td>${fl.fm_name}</td>
-								<td>${fl.fm_dong}</td>
-								<td>${fl.fm_cp_num}</td>
-								<td>${fl.fm_area}</td>
-								<td>${fl.fm_ad_num}</td>
-							</tr>
-							</c:if>
+				<%-- <c:set var="cl" value="${CropList}" /> --%>
+				<c:forEach items="${FarmList}" var="fl" varStatus="status">
+						<tr>
+							<td>${fl.fm_name}</td>
+							<td>${fl.fm_dong}</td>
+							<td>${CropNames[status.index]}</td>
+							<td>${fl.fm_area}</td>
+							<td>${fl.fm_ad_num}</td>
+						</tr>
 				</c:forEach>
 					<tr>
 						<td colspan="5"><button class="btn btn-sm btn-success" onclick="MakeFarm()">농장 만들기</button></td>
