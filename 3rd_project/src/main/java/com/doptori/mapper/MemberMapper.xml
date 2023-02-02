@@ -10,8 +10,8 @@
   </select>
   
   <insert id="MemberInsert" parameterType="com.doptori.entity.Member">
-  	insert into member(mb_id, mb_pw, mb_nick, mb_age)
-  	values(#{mb_id},#{mb_pw},#{mb_nick},#{mb_age})
+  	insert into member(mb_id, mb_pw, mb_nick, mb_type)
+  	values(#{mb_id},#{mb_pw},#{mb_nick},#{mb_type})
   </insert>
   
   <update id="MemberUpdate" parameterType="com.doptori.entity.Member">
@@ -20,7 +20,7 @@
   </update>
   
   <update id="PhotoUpdate" parameterType="com.doptori.entity.Member">
-      update member set mb_photo=#{mb_photo} 
+      update member set mb_pic=#{mb_pic} 
       where mb_num=#{mb_num}
   </update>
   
