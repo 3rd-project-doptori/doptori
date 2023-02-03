@@ -6,30 +6,30 @@
 <mapper namespace="com.doptori.mapper.MemberMapper">
     <!-- 태그의 id는 mapper 인터페이스의 메소드 이름으로 한다. -->
   <select id="MemberList" resultType="com.doptori.entity.Member">
-  	select * from member
+  	select * from Member
   </select>
   
   <insert id="MemberInsert" parameterType="com.doptori.entity.Member">
-  	insert into member(mb_id, mb_pw, mb_nick, mb_age)
-  	values(#{mb_id},#{mb_pw},#{mb_nick},#{mb_age})
+  	insert into Member(mb_id, mb_pw, mb_nick, mb_type)
+  	values(#{mb_id},#{mb_pw},#{mb_nick},#{mb_type})
   </insert>
   
   <update id="MemberUpdate" parameterType="com.doptori.entity.Member">
-      update member set mb_pw=#{mb_pw}, mb_nick=#{mb_nick}, mb_age=#{mb_age}, mb_friend=#{mb_friend} 
+      update Member set mb_pw=#{mb_pw}, mb_nick=#{mb_nick}, mb_age=#{mb_age}, mb_friend=#{mb_friend} 
       where mb_num=#{mb_num}
   </update>
   
   <update id="PhotoUpdate" parameterType="com.doptori.entity.Member">
-      update member set mb_photo=#{mb_photo} 
+      update Member set mb_pic=#{mb_pic} 
       where mb_num=#{mb_num}
   </update>
   
   <delete id="MemberDelete" parameterType="int">
-      delete from member where mb_num=#{mb_num}
+      delete from Member where mb_num=#{mb_num}
   </delete>
   
   <select id="MemberLogin" parameterType="com.doptori.entity.Member" resultType="com.doptori.entity.Member">
-  	select * from member where mb_id=#{mb_id} and mb_pw=#{mb_pw}
+  	select * from Member where mb_id=#{mb_id} and mb_pw=#{mb_pw}
   </select>
   
 </mapper>

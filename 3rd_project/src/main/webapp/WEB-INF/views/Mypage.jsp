@@ -28,7 +28,7 @@
 		<table class="table table-hover table-striped">
 			<tr>
 				<td>사진</td>
-				<td>${loginMember.mb_photo}</td>
+				<td>${loginMember.mb_pic}<img src="resources/images/default2.png"></td>
 			</tr>
 			<tr>
 				<td>아이디</td>
@@ -41,10 +41,6 @@
 			<tr>
 				<td>닉네임</td>
 				<td>${loginMember.mb_nick}</td>
-			</tr>
-			<tr>
-				<td>나이</td>
-				<td>${loginMember.mb_age}</td>
 			</tr>
 			<tr>
 				<td colspan="2">

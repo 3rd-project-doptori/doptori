@@ -3,21 +3,19 @@ package com.doptori.entity;
 public class Member {
 	
 	private	int mb_num;
-	private	int mb_code;
+	private	int mb_type;
 	private	String mb_id;
 	private	String mb_pw;
 	private	String mb_nick;
-	private	String mb_age;
-	private	String mb_photo;
-	private	int mb_point;
-	private	int mb_accuracy;	
-	private	String mb_friend;
-	private	String mb_room;
-	private	String mb_sentence;
+	private	String mb_fm_num;
+	private	String mb_chatlist;
+	private	String mb_pic;
+	private	String mb_file;
+	private	String mb_re_num;
+	private	String mb_date;
 	
 	
-
-
+	
 	// getter, setter 만들기
 	public int getMb_num() {
 		return mb_num;
@@ -25,11 +23,11 @@ public class Member {
 	public void setMb_num(int mb_num) {
 		this.mb_num = mb_num;
 	}
-	public int getMb_code() {
-		return mb_code;
+	public int getMb_type() {
+		return mb_type;
 	}
-	public void setMb_code(int mb_code) {
-		this.mb_code = mb_code;
+	public void setMb_type(int mb_type) {
+		this.mb_type = mb_type;
 	}
 	public String getMb_id() {
 		return mb_id;
@@ -49,47 +47,41 @@ public class Member {
 	public void setMb_nick(String mb_nick) {
 		this.mb_nick = mb_nick;
 	}
-	public String getMb_age() {
-		return mb_age;
+	public String getMb_fm_num() {
+		return mb_fm_num;
 	}
-	public void setMb_age(String mb_age) {
-		this.mb_age = mb_age;
+	public void setMb_fm_num(String mb_fm_num) {
+		this.mb_fm_num = mb_fm_num;
 	}
-	public String getMb_photo() {
-		return mb_photo;
+	public String getMb_chatlist() {
+		return mb_chatlist;
 	}
-	public void setMb_photo(String mb_photo) {
-		this.mb_photo = mb_photo;
+	public void setMb_chatlist(String mb_chatlist) {
+		this.mb_chatlist = mb_chatlist;
 	}
-	public int getMb_point() {
-		return mb_point;
+	public String getMb_pic() {
+		return mb_pic;
 	}
-	public void setMb_point(int mb_point) {
-		this.mb_point = mb_point;
+	public void setMb_pic(String mb_pic) {
+		this.mb_pic = mb_pic;
 	}
-	public int getMb_accuracy() {
-		return mb_accuracy;
+	public String getMb_file() {
+		return mb_file;
 	}
-	public void setMb_accuracy(int mb_accuracy) {
-		this.mb_accuracy = mb_accuracy;
+	public void setMb_file(String mb_file) {
+		this.mb_file = mb_file;
 	}
-	public String getMb_friend() {
-		return mb_friend;
+	public String getMb_re_num() {
+		return mb_re_num;
 	}
-	public void setMb_friend(String mb_friend) {
-		this.mb_friend = mb_friend;
+	public void setMb_re_num(String mb_re_num) {
+		this.mb_re_num = mb_re_num;
 	}
-	public String getMb_room() {
-		return mb_room;
+	public String getMb_date() {
+		return mb_date;
 	}
-	public void setMb_room(String mb_room) {
-		this.mb_room = mb_room;
+	public void setMb_date(String mb_date) {
+		this.mb_date = mb_date;
 	}
-	public String getMb_sentence() {
-		return mb_sentence;
-	}
-	public void setMb_sentence(String mb_sentence) {
-		this.mb_sentence = mb_sentence;
-	}
-
+	
 }

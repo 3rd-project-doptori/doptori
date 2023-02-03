@@ -1,17 +1,20 @@
-CREATE TABLE member (
+CREATE TABLE Member (
  mb_num INT(4) NOT NULL AUTO_INCREMENT,
  mb_type INT(4) NOT NULL,
  mb_id VARCHAR(200) NOT NULL,
  mb_pw VARCHAR(200) NOT NULL,
  mb_nick VARCHAR(200) NOT NULL,
- mb_ad_num INT(8),
- mb_fm_num INT(4),
+ mb_fm_num VARCHAR(3000),
  mb_chatlist VARCHAR(3000),
- mb_pic LONGBLOB,
+ mb_pic VARCHAR(3000),
+ mb_file VARCHAR(3000),
+ mb_date DATETIME NOT NULL DEFAULT NOW(),
   PRIMARY KEY(mb_num),
   UNIQUE KEY(mb_id),
   UNIQUE KEY(mb_nick)
 );
+
+ALTER TABLE Member ADD  mb_re_num VARCHAR(3000) AFTER mb_file;
 
 CREATE TABLE Address (
  ad_num INT(8) NOT NULL AUTO_INCREMENT,
@@ -22,15 +25,24 @@ CREATE TABLE Address (
   PRIMARY KEY(ad_num)
 );
 
+select * from Farm;
+INSERT INTO Member (mb_type, mb_id, mb_pw, mb_nick) VALUE('1', 'test1',  '1234', 'test1');
+INSERT INTO Farm (fm_mb_num, fm_ad_num, fm_detail, fm_name, fm_dong, fm_area, fm_cp_num) VALUE('1', '2', '세부 주소', '농장이름', '동이름', '1.5', '2');
+INSERT INTO Crop (cp_name, cp_type, cp_title, cp_cont) VALUE('토마토', '1',  '병해충', '내용설명');
+
 CREATE TABLE Farm (
  fm_num INT(4) NOT NULL AUTO_INCREMENT,
  fm_mb_num INT(4) NOT NULL,
  fm_ad_num INT(8) NOT NULL,
+ fm_detail VARCHAR(2000) NOT NULL,
  fm_name VARCHAR(200) NOT NULL,
  fm_dong VARCHAR(200) NOT NULL,
- fm_size INT(8),
- fm_crop VARCHAR(200),
-  PRIMARY KEY(fm_num)
+ fm_area DECIMAL(18,1),
+ fm_cp_num INT(4),
+  PRIMARY KEY(fm_num),
+  FOREIGN KEY (fm_mb_num) REFERENCES Member (mb_num),
+  FOREIGN KEY (fm_ad_num) REFERENCES Address (ad_num),
+  FOREIGN KEY (fm_cp_num) REFERENCES Crop (cp_num)
 );
 
 CREATE TABLE Crop (
@@ -38,34 +50,43 @@ CREATE TABLE Crop (
  cp_name VARCHAR(200),
  cp_type INT(4),
  cp_title VARCHAR(2000),
- cp_cont VARCHAR(4000),
+ cp_cont TEXT,
   PRIMARY KEY(cp_num)
 );
 
 CREATE TABLE Diary (
  di_num INT(4) NOT NULL AUTO_INCREMENT,
  di_mb_num INT(4) NOT NULL,
- di_mb_type INT(4) NOT NULL,
  di_fm_num INT(4) NOT NULL,
  di_date DATETIME NOT NULL DEFAULT NOW(),
- di_cont VARCHAR(4000),
- di_note VARCHAR(3000),
- di_pic LONGBLOB,
- di_tem DOUBLE(4,1),
- di_hum DOUBLE(4,1),
-  PRIMARY KEY(di_num)
+ di_cont TEXT,
+ di_note TEXT,
+ di_pic VARCHAR(3000),
+ di_tem DECIMAL(4,1),
+ di_hum DECIMAL(4,1),
+  PRIMARY KEY(di_num),
+  FOREIGN KEY (di_mb_num) REFERENCES Member (mb_num),
+  FOREIGN KEY (di_fm_num) REFERENCES Farm (fm_num)
+);
+
+CREATE TABLE Chatroom (
+ cr_num INT(4) NOT NULL AUTO_INCREMENT,
+ cr_name VARCHAR(2000) NOT NULL,
+ cr_date DATETIME NOT NULL DEFAULT NOW(),
+ cr_mb_num INT(4) NOT NULL,
+ cr_limit INT(4) NOT NULL,
+  PRIMARY KEY(cr_num),
+  FOREIGN KEY (cr_mb_num) REFERENCES Member (mb_num)
 );
 
 CREATE TABLE Chat (
  ch_num INT(4) NOT NULL AUTO_INCREMENT,
- ch_mb_num1 INT(4) NOT NULL,
- ch_mb_num2 INT(4) NOT NULL,
- ch_who INT(4) NOT NULL,
+ ch_cr_num INT(4) NOT NULL,
+ ch_mb_num INT(4) NOT NULL,
+ ch_cont TEXT,
  ch_date DATETIME NOT NULL DEFAULT NOW(),
- ch_cont VARCHAR(4000),
- ch_re_num INT(4),
   PRIMARY KEY(ch_num),
-  FOREIGN KEY (ch_re_num) REFERENCES Reserve(re_num)
+  FOREIGN KEY (ch_cr_num) REFERENCES Chatroom (cr_num)
 );
 
 CREATE TABLE Reserve (
@@ -73,10 +94,12 @@ CREATE TABLE Reserve (
  re_mb_nums INT(4) NOT NULL,
  re_mb_numb INT(4) NOT NULL,
  re_date DATETIME NOT NULL DEFAULT NOW(),
- re_time DATETIME NOT NULL,
- re_name VARCHAR(200) NOT NULL,
- re_kg DOUBLE(4,1) NOT NULL,
+ re_selldate DATETIME NOT NULL,
+ re_place TEXT NOT NULL,
+ re_cp_name varchar(200) NOT NULL,
+ re_weight DECIMAL(4,1) NOT NULL,
  re_price INT(8) NOT NULL,
+ re_memo TEXT,
   PRIMARY KEY(re_num)
 );
 
@@ -86,7 +109,22 @@ CREATE TABLE Board (
  bd_mb_num INT(4) NOT NULL,
  bd_date DATETIME NOT NULL DEFAULT NOW(),
  bd_title VARCHAR(2000) NOT NULL,
- bd_cont VARCHAR(4000) NOT NULL,
- bd_pic LONGBLOB,
-  PRIMARY KEY(bd_num)
+ bd_cont TEXT NOT NULL,
+ bd_pic VARCHAR(3000),
+ bd_cnt INT(4) ,
+  PRIMARY KEY(bd_num),
+  FOREIGN KEY (bd_mb_num) REFERENCES Member (mb_num)
 );
+
+CREATE TABLE Comment (
+ co_num INT(4) NOT NULL AUTO_INCREMENT,
+ co_bd_num INT(4) NOT NULL,
+ co_mb_num INT(4) NOT NULL,
+ co_cont TEXT,
+ co_date DATETIME NOT NULL DEFAULT NOW(),
+  PRIMARY KEY(co_num),
+  FOREIGN KEY (co_bd_num) REFERENCES Board (bd_num),
+  FOREIGN KEY (co_mb_num) REFERENCES Member (mb_num)
+);
+
+INSERT INTO member_table (mb_id, mb_pw, address, mb_tell) VALUE('build', 'build1',  '서울특별시 강남구 도곡동', '010-1234-1234');

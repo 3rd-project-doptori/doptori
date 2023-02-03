@@ -57,9 +57,18 @@
 		});// insert ajax 끝!!
 		
 	}// InsertPhoto 끝!!
+
+	function FarmList(){
+		location.href = "${cpath}/FarmList.do"
+	}
 	
 	
-  
+	function Calendar(){
+		location.href = "${cpath}/Diary_Calendar.do"
+	}
+
+	
+
 	</script>
 </head>
 
@@ -85,11 +94,11 @@
 			<c:otherwise>
 				<div class="form-group">
 					<c:choose>
-					<c:when test="${empty loginMember.mb_photo}">
+					<c:when test="${empty loginMember.mb_pic}">
 						<a href="${cpath}/Mypage.do"><span><img src="resources/images/default2.png"></span></a>
 					</c:when>
 					<c:otherwise>
-						<a href="${cpath}/Mypage.do"><span>${loginMember.mb_photo}</span></a>
+						<a href="${cpath}/Mypage.do"><span>${loginMember.mb_pic}</span></a>
 					</c:otherwise>
 					</c:choose>
 					<span>${loginMember.mb_nick}님 환영합니다~</span>
@@ -125,16 +134,12 @@
 		    </div>
 		</div>
 		<div class="form-group">
-		    <label class="control-label col-sm-2" for="mb_age">나이:</label>
+		    <label class="control-label col-sm-2" for="mb_type">회원 선택:</label>
 		    <div class="col-sm-10">
-		      <select name="mb_age">
-                    <option value="choose">나이 선택</option>
-                    <option value="10대">10대</option>
-	                <option value="20대">20대</option>
-	                <option value="30대">30대</option>
-	                <option value="40대">40대</option>
-	                <option value="50대">50대</option>
-	                <option value="60대">60대 이상</option>
+		      <select name="mb_type">
+                    <option value="choose">회원 선택</option>
+                    <option value=1>농업인</option>
+	                <option value=2>일반인</option>
                 </select>
 		    </div>
 		</div>
@@ -149,9 +154,9 @@
 	<div class="panel-body">
 		<form class="form-horizontal" id="photo">
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="mb_photo">사진 등록:</label>
+				<label class="control-label col-sm-2" for="mb_pic">사진 등록:</label>
 			    <div class="col-sm-10">
-			      <input type="file" class="form-control" name="mb_photo" id="mb_photo">
+			      <input type="file" class="form-control" name="mb_pic" id="mb_pic">
 			    </div>
 			</div>
 			<div class="form-group">
@@ -162,7 +167,8 @@
 		  	</div>
 		</form>
 	</div>
-    <div class="panel-footer">로그인 회원가입 보기😊</div>
+    <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="FarmList()">내농장</button></div>
+    <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="Calendar()">캘린더</button></div>
   </div>
 </div>
 </body>
