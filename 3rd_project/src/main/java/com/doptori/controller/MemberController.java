@@ -76,7 +76,7 @@ public class MemberController {
 	public String memberDeleteView() {
 		return "memberDeleteView";
 	}
-	
+	// 회원탈퇴 시 로그인 한 회원의 비밀번호 일치 하는지
 	@ResponseBody
 	@RequestMapping("/passChk")
 	public int passChk(Member vo) {
