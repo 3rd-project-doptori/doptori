@@ -46,7 +46,7 @@
   
     <!-- 회원탈퇴 -->
     <delete id="userDelete" parameterType="com.doptori.entity.Member">
-      delete from Member where mb_id=#{mb_id}
-  </delete>
+      delete from Member where mb_id=#{mb_id} and mb_pw=#{mb_pw}
+ 	</delete>
   
 </mapper>
