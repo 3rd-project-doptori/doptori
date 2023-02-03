@@ -72,6 +72,11 @@
 		location.href = "${cpath}/updateMember.do"
 	}
 
+	//회원탈퇴
+	function memberDeleteView(){
+		location.href = "${cpath}/memberDeleteView.do"
+	}
+
 	</script>
 </head>
 
@@ -86,8 +91,7 @@
 				    <div class="form-group">
 					    <label for="mb_id">ID:</label>
 					    <input type="text" class="form-control" id="mb_id" name="mb_id">
-					    <div><font id="id_feedback" size="2"></font></div>
-				    </div>
+					 </div>
 				    <div class="form-group">
 					    <label for="mb_pw">Password:</label>
 					    <input type="password" class="form-control" id="mb_pw" name="mb_pw">
@@ -118,6 +122,7 @@
 		    <div class="col-sm-10">
 		      <input type="text" class="form-control" name="mb_id" id="mb_id" placeholder="아이디를 입력하세요.">
 		    </div>
+		    <div><font id="id_feedback" size="2"></font></div>
 		</div>
 		<div class="form-group">
 		    <label class="control-label col-sm-2">비밀번호:</label>
@@ -174,8 +179,10 @@
     <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="FarmList()">내농장</button></div>
     <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="Calendar()">캘린더</button></div>
     <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="updateMember()">회원정보수정</button></div>
+    <div class="panel-footer"><button class="btn btn-sm btn-warning" onclick="memberDeleteView()">회원탈퇴</button></div>
   </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$('#mb_id').keyup(function(){
 		let mb_id = $('#mb_id').val();

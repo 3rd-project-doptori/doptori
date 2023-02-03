@@ -44,4 +44,9 @@
         select count(*) from members where mb_id = #{mb_id}
     </select>
   
+    <!-- 회원탈퇴 -->
+    <delete id="userDelete" parameterType="com.doptori.entity.Member">
+      delete from Member where mb_id=#{mb_id}
+  </delete>
+  
 </mapper>
