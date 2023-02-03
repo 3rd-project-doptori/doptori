@@ -49,7 +49,6 @@ public class MemberController {
 	
 	@RequestMapping("/Logout.do")
 	public String Logout(HttpSession session) {
-		session.removeAttribute("loginMember");
 		
 		return "redirect:/Main.do";
 	}
@@ -65,7 +64,7 @@ public class MemberController {
 	@RequestMapping("/userUpdate.do")
 	public String userUpdate(Member mvo, HttpSession session) {
 		mapper.userUpdate(mvo);
-		session.invalidate();
+		session.removeAttribute("loginMember");
 		return "redirect:/Main.do";
 	}
 	
@@ -83,7 +82,6 @@ public class MemberController {
 		int result = mapper.passChk(vo);
 		return result;
 	}
-	
 	// 회원 탈퇴 해버리기 (Delete 이벤트)
 	@RequestMapping("/userDelete.do")
 	public String userDelete(Member mvo, RedirectAttributes rttr, HttpSession session ) {
@@ -103,6 +101,8 @@ public class MemberController {
 		
 		return "redirect:/Main.do";
 	}
+	
+	
 	
 	@GetMapping("/Mypage.do")
 	public String Mypage() {
