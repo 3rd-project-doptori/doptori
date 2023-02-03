@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="container">
-  <h2>마이페이지 수정하기</h2>
+  <h2>마이페이지 수정</h2>
   <div class="panel panel-default">
     <div class="panel-heading">마이페이지 수정하기</div>
     <div class="panel-body">
