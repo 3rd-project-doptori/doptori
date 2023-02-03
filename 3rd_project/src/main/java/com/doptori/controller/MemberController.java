@@ -54,6 +54,8 @@ public class MemberController {
 		return "redirect:/Main.do";
 	}
 	
+	
+	
 	// 회원 정보 수정 페이지
 	@RequestMapping("/updateMember.do")
 	public String updateMember() {
@@ -61,16 +63,27 @@ public class MemberController {
 	}
 	// 회원 정보 수정(update 이벤트)
 	@RequestMapping("/userUpdate.do")
-	public String userUpdate(Member mvo) {
+	public String userUpdate(Member mvo, HttpSession session) {
 		mapper.userUpdate(mvo);
+		session.invalidate();
 		return "redirect:/Main.do";
 	}
+	
+	
 	
 	// 회원 탈퇴 해버리기 페이지
 	@RequestMapping("/memberDeleteView")
 	public String memberDeleteView() {
 		return "memberDeleteView";
 	}
+	
+	@ResponseBody
+	@RequestMapping("/passChk")
+	public int passChk(Member vo) {
+		int result = mapper.passChk(vo);
+		return result;
+	}
+	
 	// 회원 탈퇴 해버리기 (Delete 이벤트)
 	@RequestMapping("/userDelete.do")
 	public String userDelete(Member mvo, RedirectAttributes rttr, HttpSession session ) {

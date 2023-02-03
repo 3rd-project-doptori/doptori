@@ -32,21 +32,25 @@
   	select * from Member where mb_id=#{mb_id} and mb_pw=#{mb_pw}
   </select>
   
+  <!-- 회원정보 수정 -->
   <update id = "updateMember" parameterType="com.doptori.entity.Member">
         update Member
         set mb_nick=#{mb_nick}, mb_pw =#{mb_pw}, mb_type=#{mb_type} 
         where mb_id = #{mb_id}
   </update>
   
-  
-  <!-- 아이디 중복체크 -->
+  	<!-- 아이디 중복체크 -->
     <select id="mbidCheck" parameterType="String" resultType="int">
-        select count(*) from members where mb_id = #{mb_id}
+        select count(*) from Member where mb_id = #{mb_id}
     </select>
   
     <!-- 회원탈퇴 -->
     <delete id="userDelete" parameterType="com.doptori.entity.Member">
-      delete from Member where mb_id=#{mb_id} and mb_pw=#{mb_pw}
+      	delete from Member where mb_id=#{mb_id} and mb_pw=#{mb_pw}
  	</delete>
-  
+	<!-- 패스워드 체크 -->
+	<select id="passChk" resultType="int">
+		select count(*) from Member where mb_id=#{mb_id} and mb_pw=#{mb_pw}
+	</select>
+    
 </mapper>

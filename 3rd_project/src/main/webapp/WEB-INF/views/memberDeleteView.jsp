@@ -28,7 +28,26 @@
 					alert("비밀번호를 입력해주세요.");
 					$("#mb_pw").focus();
 					return false;
-				}	
+				}
+				
+				$.ajax({
+					url : "${cpath}/passChk",
+					type : "POST",
+					dataType : "json",
+					data : $("#delForm").serializeArray(),
+					success: function(data){
+						
+						if(data==0){
+							alert("패스워드가 틀렸습니다.");
+							return;
+						}else{
+							if(confirm("회원탈퇴하시겠습니까?")){
+								$("#delForm").submit();
+							}
+							
+						}
+					}
+				})
 			});
 			
 				
@@ -38,7 +57,7 @@
 </head>
 <body>
 	<section id="container">
-			<form action="${cpath}/memberDelete.do" method="post">
+			<form action="${cpath}/memberDelete.do" method="post" id="delForm">
 				<div class="form-group has-feedback">
 					<label class="control-label" for="mb_id">아이디</label>
 					<input class="form-control" type="text" id="mb_id" name="mb_id" value="${loginMember.mb_id}" readonly="readonly"/>
@@ -48,7 +67,7 @@
 					<input class="form-control" type="password" id="mb_pw" name="mb_pw" />
 				</div>
 				<div class="form-group has-feedback">
-					<label class="control-label" for="userName">성명</label>
+					<label class="control-label" for="userName">닉네임</label>
 					<input class="form-control" type="text" id="mb_nick" name="mb_nick" value="${loginMember.mb_nick}" readonly="readonly"/>
 				</div>
 				<div class="form-group has-feedback">

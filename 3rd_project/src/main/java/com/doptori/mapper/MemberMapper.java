@@ -22,5 +22,7 @@ public interface MemberMapper {
 
 	public void userDelete(Member mvo);
 
+	public int passChk(Member vo);
+
 	
 }
