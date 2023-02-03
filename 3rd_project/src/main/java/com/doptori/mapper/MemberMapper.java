@@ -12,5 +12,12 @@ public interface MemberMapper {
 	public void PhotoUpdate(Member vo);
 
 	public Member MemberLogin(Member mvo);
+
+	public void updateMember(Member mvo);
+
+	public void userUpdate(Member mvo);
+
+	public int mbidCheck(String mb_id);
+
 	
 }

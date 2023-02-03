@@ -13,6 +13,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script type="text/javascript">
   
+  
   function InsertMb(){
 		// 1. form태그 안에 있는 input태그에 입력한 내용들 가져오기
 		// var title = $("#title").val(); -->와 같이 일일이 가져와야하는데
@@ -62,12 +63,14 @@
 		location.href = "${cpath}/FarmList.do"
 	}
 	
-	
 	function Calendar(){
 		location.href = "${cpath}/Diary_Calendar.do"
 	}
 
-	
+	//회원정보 수정
+	function updateMember(){
+		location.href = "${cpath}/updateMember.do"
+	}
 
 	</script>
 </head>
@@ -83,6 +86,7 @@
 				    <div class="form-group">
 					    <label for="mb_id">ID:</label>
 					    <input type="text" class="form-control" id="mb_id" name="mb_id">
+					    <div><font id="id_feedback" size="2"></font></div>
 				    </div>
 				    <div class="form-group">
 					    <label for="mb_pw">Password:</label>
@@ -169,7 +173,33 @@
 	</div>
     <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="FarmList()">내농장</button></div>
     <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="Calendar()">캘린더</button></div>
+    <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="updateMember()">회원정보수정</button></div>
   </div>
 </div>
+<script type="text/javascript">
+	$('#mb_id').keyup(function(){
+		let mb_id = $('#mb_id').val();
+			
+		$.ajax({
+			url : "${cpath}/mbidCheck.do",
+			type : "post",
+			data : {mb_id: mb_id},
+			dataType : 'json',
+			success : function(result){
+				if(result == 1){
+					$("#id_feedback").html('이미 사용중인 아이디입니다.');
+					$("#id_feedback").attr('color','#dc3545');
+				} else{
+					$("#id_feedback").html('사용할 수 있는 아이디입니다.');
+					$("#id_feedback").attr('color','#2fb380');
+				} 
+			},
+			error : function(){
+				alert("서버요청실패");
+			}
+		})
+			 
+	})
+</script>
 </body>
 </html>

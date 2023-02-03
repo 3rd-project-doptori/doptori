@@ -32,4 +32,16 @@
   	select * from Member where mb_id=#{mb_id} and mb_pw=#{mb_pw}
   </select>
   
+  <update id = "updateMember" parameterType="com.doptori.entity.Member">
+        update Member
+        set mb_nick=#{mb_nick}, mb_pw =#{mb_pw}, mb_type=#{mb_type} 
+        where mb_id = #{mb_id}
+  </update>
+  
+  
+  <!-- 아이디 중복체크 -->
+    <select id="mbidCheck" parameterType="String" resultType="int">
+        select count(*) from members where mb_id = #{mb_id}
+    </select>
+  
 </mapper>
