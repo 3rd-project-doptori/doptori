@@ -28,8 +28,7 @@
 			<tr>
 				<td>사진</td>
 				<td>${loginMember.mb_pic}
-				<span><img src="resources/images/default2.png"></span>
-				</td>
+				<span><img src="resources/images/default2.png"></span></td>
 			</tr>
 			<tr>
 				<td>아이디</td>
