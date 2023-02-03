@@ -13,11 +13,14 @@ public interface MemberMapper {
 
 	public Member MemberLogin(Member mvo);
 
+	
 	public void updateMember(Member mvo);
 
 	public void userUpdate(Member mvo);
 
 	public int mbidCheck(String mb_id);
+
+	public void userDelete(Member mvo);
 
 	
 }
