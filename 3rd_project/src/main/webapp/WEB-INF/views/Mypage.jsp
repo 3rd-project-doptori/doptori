@@ -28,7 +28,9 @@
 		<table class="table table-hover table-striped">
 			<tr>
 				<td>사진</td>
-				<td>${loginMember.mb_pic}<img src="resources/images/default2.png"></td>
+				<td>${loginMember.mb_pic}<img src="resources/images/default2.png">
+				<input type="file" class="form-control" name="mb_pic" id="mb_pic">
+				</td>
 			</tr>
 			<tr>
 				<td>아이디</td>
