@@ -18,7 +18,6 @@
 	}
 </script>
 </head>
-
 <body>
 	<div class="container">
   <h2>마이페이지 테스트</h2>
@@ -28,7 +27,9 @@
 		<table class="table table-hover table-striped">
 			<tr>
 				<td>사진</td>
-				<td>${loginMember.mb_pic}<img src="resources/images/default2.png"></td>
+				<td>${loginMember.mb_pic}
+				<span><img src="resources/images/default2.png"></span>
+				</td>
 			</tr>
 			<tr>
 				<td>아이디</td>
