@@ -17,7 +17,7 @@
 <body>
 <<<<<<< HEAD
 	<div class="container">
-		<h2>회원정보수정</h2>
+		<h2>회원정보 수정</h2>
 		<div class="panel panel-default">
 			<div class="panel-heading">Update FORM</div>
 			<div class="panel-body">
@@ -36,7 +36,7 @@
 						<label class="control-label col-sm-2">비밀번호 : </label>
 						<div class="col-sm-10">
 							<!--  form-control 한줄 채워줌 -->
-							<input type="password" class="form-control" 
+							<input type="password" class="form-control" placeholder="비밀번호" 
 							name="mb_pw" vlaue="${loginMember.mb_pw}"></input>
 						</div>
 					</div>
@@ -44,7 +44,7 @@
 						<label class="control-label col-sm-2">비밀번호 확인 : </label>
 						<div class="col-sm-10">
 							<!--  form-control 한줄 채워줌 -->
-							<input type="password" class="form-control" 
+							<input type="password" class="form-control" placeholder="비밀번호 확인"
 							name="mb_pw" vlaue="${loginMember.mb_pw}"></input>
 						</div>
 					</div>
@@ -53,7 +53,7 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2">닉네임 : </label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="mb_nick"
+							<input type="text" class="form-control" name="mb_nick" placeholder="닉네임 입력"
 								value="${loginMember.mb_nick}">
 						</div>
 					</div>
@@ -88,7 +88,7 @@
 		<div class="form-group">
 		    <label class="control-label col-sm-2">비밀번호:</label>
 		    <div class="col-sm-10">
-		      <input type="password" class="form-control" placeholder="비밀번호를 입력하세요.">
+		      <input type="password" class="form-control" placeholder="비밀번호">
 		    </div>
 >>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
 		</div>
@@ -97,13 +97,13 @@
 		<div class="form-group">
 		    <label class="control-label col-sm-2" for="mb_pw">비밀번호 확인:</label>
 		    <div class="col-sm-10">
-		      <input type="password" class="form-control" name="mb_pw" id="mb_pw" placeholder="비밀번호를 입력하세요.">
+		      <input type="password" class="form-control" name="mb_pw" id="mb_pw" placeholder="비밀번호 확인">
 		    </div>
 		</div>
 		<div class="form-group">
 		    <label class="control-label col-sm-2" for="mb_nick">닉네임:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" name="mb_nick" id="mb_nick" value="${loginMember.mb_nick}" placeholder="닉네임을 입력하세요.">
+		      <input type="text" class="form-control" name="mb_nick" id="mb_nick" value="${loginMember.mb_nick}" placeholder="닉네임 입력">
 		    </div>
 		</div>
 		<div class="form-group">
