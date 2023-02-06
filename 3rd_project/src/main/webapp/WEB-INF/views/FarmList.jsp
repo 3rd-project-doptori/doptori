@@ -62,7 +62,7 @@ $(document).ready(function(){
 			</tbody>
 		</table>
 	</div>
-    <div class="panel-footer">내 농장 리스트 페이지입니다😊</div>
+    <div class="panel-footer">내 농장 리스트입니다😊</div>
   </div>
 </div>
 

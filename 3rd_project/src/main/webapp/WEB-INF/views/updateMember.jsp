@@ -18,7 +18,7 @@
 	<div class="container">
 		<h2>회원정보 수정</h2>
 		<div class="panel panel-default">
-			<div class="panel-heading">Update FORM</div>
+			<div class="panel-heading">회원정보 수정</div>
 			<div class="panel-body">
 				<form class="form-horizontal" id="updateMember" action="${cpath}/userUpdate.do" method="post">
 					<!-- 아이디 -->
