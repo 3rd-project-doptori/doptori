@@ -23,6 +23,7 @@
 						    
 			})
 		
+			
 			$("#submit").on("click", function(){
 				if($("#mb_pw").val()==""){
 					alert("비밀번호를 입력해주세요.");
