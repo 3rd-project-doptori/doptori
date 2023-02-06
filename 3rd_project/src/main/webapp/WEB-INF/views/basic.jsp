@@ -90,11 +90,11 @@
 				<form class="form-inline" action="${cpath}/Login.do" method="post">
 				    <div class="form-group">
 					    <label for="mb_id">ID:</label>
-					    <input type="text" class="form-control" id="mb_id2" name="mb_id">
+					    <input type="text" class="form-control" id="mb_id2" name="mb_id" placeholder="아이디">
 					 </div>
 				    <div class="form-group">
 					    <label for="mb_pw">Password:</label>
-					    <input type="password" class="form-control" id="mb_pw" name="mb_pw">
+					    <input type="password" class="form-control" id="mb_pw" name="mb_pw" placeholder="비밀번호">
 				    </div>
 				    <button type="submit" class="btn btn-default">로그인</button>
 				</form>
