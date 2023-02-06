@@ -12,7 +12,7 @@
   </select>
   <!-- 관리자의 회원 삭제 -->
   <delete id="MemberDelete">
-		delete from Member where mb_id=#{mb_id}
+	delete from Member where mb_id=#{mb_id}
   </delete>
   
   
