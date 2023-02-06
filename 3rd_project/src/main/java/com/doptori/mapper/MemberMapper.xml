@@ -6,6 +6,7 @@
 <mapper namespace="com.doptori.mapper.MemberMapper">
     
     <!-- 태그의 id는 mapper 인터페이스의 메소드 이름으로 한다. -->
+    <!-- 관리자의 회원 전체 목록 -->
   <select id="MemberList" resultType="com.doptori.entity.Member">
   	select * from Member
   </select>

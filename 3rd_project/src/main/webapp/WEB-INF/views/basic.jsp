@@ -62,6 +62,20 @@
 	
 	
 	
+	function removeMember(index) {
+		var id = $('.id' + index).text(); // .text 글자를 가져올 때
+		$.ajax({
+			url : 'MemberDelete.do',
+			type : 'POST',
+			data : {'mb_id' : mb_id},
+			dataType : 'JSON',
+			success : resultJSON,
+			erorr : function(){
+				alert('error');
+			}
+		});
+	}
+	
 	$(function() {
 		$('#MemberList').click(function(){
 			$.ajax({
@@ -86,11 +100,11 @@
 			html += '</tr>';
 			$.each(data, function(index, obj){	// 반복문
 				html += '<tr>';
-				html += '<td>'+obj.mb_id+'</td>';	// 키 값만 입력하면 value값을 꺼내올 수 있음
+				html += '<td class="id'+index+'">'+obj.mb_id+'</td>';	// 키 값만 입력하면 value값을 꺼내올 수 있음
 				html += '<td>'+obj.mb_pw+'</td>';
 				html += '<td>'+obj.mb_nick+'</td>';
 				html += '<td>'+obj.mb_type+'</td>';
-				html += '<td><button onclick="removeMember()" class="btn btn-primary btn-sm">삭제</button></td>';
+				html += '<td><button onclick="removeMember('+index+')" class="btn btn-primary btn-sm">삭제</button></td>';
 				html += '</tr>';
 			});
 			html += '</table>';
@@ -104,19 +118,6 @@
 		}
 		
 	});
-	function removeMember(index) {
-		var id = $('.id' + index).text(); // .text 글자를 가져올 때
-		$.ajax({
-			url : 'MemberDelete.do',
-			type : 'POST',
-			data : {'mb_id' : mb_id},
-			dataType : 'JSON',
-			success : resultJSON,
-			erorr : function(){
-				alert('error');
-			}
-		});
-	}
 	
 	
 	
