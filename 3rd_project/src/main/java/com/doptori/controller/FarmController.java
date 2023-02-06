@@ -60,6 +60,6 @@ public class FarmController {
 	@RequestMapping("/MakeFarm.do")
 	public void MakeFarm() {}
 	
-	@RequestMapping("/Diary_Calendar.do")
-	public void Diary_Calendar() {}
+	@RequestMapping("/Calendar.do")
+	public void calendar() {}
 }

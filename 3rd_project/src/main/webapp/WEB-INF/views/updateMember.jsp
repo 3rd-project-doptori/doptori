@@ -16,8 +16,8 @@
 </head>
 <body>
 	<div class="panel-body">
-		<form class="form-horizontal" id="userUpdate" action="${cpath}/userUpdate.do" method="post">
-		<input type="hidden" class="form-control" name="mb_id" id="mb_id" value="${mvo.mb_id}">
+		<form class="form-horizontal" id="updateMember" action="${cpath}/updateMember.do" method="post">
+		
 		<div class="form-group">
 		    <label class="control-label col-sm-2">비밀번호:</label>
 		    <div class="col-sm-10">

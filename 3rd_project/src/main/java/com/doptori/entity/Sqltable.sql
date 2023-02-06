@@ -29,6 +29,8 @@ select * from Farm;
 INSERT INTO Member (mb_type, mb_id, mb_pw, mb_nick) VALUE('1', 'test1',  '1234', 'test1');
 INSERT INTO Farm (fm_mb_num, fm_ad_num, fm_detail, fm_name, fm_dong, fm_area, fm_cp_num) VALUE('1', '2', '세부 주소', '농장이름', '동이름', '1.5', '2');
 INSERT INTO Crop (cp_name, cp_type, cp_title, cp_cont) VALUE('토마토', '1',  '병해충', '내용설명');
+INSERT INTO Diary (di_mb_num, di_fm_num, di_date, di_note) VALUE('1', '1', '2023-02-20', '물주기');
+
 
 CREATE TABLE Farm (
  fm_num INT(4) NOT NULL AUTO_INCREMENT,
@@ -128,3 +130,39 @@ CREATE TABLE Comment (
 );
 
 INSERT INTO member_table (mb_id, mb_pw, address, mb_tell) VALUE('build', 'build1',  '서울특별시 강남구 도곡동', '010-1234-1234');
+
+create table calendar(
+	id int(4) NOT NULL AUTO_INCREMENT,
+	groupId int(4),
+	title varchar(50),
+	writer varchar(50),
+	content varchar(1000),
+	start1 datetime,
+	end1 datetime,
+	allDay int(4),
+	textColor varchar(50),
+	backgroundColor varchar(50),
+	borderColor varchar(50),
+	PRIMARY KEY(id)
+);
+	
+create table schedule(
+	mb_num int(4),
+	schedule_idx int(4) NOT NULL AUTO_INCREMENT,
+	schedule_num int(4),
+	schedule_subject TEXT,
+	schedule_desc TEXT,
+	schedule_date datetime,
+	schedule_share varchar(50),
+	schedule_mycolor varchar(50),
+	PRIMARY KEY(schedule_idx),
+	FOREIGN KEY (mb_num) REFERENCES Member (mb_num)
+);
+
+drop table calendar;
+
+INSERT INTO calendar values('1','1','할일title','test',
+'내용-content','2021/05/01',
+'2021/05/03','1','yellow','navy','navy');
+
+select * from calendar;
