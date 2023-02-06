@@ -15,9 +15,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.doptori.entity.Member;
 import com.doptori.mapper.MemberMapper;
 
+import com.doptori.mapper.BoardMapper;
+
 @Controller
 public class MemberController {
-
+	
 	@Autowired
 	private MemberMapper mapper;
 	

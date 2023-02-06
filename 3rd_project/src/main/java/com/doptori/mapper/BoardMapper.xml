@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.doptori.mapper.BoardMapper">
+    
+  <select id="boardList" resultType="com.doptori.entity.Board">
+    select * from Board
+  </select>
+  
+  <insert id="boardInsert" parameterType="com.doptori.entity.Board">
+      insert into Board(bd_type, bd_date, bd_mb_num, bd_title, bd_cont)
+      values (#{bd_type}, #{bd_mb_num}, now(), #{bd_title}, #{bd_cont})
+  </insert>
+  
+  <select id="boardContent" parameterType="int" resultType="com.doptori.entity.Board">
+      select * from Board where bd_num=#{bd_num}
+  </select>
+  
+  <update id="boardUpdate" parameterType="com.doptori.entity.Board">
+      update Board set bd_title=#{bd_title}, bd_cont=#{bd_cont}
+      where bd_num=#{bd_num}
+  </update>
+  
+  <delete id="boardDelete" parameterType="int">
+      delete from Board where bd_num=#{bd_num}
+  </delete>
+  
+  <update id="boardCount" parameterType="int">
+	  update Board set bd_cnt=bd_cnt+1 where bd_num=#{bd_num}
+  </update>
+  
+</mapper>

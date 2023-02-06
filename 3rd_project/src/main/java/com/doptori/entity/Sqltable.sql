@@ -16,7 +16,7 @@ CREATE TABLE Member (
 
 ALTER TABLE Member ADD  mb_re_num VARCHAR(3000) AFTER mb_file;
 
-insert into Member values('3','0', 'admin', '12345', '관리자',null,null,null,null);
+insert into Member values('4','0', 'admin2', '12345', '관리자2',null,null,null,null);
 
 select * from Member;
 
@@ -119,10 +119,12 @@ CREATE TABLE Board (
  bd_title VARCHAR(2000) NOT NULL,
  bd_cont TEXT NOT NULL,
  bd_pic VARCHAR(3000),
- bd_cnt INT(4) ,
+ bd_cnt INT(4) not null default 0 ,
   PRIMARY KEY(bd_num),
   FOREIGN KEY (bd_mb_num) REFERENCES Member (mb_num)
 );
+drop table Board;
+select * from Board;
 
 CREATE TABLE Comment (
  co_num INT(4) NOT NULL AUTO_INCREMENT,
