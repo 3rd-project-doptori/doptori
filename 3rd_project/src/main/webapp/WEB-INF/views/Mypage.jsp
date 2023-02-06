@@ -55,7 +55,7 @@
 			</tr>
 		</table>
 	</div>
-    <div class="panel-footer">지금 많이 배고픈 신경수😊</div>
+    <div class="panel-footer">마이페이지입니다😊</div>
   </div>
 </div>
 </body>

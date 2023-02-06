@@ -16,8 +16,8 @@
 </head>
 <body>
 	<div class="panel-body">
+		<h2>회원정보 수정</h2>
 		<form class="form-horizontal" id="updateMember" action="${cpath}/updateMember.do" method="post">
-		
 		<div class="form-group">
 		    <label class="control-label col-sm-2">비밀번호:</label>
 		    <div class="col-sm-10">
