@@ -15,6 +15,7 @@
   
 </head>
 <body>
+<<<<<<< HEAD
 	<div class="container">
 		<h2>회원정보수정</h2>
 		<div class="panel panel-default">
@@ -80,7 +81,49 @@
 				</form>
 			</div>
 			<div class="panel-body"></div>
+=======
+	<div class="panel-body">
+		<h2>회원정보 수정</h2>
+		<form class="form-horizontal" id="updateMember" action="${cpath}/updateMember.do" method="post">
+		<div class="form-group">
+		    <label class="control-label col-sm-2">비밀번호:</label>
+		    <div class="col-sm-10">
+		      <input type="password" class="form-control" placeholder="비밀번호를 입력하세요.">
+		    </div>
+>>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
 		</div>
+<<<<<<< HEAD
+=======
+		<div class="form-group">
+		    <label class="control-label col-sm-2" for="mb_pw">비밀번호 확인:</label>
+		    <div class="col-sm-10">
+		      <input type="password" class="form-control" name="mb_pw" id="mb_pw" placeholder="비밀번호를 입력하세요.">
+		    </div>
+		</div>
+		<div class="form-group">
+		    <label class="control-label col-sm-2" for="mb_nick">닉네임:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" name="mb_nick" id="mb_nick" value="${loginMember.mb_nick}" placeholder="닉네임을 입력하세요.">
+		    </div>
+		</div>
+		<div class="form-group">
+		    <label class="control-label col-sm-2" for="mb_type">회원 선택:</label>
+		    <div class="col-sm-10">
+		      <select name="mb_type">
+                    <option value="choose">회원 선택</option>
+                    <option value=1>농업인</option>
+	                <option value=2>일반인</option>
+                </select>
+		    </div>
+		</div>
+		<div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <button type="submit" class="btn btn-success">수정하기</button>
+		      <button type="reset" class="btn btn-danger" id="reset">지우기</button>
+		    </div>
+		  </div>
+		</form>
+>>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
 	</div>	
 </body>
 </html>

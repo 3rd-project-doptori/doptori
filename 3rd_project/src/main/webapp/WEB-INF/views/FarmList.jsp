@@ -31,7 +31,7 @@ $(document).ready(function(){
 	}
 </script>
 <div class="container">
-  <h2>DCX분석서비스 개발자과정</h2>
+  <h2>내 농장</h2>
   <div class="panel panel-default">
     <div class="panel-heading">게시판</div>
     <div class="panel-body">
@@ -62,7 +62,7 @@ $(document).ready(function(){
 			</tbody>
 		</table>
 	</div>
-    <div class="panel-footer">지금 많이 배고픈 신경수😊</div>
+    <div class="panel-footer">내 농장 게시판입니다😊</div>
   </div>
 </div>
 

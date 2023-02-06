@@ -181,9 +181,9 @@
 		  	</div>
 		</form>
 	</div>
-    <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="FarmList()">내농장</button></div>
+    <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="FarmList()">내 농장</button></div>
     <div class="panel-footer"><a class="btn btn-sm btn-warning" href="<c:url value='/calendar.do/${loginMember.getMb_num()}'/>">캘린더</a></div>
-    <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="updateMember()">회원정보수정</button></div>
+    <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="updateMember()">회원정보 수정</button></div>
     <div class="panel-footer"><button class="btn btn-sm btn-warning" onclick="memberDeleteView()">회원탈퇴</button></div>
   </div>
 </div>
