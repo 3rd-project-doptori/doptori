@@ -50,7 +50,7 @@
 			<tr>
 				<td colspan="2">
 					<button class="btn btn-sm btn-success" onclick="goUpdate()">수정</button>
-					<a class="btn btn-sm btn-info" href="<c:url value='/basic.do'/>">메인페이지로 돌아가기</a>
+					<a class="btn btn-sm btn-info" href="<c:url value='/Main.do'/>">메인페이지로 돌아가기</a>
 				</td>
 			</tr>
 		</table>
