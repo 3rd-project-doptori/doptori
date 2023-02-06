@@ -49,7 +49,7 @@ public class MemberController {
 	
 	@RequestMapping("/Logout.do")
 	public String Logout(HttpSession session) {
-		
+		session.removeAttribute("loginMember");
 		return "redirect:/Main.do";
 	}
 	
