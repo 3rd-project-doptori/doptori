@@ -55,7 +55,7 @@
 			</tr>
 		</table>
 	</div>
-    <div class="panel-footer">마이페이지입니다😊</div>
+    <div class="panel-footer">마이페이지 화면입니다😊</div>
   </div>
 </div>
 </body>
