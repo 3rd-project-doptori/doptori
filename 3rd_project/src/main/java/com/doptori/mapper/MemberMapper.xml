@@ -4,10 +4,16 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <!-- 여러 mapper.xml이 있는 경우, id 겹치면 혼란이  되는 것을 방지하기 위해 -->
 <mapper namespace="com.doptori.mapper.MemberMapper">
+    
     <!-- 태그의 id는 mapper 인터페이스의 메소드 이름으로 한다. -->
   <select id="MemberList" resultType="com.doptori.entity.Member">
   	select * from Member
   </select>
+  <!-- 관리자의 회원 삭제 -->
+  <delete id="MemberDelete">
+		delete from Member where mb_id=#{mb_id}
+  </delete>
+  
   
   <insert id="MemberInsert" parameterType="com.doptori.entity.Member">
   	insert into Member(mb_id, mb_pw, mb_nick, mb_type)

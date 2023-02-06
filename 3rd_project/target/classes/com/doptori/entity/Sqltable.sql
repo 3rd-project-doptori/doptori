@@ -16,8 +16,11 @@ CREATE TABLE Member (
 
 ALTER TABLE Member ADD  mb_re_num VARCHAR(3000) AFTER mb_file;
 
+insert into Member values('3','0', 'admin', '12345', '관리자',null,null,null,null);
 
 select * from Member;
+
+drop table Member;
 
 CREATE TABLE Address (
  ad_num INT(8) NOT NULL AUTO_INCREMENT,

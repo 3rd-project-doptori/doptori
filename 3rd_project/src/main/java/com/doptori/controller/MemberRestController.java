@@ -1,5 +1,7 @@
 package com.doptori.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -37,4 +39,18 @@ public class MemberRestController {
 		int result = mapper.passChk(vo);
 		return result;
 	}
+	
+	@RequestMapping("/MemberList.do")
+	public List<Member> MemberList(){
+		List<Member> list = mapper.MemberList();
+		return list;
+	}
+	
+	@RequestMapping("/MemberDelete.do")
+	public List<Member> MemberDelete(String	mb_id) {
+		mapper.MemberDelete(mb_id);
+		List<Member> list = mapper.MemberList();
+		return list;
+	}
+	
 }

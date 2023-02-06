@@ -105,7 +105,7 @@ public class MemberController {
 		return "redirect:/Main.do";
 	}
 	
-	
+//	
 	
 	@GetMapping("/Mypage.do")
 	public String Mypage() {

@@ -1,5 +1,7 @@
 package com.doptori.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.doptori.entity.Member;
@@ -23,6 +25,11 @@ public interface MemberMapper {
 	public void userDelete(Member mvo);
 
 	public int passChk(Member vo);
+
+	//관리자 - 회원 목록
+	public List<Member> MemberList();
+	//관리자 - 회원삭제
+	public void MemberDelete(String id);
 
 	
 }

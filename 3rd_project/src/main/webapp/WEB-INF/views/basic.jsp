@@ -59,6 +59,68 @@
 		
 	}// InsertPhoto 끝!!
 
+	
+	
+	
+	$(function() {
+		$('#MemberList').click(function(){
+			$.ajax({
+				url : 'MemberList.do',// 요청할 url
+				type : 'GET',// 통신방법 선택 GET/POST
+				datyaType : 'JSON',// 어떠한 타입으로 데이터를 돌려받을 것인지
+				success : resultJSON,
+				erorr : function(){
+					alert('error');
+				}
+				});
+			});
+		
+		function resultJSON(data){
+			var html = '<table class="table table-hover table-bordered">';
+			html += '<tr>';
+			html += '<td>아이디</td>';
+			html += '<td>비밀번호</td>';
+			html += '<td>닉네임</td>';
+			html += '<td>구분</td>';
+			html += '<td>삭제</td>';
+			html += '</tr>';
+			$.each(data, function(index, obj){	// 반복문
+				html += '<tr>';
+				html += '<td>'+obj.mb_id+'</td>';	// 키 값만 입력하면 value값을 꺼내올 수 있음
+				html += '<td>'+obj.mb_pw+'</td>';
+				html += '<td>'+obj.mb_nick+'</td>';
+				html += '<td>'+obj.mb_type+'</td>';
+				html += '<td><button onclick="removeMember()" class="btn btn-primary btn-sm">삭제</button></td>';
+				html += '</tr>';
+			});
+			html += '</table>';
+			$('#MemberListdiv').html(html);
+			
+			if($('#MemberListdiv').css('display') == 'block'){ // 눈에 보이는 상태
+				$('#MemberListdiv').slideUp();
+			}else{ // 눈에 보이지 않는 상태
+				$('#MemberListdiv').slideDown();
+			}
+		}
+		
+	});
+	function removeMember(index) {
+		var id = $('.id' + index).text(); // .text 글자를 가져올 때
+		$.ajax({
+			url : 'MemberDelete.do',
+			type : 'POST',
+			data : {'mb_id' : mb_id},
+			dataType : 'JSON',
+			success : resultJSON,
+			erorr : function(){
+				alert('error');
+			}
+		});
+	}
+	
+	
+	
+	
 	function FarmList(){
 		location.href = "${cpath}/FarmList.do"
 	}
@@ -116,6 +178,8 @@
 					</c:choose>
 					<span>${loginMember.mb_nick}님 환영합니다~</span>
 					<a class="btn btn-sm btn-default" href="${cpath}/Logout.do">로그아웃</a>
+					<button id="MemberList" class="btn btn-success btn-sm">회원목록</button>
+					<div id="MemberListdiv"></div>
 				</div>
 			</c:otherwise>
 		</c:choose>
