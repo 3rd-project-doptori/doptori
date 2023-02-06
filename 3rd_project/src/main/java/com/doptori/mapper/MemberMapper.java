@@ -14,7 +14,7 @@ public interface MemberMapper {
 	public Member MemberLogin(Member mvo);
 
 	
-	public void updateMember(Member mvo);
+	//public void updateMember(Member mvo);
 
 	public void userUpdate(Member mvo);
 

@@ -16,6 +16,9 @@ CREATE TABLE Member (
 
 ALTER TABLE Member ADD  mb_re_num VARCHAR(3000) AFTER mb_file;
 
+
+select * from Member;
+
 CREATE TABLE Address (
  ad_num INT(8) NOT NULL AUTO_INCREMENT,
  ad_sido VARCHAR(100),
@@ -164,5 +167,3 @@ drop table calendar;
 INSERT INTO calendar values('1','1','할일title','test',
 '내용-content','2021/05/01',
 '2021/05/03','1','yellow','navy','navy');
-
-select * from calendar;

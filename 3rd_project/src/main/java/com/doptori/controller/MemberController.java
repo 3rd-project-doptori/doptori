@@ -56,15 +56,18 @@ public class MemberController {
 	
 	
 	// 회원 정보 수정 페이지
+	//@RequestMapping("/updateMember.do")
+	//public String updateMember() {
+	//	return "updateMember";
+	//}
 	@RequestMapping("/updateMember.do")
-	public String updateMember() {
-		return "updateMember";
-	}
+	public void updateMember() {}
+	
 	// 회원 정보 수정(update 이벤트)
 	@RequestMapping("/userUpdate.do")
 	public String userUpdate(Member mvo, HttpSession session) {
 		mapper.userUpdate(mvo);
-		session.removeAttribute("loginMember");
+		session.setAttribute("loginMember", mvo);
 		return "redirect:/Main.do";
 	}
 	
