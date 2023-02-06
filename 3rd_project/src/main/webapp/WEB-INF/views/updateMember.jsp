@@ -33,7 +33,7 @@
 		<div class="form-group">
 		    <label class="control-label col-sm-2" for="mb_nick">닉네임:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" name="mb_nick" id="mb_nick" value="${loginMember.mb_nick}" placeholder="">
+		      <input type="text" class="form-control" name="mb_nick" id="mb_nick" value="${loginMember.mb_nick}" placeholder="닉네임을 입력하세요.">
 		    </div>
 		</div>
 		<div class="form-group">
