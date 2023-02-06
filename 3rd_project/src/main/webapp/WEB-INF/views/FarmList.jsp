@@ -33,7 +33,7 @@ $(document).ready(function(){
 <div class="container">
   <h2>내 농장</h2>
   <div class="panel panel-default">
-    <div class="panel-heading">게시판</div>
+    <div class="panel-heading">내 농장 관리</div>
     <div class="panel-body">
 		<table class="table table-bordered table-hover">
 			<thead>
@@ -62,7 +62,7 @@ $(document).ready(function(){
 			</tbody>
 		</table>
 	</div>
-    <div class="panel-footer">내 농장 게시판입니다😊</div>
+    <div class="panel-footer">내 농장 관리 페이지입니다😊</div>
   </div>
 </div>
 
