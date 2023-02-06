@@ -20,7 +20,7 @@
 </head>
 <body>
 	<div class="container">
-  <h2>마이페이지 테스트</h2>
+  <h2>마이페이지</h2>
   <div class="panel panel-default">
     <div class="panel-heading">마이페이지</div>
     <div class="panel-body">
