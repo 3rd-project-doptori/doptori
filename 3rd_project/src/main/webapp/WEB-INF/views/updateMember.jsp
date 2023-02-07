@@ -72,7 +72,7 @@
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<button type="submit" class="btn btn-info btn-sm">수정</button>
-							<button type="reset" class="brn btn-warning btn-sm">취소</button>
+							<button type="reset" class="btn btn-warning btn-sm">취소</button>
 						</div>
 					</div>
 				</form>
