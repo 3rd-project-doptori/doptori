@@ -15,9 +15,9 @@
 <body>
  
 <div class="container">
-  <h2>내 농장 > 농장 만들기</h2>
+  <h2>내 농장 만들기</h2>
   <div class="panel panel-default">
-    <div class="panel-heading">농장 만들기</div>
+    <div class="panel-heading">내 농장</div>
     <div class="panel-body">
 		<form class="form-horizontal" action="${cpath}/MakeFarm.do" method="post">
 		  <div class="form-group">
