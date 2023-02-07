@@ -83,5 +83,11 @@ public class Member {
 	public void setMb_date(String mb_date) {
 		this.mb_date = mb_date;
 	}
+	@Override
+	public String toString() {
+		return "Member [mb_num=" + mb_num + ", mb_type=" + mb_type + ", mb_id=" + mb_id + ", mb_pw=" + mb_pw
+				+ ", mb_nick=" + mb_nick + ", mb_fm_num=" + mb_fm_num + ", mb_chatlist=" + mb_chatlist + ", mb_pic="
+				+ mb_pic + ", mb_file=" + mb_file + ", mb_re_num=" + mb_re_num + ", mb_date=" + mb_date + "]";
+	}
 	
 }

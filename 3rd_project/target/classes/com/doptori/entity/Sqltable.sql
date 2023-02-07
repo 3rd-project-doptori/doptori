@@ -25,8 +25,8 @@ CREATE TABLE Address (
   PRIMARY KEY(ad_num)
 );
 
-select * from Farm;
-INSERT INTO Member (mb_type, mb_id, mb_pw, mb_nick) VALUE('1', 'test1',  '1234', 'test1');
+select * from Member;
+INSERT INTO Member (mb_type, mb_id, mb_pw, mb_nick) VALUE('1', 'test3',  '1234', 'test3');
 INSERT INTO Farm (fm_mb_num, fm_ad_num, fm_detail, fm_name, fm_dong, fm_area, fm_cp_num) VALUE('1', '2', '세부 주소', '농장이름', '동이름', '1.5', '2');
 INSERT INTO Crop (cp_name, cp_type, cp_title, cp_cont) VALUE('토마토', '1',  '병해충', '내용설명');
 INSERT INTO Diary (di_mb_num, di_fm_num, di_date, di_note) VALUE('1', '1', '2023-02-20', '물주기');

@@ -90,7 +90,7 @@
 				<form class="form-inline" action="${cpath}/Login.do" method="post">
 				    <div class="form-group">
 					    <label for="mb_id">ID:</label>
-					    <input type="text" class="form-control" id="mb_id2" name="mb_id">
+					    <input type="text" class="form-control" id="mb_id" name="mb_id">
 					 </div>
 				    <div class="form-group">
 					    <label for="mb_pw">Password:</label>
@@ -189,7 +189,7 @@
   </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$('#mb_id').keyup(function(){
 		let mb_id = $('#mb_id').val();
 			
@@ -213,6 +213,6 @@
 		})
 			 
 	})
-</script>
+</script> -->
 </body>
 </html>

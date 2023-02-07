@@ -3,17 +3,17 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd
    http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd"
-   xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring" >
-   
+   xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+   >
    
    <!-- Root Context: defines shared resources visible to all other web components -->
       
       <!-- bean  : 객체를 생성하는 태그 -->
       <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
           <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-          <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/mysql?useSSL=false&amp;serverTimezone=UTC" />
-          <property name="username" value="root" />
-          <property name="password" value="12345"></property>
+          <property name="jdbcUrl" value="jdbc:mysql://project-db-stu.ddns.net:3307/doptori?useSSL=false&amp;serverTimezone=UTC" />
+          <property name="username" value="doptori" />
+          <property name="password" value="12345" />
       </bean>
       
       <!-- 생성자가 호출되어 config를 사용할 수 있도록
@@ -29,7 +29,7 @@
       </bean>
       
       <!-- 사용할 수 있도록 BoardMapper 인터페이스를 메모리에 올린다!(scan) -->
-      <mybatis-spring:scan base-package="kr.board.mapper"/>
+      <mybatis-spring:scan base-package="com.doptori.mapper"/>
       
       
 </beans>

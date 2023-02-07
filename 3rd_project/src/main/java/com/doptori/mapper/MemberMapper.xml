@@ -46,8 +46,8 @@
   </update>
   
   	<!-- 아이디 중복체크 -->
-    <select id="mbidCheck" parameterType="String" resultType="int">
-        select count(*) from Member where mb_id = #{mb_id}
+    <select id="mbidCheck" parameterType="com.doptori.entity.Member" resultType="com.doptori.entity.Member">
+        select count(*) from Member where mb_id=#{mb_id}
     </select>
   
     <!-- 회원탈퇴 -->
@@ -55,7 +55,7 @@
       	delete from Member where mb_id=#{mb_id} and mb_pw=#{mb_pw}
  	</delete>
 	<!-- 패스워드 체크 -->
-	<select id="passChk" resultType="int">
+	<select id="passChk" resultType="com.doptori.entity.Member" parameterType="com.doptori.entity.Member">
 		select count(*) from Member where mb_id=#{mb_id} and mb_pw=#{mb_pw}
 	</select>
     

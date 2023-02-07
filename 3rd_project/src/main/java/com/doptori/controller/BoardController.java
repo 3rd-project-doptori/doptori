@@ -16,7 +16,7 @@ import com.doptori.mapper.BoardMapper;
 @Controller
 public class BoardController {
 	
-	@Autowired
+	@Autowired(required=true)
 	private BoardMapper mapper;
 	
 	//@RequestMapping("/boardListFrom.do")

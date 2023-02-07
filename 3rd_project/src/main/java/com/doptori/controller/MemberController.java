@@ -32,7 +32,7 @@ public class MemberController {
 	
 	@PostMapping("/Login.do")
 	public String Login(Member mvo, HttpServletRequest request) {
-		// 로그인 기능 - 해당 아이디, 비밀번호 일치하는 회원의 정보 세션에 저장
+		// 로그인 기능 - 해당 아이디, 비밀번호 일치하는 회원의 정보 세션에 저장z
 		Member loginMember = mapper.MemberLogin(mvo);
 		
 		// 만약에 로그인 정보가 있으면 --> 세션에 정보를 저장
