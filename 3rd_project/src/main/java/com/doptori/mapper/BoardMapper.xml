@@ -9,8 +9,8 @@
   </select>
   
   <insert id="boardInsert" parameterType="com.doptori.entity.Board">
-      insert into Board(bd_type, bd_date, bd_mb_num, bd_title, bd_cont)
-      values (#{bd_type}, #{bd_mb_num}, now(), #{bd_title}, #{bd_cont})
+      insert into Board(bd_type, bd_mb_num, bd_title, bd_cont)
+      values (#{bd_type}, #{bd_mb_num}, #{bd_title}, #{bd_cont})
   </insert>
   
   <select id="boardContent" parameterType="int" resultType="com.doptori.entity.Board">

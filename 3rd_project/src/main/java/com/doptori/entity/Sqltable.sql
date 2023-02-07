@@ -16,7 +16,7 @@ CREATE TABLE Member (
 
 ALTER TABLE Member ADD  mb_re_num VARCHAR(3000) AFTER mb_file;
 
-insert into Member values('4','0', 'admin2', '12345', '관리자2',null,null,null,null);
+insert into Member values(5,'0', 'admin5', '12345', '관리자3',null,null,null,null);
 
 select * from Member;
 

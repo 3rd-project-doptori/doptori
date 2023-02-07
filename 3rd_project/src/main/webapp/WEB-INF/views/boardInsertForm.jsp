@@ -26,10 +26,10 @@
 		      <select name="bd_type">
                     <option value="choose">선택하기</option>
                     <c:if test="${loginMember.mb_id=='admin'}">
-                    	<option value=1>공지사랑</option>
+                    	<option value="1">공지사랑</option>
                     </c:if>
-	                <option value=2>커뮤니티</option>
-	                <option value=3>장터</option>
+	                <option value="2">커뮤니티</option>
+	                <option value="3">장터</option>
                 </select>
 		    </div>
 		</div>
@@ -37,7 +37,7 @@
 		    <label class="control-label col-sm-2" for="bd_mb_num">작성자</label>
 		    <div class="col-sm-10">
 			      ${loginMember.mb_nick}
-		     <!-- <input type="text" class="form-control" name="bd_mb_num" id="bd_mb_num" value="${vo.bd_mb_num}" readonly="readonly">  -->
+		      <input type="hidden" class="form-control" name="bd_mb_num" id="bd_mb_num" readonly="readonly"> 
 		    </div>
 		  </div>
 		  <div class="form-group">
@@ -54,7 +54,7 @@
 		  </div>
 		  <div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-10">
-		      <button type="submit" class="btn btn-default">등록</button>
+		      <button type="submit" class="btn btn-default">등록</button>*
 		      <button type="reset" class="btn btn-default">취소</button>
 		    </div>
 		  </div>
