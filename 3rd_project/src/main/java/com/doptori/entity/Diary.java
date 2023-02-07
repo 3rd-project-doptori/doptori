@@ -68,5 +68,12 @@ public class Diary {
 		this.di_hum = di_hum;
 	}
 	
+	@Override
+	public String toString() {
+		return "Diary [di_num=" + di_num + ", di_mb_num=" + di_mb_num + ", di_fm_num=" + di_fm_num + ", di_date="
+				+ di_date + ", di_cont=" + di_cont + ", di_note=" + di_note + ", di_pic=" + di_pic + ", di_tem="
+				+ di_tem + ", di_hum=" + di_hum + "]";
+	}
+	
 	
 }

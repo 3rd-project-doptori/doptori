@@ -13,6 +13,10 @@
   	select * from Farm where fm_mb_num=#{fm_mb_num}
   </select>
   
+     <select id="FarmList2" parameterType="int" resultType="com.doptori.entity.Farm">
+  	select * from Farm where fm_mb_num=#{fm_mb_num}
+  </select>
+  
   <select id="CropNum2Name" parameterType="int" resultType="String">
   	select cp_name from Crop where cp_num=#{cp_num} 
   </select>

@@ -16,12 +16,6 @@ CREATE TABLE Member (
 
 ALTER TABLE Member ADD  mb_re_num VARCHAR(3000) AFTER mb_file;
 
-insert into Member values(5,'0', 'admin5', '12345', '관리자3',null,null,null,null);
-
-select * from Member;
-
-drop table Member;
-
 CREATE TABLE Address (
  ad_num INT(8) NOT NULL AUTO_INCREMENT,
  ad_sido VARCHAR(100),
@@ -61,6 +55,10 @@ CREATE TABLE Crop (
  cp_cont TEXT,
   PRIMARY KEY(cp_num)
 );
+
+INSERT INTO Diary (di_mb_num, di_fm_num, di_cont, di_note) VALUE('1', '1',  '테스트1/테스트2/테스트3/테스트4', '오늘 특이사항2');
+select * from Diary;
+
 
 CREATE TABLE Diary (
  di_num INT(4) NOT NULL AUTO_INCREMENT,
@@ -119,12 +117,10 @@ CREATE TABLE Board (
  bd_title VARCHAR(2000) NOT NULL,
  bd_cont TEXT NOT NULL,
  bd_pic VARCHAR(3000),
- bd_cnt INT(4) not null default 0 ,
+ bd_cnt INT(4) ,
   PRIMARY KEY(bd_num),
   FOREIGN KEY (bd_mb_num) REFERENCES Member (mb_num)
 );
-drop table Board;
-select * from Board;
 
 CREATE TABLE Comment (
  co_num INT(4) NOT NULL AUTO_INCREMENT,
@@ -138,21 +134,6 @@ CREATE TABLE Comment (
 );
 
 INSERT INTO member_table (mb_id, mb_pw, address, mb_tell) VALUE('build', 'build1',  '서울특별시 강남구 도곡동', '010-1234-1234');
-
-create table calendar(
-	id int(4) NOT NULL AUTO_INCREMENT,
-	groupId int(4),
-	title varchar(50),
-	writer varchar(50),
-	content varchar(1000),
-	start1 datetime,
-	end1 datetime,
-	allDay int(4),
-	textColor varchar(50),
-	backgroundColor varchar(50),
-	borderColor varchar(50),
-	PRIMARY KEY(id)
-);
 	
 create table schedule(
 	mb_num int(4),
@@ -172,3 +153,5 @@ drop table calendar;
 INSERT INTO calendar values('1','1','할일title','test',
 '내용-content','2021/05/01',
 '2021/05/03','1','yellow','navy','navy');
+
+select * from calendar;
