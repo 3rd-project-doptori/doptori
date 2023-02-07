@@ -59,12 +59,6 @@
 		
 	}// InsertPhoto 끝!!
 
-	
-	
-	
-	
-	
-	
 	function FarmList(){
 		location.href = "${cpath}/FarmList.do"
 	}
@@ -81,11 +75,6 @@
 	//회원탈퇴
 	function memberDeleteView(){
 		location.href = "${cpath}/memberDeleteView.do"
-	}
-	
-	// 게시판
-	function boardList(){
-		location.href = "${cpath}/boardList.do"
 	}
 
 	</script>
@@ -127,10 +116,6 @@
 					</c:choose>
 					<span>${loginMember.mb_nick}님 환영합니다~</span>
 					<a class="btn btn-sm btn-default" href="${cpath}/Logout.do">로그아웃</a>
-					<c:if test="${loginMember.mb_id=='admin'}">
-						<button id="MemberList" class="btn btn-success btn-sm">회원목록</button>
-						<div id="MemberListdiv"></div>
-					</c:if>
 				</div>
 			</c:otherwise>
 		</c:choose>
@@ -196,86 +181,15 @@
 		  	</div>
 		</form>
 	</div>
-<<<<<<< HEAD
     <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="FarmList()">내농장</button></div>
     <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="FarmList2()">내농장2</button></div>
-=======
-    <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="FarmList()">내 농장</button></div>
->>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
     <div class="panel-footer"><a class="btn btn-sm btn-warning" href="<c:url value='/calendar.do/${loginMember.getMb_num()}'/>">캘린더</a></div>
-    <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="updateMember()">회원정보 수정</button></div>
+    <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="updateMember()">회원정보수정</button></div>
     <div class="panel-footer"><button class="btn btn-sm btn-warning" onclick="memberDeleteView()">회원탈퇴</button></div>
-    <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="boardList()">게시판</button></div>
   </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-
-	
-	function removeMember(index) {
-		var real = confirm("ㄹㅇ 없애버리게?!");
-		var mb_id = $('.id' + index).text(); 
-		//alert(id);
-		if(real){
-			$.ajax({
-				url : 'MemberDelete.do',
-				type : 'POST',
-				data : {'mb_id' : mb_id},
-				dataType : 'JSON',
-				success : resultJSON,
-				erorr : function(){
-					alert('error');
-				}
-			});
-		}
-	}
-	
-
-	$(function() {
-		$('#MemberList').click(function(){
-			$.ajax({
-				url : 'MemberList.do',
-				type : 'GET',
-				datyaType : 'JSON',
-				success : resultJSON,
-				erorr : function(){
-					alert('error');
-				}
-				});
-			});
-		
-		function resultJSON(data){
-			var html = '<table class="table table-hover table-bordered">';
-			html += '<tr>';
-			html += '<td>아이디</td>';
-			html += '<td>비밀번호</td>';
-			html += '<td>닉네임</td>';
-			html += '<td>구분</td>';
-			html += '<td>삭제</td>';
-			html += '</tr>';
-			$.each(data, function(index, obj){	
-				html += '<tr>';
-				html += '<td class="id'+index+'">'+obj.mb_id+'</td>';	
-				html += '<td>'+obj.mb_pw+'</td>';
-				html += '<td>'+obj.mb_nick+'</td>';
-				html += '<td>'+obj.mb_type+'</td>';
-				html += '<td><button onclick="removeMember('+index+')" class="btn btn-primary btn-sm">삭제</button></td>';
-				html += '</tr>';
-			});
-			html += '</table>';
-			$('#MemberListdiv').html(html);
-			
-			if($('#MemberListdiv').css('display') == 'block'){ 
-				$('#MemberListdiv').slideUp();
-			}else{ 
-				$('#MemberListdiv').slideDown();
-			}
-		}
-		
-	});
-	
-	
-
 	$('#mb_id').keyup(function(){
 		let mb_id = $('#mb_id').val();
 			
