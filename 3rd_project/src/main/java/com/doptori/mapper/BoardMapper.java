@@ -10,7 +10,8 @@ import com.doptori.entity.Board;
 @Mapper
 public interface BoardMapper {
 
-	public List<Board> boardList();
+	public List<Board> boardList(int bd_mb_num);
+	public String memberNum2Name(int mb_num);
 
 	public void boardInsert(Board vo);
 
@@ -24,6 +25,12 @@ public interface BoardMapper {
 	
 	@Update("update board set bd_cnt=bd_cnt+1 where bd_num=#{bd_num}")
 	public void updateCount(int bd_num);
+
+	
+
+
+
+	
 	
 	
 }

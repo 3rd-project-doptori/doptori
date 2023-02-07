@@ -37,7 +37,7 @@
 			 </tr>
 			 <tr>
 			 	<td>작성자</td>
-			 	<td>${vo.bd_mb_num}</td>
+			 	<td>${memberName}</td>
 			 </tr>
 			 <tr>
 			 	<td>작성일자</td>
@@ -56,7 +56,7 @@
 			 </tr>
 		</table>
 	</div>
-    <div class="panel-footer">${vo.bd_mb_num}</div>
+    <div class="panel-footer"></div>
   </div>
 </div>
 

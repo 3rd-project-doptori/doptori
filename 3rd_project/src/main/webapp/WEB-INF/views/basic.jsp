@@ -77,6 +77,10 @@
 		location.href = "${cpath}/memberDeleteView.do"
 	}
 
+	function boardList(){
+		location.href = "${cpath}/boardList.do"
+	}
+	
 	</script>
 </head>
 
@@ -186,6 +190,7 @@
     <div class="panel-footer"><a class="btn btn-sm btn-warning" href="<c:url value='/calendar.do/${loginMember.getMb_num()}'/>">캘린더</a></div>
     <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="updateMember()">회원정보수정</button></div>
     <div class="panel-footer"><button class="btn btn-sm btn-warning" onclick="memberDeleteView()">회원탈퇴</button></div>
+    <div class="panel-footer"><button class="btn btn-sm btn-success" onclick="boardList()">게시판</button></div>
   </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -60,6 +60,10 @@ public class Board {
 	public void setBd_cnt(int bd_cnt) {
 		this.bd_cnt = bd_cnt;
 	}
+	public void add(String memberNum2Name) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }

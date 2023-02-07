@@ -20,24 +20,25 @@
     <div class="panel-heading">게시판</div>
     <div class="panel-body">
     	<form class="form-horizontal" action="${cpath}/boardInsert.do" method="post">
+		  
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="bd_type">카테고리:</label>
 		    <div class="col-sm-10">
 		      <select name="bd_type">
                     <option value="choose">선택하기</option>
                     <c:if test="${loginMember.mb_id=='admin'}">
-                    	<option value="1">공지사랑</option>
+                    	<option value=1>공지사랑</option>
                     </c:if>
-	                <option value="2">커뮤니티</option>
-	                <option value="3">장터</option>
+	                <option value=2>커뮤니티</option>
+	                <option value=3>장터</option>
                 </select>
 		    </div>
 		</div>
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="bd_mb_num">작성자</label>
 		    <div class="col-sm-10">
-			      ${loginMember.mb_nick}
-		      <input type="hidden" class="form-control" name="bd_mb_num" id="bd_mb_num" readonly="readonly"> 
+			       ${loginMember.mb_nick}
+		      <input type="hidden" class="form-control" name="bd_mb_num" id="bd_mb_num" value="${loginMember.mb_num}" readonly="readonly"> 
 		    </div>
 		  </div>
 		  <div class="form-group">

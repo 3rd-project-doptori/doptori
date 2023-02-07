@@ -1,6 +1,10 @@
 package com.doptori.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,22 +15,33 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.doptori.entity.Board;
+import com.doptori.entity.Member;
 import com.doptori.mapper.BoardMapper;
 
 @Controller
 public class BoardController {
 	
-	@Autowired(required=true)
+	@Autowired
 	private BoardMapper mapper;
 	
 	//@RequestMapping("/boardListFrom.do")
 	//public void boardListFrom() {}
 	
 	@RequestMapping("/boardList.do")
-	public String boardList(Model model) {
+	public String boardList(Model model,HttpServletRequest request) {
 		
-		List<Board> list = mapper.boardList();
+		HttpSession session = request.getSession();
+		Member loginMember = (Member) session.getAttribute("loginMember");
+		
+		List<Board> list = mapper.boardList(loginMember.getMb_num());
+		
+		
+		List<String> memberNames = new ArrayList<>();
+		for (Board board : list) {
+			memberNames.add(mapper.memberNum2Name(board.getBd_mb_num()));
+		}
 		model.addAttribute("list",list);
+		model.addAttribute("memberNames", memberNames);
 		
 		return "boardList";
 	}
@@ -49,6 +64,17 @@ public class BoardController {
 		mapper.boardCount(the_bd_num);
 		model.addAttribute("vo", vo);
 
+		/*
+		 * HttpSession session = request.getSession(); Member loginMember = (Member)
+		 * session.getAttribute("loginMember");
+		 * 
+		 * Board board = mapper.boardContent(loginMember.getMb_num());
+		 * 
+		 * Board memberName = new Board();
+		 * memberName.add(mapper.memberNum2Name(board.getBd_mb_num()));
+		 * 
+		 * model.addAttribute("board", board); model.addAttribute("memberName", memberName);
+		 */
 		return "boardContent";
 	}
 

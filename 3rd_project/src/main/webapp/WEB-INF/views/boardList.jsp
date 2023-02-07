@@ -40,12 +40,12 @@
 		    	 </tr>
 	    	</thead>
 	    	<tbody>
-	    		<c:forEach items="${list}" var="vo">
+	    		<c:forEach var="vo" items="${list}" varStatus="status">
 	    			<tr>
 						<td>${vo.bd_num}</td>
 							 <c:url var="contentlink" value="/boardContent.do/${vo.bd_num}" />		
 						<td><a href="${contentlink}">${vo.bd_title}</a></td>
-						<td>${vo.bd_mb_num}</td>     			
+						<td>${memberNames[status.index]}</td>     			
 						<td>${vo.bd_date}</td>  			
 						<td>${vo.bd_cnt}</td>     			
 	    			</tr>
