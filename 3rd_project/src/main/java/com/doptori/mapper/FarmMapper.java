@@ -12,6 +12,7 @@ public interface FarmMapper {
 
 	public List<Farm> AllFarmList();
 	public List<Farm> FarmList(int fm_mb_num);
+	public List<Farm> FarmList2(int fm_mb_num);
 
 	public String CropNum2Name(int cp_num);
 
