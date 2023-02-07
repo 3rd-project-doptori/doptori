@@ -20,7 +20,7 @@
 </head>
 <body>
 	<div class="container">
-  <h2>마이페이지 테스트</h2>
+  <h2>마이페이지</h2>
   <div class="panel panel-default">
     <div class="panel-heading">마이페이지</div>
     <div class="panel-body">
@@ -50,12 +50,12 @@
 			<tr>
 				<td colspan="2">
 					<button class="btn btn-sm btn-success" onclick="goUpdate()">수정</button>
-					<a class="btn btn-sm btn-info" href="<c:url value='/basic.do'/>">메인페이지로 돌아가기</a>
+					<a class="btn btn-sm btn-info" href="<c:url value='/Main.do'/>">메인페이지로 돌아가기</a>
 				</td>
 			</tr>
 		</table>
 	</div>
-    <div class="panel-footer">지금 많이 배고픈 신경수😊</div>
+    <div class="panel-footer">마이페이지 화면입니다😊</div>
   </div>
 </div>
 </body>

@@ -15,9 +15,9 @@
 <body>
  
 <div class="container">
-  <h2>DCX분석서비스 개발자과정</h2>
+  <h2>내 농장 > 농장 만들기</h2>
   <div class="panel panel-default">
-    <div class="panel-heading">게시판</div>
+    <div class="panel-heading">농장 만들기</div>
     <div class="panel-body">
 		<form class="form-horizontal" action="${cpath}/MakeFarm.do" method="post">
 		  <div class="form-group">
@@ -47,7 +47,7 @@
 		  </div>
 		</form>
 	</div>
-    <div class="panel-footer">지금 많이 배고픈 신경수😊</div>
+    <div class="panel-footer">농장을 등록해 주세요😊</div>
   </div>
 </div>
 

@@ -23,6 +23,7 @@
 						    
 			})
 		
+			
 			$("#submit").on("click", function(){
 				if($("#mb_pw").val()==""){
 					alert("비밀번호를 입력해주세요.");
@@ -64,7 +65,7 @@
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userPass">비밀번호</label>
-					<input class="form-control" type="password" id="mb_pw" name="mb_pw" />
+					<input class="form-control" type="password" id="mb_pw" name="mb_pw" placeholder="비밀번호를 입력하세요."/>
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userName">닉네임</label>
