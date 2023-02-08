@@ -15,8 +15,9 @@ public interface BoardMapper {
 
 	public void boardInsert(Board vo);
 
-	public Board boardContent(int the_bd_num);
-
+	//public Board boardContent(int the_bd_num);
+	public Board boardContent(int bd_num);
+	
 	public void boardUpdate(Board vo);
 
 	public void boardDelete(int bd_num);
@@ -25,6 +26,7 @@ public interface BoardMapper {
 	
 	@Update("update board set bd_cnt=bd_cnt+1 where bd_num=#{bd_num}")
 	public void updateCount(int bd_num);
+	
 
 	
 

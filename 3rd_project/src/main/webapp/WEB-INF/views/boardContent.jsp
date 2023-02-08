@@ -37,7 +37,7 @@
 			 </tr>
 			 <tr>
 			 	<td>작성자</td>
-			 	<td>${memberName}</td>
+			 	<td>${vo.bd_mb_num}</td>
 			 </tr>
 			 <tr>
 			 	<td>작성일자</td>
