@@ -5,7 +5,7 @@
 <mapper namespace="com.doptori.mapper.BoardMapper">
     
   <select id="boardList" parameterType="int" resultType="com.doptori.entity.Board">
-    select * from Board order by bd_group desc, bd_seq asc
+    select * from Board order by bd_num desc, bd_group desc, bd_seq asc
   </select>
   
   <select id="memberNum2Name" parameterType="int" resultType="String">
@@ -34,14 +34,16 @@
 	  update Board set bd_cnt=bd_cnt+1 where bd_num=#{bd_num}
   </update>
   
+  
   <!-- 답글 -->
    <select id="boardReply" parameterType="int" resultType="com.doptori.entity.Board">
       select bd_mb_num from Board 
   </select>
   
   <insert id="replyInsert" parameterType="com.doptori.entity.Board">
-      insert into Board(bd_type, bd_mb_num, bd_title, bd_cont, bd_group, bd_seq, bd_level)
-      values (#{bd_type}, #{bd_mb_num}, #{bd_title}, #{bd_cont}, #{bd_group}, #{bd_seq}, #{bd_level})
+      insert into Board(bd_num, bd_type, bd_mb_num, bd_title, bd_cont, bd_group, bd_seq, bd_level)
+      values (#{bd_num}, #{bd_type}, #{bd_mb_num}, #{bd_title}, #{bd_cont}, #{bd_group}, #{bd_seq}, #{bd_level})
+  	  select #{bd_title}
   </insert>
   
   <update id="replySeqUpdate" parameterType="com.doptori.entity.Board">
@@ -49,4 +51,18 @@
   </update>
   
   
+  <!-- 댓글 -->
+  <insert id="commentInsert" parameterType="com.doptori.entity.Board">
+      insert into Comment(co_bd_num, co_mb_num, co_cont)
+      values(#{co_bd_num}, #{co_mb_num}, #{co_cont})
+  </insert>
+  
+   <select id="commentSelect"  parameterType="int" resultType="com.doptori.entity.Board">
+      select * from Comment where co_bd_num = #{co_num}
+      order by co_date desc
+  </select>
+  
+  <delete id="commentDelete"  parameterType="int">
+      delete from Comment where co_num = #{co_num}
+  </delete>
 </mapper>

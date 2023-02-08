@@ -48,7 +48,7 @@
 								<span style="padding-left: 10px"></span>
 							</c:forEach>
 						</c:if>
-							 <c:url var="contentlink" value="/boardContent.do/${vo.bd_num}" />		
+						<c:url var="contentlink" value="/boardContent.do/${vo.bd_num}" />		
 						<td>
 						<c:if test="${vo.bd_level > 0}">
 							<c:forEach begin="1" end="${vo.bd_level }">

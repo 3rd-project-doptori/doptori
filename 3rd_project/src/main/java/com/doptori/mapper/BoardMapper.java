@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Update;
 
 import com.doptori.entity.Board;
+import com.doptori.entity.Comment;
 
 @Mapper
 public interface BoardMapper {
@@ -31,6 +32,12 @@ public interface BoardMapper {
 	public Board boardReply(int bd_num);
 	public void replySeqUpdate(Board parent);
 	public void replyInsert(Board vo);
+	
+	//댓글
+	public void commentInsert(Comment vo);	
+	public List<Comment> commentSelect(int bd_num);
+	public void commentDelete(int co_num);
+	
 	
 
 	

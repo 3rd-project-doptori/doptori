@@ -61,6 +61,9 @@
 					    <div class="col-sm-10">
 					      <select name="mb_type">
 			                    <option value="choose">회원 선택</option>
+			                    <c:if test="${loginMember.mb_id=='admin'}">
+			                    	<option value=0>관리자</option>
+			                    </c:if>
 			                    <option value=1>농업인</option>
 				                <option value=2>일반인</option>
 			                </select>

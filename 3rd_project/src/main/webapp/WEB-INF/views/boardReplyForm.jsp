@@ -26,13 +26,20 @@ function history_back() {
     <div class="panel-body">
 		<form class="form-horizontal" action="${cpath}/boardReply.do" method="post">
 			<input type="hidden" name="bd_num" value="${parent.bd_num}">
-			<input type="hidden" name="bd_type" value="${vo.bd_type}">
+			<div class="form-group">
+			    <label class="control-label col-sm-2" for="bd_type">카테고리:</label>
+			    <div class="col-sm-10">
+					<select name="bd_type">
+	                    <option value=3>Q&A</option>
+	                </select>
+           		 </div>
+            </div>
 			<!-- <input type="hidden" name="bd_mb_num" value="${vo.bd_mb_num}"> -->
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" for="bd_mb_num">작성자:</label>
 			    <div class="col-sm-10">
-			    <!--  <input type="text" class="form-control" name="bd_mb_num" value="${vo.bd_mb_num}" readonly="readonly">  -->
-			      ${vo.bd_mb_num}
+			    <input type="hidden" class="form-control" name="bd_mb_num" value="${vo.bd_mb_num}" readonly="readonly">  
+			      <%-- ${vo.bd_mb_num} --%>
 			      </div>
 			  </div>
 			  <div class="form-group">

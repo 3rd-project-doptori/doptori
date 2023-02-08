@@ -27,12 +27,14 @@
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#712cf9">
 
-
-   
   </head>
   <body>
     <script type="text/javascript">
     
+	    function boardList(){
+	    	location.href = "${cpath}/boardList.do"
+	    }
+	    
 	    function signin(){
 			location.href = "${cpath}/signin.do"
 		}
@@ -71,7 +73,7 @@
                     <a class="nav-link" href="#">직거래</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Q&A</a>
+                    <button class="nav-link" onclick="boardList()">게시판</button>
                   </li>
                   
                 </ul>
