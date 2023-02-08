@@ -55,7 +55,7 @@
 		  </div>
 		  <div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-10">
-		      <button type="submit" class="btn btn-default">등록</button>*
+		      <button type="submit" class="btn btn-default">등록</button>
 		      <button type="reset" class="btn btn-default">취소</button>
 		    </div>
 		  </div>
