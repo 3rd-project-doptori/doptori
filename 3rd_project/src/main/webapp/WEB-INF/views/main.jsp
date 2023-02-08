@@ -15,7 +15,7 @@
     
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="res_index.css">
+    <link rel="stylesheet" href="${cpath}/resources/css/res_index.css">
 
 
         <!-- Favicons -->
@@ -31,7 +31,13 @@
    
   </head>
   <body>
+    <script type="text/javascript">
     
+	    function signin(){
+			location.href = "${cpath}/signin.do"
+		}
+    
+    </script>
 <main>
   <div class="container py-4">
     <header class="pb-3 mb-4 border-bottom">
@@ -69,10 +75,44 @@
                   </li>
                   
                 </ul>
-                <form class="d-flex" role="search">
-                        <button class="btn" type="submit">LOGIN</button>
-                    
-                </form>
+	                <c:choose>
+	                
+			    		<c:when test="${empty loginMember}">
+							<button class="btn" type="button" onclick="signin()">LOGIN</button>  
+						</c:when>
+						
+						<c:otherwise>
+							<div class="form-group">
+							
+								<c:choose>
+								
+									<c:when test="${empty loginMember.mb_pic}">
+										<style>
+										img{
+					            		border-radius: 100%;
+					        			}
+										</style>
+										<a href="${cpath}/Mypage.do"><span><img src="resources/images/default3.png"></span></a>
+									</c:when>
+									
+									<c:otherwise>
+										<a href="${cpath}/Mypage.do"><span>${loginMember.mb_pic}</span></a>
+									</c:otherwise>
+									
+								</c:choose>
+								
+									<span>${loginMember.mb_nick}님 환영합니다 </span>
+									<a class="btn btn-sm btn-default" href="${cpath}/Logout.do">LogOut</a>
+									
+								<c:if test="${loginMember.mb_id=='admin'}">
+									<button id="MemberList" class="btn btn-sm btn-default" >회원목록</button>
+									<div id="MemberListdiv" style="display:none;"></div>
+								</c:if>
+								
+							</div>
+						</c:otherwise>
+						
+			         </c:choose>
               </div>
             </div>
           </nav>

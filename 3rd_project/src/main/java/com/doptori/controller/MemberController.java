@@ -52,7 +52,11 @@ public class MemberController {
 		return "redirect:/Main.do";
 	}
 	
-	
+	@RequestMapping("/signup.do")
+	public String boardInsert(Member vo) {
+		mapper.MemberInsert(vo);
+		return "redirect:/Main.do";
+	}
 	
 	// 회원 정보 수정 페이지
 	//@RequestMapping("/updateMember.do")

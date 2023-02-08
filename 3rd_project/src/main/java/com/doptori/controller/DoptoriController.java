@@ -12,9 +12,17 @@ public class DoptoriController {
 	@GetMapping("/Main.do")
 	public String Main() {
 		
-		return "basic";
+		return "main";
 	}
 	
+	@GetMapping("/signin.do")
+	public String signin() {
+		return "signin";
+	}
 	
+	@GetMapping("/signup.do")
+	public String signup() {
+		return "signup";
+	}
 
 }
