@@ -27,6 +27,11 @@ public interface BoardMapper {
 	@Update("update board set bd_cnt=bd_cnt+1 where bd_num=#{bd_num}")
 	public void updateCount(int bd_num);
 	
+	// 답글
+	public Board boardReply(int bd_num);
+	public void replySeqUpdate(Board parent);
+	public void replyInsert(Board vo);
+	
 
 	
 

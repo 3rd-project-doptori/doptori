@@ -81,8 +81,9 @@ public class BoardController {
 	@RequestMapping("/boardContent.do/{bd_num}")
 	public String boardContent(@PathVariable("bd_num")int bd_num, Model model) {
 		Board vo = mapper.boardContent(bd_num);	
-		mapper.boardCount(bd_num);
 		model.addAttribute("vo", vo);
+		// 조회수 업데이트
+		mapper.boardCount(bd_num);
 		
 		return "boardContent";
 	}
@@ -121,5 +122,35 @@ public class BoardController {
 		Board vo = mapper.boardContent(bd_num);
 		return vo;
 	}
-
+	
+	
+	
+	@RequestMapping("/boardReplyForm.do") 
+	public void boardReplyForm() { }
+	
+	
+	@GetMapping("/boardReply.do")
+	public String boardReply(int bd_num, Model model) {
+		Board vo = mapper.boardReply(bd_num);
+		model.addAttribute("vo", vo);
+		
+		Board parent = mapper.boardContent(bd_num);
+		model.addAttribute("parent", parent);
+		
+		return "/boardReply";
+	}
+	@PostMapping("/boardReply.do")
+	public String boardReply(Board vo) {
+		Board parent = mapper.boardContent(vo.getBd_num());
+		vo.setBd_group(parent.getBd_group());
+		vo.setBd_seq(parent.getBd_seq());
+		vo.setBd_level(parent.getBd_level());
+		
+		mapper.replySeqUpdate(parent);
+		mapper.replyInsert(vo);
+		
+		return "redirect:/boardList.do";
+	}
+	
+	
 }

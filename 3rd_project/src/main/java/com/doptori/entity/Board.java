@@ -10,10 +10,34 @@ public class Board {
 	private	String bd_cont;
 	private	String bd_pic;
 	private	int bd_cnt;
+	// 답글
+	private	int bd_group;
+	private	int bd_seq;
+	private	int bd_level;
+	private	int bd_delete;
 
+	
 	// getter, setter 만들기
 	public int getBd_num() {
 		return bd_num;
+	}
+	public int getBd_group() {
+		return bd_group;
+	}
+	public void setBd_group(int bd_group) {
+		this.bd_group = bd_group;
+	}
+	public int getBd_seq() {
+		return bd_seq;
+	}
+	public void setBd_seq(int bd_seq) {
+		this.bd_seq = bd_seq;
+	}
+	public int getBd_level() {
+		return bd_level;
+	}
+	public void setBd_level(int bd_level) {
+		this.bd_level = bd_level;
 	}
 	public void setBd_num(int bd_num) {
 		this.bd_num = bd_num;
@@ -60,6 +84,13 @@ public class Board {
 	public void setBd_cnt(int bd_cnt) {
 		this.bd_cnt = bd_cnt;
 	}
+	public int getBd_delete() {
+		return bd_delete;
+	}
+	public void setBd_delete(int bd_delete) {
+		this.bd_delete = bd_delete;
+	}
+	
 	public void add(String memberNum2Name) {
 		// TODO Auto-generated method stub
 		

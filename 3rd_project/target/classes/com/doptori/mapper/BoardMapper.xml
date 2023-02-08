@@ -5,7 +5,7 @@
 <mapper namespace="com.doptori.mapper.BoardMapper">
     
   <select id="boardList" parameterType="int" resultType="com.doptori.entity.Board">
-    select * from Board order by bd_num desc
+    select * from Board order by bd_group desc, bd_seq asc
   </select>
   
   <select id="memberNum2Name" parameterType="int" resultType="String">
@@ -13,8 +13,8 @@
   </select>
   
   <insert id="boardInsert" parameterType="com.doptori.entity.Board">
-      insert into Board(bd_type, bd_mb_num, bd_title, bd_cont)
-      values (#{bd_type}, #{bd_mb_num}, #{bd_title}, #{bd_cont})
+      insert into Board(bd_type, bd_mb_num, bd_title, bd_cont, bd_group, bd_seq, bd_level)
+      select #{bd_type}, #{bd_mb_num}, #{bd_title}, #{bd_cont}, IFNULL(max(bd_group)+1, 0), 0, 0 from Board
   </insert>
   
   <select id="boardContent" parameterType="int" resultType="com.doptori.entity.Board">
@@ -33,5 +33,20 @@
   <update id="boardCount" parameterType="int">
 	  update Board set bd_cnt=bd_cnt+1 where bd_num=#{bd_num}
   </update>
+  
+  <!-- 답글 -->
+   <select id="boardReply" parameterType="int" resultType="com.doptori.entity.Board">
+      select bd_mb_num from Board 
+  </select>
+  
+  <insert id="replyInsert" parameterType="com.doptori.entity.Board">
+      insert into Board(bd_type, bd_mb_num, bd_title, bd_cont, bd_group, bd_seq, bd_level)
+      values (#{bd_type}, #{bd_mb_num}, #{bd_title}, #{bd_cont}, #{bd_group}, #{bd_seq}, #{bd_level})
+  </insert>
+  
+  <update id="replySeqUpdate" parameterType="com.doptori.entity.Board">
+      update Board set bd_seq=bd_seq+1 where bd_group=#{bd_group} and bd_seq>{bd_seq}
+  </update>
+  
   
 </mapper>

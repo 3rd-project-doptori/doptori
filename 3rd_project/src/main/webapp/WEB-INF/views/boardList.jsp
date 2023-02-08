@@ -42,9 +42,21 @@
 	    	<tbody>
 	    		<c:forEach var="vo" items="${list}" varStatus="status">
 	    			<tr>
-						<td>${vo.bd_num}</td>
+						<td>${vo.bd_num}</td>						
+						<c:if test="${vo.bd_level > 0}">
+							<c:forEach begin="1" end="${vp.bd_level }">
+								<span style="padding-left: 10px"></span>
+							</c:forEach>
+						</c:if>
 							 <c:url var="contentlink" value="/boardContent.do/${vo.bd_num}" />		
-						<td><a href="${contentlink}">${vo.bd_title}</a></td>
+						<td>
+						<c:if test="${vo.bd_level > 0}">
+							<c:forEach begin="1" end="${vo.bd_level }">
+								<span style="padding-left: 10px"></span>
+							</c:forEach>
+						</c:if>
+						<a href="${contentlink}">${vo.bd_title}</a>
+						</td>
 						<td>${memberNames[status.index]}</td>     			
 						<td>${vo.bd_date}</td>  			
 						<td>${vo.bd_cnt}</td>     			
