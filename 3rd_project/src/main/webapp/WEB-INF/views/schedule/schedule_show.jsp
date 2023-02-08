@@ -327,7 +327,7 @@ $(document).ready(function(){
 		 }
 		 formObj.submit();
 	 });
-});
+};
 </script>
 	
 	

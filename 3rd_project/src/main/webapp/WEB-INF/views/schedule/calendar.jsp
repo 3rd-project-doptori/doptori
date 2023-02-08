@@ -1,6 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Calendar"%>
+<%@page import="com.doptori.entity.Farm"%>
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -23,6 +25,8 @@
 <script type="text/javaScript" language="javascript"></script>
 <script
 	src="https://www.lgkids.co.kr/es_all/plugins/jscolor-2.0.5/jscolor.js"></script>
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style TYPE="text/css">
 
 /* 배경색 */
@@ -544,9 +548,42 @@ a:hover {
 	var share;
 	var mycolor;
 </script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="${cpath}/resources/assets/css/bootstrap.min.css" >
+    <!-- Icon -->
+    <link rel="stylesheet" type="text/css" href="${cpath}/resources/assets/fonts/line-icons.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="${cpath}/resources/assets/css/main.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="${cpath}/resources/assets/css/responsive.css">
 </head>
 <body>
+	<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-primary" onclick = gocal()>켈린더</button>
 
+  <button type="button" class="btn btn-primary" onclick = godiary()>영농일지</button>
+	</div>
+    <!-- Schedule Section Start -->
+    <section id="schedules" class="schedule section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 mb-5 text-center">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+            <a class="nav-link" href="<c:url value='/MakeFarm.do'/>">농장만들기</a>
+            </li>
+              <c:forEach items="${FarmList3}" var="fl" varStatus="status">
+              <li class="nav-item">
+                <a class="nav-link" id="${fl.fm_num}" data-toggle="tab" role="tab" aria-controls="monday" onclick="DiaryList(${fl.fm_num})">
+                  <div class="item-text">
+						<h4>${fl.fm_name}</h4>
+						<h5>${fl.fm_dong}</h5>
+                  </div>
+                </a>
+              </li>
+				</c:forEach>
+            </ul>
+          </div>
 	<form name="calendarFrm" id="calendarFrm" action="" method="GET">
 		<input type="hidden" name="year" value="${today_info.search_year}" />
 		<input type="hidden" name="month" value="${today_info.search_month-1}" />
@@ -635,7 +672,7 @@ a:hover {
 									varStatus="schedule_data_arr_status">
 
 									<a
-										href="/schedule_show?schedule_idx=${scheduleList.schedule_idx}"
+										href="${cpath}/schedule_show?schedule_idx=${scheduleList.schedule_idx}"
 										onclick="window.open(this.href, '_blank', 'width=550,height=600,left=680%, top=200%, toolbars=no,scrollbars=no'); return false;"
 										class="date_subject "
 										style="color: ${scheduleList.schedule_mycolor}">${scheduleList.schedule_subject}</a>
@@ -651,6 +688,20 @@ a:hover {
 	</form>
 	
 		<script>
+		
+		$(document).ready(function(){
+			// boardList라고 하는 함수가 실행!
+			// 자바스크립트의 호이스팅
+			FarmList3();	
+		});
+		
+		function gocal(){
+	  		location.href="<c:url value='/calendar.do/${loginMember.getMb_num()}'/>"  		
+	  	}
+	  	
+	  	function godiary(){
+	  		location.href = "${cpath}/FarmList2.do"
+	  	}	
 		
 			function modalClick(){
 				var con = $("#addModal");
@@ -695,7 +746,11 @@ a:hover {
 				schedule_add_form.submit();
 			}
 		</script>
-		
+		    <script src="${cpath}/resources/assets/js/jquery-min.js"></script>
+    <script src="${cpath}/resources/assets/js/popper.min.js"></script>
+    <script src="${cpath}/resources/assets/js/bootstrap.min.js"></script>
+    <script src="${cpath}/resources/assets/js/jquery.countdown.min.js"></script>
+    <script src="${cpath}/resources/assets/js/jquery.counterup.min.js"></script>
 		<div id="mask_board_move"></div>
 		<div class = "normal_move_board_modal" id="addModal" style="display:none;">
 		

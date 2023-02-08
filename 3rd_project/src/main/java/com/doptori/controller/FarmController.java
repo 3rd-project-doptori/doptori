@@ -87,8 +87,42 @@ public class FarmController {
 		
 		
 		
-		return "FarmList2";
+		return "/schedule/FarmList2";
 	}
+	
+	@RequestMapping("/FarmList3.do")
+	public String FarmList3(Model model,HttpServletRequest request) {
+		 HttpSession session = request.getSession();
+		 Member loginMember = (Member) session.getAttribute("loginMember");
+
+		List<Farm> FarmList3 = mapper.FarmList2(loginMember.getMb_num());
+		
+		
+		List<String> CropNames = new ArrayList<>();
+		for (Farm farm : FarmList3) {
+			CropNames.add(mapper.CropNum2Name(farm.getFm_cp_num()));
+		}
+	
+		
+		System.out.println("sql까지 성공");
+		model.addAttribute("FarmList3", FarmList3);
+		model.addAttribute("CropNames", CropNames);
+		
+		System.out.println("model까지 성공");
+		
+		for (Farm farm : FarmList3) {
+			System.out.println(farm.toString());
+		}
+		
+		for (String string : CropNames) {
+			System.out.println(string);
+		}
+		
+		
+		
+		return "/schedule/calendar";
+	}
+	
 	
 	@RequestMapping("/MakeFarm.do")
 	public void MakeFarm() {}

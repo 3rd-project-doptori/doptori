@@ -8,7 +8,7 @@ public class Reserve {
 	private	String re_date;
 	private	String re_selldate;
 	private	String re_place;
-	private	String re_cp_name;
+	private	int re_cp_num;
 	private	double re_weight;
 	private	int re_price;
 	private	String re_memo;
@@ -50,11 +50,11 @@ public class Reserve {
 	public void setRe_place(String re_place) {
 		this.re_place = re_place;
 	}
-	public String getRe_cp_name() {
-		return re_cp_name;
+	public int getRe_cp_num() {
+		return re_cp_num;
 	}
-	public void setRe_cp_name(String re_cp_name) {
-		this.re_cp_name = re_cp_name;
+	public void setRe_cp_num(int re_cp_num) {
+		this.re_cp_num = re_cp_num;
 	}
 	public double getRe_weight() {
 		return re_weight;

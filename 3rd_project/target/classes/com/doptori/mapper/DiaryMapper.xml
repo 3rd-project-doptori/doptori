@@ -6,7 +6,9 @@
 <mapper namespace="com.doptori.mapper.DiaryMapper">
     <!-- 태그의 id는 mapper 인터페이스의 메소드 이름으로 한다. -->
   <select id="DiaryList" resultType="com.doptori.entity.Diary" parameterType="map">
-  	select * from Diary where di_mb_num=#{arg0} and di_fm_num=#{arg1}
+  	select di_num, di_mb_num, di_fm_num, DATE_FORMAT(di_date,'%Y-%m-%d')as di_date, di_cont, di_note, di_pic, di_tem, di_hum
+  	from Diary 
+  	where di_mb_num=#{arg0} and di_fm_num=#{arg1}
   </select>
   
 </mapper>

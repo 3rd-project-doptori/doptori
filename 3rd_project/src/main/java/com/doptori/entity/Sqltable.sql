@@ -14,7 +14,8 @@ CREATE TABLE Member (
   UNIQUE KEY(mb_nick)
 );
 
-ALTER TABLE Member ADD  mb_re_num VARCHAR(3000) AFTER mb_file;
+ALTER TABLE Reserve ADD  re_cp_num int(4) not null AFTER re_place;
+alter table Reserve drop column re_cp_name;
 
 CREATE TABLE Address (
  ad_num INT(8) NOT NULL AUTO_INCREMENT,
@@ -56,7 +57,7 @@ CREATE TABLE Crop (
   PRIMARY KEY(cp_num)
 );
 
-INSERT INTO Diary (di_mb_num, di_fm_num, di_cont, di_note) VALUE('1', '1',  '테스트1/테스트2/테스트3/테스트4', '오늘 특이사항2');
+INSERT INTO Diary (di_mb_num, di_fm_num, di_cont, di_note) VALUE('1', '2',  '테스트1/테스트2/테스트3/테스트4', '오늘 특이사항4');
 select * from Diary;
 
 

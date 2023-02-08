@@ -23,7 +23,11 @@
 
   </head>
   <body>
+	<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-primary" onclick = gocal()>켈린더</button>
 
+  <button type="button" class="btn btn-primary" onclick = godiary()>영농일지</button>
+	</div>
     <!-- Schedule Section Start -->
     <section id="schedules" class="schedule section-padding">
       <div class="container">
@@ -67,8 +71,32 @@
                 <div class="tab-content" id="myTabContent">
                   <div class="tab-pane fade show active" id="monday" role="tabpanel" aria-labelledby="monday-tab">
                     <div id="accordion">
-           
-                      <div class="panel-body" id="list" style="display:block">Panel Content</div>
+                    <div class="panel-body" id="wform" style="display:none">
+                    test
+                    </div>
+                      <div class="panel-body" id="list" style="display:block">
+                      <div class="card">
+                        <div id="headingOne">
+                          <div class="schedule-slot-time">
+                            2023.02.03
+                          </div>
+                          <div class="collapsed card-header" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <div class="images-box">
+                              <img class="img-fluid" src="assets/img/speaker/speakers-1.jpg" alt="">
+                            </div>                     
+                            <h4>Web Design Principles and Best Practices</h4>
+                          </div>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                          <div class="card-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet minima dolores rerum maiores qui at commodi quas, reprehenderit eius consectetur quae magni molestias veniam, provident illum facere iure libero asperiores! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam earum nihil ex ipsa magni eligendi fugiat assumenda suscipit, accusantium, necessitatibus reiciendis odit sed, vero amet blanditiis?</p>
+                            <div class="location">
+                              <span>Location:</span> Hall 1 , Building A, Golden Street, Southafrica
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
                         
                       <!-- <div class="card">
                         <div id="headingTwo">
@@ -424,10 +452,9 @@
   	function callBack(data){
   		// alert("데이터 통신 확인");
   		console.log(data);
-  		
   		var bList = "";
   		$.each(data, (index, obj)=>{
-  		bList = "<div class='card'>";
+  		bList += "<div class='card'>";
   		bList += "<div id='heading" + obj.di_num + "'>";
   		bList += "<div class='schedule-slot-time'>";
   		bList += "<p>" + obj.di_date + "</p>";
@@ -441,7 +468,18 @@
   		bList += "</div>";
   		bList += "<div id='collapse" + obj.di_num + "' class='collapse' aria-labelledby='heading" + obj.di_num + "' data-parent='#accordion'>";
   		bList += "<div class='card-body'>";
-  		bList += "<p>" + obj.di_cont + "</p>";
+  		bList += "<p>";
+  		var conts = obj.di_cont;
+  		cont = conts.split("/");
+  		bList += "재배관리 : " + "<br>";
+  		bList += cont[0] + "<br><br>";
+  		bList += "농약/비료/유기농자재관리 : " + "<br>";
+  		bList += cont[1] + "<br><br>";
+  		bList += "수확관리 : " + "<br>";
+  		bList += cont[2] + "<br><br>";
+  		bList += "출하관리 : " + "<br>";
+  		bList += cont[3] + "<br>";
+  		bList += "</p>";
   		bList += "</div>";
   		bList += "<div class='location'>";
   		bList += "<span>Location:</span> Hall 1 , Building A, Golden Street, Southafrica";
@@ -454,6 +492,13 @@
   		
   	}// callBack 함수 끝!!
   	
+  	function gocal(){
+  		location.href="<c:url value='/calendar.do/${loginMember.getMb_num()}'/>"  		
+  	}
+  	
+  	function godiary(){
+  		location.href = "${cpath}/FarmList2.do"
+  	}
 	</script>
 	
     <script src="${cpath}/resources/assets/js/jquery-min.js"></script>
