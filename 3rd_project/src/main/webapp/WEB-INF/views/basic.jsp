@@ -102,10 +102,6 @@
 				    </div>
 				    <button type="submit" class="btn btn-default">로그인</button>
 				</form>
-					
-			<%-- <c:if test="${loginMember.mb_id=='admin'}"> --%>
-				<div id="MemberList" style="display:none;">회원목록</div>
-			<%--</c:if> --%>
 			</c:when>
 			<c:otherwise>
 				<div class="form-group">
@@ -124,6 +120,12 @@
 					</c:choose>
 					<span>${loginMember.mb_nick}님 환영합니다~</span>
 					<a class="btn btn-sm btn-default" href="${cpath}/Logout.do">로그아웃</a>
+					
+					<c:if test="${loginMember.mb_id=='admin'}">
+					<button id="MemberList" class="btn btn-sm btn-default" >회원목록</button>
+					<div id="MemberListdiv" style="display:none;"></div>
+					</c:if>
+					
 				</div>
 			</c:otherwise>
 		</c:choose>
