@@ -56,11 +56,8 @@
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="bd_cont">내용</label>
 		    <div class="col-sm-10">
-<<<<<<< HEAD
-		      <textarea class="form-control" rows="10" name="bd_cont" id="bd_cont" placeholder="내용을 입력하세요."></textarea>
-=======
 		      <textarea class="form-control" rows="10" name="bd_cont" id="bd_cont" placeholder="내용을 입력하세요." required></textarea>
->>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
+
 		    </div>
 		  </div>
 		  <div class="form-group">
