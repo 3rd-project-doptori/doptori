@@ -50,8 +50,8 @@ public interface BoardMapper {
 	public void commentDelete(int co_num);
 	
 	// 페이징
-	public ArrayList<Board> list2(int start, int pcnt);
-	public int getChong(int pcnt);
+	public ArrayList<Board> list2(String sel, String sword, int start, int pcnt);
+	public int getChong(int pcnt, String sel, String sword); // (전체) 총합은 숫자 ->int
 	
 	
 

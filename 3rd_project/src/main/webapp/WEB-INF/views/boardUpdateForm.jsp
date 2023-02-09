@@ -30,13 +30,13 @@
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" for="bd_title">제목:</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" name="bd_title" id="bd_title" value="${vo.bd_title}">
+			      <input type="text" class="form-control" name="bd_title" id="bd_title" value="${vo.bd_title}" required>
 			    </div>
 			  </div>
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" for="bd_cont">내용:</label>
 			    <div class="col-sm-10">
-			      <textarea class="form-control" name="bd_cont" rows="10" id="bd_cont">${vo.bd_cont}</textarea>
+			      <textarea class="form-control" name="bd_cont" rows="10" id="bd_cont"  required>${vo.bd_cont}</textarea>
 			    </div>
 			  </div>
 			  <div class="form-group">
