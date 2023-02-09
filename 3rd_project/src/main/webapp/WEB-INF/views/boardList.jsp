@@ -51,8 +51,8 @@
 	         <option value="50"> 50개 </option>
 	       </select>
 	       
-	       <input type="text" name="keyword">
-	       <input type="submit" value="검색">
+	       <input type="text" class="btn btn-default" name="keyword">
+	       <input type="submit" class="btn btn-default" value="검색">
 	       
 	       </font>
 	       </h3></caption>
