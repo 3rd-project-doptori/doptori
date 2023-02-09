@@ -22,8 +22,8 @@
   </insert>
   
    <!-- 아이디 중복체크 -->
-    <select id="mbidCheck" resultType="com.doptori.entity.Member">
-        select count(*) from Member where mb_id=#{mb_id}
+    <select id="idCheck" resultType="com.doptori.entity.Member">
+        select * from Member where mb_id=#{mb_id}
     </select>
   
   <!-- <update id="MemberUpdate" parameterType="com.doptori.entity.Member">

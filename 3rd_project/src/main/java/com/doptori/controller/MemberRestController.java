@@ -34,9 +34,9 @@ public class MemberRestController {
 	}
 	
 	// 아이디 중복체크
-		@RequestMapping("/mbidCheck.do")
-		public String mbidCheck(String mb_id) {
-			Member mvo = mapper.mbidCheck(mb_id);
+		@RequestMapping("/idCheck.do")
+		public String idCheck(String mb_id) {
+			Member mvo = mapper.idCheck(mb_id);
 
 			if(mvo == null) {
 				return "{\"check\":\"true\"}";

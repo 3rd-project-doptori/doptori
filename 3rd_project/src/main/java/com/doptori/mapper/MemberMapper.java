@@ -12,7 +12,7 @@ public interface MemberMapper {
 	// 회원가입
 	public void MemberInsert(Member vo);
 	// 아이디 중복 체크
-	public Member mbidCheck(String mb_id);
+	public Member idCheck(String mb_id);
 	// 프로필 사진 등록
 	public void PhotoUpdate(Member vo);
 	// 로그인

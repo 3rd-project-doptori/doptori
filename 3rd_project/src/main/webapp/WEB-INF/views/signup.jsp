@@ -37,6 +37,7 @@
                 <div class="invalid-feedback">
                  아이디를 입력해주세요!
                 </div>
+                <div><button id="idCheck" type="button" class="btn">중복확인</button></div>
                 <div><font id="id_feedback" size="2"></font></div>
               </div>
   
@@ -99,29 +100,31 @@
     <script src="${cpath}/resources/js/login.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script type="text/javascript">
-    $('#mb_id').keyup(function(){
+    $('#idCheck').click(function(){
 		let mb_id = $('#mb_id').val();
 			
 		$.ajax({
-			url : "${cpath}/mbidCheck.do",
+			url : "${cpath}/idCheck.do",
 			type : "get",
 			data : {mb_id: mb_id},
 			dataType : 'json',
-			success : function(data){
-				if(data.check == 'false'){
-					$("#id_feedback").text('이미 사용중인 아이디입니다.');
-					$("#id_feedback").css('color','red');
-				} else{
-					$("#id_feedback").text('사용할 수 있는 아이디입니다.');
-					$("#id_feedback").css('color','green');
-				} 
-			},
+			success : resultJSON,
 			error : function(){
 				alert("서버요청실패");
 			}
 		})
+		
 			 
 	})
+		function resultJSON(data){
+			if(data.check == 'false'){
+				$("#id_feedback").text('이미 사용중인 아이디입니다.');
+				$("#id_feedback").css('color','red');
+			} else{
+				$("#id_feedback").text('사용할 수 있는 아이디입니다.');
+				$("#id_feedback").css('color','green');
+			} 
+		}
     </script>
   </body>
 </html>
