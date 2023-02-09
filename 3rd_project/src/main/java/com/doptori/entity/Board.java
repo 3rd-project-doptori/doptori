@@ -14,6 +14,7 @@ public class Board {
 	private	int bd_group; // 게시글 그룹 번호
 	private	int bd_seq; // 게시글 글의 순서
 	private	int bd_level; // 게시글 글의 깊이
+	
 	private	int bd_delete; // 삭제유무
 
 	

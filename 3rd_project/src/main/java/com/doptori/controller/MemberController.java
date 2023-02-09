@@ -53,7 +53,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/signup.do")
-	public String boardInsert(Member vo) {
+	public String signup(Member vo) {
 		mapper.MemberInsert(vo);
 		return "redirect:/Main.do";
 	}
@@ -99,6 +99,7 @@ public class MemberController {
 		String voPass = mvo.getMb_pw();
 		
 		if(!(sessionPass.equals(voPass))) {
+			
 			rttr.addFlashAttribute("msg", false);
 			return "redirect:/memberDeleteView";
 		}

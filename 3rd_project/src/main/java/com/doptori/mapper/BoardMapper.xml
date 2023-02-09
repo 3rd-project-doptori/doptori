@@ -4,64 +4,64 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.doptori.mapper.BoardMapper">
     
+    <!-- 게시판 목록보기 -->
   <select id="boardList" parameterType="int" resultType="com.doptori.entity.Board">
     select * from Board order by bd_num desc, bd_group desc, bd_seq asc
   </select>
-  
+  <!-- 게시판 목록에 (작성자)회원의 번호가 아닌 닉네임으로 바꾸기(가변배열로 받아 ) -->
   <select id="memberNum2Name" parameterType="int" resultType="String">
     select mb_nick from Member where mb_num=#{mb_num} 
   </select>
-  
+  <!-- 게시글 등록 -->
   <insert id="boardInsert" parameterType="com.doptori.entity.Board">
       insert into Board(bd_type, bd_mb_num, bd_title, bd_cont, bd_group, bd_seq, bd_level)
       select #{bd_type}, #{bd_mb_num}, #{bd_title}, #{bd_cont}, IFNULL(max(bd_group)+1, 0), 0, 0 from Board
   </insert>
-  
+  <!-- 게시글 상세보기 -->
   <select id="boardContent" parameterType="int" resultType="com.doptori.entity.Board">
       select * from Board where bd_num=#{bd_num}
   </select>
-  
+  <!-- 게시글 수정 -->
   <update id="boardUpdate" parameterType="com.doptori.entity.Board">
       update Board set bd_title=#{bd_title}, bd_cont=#{bd_cont}
       where bd_num=#{bd_num}
   </update>
-  
+  <!-- 게시글 삭제 -->
   <delete id="boardDelete" parameterType="int">
       delete from Board where bd_num=#{bd_num}
   </delete>
-  
+  <!-- 게시글 조회수 -->
   <update id="boardCount" parameterType="int">
 	  update Board set bd_cnt=bd_cnt+1 where bd_num=#{bd_num}
   </update>
   
   
-  <!-- 답글 -->
+  <!-- 답글 (뭐드라??)-->
    <select id="boardReply" parameterType="int" resultType="com.doptori.entity.Board">
       select bd_mb_num from Board 
   </select>
-  
+  <!-- 답글 등록 -->
   <insert id="replyInsert" parameterType="com.doptori.entity.Board">
       insert into Board(bd_num, bd_type, bd_mb_num, bd_title, bd_cont, bd_group, bd_seq, bd_level)
       values (#{bd_num}, #{bd_type}, #{bd_mb_num}, #{bd_title}, #{bd_cont}, #{bd_group}, #{bd_seq}, #{bd_level})
   	  select #{bd_title}
   </insert>
-  
+  <!-- 답글 순번 -->
   <update id="replySeqUpdate" parameterType="com.doptori.entity.Board">
       update Board set bd_seq=bd_seq+1 where bd_group=#{bd_group} and bd_seq>{bd_seq}
   </update>
   
-  
-  <!-- 댓글 -->
+  <!-- 댓글 등록 -->
   <insert id="commentInsert" parameterType="com.doptori.entity.Board">
       insert into Comment(co_bd_num, co_mb_num, co_cont)
       values(#{co_bd_num}, #{co_mb_num}, #{co_cont})
-  </insert>
-  
+  </insert>  
+  <!-- 댓글 목록보기 -->
    <select id="commentSelect"  parameterType="int" resultType="com.doptori.entity.Board">
       select * from Comment where co_bd_num = #{co_num}
       order by co_date desc
   </select>
-  
+  <!-- 댓글 삭제 -->
   <delete id="commentDelete"  parameterType="int">
       delete from Comment where co_num = #{co_num}
   </delete>

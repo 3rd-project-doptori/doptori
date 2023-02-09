@@ -4,18 +4,18 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <!-- 여러 mapper.xml이 있는 경우, id 겹치면 혼란이  되는 것을 방지하기 위해 -->
 <mapper namespace="com.doptori.mapper.MemberMapper">
-    
     <!-- 태그의 id는 mapper 인터페이스의 메소드 이름으로 한다. -->
-    <!-- 관리자의 회원 전체 목록 -->
+    
+ <!-- 관리자의 회원 전체 목록 -->
   <select id="MemberList" resultType="com.doptori.entity.Member">
   	select * from Member
   </select>
   <!-- 관리자의 회원 삭제 -->
   <delete id="MemberDelete"  parameterType="String" >
-	delete from Member where mb_id=#{mb_id}
+	delete from Member where mb_num=#{mb_num}
   </delete>
-  
-  
+    
+  <!-- 회원가입 -->
   <insert id="MemberInsert" parameterType="com.doptori.entity.Member">
   	insert into Member(mb_id, mb_pw, mb_nick, mb_type)
   	values(#{mb_id},#{mb_pw},#{mb_nick},#{mb_type})
@@ -26,26 +26,27 @@
       where mb_num=#{mb_num}
   </update>  -->
   
+  <!-- 프로필 사진 변경 -->
   <update id="PhotoUpdate" parameterType="com.doptori.entity.Member">
       update Member set mb_pic=#{mb_pic} 
       where mb_num=#{mb_num}
   </update>
   
-  <!-- <delete id="MemberDelete" parameterType="int">
+    <!-- <delete id="MemberDelete" parameterType="int">
       delete from Member where mb_num=#{mb_num}
   </delete> -->
   
-  <select id="MemberLogin" parameterType="com.doptori.entity.Member" resultType="com.doptori.entity.Member">
+  <!-- 로그인 -->
+   <select id="MemberLogin" parameterType="com.doptori.entity.Member" resultType="com.doptori.entity.Member">
   	select * from Member where mb_id=#{mb_id} and mb_pw=#{mb_pw}
   </select>
-  
   <!-- 회원정보 수정 -->
-  <update id = "userUpdate" parameterType="com.doptori.entity.Member">
+   <update id="userUpdate" parameterType="com.doptori.entity.Member">
         update Member set mb_pw=#{mb_pw}, mb_nick=#{mb_nick}, mb_type=#{mb_type} 
         where mb_id=#{mb_id}
-  </update>
-  
-  	<!-- 아이디 중복체크 -->
+   </update>
+   
+   <!-- 아이디 중복체크 -->
     <select id="mbidCheck" parameterType="com.doptori.entity.Member" resultType="com.doptori.entity.Member">
         select count(*) from Member where mb_id=#{mb_id}
     </select>
