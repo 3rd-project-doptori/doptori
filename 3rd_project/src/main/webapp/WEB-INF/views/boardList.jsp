@@ -85,13 +85,7 @@
 	         <option value="30"> 30개 </option>
 	         <option value="50"> 50개 </option>
 	       </select>
-<<<<<<< HEAD
 	       
-	       <input type="text" class="btn btn-default" name="keyword">
-	       <input type="submit" class="btn btn-default" value="검색">
-	       
-=======
->>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
 	       </font>
 	     </div>
 	       </h3></caption>
