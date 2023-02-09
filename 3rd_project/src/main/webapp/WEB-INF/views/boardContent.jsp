@@ -53,7 +53,7 @@
 			 	<td>${fn:split(vo.bd_date, " ")[1]}</td>
 			 </tr>
 			 <tr>
-			 <td>조회수</td>
+			 	<td>조회수</td>
 			 	<td>${vo.bd_cnt}</td>
 			 </tr>
 			 <tr>
