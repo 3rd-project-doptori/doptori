@@ -39,6 +39,10 @@
 			location.href = "${cpath}/signin.do"
 		}
     
+	  //회원정보 수정
+		function updateMember(){
+			location.href = "${cpath}/updateMember.do"
+		}
     </script>
 <main>
   <div class="container py-4">
@@ -105,7 +109,7 @@
 								
 									<span>${loginMember.mb_nick}님 환영합니다 </span>
 									<a class="btn btn-sm btn-default" href="${cpath}/Logout.do">LogOut</a>
-									
+									<button class="btn btn-sm btn-default" onclick="updateMember()">회원정보수정</button>
 								<c:if test="${loginMember.mb_id=='admin'}">
 									<button id="MemberList" class="btn btn-sm btn-default" >회원목록</button>
 									

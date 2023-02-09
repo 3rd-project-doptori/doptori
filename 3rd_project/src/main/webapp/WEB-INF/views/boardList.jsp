@@ -85,10 +85,6 @@
 	         <option value="30"> 30개 </option>
 	         <option value="50"> 50개 </option>
 	       </select>
-	       
-	       <input type="text" name="keyword">
-	       <input type="submit" value="검색">
-	       
 	       </font>
 	     </div>
 	       </h3></caption>
