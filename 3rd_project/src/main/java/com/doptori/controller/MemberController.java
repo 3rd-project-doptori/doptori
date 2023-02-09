@@ -21,11 +21,10 @@ public class MemberController {
 	private MemberMapper mapper;
 	
 	// 아이디 중복체크
-	@RequestMapping("/mbidCheck.do")
-	public @ResponseBody int mbidCheck(String mb_id) {
-		int result = mapper.mbidCheck(mb_id);
-		return result;
-	}
+	/*
+	 * @RequestMapping("/mbidCheck.do") public @ResponseBody int mbidCheck(String
+	 * mb_id) { int result = mapper.mbidCheck(mb_id); return result; }
+	 */
 	
 	@PostMapping("/Login.do")
 	public String Login(Member mvo, HttpServletRequest request) {

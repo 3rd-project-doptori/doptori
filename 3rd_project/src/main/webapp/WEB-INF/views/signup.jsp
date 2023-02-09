@@ -104,16 +104,16 @@
 			
 		$.ajax({
 			url : "${cpath}/mbidCheck.do",
-			type : "post",
+			type : "get",
 			data : {mb_id: mb_id},
 			dataType : 'json',
-			success : function(result){
-				if(result == 1){
-					$("#id_feedback").html('이미 사용중인 아이디입니다.');
-					$("#id_feedback").attr('color','#dc3545');
+			success : function(data){
+				if(data.check == 'false'){
+					$("#id_feedback").text('이미 사용중인 아이디입니다.');
+					$("#id_feedback").css('color','red');
 				} else{
-					$("#id_feedback").html('사용할 수 있는 아이디입니다.');
-					$("#id_feedback").attr('color','#2fb380');
+					$("#id_feedback").text('사용할 수 있는 아이디입니다.');
+					$("#id_feedback").css('color','green');
 				} 
 			},
 			error : function(){

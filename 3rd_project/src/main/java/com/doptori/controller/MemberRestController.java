@@ -33,6 +33,18 @@ public class MemberRestController {
 		mapper.PhotoUpdate(vo);
 	}
 	
+	// 아이디 중복체크
+		@RequestMapping("/mbidCheck.do")
+		public String mbidCheck(String mb_id) {
+			Member mvo = mapper.mbidCheck(mb_id);
+
+			if(mvo == null) {
+				return "{\"check\":\"true\"}";
+			} else {
+				return "{\"check\":\"false\"}";
+			}
+		}	
+	
 	@ResponseBody
 	@PostMapping("/passChk")
 	public int passChk(Member vo) {
