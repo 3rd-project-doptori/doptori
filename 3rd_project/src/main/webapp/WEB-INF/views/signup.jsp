@@ -49,7 +49,7 @@
               </div>
 
 			<div class="col-12 ip">
-                <input type="password" class="form-control" id="mb_pw" name="mb_pw" placeholder="비밀번호 한 번 더 입력하세요">
+                <input type="password" class="form-control" id="mb_pw" placeholder="비밀번호 한 번 더 입력하세요">
                 <div class="invalid-feedback">
                   비밀번호를 다시 한번 더 입력해주세요!
                 </div>
@@ -66,11 +66,11 @@
               <div class="col-12">
               <label class="control-label col-sm-2" for="mb_type"></label>
                 <div class="form-check-inline">
-                  <input name="mb_type" type="radio" class="form-check-input" value="1" checked required>
+                  <input name="mb_type" type="radio" class="form-check-input" value="1" checked>
                   <label class="form-check-label" for="credit">영농인</label>
                 </div>
                 <div class="form-check-inline">
-                  <input name="mb_type" type="radio" class="form-check-input" value="2" required>
+                  <input name="mb_type" type="radio" class="form-check-input" value="2">
                   <label class="form-check-label" for="debit">일반인</label>
                 </div>
               </div>

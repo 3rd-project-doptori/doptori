@@ -65,7 +65,6 @@ public class MemberController {
 	//}
 	@RequestMapping("/updateMember.do")
 	public void updateMember() {}
-	
 	// 회원 정보 수정(update 이벤트)
 	@RequestMapping("/userUpdate.do")
 	public String userUpdate(Member mvo, HttpSession session) {
