@@ -1,5 +1,6 @@
 package com.doptori.mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -47,6 +48,10 @@ public interface BoardMapper {
 	public List<Comment> commentSelect(int bd_num);
 	// 댓슬 삭제
 	public void commentDelete(int co_num);
+	
+	// 페이징
+	public ArrayList<Board> list2(int start, int pcnt);
+	public int getChong(int pcnt);
 	
 	
 

@@ -37,7 +37,7 @@
   
   
   <!-- 답글 (뭐드라??)-->
-   <select id="boardReply" parameterType="int" resultType="com.doptori.entity.Board">
+   <select id="boardReply" parameterType="int" resultType="int">
       select bd_mb_num from Board 
   </select>
   <!-- 답글 등록 -->
@@ -65,4 +65,15 @@
   <delete id="commentDelete"  parameterType="int">
       delete from Comment where co_num = #{co_num}
   </delete>
+  
+  
+  <!-- 페이징 처리 -->
+   <select id="list2" parameterType="int" resultType="com.doptori.entity.Board">
+       select * from Board order by bd_num desc limit #{param1},#{param2} <!-- 앞은 인덱스, 뒤는 길이 -->
+     </select>
+     <select id="getChong" parameterType="int" resultType="int" > <!-- 총(전체)의 id값을 준다 -->
+      select ceil(count(*)/#{param1}) from Board <!-- sql문 ceil함수 사용 -->
+    </select>
+
+  
 </mapper>

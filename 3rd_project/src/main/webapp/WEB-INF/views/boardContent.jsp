@@ -23,14 +23,15 @@
  	function goReply() {
 		location.href="${cpath}/boardReplyForm.do";
 	}
+ 	
+ 	
  </script>
 <div class="container">
   <h2>게시판 상세보기</h2>
   <div class="panel panel-default">
     <div class="panel-heading">게시판</div>
     <div class="panel-body">
-		<table class="table table-bordered table-hover">
-			 <tr> 
+		<table class="table table-bordered table-hover"> <tr> 
 			 	<td>제목</td>
 			 	<td>${vo.bd_title}</td>
 			 </tr>	

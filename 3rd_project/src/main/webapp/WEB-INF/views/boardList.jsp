@@ -21,8 +21,21 @@
   <script type="text/javascript">
 	  	function goForm() {
 	  		location.href="${cpath}/boardInsertForm.do"
-	  		
 	  	}
+	  	
+	  	
+	  	
+	 	function move(my)
+	    {
+	 	   location="boardList.do?pcnt="+my.value;
+	    }
+	    window.onload=function()
+	    {
+	 	   document.getElementById("pcnt").value="${pcnt}"; 
+	 	     // $pcnt: 페이지 늘린 상태로 고정 (50개 페이지 고정)
+	    }
+
+
   </script>
 <div class="container">
   <h2>게시판 목록보기</h2>
@@ -30,6 +43,15 @@
     <div class="panel-heading">게시판</div>
     <div class="panel-body">
     	<table class="table table-bordered table-hover">
+	    	<caption> <h3 align="right"> <font size="2">
+	       <select onchange="move(this)" id="pcnt">
+	         <option value="10"> 10개 </option>
+	         <option value="20"> 20개 </option>
+	         <option value="30"> 30개 </option>
+	         <option value="50"> 50개 </option>
+	       </select>
+	       </font>
+	       </h3></caption>
 	    	<thead>
 		    	 <tr>
 		    	 	<td>번호</td>
@@ -44,7 +66,7 @@
 	    			<tr>
 						<td>${vo.bd_num}</td>						
 						<c:if test="${vo.bd_level > 0}">
-							<c:forEach begin="1" end="${vp.bd_level }">
+							<c:forEach begin="1" end="${vo.bd_level }">
 								<span style="padding-left: 10px"></span>
 							</c:forEach>
 						</c:if>
@@ -62,6 +84,56 @@
 						<td>${vo.bd_cnt}</td>     			
 	    			</tr>
 	    		</c:forEach>
+	    		
+	    		<!-- 페이징 -->
+	    		<tr>
+			       <td colspan="5" align="center">
+			        <!-- 10페이지 단위로 이전 이동하기  :  -->
+			       <c:if test="${pstart != 1}"> <!-- 첫번재 그룹이 아닐때는  -->
+			        	<a href="boardList.do?page=${pstart-1}&pcnt=${pcnt}"> << </a>
+			       </c:if>
+			       <c:if test="${pstart == 1}"> <!-- 첫번째 그룹일때(1~10)는 이전 10페이지 이동 X -->
+			       《<!-- 넘어가는 꺽세 -->
+			       </c:if>
+			       
+			        <!-- 1페이지 단위로 이전으로 가기 => 현재페이지에서 1을 뺀 페이지로 이동 --> 
+			       <c:if test="${page != 1}"> <!-- 현재 페이지가 1이 아닌경우 -->
+			        	<a href="boardList.do?page=${page-1}&pcnt=${pcnt}"> ◀  </a>
+			       </c:if>
+			       <c:if test="${page == 1}"> <!-- 현재페이지가 1인경우 -->
+			                     ◀
+			       </c:if>
+			       
+			         <c:forEach begin="${pstart}" end="${pend}" var="i">  <!-- 페이지 출력하기 -->
+			           <!-- 현재 페이지의 색을 빨강 -->
+			            <c:if test="${page == i}"> <!-- 출력되는 페이지가 현재페이지와 같다면 -->
+			               <c:set var="st" value="style='color:darkblue;'"/>
+			            </c:if>
+			            <c:if test="${page != i}"> <!-- 출력되는 페이지가 현재페이지와 다르다면 -->
+			               <c:set var="st" value=""/>
+			            </c:if>
+			            <a href="boardList.do?page=${i}&pcnt=${pcnt}" ${st}> ${i} </a>
+			         </c:forEach>
+			         
+			       <!-- 1페이지 단위로 다음 이동하기 -->
+			       <c:if test="${page != chong}"> <!-- 현재 페이지가 마지막 페이지가 아니라면 -->
+			        	<a href="boardList.do?page=${page+1}&pcnt=${pcnt}"> ▶  </a>
+			       </c:if>
+			       <c:if test="${page == chong}"> <!-- 현재 페이지가 마지막 페이지라면 -->
+			                     ▶
+			       </c:if>
+			        
+			       <!-- 10페이지 단위로 다음 이동하기 -->
+			       <c:if test="${chong != pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막이 아닐겨우 -->
+			         	<a href="boardList.do?page=${pend+1}&pcnt=${pcnt}"> >> </a>
+			       </c:if>
+			       <c:if test="${chong == pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막일 경우 -->
+			    	   》 <!-- 넘어가는 꺽세 -->
+			       </c:if>
+			       </td>
+			     </tr>
+			     
+			     
 	    		<tr>
 	    			<td colspan="5"><button class="btn btn-sm btn-success" onclick="goForm()">글쓰기</button></td>
 	    		</tr>
