@@ -11,7 +11,7 @@
   	select * from Member
   </select>
   <!-- 관리자의 회원 삭제 -->
-  <delete id="MemberDelete"  parameterType="String" >
+  <delete id="MemberDelete"  parameterType="int" >
 	delete from Member where mb_num=#{mb_num}
   </delete>
     

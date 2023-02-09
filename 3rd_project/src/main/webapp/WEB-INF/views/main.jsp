@@ -108,7 +108,7 @@
 									
 								<c:if test="${loginMember.mb_id=='admin'}">
 									<button id="MemberList" class="btn btn-sm btn-default" >회원목록</button>
-									<div id="MemberListdiv" style="display:none;"></div>
+									
 								</c:if>
 								
 							</div>
@@ -121,6 +121,7 @@
     </header>
 
     <div class="p-5 mb-4 bg-light rounded-3">
+    <div id="MemberListdiv" style="display:none;"></div>
       <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">Custom jumbotron</h1>
         <p class="col-md-8 fs-4">베프는 어려운 과채작물 재배를 쉽고 편리하게 도와드립니다.<br>
@@ -197,5 +198,64 @@
 </main>
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript">
+  function removeMember(index){
+		var id = $('.id'+index).text();
+		$.ajax({
+			url : 'MemberDelete.do',
+			type : 'POST',
+			data : {'id' : id},
+			dataType : 'JSON',
+			success : resultJSON,
+			error : function(){
+				alert('error');
+			}
+		});
+	}
+	
+	$(function(){
+		$('#MemberList').click(function(){
+			$.ajax({
+				url : 'MemberList.do',
+				type : 'GET',
+				dataType : 'JSON',
+				success : resultJSON,
+				error : function(){
+					alert('error');
+				}
+			});
+		});
+		
+		
+		function resultJSON(data){
+			var html = '<table class="table table-hover table-bordered" align="center">';
+			html += '<tr align="center" style="font-weight: 800;">';
+			html += '<td>아이디</td>';
+			html += '<td>비밀번호</td>';
+			html += '<td>닉네임</td>';
+			html += '<td>회원유형</td>';
+			html += '<td>삭제</td>';
+			html += '</tr>';
+			$.each(data, function(index, obj){
+				html += '<tr align="center" style="font-weight: 500;">';
+				html += '<td style="font-weight: 600;" class="id'+index+'">' + obj.mb_id + '</td>';
+				html += '<td>' + obj.mb_pw + '</td>';
+				html += '<td>' + obj.mb_nick + '</td>';
+				html += '<td>' + obj.mb_type + '</td>';
+				html += '<td><button onclick="removeMember('+index+')" class="btn btn-primary btn-sm">삭제</button></td>';
+				html += '</tr>';
+			});
+			html += '</table>';
+			$('#MemberListdiv').html(html);
+			
+			if($('#MemberListdiv').css('display') == 'block'){ //눈에 보이는 것
+				$('#MemberListdiv').slideUp();
+			}else{
+				$('#MemberListdiv').slideDown();
+			}
+		}
+	});
+  </script>
   </body>
 </html>

@@ -47,8 +47,8 @@ public class MemberRestController {
 	}
 	
 	@RequestMapping("/MemberDelete.do")
-	public List<Member> MemberDelete(String	mb_id) {
-		mapper.MemberDelete(mb_id);
+	public List<Member> MemberDelete(String	mb_num) {
+		mapper.MemberDelete(mb_num);
 		List<Member> list = mapper.MemberList();
 		return list;
 	}
