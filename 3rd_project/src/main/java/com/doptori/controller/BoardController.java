@@ -72,25 +72,41 @@ public class BoardController {
 		if(page%10 == 0)
 			pstart--;
 		
-		
 		pstart = pstart*10+1;
 		pend = pstart+9;
 		
+		// list를 가져올때 검색필드(sel)와 검색단어(sword)를 같이 전달한다.
+		String sel;
+		if(request.getParameter("sel")==null)
+			sel="bd_title";
+		else
+			sel=request.getParameter("sel");
+						
+		String sword;
+		if(request.getParameter("sword")==null)
+			sword="";
+		else
+			sword=request.getParameter("sword");
+
+		
 		// (전체)총 페이지를 구한 후 view에 전달
-		int chong = mapper.getChong(pcnt);
+		int chong = mapper.getChong(pcnt,sel,sword);
 		 
 		// (전체)총 페이지보다 pend가 크다면  값을 변경
 		if(chong < pend) 
 			pend=chong;
 		
 		
-		ArrayList<Board> list2 = mapper.list2(start,pcnt);
+		ArrayList<Board> list2 = mapper.list2(sel,sword,start,pcnt);
 		model.addAttribute("list2",list2);
 		model.addAttribute("page",page); // 현재 페이지
 		model.addAttribute("pstart",pstart);
 		model.addAttribute("pend",pend);
 		model.addAttribute("chong",chong); // 총페이지
 		model.addAttribute("pcnt",pcnt);  // 페이지당 레코드 갯수
+		model.addAttribute("sel",sel);
+		model.addAttribute("sword",sword);
+
 		
 		return "boardList";
 	}
