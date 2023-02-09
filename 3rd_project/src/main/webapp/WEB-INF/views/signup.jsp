@@ -33,32 +33,33 @@
 
               <div class="col-12 ip">
               <label class="control-label col-sm-2" for="mb_id"></label>
-                <input type="text" class="form-control" id="mb_id" name="mb_id" placeholder="아이디를 입력하세요">
+                <input type="text" class="form-control" id="mb_id" name="mb_id" placeholder="아이디를 입력하세요" required>
                 <div class="invalid-feedback">
                  아이디를 입력해주세요!
                 </div>
-                <div><button id="idCheck" type="button" class="btn">중복확인</button></div>
+               <!--  <div><button id="idCheck" type="button" class="btn">중복확인</button></div> -->
                 <div><font id="id_feedback" size="2"></font></div>
               </div>
   
               <div class="col-12 ip">
               <label class="control-label col-sm-2" for="mb_pw"></label>
-                <input type="password" class="form-control" id="mb_pw" name="mb_pw" placeholder="비밀번호를 입력하세요">
+                <input type="password" class="form-control" id="mb_pw" name="mb_pw" onchange="isSame()"  placeholder="비밀번호를 입력하세요" required>
                 <div class="invalid-feedback">
                   비밀번호를 입력해주세요!
                 </div>
               </div>
 
 			<div class="col-12 ip">
-                <input type="password" class="form-control" id="mb_pw" placeholder="비밀번호 한 번 더 입력하세요">
+                <input type="password" class="form-control" id="mb_pw2" name="mb_pw2" onchange="isSame()"  placeholder="비밀번호 한 번 더 입력하세요" required>
                 <div class="invalid-feedback">
                   비밀번호를 다시 한번 더 입력해주세요!
                 </div>
+                <span id="same"></span>
               </div>							
 					
               <div class="col-12 ip">
               <label class="control-label col-sm-2" for="mb_nick"></label>
-                <input type="text" class="form-control" id="mb_nick" name="mb_nick" placeholder="닉네임을 입력하세요">
+                <input type="text" class="form-control" id="mb_nick" name="mb_nick" placeholder="닉네임을 입력하세요" required >
                 <div class="invalid-feedback">
                   닉네임을 입력해주세요!
                 </div>
@@ -100,7 +101,7 @@
     <script src="${cpath}/resources/js/login.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script type="text/javascript">
-    $('#idCheck').click(function(){
+    $('#mb_id').keyup(function(){
 		let mb_id = $('#mb_id').val();
 			
 		$.ajax({
@@ -125,6 +126,29 @@
 				$("#id_feedback").css('color','green');
 			} 
 		}
+    
+   
+    
+    
+    function isSame() {
+        var mb_pw1 = document.twin.mb_pw1.value;
+        var mb_pw2 = document.twin.mb_pw2.value;
+        if (mb_pw1.length < 6 || mb_pw1.length > 16) {
+            window.alert('비밀번호는 6글자 이상, 16글자 이하만 이용 가능합니다.');
+            document.getElementById('mb_pw1').value=document.getElementById('mb_pw2').value='';
+            document.getElementById('same').innerHTML='';
+        }
+        if(document.getElementById('mb_pw1').value!='' && document.getElementById('mb_pw2').value!='') {
+            if(document.getElementById('mb_pw1').value==document.getElementById('mb_pw2').value) {
+                document.getElementById('same').innerHTML='비밀번호가 일치합니다.';
+                document.getElementById('same').style.color='green';
+            }
+            else {
+                document.getElementById('same').innerHTML='비밀번호가 일치하지 않습니다.';
+                document.getElementById('same').style.color='red';
+            }
+        }
+    }
     </script>
   </body>
 </html>
