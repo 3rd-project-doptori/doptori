@@ -57,6 +57,12 @@
 			 	<td>${vo.bd_cnt}</td>
 			 </tr>
 			 <tr>
+			 	<td>첨부파일</td>
+			 	<c:if test="${vo.bd_pic ne null}">
+					<td align="left"><a href="${cpath}/fileDownload.do?bd_pic=${vo.bd_pic}">${vo.bd_pic}</a></td>
+			 	</c:if>
+			 </tr>
+			 <tr>
 			 	<td colspan="2">
 			 		<button class="btn btn-sm btn-success" onclick="goUpdate()">수정</button>
 			 		<a class="btn btn-sm btn-warning" href="<c:url value='/boardDelete.do/${vo.bd_num}' />">삭제</a>

@@ -14,8 +14,8 @@
   </select>
   <!-- 게시글 등록 -->
   <insert id="boardInsert" parameterType="com.doptori.entity.Board">
-      insert into Board(bd_type, bd_mb_num, bd_title, bd_cont, bd_group, bd_seq, bd_level)
-      select #{bd_type}, #{bd_mb_num}, #{bd_title}, #{bd_cont}, IFNULL(max(bd_group)+1, 0), 0, 0 from Board
+      insert into Board(bd_type, bd_mb_num, bd_title, bd_cont, bd_pic ,bd_group, bd_seq, bd_level)
+      select #{bd_type}, #{bd_mb_num}, #{bd_title}, #{bd_cont}, #{bd_pic} ,IFNULL(max(bd_group)+1, 0), 0, 0 from Board
   </insert>
   <!-- 게시글 상세보기 -->
   <select id="boardContent" parameterType="int" resultType="com.doptori.entity.Board">

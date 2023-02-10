@@ -40,6 +40,14 @@
 			    </div>
 			  </div>
 			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="bd_pic">첨부파일:</label>
+			    <div class="col-sm-10">
+			      <c:if test="${vo.bd_pic ne null}">
+					<td align="left"><a href="fileDownload.do?bd_pic=${vo.bd_pic}">${vo.bd_pic}</a></td>
+			 		</c:if>
+			    </div>
+			  </div>
+			  <div class="form-group">
 			    <div class="col-sm-offset-2 col-sm-10">
 			      <button type="submit" class="btn btn-default">수정</button>
 			    </div>

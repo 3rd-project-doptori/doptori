@@ -1,5 +1,7 @@
 package com.doptori.entity;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Board {
 	
 	private	int bd_num;
@@ -15,13 +17,33 @@ public class Board {
 	private	int bd_seq; // 게시글 글의 순서
 	private	int bd_level; // 게시글 글의 깊이
 	
-	private	int bd_delete; // 삭제유무
-
-	
+	/*
+	 * private int bd_delete; // 삭제유무
+	 */
+	private MultipartFile uploadFile; // 파일 업로드
+    private String realName;
+    private long size;
+    
+    
+    //파일 크기를 정형화하기
+    public String size2String() {
+        Integer unit = 1024;
+        if (size < unit) {
+            return String.format("(%d B)", size);
+        }
+        int exp = (int) (Math.log(size) / Math.log(unit));
+ 
+        return String.format("(%.0f %s)", size / Math.pow(unit, exp), "KMGTPE".charAt(exp - 1));
+    }
+    
+    
+    
+    
 	// getter, setter 만들기
 	public int getBd_num() {
 		return bd_num;
 	}
+	
 	public int getBd_group() {
 		return bd_group;
 	}
@@ -85,17 +107,49 @@ public class Board {
 	public void setBd_cnt(int bd_cnt) {
 		this.bd_cnt = bd_cnt;
 	}
-	public int getBd_delete() {
-		return bd_delete;
+
+	/*
+	 * public int getBd_delete() { return bd_delete; } public void setBd_delete(int
+	 * bd_delete) { this.bd_delete = bd_delete; }
+	 */
+	public MultipartFile getUploadFile() {
+		return uploadFile;
 	}
-	public void setBd_delete(int bd_delete) {
-		this.bd_delete = bd_delete;
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 	
+	public String getRealName() {
+		return realName;
+	}
+
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
+
+	public long getSize() {
+		return size;
+	}
+	public void setSize(long size) {
+		this.size = size;
+	}
+
 	public void add(String memberNum2Name) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public String toString() {
+		return "Board [bd_num=" + bd_num + ", bd_type=" + bd_type + ", bd_mb_num=" + bd_mb_num + ", bd_date=" + bd_date
+				+ ", bd_title=" + bd_title + ", bd_cont=" + bd_cont + ", bd_pic=" + bd_pic + ", bd_cnt=" + bd_cnt
+				+ ", bd_group=" + bd_group + ", bd_seq=" + bd_seq + ", bd_level=" + bd_level + ", uploadFile="
+				+ uploadFile + "]";
+	}
+
+	
 	
 
+	
+	
 }

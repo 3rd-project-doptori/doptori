@@ -1,11 +1,15 @@
 package com.doptori.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.doptori.entity.Board;
 import com.doptori.entity.Comment;
@@ -117,7 +121,18 @@ public class BoardController {
 	}
 
 	@RequestMapping("/boardInsert.do")
-	public String boardInsert(Board vo) {
+	public String boardInsert(Board vo) throws IOException {
+		// 파일 업로드 처리
+		String bd_pic = null;
+		MultipartFile uploadFile = vo.getUploadFile();
+		if (!uploadFile.isEmpty()) {
+			String originalFileName = uploadFile.getOriginalFilename();
+			String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기
+			UUID uuid = UUID.randomUUID();	//UUID 구하기
+			bd_pic = uuid + "." + ext;
+			uploadFile.transferTo(new File("D:\\upload\\" + bd_pic));
+		}
+		vo.setBd_pic(bd_pic);
 		mapper.boardInsert(vo);
 
 		return "redirect:/boardList.do";
@@ -153,14 +168,13 @@ public class BoardController {
 		
 		// 조회수 업데이트
 		mapper.boardCount(bd_num);
-
-		List<Comment> list = mapper.commentSelect(bd_num);
+        
 		
 		model.addAttribute("vo", vo);
+		List<Comment> list = mapper.commentSelect(bd_num);
+		
+		
 		model.addAttribute("list", list);
-		
-		
-		
 		
 		return "boardContent";
 		

@@ -25,7 +25,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">게시판</div>
     <div class="panel-body">
-    	<form class="form-horizontal" action="${cpath}/boardInsert.do" method="post">
+    	<form class="form-horizontal" action="${cpath}/boardInsert.do" method="post"  enctype="multipart/form-data">
 		  
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="bd_type">카테고리:</label>
@@ -57,8 +57,13 @@
 		    <label class="control-label col-sm-2" for="bd_cont">내용</label>
 		    <div class="col-sm-10">
 		      <textarea class="form-control" rows="10" name="bd_cont" id="bd_cont" placeholder="내용을 입력하세요." required></textarea>
-
-		    </div>
+			</div>
+		  </div>
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="bd_pic">첨부파일</label>
+		    <div class="col-sm-10">
+		      <input type="file" name="uploadFile"/></td>
+			</div>
 		  </div>
 		  <div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-10">
