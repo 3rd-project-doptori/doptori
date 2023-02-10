@@ -59,8 +59,9 @@
                       영농일지
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">일정관리</a></li>
-                      <li><a class="dropdown-item" href="#">일지쓰기</a></li>
+                      <li><a class="dropdown-item" href="<c:url value='/calendar2.do/${loginMember.getMb_num()}'/>">영농일지</a></li>
+                      <li><a class="dropdown-item" href="<c:url value='/calendar.do/${loginMember.getMb_num()}'/>">일지 목록</a></li>
+                      <li><a class="dropdown-item" href="#">일지 관리</a></li>
                     </ul>
                   </li>
                   <li class="nav-item">
