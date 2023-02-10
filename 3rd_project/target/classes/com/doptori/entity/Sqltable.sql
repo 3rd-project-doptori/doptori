@@ -57,6 +57,12 @@ CREATE TABLE Crop (
   PRIMARY KEY(cp_num)
 );
 
+select * from Crop;
+
+ALTER TABLE Crop ADD cp_kind VARCHAR(100) not null AFTER cp_item;
+
+alter table Crop drop column cp_name;
+
 INSERT INTO Diary (di_mb_num, di_fm_num, di_cont, di_note) VALUE('1', '2',  '테스트1/테스트2/테스트3/테스트4', '오늘 특이사항4');
 select * from Diary;
 
@@ -107,8 +113,18 @@ CREATE TABLE Reserve (
  re_weight DECIMAL(4,1) NOT NULL,
  re_price INT(8) NOT NULL,
  re_memo TEXT,
-  PRIMARY KEY(re_num)
+ re_bd_num INT(4) NOT NULL,
+  PRIMARY KEY(re_num),
+  FOREIGN KEY (re_bd_num) REFERENCES Board (bd_num)
 );
+
+alter table Reserve add re_bd_num int(4) not null;
+alter table Reserve add re_bd_num int(4) not null;
+alter table Reserve add re_bd_num int(4) not null;
+alter table Reserve add re_bd_num int(4) not null;
+
+alter table Board add bd_re_num int(4);
+alter table Reserve add FOREIGN KEY (re_bd_num) REFERENCES Board (bd_num);
 
 CREATE TABLE Board (
  bd_num INT(4) NOT NULL AUTO_INCREMENT,
@@ -122,6 +138,7 @@ CREATE TABLE Board (
   PRIMARY KEY(bd_num),
   FOREIGN KEY (bd_mb_num) REFERENCES Member (mb_num)
 );
+
 
 CREATE TABLE Comment (
  co_num INT(4) NOT NULL AUTO_INCREMENT,
@@ -156,3 +173,82 @@ INSERT INTO calendar values('1','1','할일title','test',
 '2021/05/03','1','yellow','navy','navy');
 
 select * from calendar;
+
+create table farmdiary_manage(
+	fdm_num int(4) NOT NULL AUTO_INCREMENT,
+	fdm_type int(2) NOT NULL,
+	fdm_mb_num int(4) NOT NULL,
+	fdm1_ad_num int(8),
+	fdm1_detail_address varchar(1000),
+	fdm1_lot_area DECIMAL(10,1),
+	fdm1_actual_area DECIMAL(10,1),
+	fdm1_idle_area DECIMAL(10,1),
+	fdm1_soil_check int(1),
+	fdm2_item varchar(100),
+	fdm2_kind varchar(100),
+	fdm2_culture_area DECIMAL(10,1),
+	fdm2_contract int(8),
+	fdm2_target datetime,
+	fdm3_fertilizer varchar(100),
+	fdm3_fertilizer_kind varchar(100),
+	fdm3_pesticide varchar(100),
+	fdm3_pesticide_kind varchar(100),
+	fdm4_edu_start datetime,
+	fdm4_edu_end datetime,
+	fdm4_edu_name varchar(100),
+	fdm4_edu_place varchar(1000),
+	fdm4_edu_cont TEXT,
+	fdm4_edu_pic varchar(3000),
+	fdm5_man_name varchar(100),
+	fdm5_man_phone varchar(100),
+	fdm5_man_ability int(2),
+	fdm5_man_cost int(10),
+	fdm5_man_memo varchar(1000),
+	fdm6_account varchar(100),
+	fdm6_represent varchar(100),
+	fdm6_regi_num varchar(100),
+	fdm6_phone varchar(100),
+	fdm6_address varchar(1000),
+	fdm6_sectors varchar(100),
+	fdm6_business varchar(100),
+	PRIMARY KEY(fdm_num),
+	FOREIGN KEY (fdm_mb_num) REFERENCES Member (mb_num)
+);
+
+create table farmdiary(
+	fd_num int(4) NOT NULL AUTO_INCREMENT,
+	fd_mb_num int(4) NOT NULL,
+	fd_start datetime NOT NULL,
+	fd_end datetime NOT NULL,
+	fd_address varchar(1000) NOT NULL,
+	fd_item varchar(100) NOT NULL,
+	fd_kind varchar(100) NOT NULL,
+	fd_step varchar(100) NOT NULL,
+	fd_cont TEXT NOT NULL,
+	fd_pesticide varchar(100),
+	fd_pesticide_amount DECIMAL(10,1),
+	fd_fertilizer varchar(100),
+	fd_fertilizer_amount DECIMAL(10,1),
+	fd_man_name varchar(100),
+	fd_worktime DECIMAL(4,1),
+	fd_weather varchar(100),
+	fd_low_temp DECIMAL(4,1),
+	fd_high_temp DECIMAL(4,1),
+	fd_precipitation DECIMAL(4,1),
+	fd_humid DECIMAL(4,1),
+	fd_picture1 varchar(3000),
+	fd_picture2 varchar(3000),
+	fd_picture3 varchar(3000),
+	fd_open int(1),
+	PRIMARY KEY(fd_num),
+	FOREIGN KEY (fd_mb_num) REFERENCES Member (mb_num)
+);
+
+ALTER TABLE farmdiary_manage ADD fdm2_cp_num int(4) after fdm1_soil_check;
+ALTER TABLE farmdiary_manage ADD fdm7_pest_pic VARCHAR(3000);
+ALTER TABLE farmdiary_manage ADD fdm7_pest_result TEXT;
+ALTER TABLE farmdiary_manage ADD fdm7_grow_pic VARCHAR(3000);
+ALTER TABLE farmdiary_manage ADD fdm7_grow_result TEXT;
+
+alter table farmdiary_manage add FOREIGN KEY (fdm1_ad_num) REFERENCES Address (ad_num);
+alter table farmdiary_manage add FOREIGN KEY (fdm2_cp_num) REFERENCES Crop (cp_num);

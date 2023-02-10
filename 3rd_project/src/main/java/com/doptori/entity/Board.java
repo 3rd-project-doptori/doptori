@@ -12,6 +12,7 @@ public class Board {
 	private	String bd_cont;
 	private	String bd_pic;
 	private	int bd_cnt;
+	private	int bd_re_num;
 	// 답글
 	private	int bd_group; // 게시글 그룹 번호
 	private	int bd_seq; // 게시글 글의 순서
@@ -40,10 +41,16 @@ public class Board {
     
     
 	// getter, setter 만들기
+	
 	public int getBd_num() {
 		return bd_num;
 	}
-	
+	public int getBd_re_num() {
+		return bd_re_num;
+	}
+	public void setBd_re_num(int bd_re_num) {
+		this.bd_re_num = bd_re_num;
+	}
 	public int getBd_group() {
 		return bd_group;
 	}

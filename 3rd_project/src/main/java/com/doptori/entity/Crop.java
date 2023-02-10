@@ -3,7 +3,8 @@ package com.doptori.entity;
 public class Crop {
 	
 	private	int cp_num;
-	private String cp_name;
+	private String cp_item;
+	private String cp_kind;
 	private	int cp_type;
 	private	String cp_title;
 	private	String cp_cont;
@@ -16,11 +17,17 @@ public class Crop {
 	public void setCp_num(int cp_num) {
 		this.cp_num = cp_num;
 	}
-	public String getCp_name() {
-		return cp_name;
+	public String getCp_item() {
+		return cp_item;
 	}
-	public void setCp_name(String cp_name) {
-		this.cp_name = cp_name;
+	public void setCp_item(String cp_item) {
+		this.cp_item = cp_item;
+	}
+	public String getCp_kind() {
+		return cp_kind;
+	}
+	public void setCp_kind(String cp_kind) {
+		this.cp_kind = cp_kind;
 	}
 	public int getCp_type() {
 		return cp_type;
