@@ -509,3 +509,29 @@ a:hover {
 	margin: 0 auto;
 	display: flex;
 }
+
+th:first-child{
+    background-color: whitesmoke;
+    text-align: center;
+}
+.color:nth-child(odd){
+    background-color: whitesmoke;
+    width: 10%;
+    text-align: center;
+}
+
+.list-group-item{
+    border: 0;
+}
+
+.ul, .li{
+    list-style: none;
+    display: inline-block;
+    padding-right: 0.69rem;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+.cont li div input[type="text"] {
+    width: 100px;
+}
