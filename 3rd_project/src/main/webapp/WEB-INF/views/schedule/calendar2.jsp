@@ -65,6 +65,7 @@
     <link rel="stylesheet" type="text/css" href="${cpath}/resources/css/calendar.css">
     <!-- CSS only -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div class="container py-4">
@@ -105,7 +106,8 @@
 					style="height: 30px; width: 80px;">Today</button>
 				<button type="button"
 					class="buttonstyle board_move openMask_board_move pointer"
-					style="height: 30px; width: 130px;" onclick = "modalClick()">Add Schedule</button>
+					style="height: 30px; width: 130px;" onclick = "modalClick()"
+					 data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Schedule</button>
 			</div>
 			<table class="calendar_body">
 
@@ -221,165 +223,168 @@
     <script src="${cpath}/resources/assets/js/jquery.countdown.min.js"></script>
     <script src="${cpath}/resources/assets/js/jquery.counterup.min.js"></script>
 		<div id="mask_board_move"></div>
-		<div class = "normal_move_board_modal" id="addModal" style="display:none;">
 		
-		<div class="top" style="">
-			<div class="close" onclick="closeModal()">x</div>
-			<div class="subject">Add Schedule</div>
-		</div>
 
-		<div class="container py-4">
-            <form name="schedule_add" action="${cpath}/schedule_add.do/${loginMember.getMb_num()}">
-                    <input type="hidden" name="year" value="${today_info.search_year}" />
-				    <input type="hidden" name="month" value="${today_info.search_month-1}" />
-                    <table class="table table-bordered">
-                        <colgroup>
-                            <col width=13%>
-                            <col>
-                        </colgroup>
-                    <thead>
-                    <tr>
-                        <th scope="col">시작일</th>
-                        <th>
-                            <input type="date" id="date">
-                        </th>
-                        <th class="color">종료일</th>
-                        <th>
-                            <input type="date" id="date">
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">품목</th>
-                        <td colspan="3">
-                            <select class="form" id="item">
-                                <option selected>품목</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">필지</th>
-                        <td colspan="3">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">전라남도 순천시 OOO 111</label>
-                            </div>
-                        </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">품종</th>
-                            <td>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                    <label class="form-check-label" for="inlineCheckbox1">딸기 토마토</label>
-                                </div>
-                            </td>
-                            <th class="color">작업단계</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr class="color">
-                        <th scope="row">작업내용</th>
-                        <td colspan="3">
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                <label for="floatingTextarea2">Comments</label>
-                            </div>
-                        </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">활동유형</th>
-                            <td colspan="3">ㄴ
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">날씨정보</th>
-                            <td colspan="3">
-                                <div class="cont">
-                                    <div>
-                                        <ul class="ul">
-                                            <li class="li">
-                                                <span class="stitle,weather">날씨</span>
-                                                <select id="wfKor" name="wfKor" title="날씨 선택">
-                                                    <option value="1" selected>맑음</option>
-                                                    <option value="2">구름 조금</option>
-                                                    <option value="3">구름 많음</option>
-                                                    <option value="4">흐림</option>
-                                                    <option value="5">비</option>
-                                                    <option value="6">눈/비</option>
-                                                    <option value="7">눈</option>
-                                                </select>
-                                            </li>
-                                            <li class="li">
-                                                <div>
-                                                    <span class="stitle">최저기온</span>
-                                                    <input type="text" value="" name="low_temp" id="low_temp" class="alR" onkeyup="numberChk('low_temp');"> ℃
-                                                </div>
-                                            </li>
-                                            <li class="li">
-                                                <div>
-                                                    <span class="stitle">최고기온</span>
-                                                    <input type="text" name="high_temp" id="high_temp" class="alR" onkeyup="numberChk('high_temp');"> ℃
-                                                </div>
-                                            </li>
-                                            <li class="li">
-                                                <div>
-                                                    <span class="stitle">강수량</span>
-                                                    <input type="text" name="r12" id="r12" class="alR" onkeyup="numberChk('r12');"> mm
-                                                </div>
-                                            </li>
-                                            <li class="li">
-                                                <div>
-                                                    <span class="stitle">습도</span>
-                                                    <input type="text"value="" name="reh" id="reh" class="alR" onkeyup="numberChk('reh');"> %
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        
-                                        <!-- <p><span>*강수량 및 습도는 전날 평균량 기준으로 조회됩니다.</span></p> -->
-                                        
+            <div class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-bordered">
+                            <colgroup>
+                                <col width=13%>
+                                <col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th scope="col">시작일</th>
+                                <th>
+                                    <input type="date" id="date">
+                                </th>
+                                <th class="color">종료일</th>
+                                <th>
+                                    <input type="date" id="date">
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">품목</th>
+                                <td colspan="3">
+                                    <select class="form" id="item">
+                                        <option selected>품목</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">필지</th>
+                                <td colspan="3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                        <label class="form-check-label" for="inlineCheckbox1">전라남도 순천시 OOO 111</label>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">사진첨부</th>
-                            <td colspan="3">
-                                <div class="mb-3">
-                                    <label for="formFileMultiple" class="form-label">총 10장만 등록 가능합니다</label>
-                                    <input class="form-control" type="file" id="formFileMultiple" multiple>
-                                  </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">영농일지 공개 여부</th>
-                            <td colspan="3">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                    <label class="form-check-label" for="inlineCheckbox1">공개</label>
-                                  </div>
-                                  <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                    <label class="form-check-label" for="inlineCheckbox2">비공개</label>
-                                  </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button class="btn btn-primary" type="button" onclick="scheduleAdd();">저장</button>
-                    <button class="btn btn-outline-primary" type="button">취소</button>
+                                </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">품종</th>
+                                    <td>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">딸기 토마토</label>
+                                        </div>
+                                    </td>
+                                    <th class="color">작업단계</td>
+                                    <td>@fat</td>
+                                </tr>
+                                <tr class="color">
+                                <th scope="row">작업내용</th>
+                                <td colspan="3">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                        <label for="floatingTextarea2">Comments</label>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">활동유형</th>
+                                    <td colspan="3">ㄴ
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">날씨정보</th>
+                                    <td colspan="3">
+                                        <div class="cont">
+                                            <div>
+                                                <ul class="ul">
+                                                    <li class="li">
+                                                        <span class="stitle,weather">날씨</span>
+                                                        <select id="wfKor" name="wfKor" title="날씨 선택">
+                                                            <option value="1" selected>맑음</option>
+                                                            <option value="2">구름 조금</option>
+                                                            <option value="3">구름 많음</option>
+                                                            <option value="4">흐림</option>
+                                                            <option value="5">비</option>
+                                                            <option value="6">눈/비</option>
+                                                            <option value="7">눈</option>
+                                                        </select>
+                                                    </li>
+                                                    <li class="li">
+                                                        <div>
+                                                            <span class="stitle">최저기온</span>
+                                                            <input type="text" value="" name="low_temp" id="low_temp" class="alR" onkeyup="numberChk('low_temp');"> ℃
+                                                        </div>
+                                                    </li>
+                                                    <li class="li">
+                                                        <div>
+                                                            <span class="stitle">최고기온</span>
+                                                            <input type="text" name="high_temp" id="high_temp" class="alR" onkeyup="numberChk('high_temp');"> ℃
+                                                        </div>
+                                                    </li>
+                                                    <li class="li">
+                                                        <div>
+                                                            <span class="stitle">강수량</span>
+                                                            <input type="text" name="r12" id="r12" class="alR" onkeyup="numberChk('r12');"> mm
+                                                        </div>
+                                                    </li>
+                                                    <li class="li">
+                                                        <div>
+                                                            <span class="stitle">습도</span>
+                                                            <input type="text"value="" name="reh" id="reh" class="alR" onkeyup="numberChk('reh');"> %
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                
+                                                <!-- <p><span>*강수량 및 습도는 전날 평균량 기준으로 조회됩니다.</span></p> -->
+                                                
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">사진첨부</th>
+                                    <td colspan="3">
+                                        <div class="mb-3">
+                                            <label for="formFileMultiple" class="form-label">총 10장만 등록 가능합니다</label>
+                                            <input class="form-control" type="file" id="formFileMultiple" multiple>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">영농일지 공개 여부</th>
+                                    <td colspan="3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">공개</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">비공개</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Send message</button>
+                    </div>
+                    </div>
                 </div>
-            </form>
+            </div>        
+        </div>
         </div>
 		</div>
 		
 	</div>  <!-- 틀 끝 -->
 
 	<!-- JavaScript Bundle with Popper -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
 </body>
 </html>
