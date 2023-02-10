@@ -12,7 +12,12 @@
   <link rel="stylesheet" href="${cpath}/resources/css/index.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
+  <script type="text/javascript">
+	//회원탈퇴
+	function memberDeleteView(){
+		location.href = "${cpath}/memberDeleteView.do"
+	}
+  </script>
 </head>
 <body>
 	<div class="container">
@@ -75,10 +80,12 @@
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<button type="submit" class="btn btn-info btn-sm">수정</button>
-							<button type="reset" class="btn btn-warning btn-sm">취소</button>
+							<button type="reset" class="btn btn-warning btn-sm">되돌리기</button>
+							<a class="btn btn-default" href="javascript:history.go(-1)">뒤로가기</a>
 						</div>
 					</div>
 				</form>
+				<button class="btn btn-danger btn-sm" onclick="memberDeleteView()">회원탈퇴</button>
 			</div>
 		</div>
 	</div>		

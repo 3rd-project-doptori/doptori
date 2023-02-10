@@ -23,14 +23,15 @@
  	function goReply() {
 		location.href="${cpath}/boardReplyForm.do";
 	}
+ 	
+ 	
  </script>
 <div class="container">
   <h2>게시판 상세보기</h2>
   <div class="panel panel-default">
     <div class="panel-heading">게시판</div>
     <div class="panel-body">
-		<table class="table table-bordered table-hover">
-			 <tr> 
+		<table class="table table-bordered table-hover"> <tr> 
 			 	<td>제목</td>
 			 	<td>${vo.bd_title}</td>
 			 </tr>	
@@ -52,19 +53,30 @@
 			 	<td>${fn:split(vo.bd_date, " ")[1]}</td>
 			 </tr>
 			 <tr>
+			 	<td>조회수</td>
+			 	<td>${vo.bd_cnt}</td>
+			 </tr>
+			 <tr>
+			 	<td>첨부파일</td>
+			 	<c:if test="${vo.bd_pic ne null}">
+					<td align="left"><a href="${cpath}/fileDownload.do?bd_pic=${vo.bd_pic}">${vo.bd_pic}</a></td>
+			 	</c:if>
+			 </tr>
+			 <tr>
 			 	<td colspan="2">
 			 		<button class="btn btn-sm btn-success" onclick="goUpdate()">수정</button>
 			 		<a class="btn btn-sm btn-warning" href="<c:url value='/boardDelete.do/${vo.bd_num}' />">삭제</a>
 			 		<a class="btn btn-sm btn-info" href="<c:url value='/boardList.do' />">목록으로 돌아가기</a>
-			 		<c:if test="${loginMember.mb_id=='admin'}">
-			 		<button class="btn btn-sm btn-danger" onclick="goReply()" }>답글달기</button>			        
+			 		<c:if test="${loginMember.mb_id=='admin'}">	
+			 		<button class="btn btn-sm btn-danger" onclick="goReply()">답글달기></button>	        
 			 	    </c:if>
 			 	</td>
 			 </tr>
 		</table>
 		
-		<form action="commentInsert.do" method="post">
-			<input type="hidden" name="bd_num" value="${vo.bd_num}">
+		<!-- 댓글 작성 -->
+		<form action="${cpath}/commentInsert.do" method="post">
+			<input type="hidden" name="bd_num" value="${comment.co_num}">
 	    	<table style="margin-left: 30px; margin-bottom: 30px;">
 	    		<tr>
 	    			<td width="200px">
@@ -72,7 +84,7 @@
 	    				<input class="form-control" type="hidden" name="co_mb_num" readonly="readonly">
 	    			</td>
 	    			<td width="700px">
-	    				<input class="form-control" type="text" name="co_cont" placeholder="내용을 입력하세용~">
+	    				<input class="form-control" type="text" name="co_cont" placeholder="내용을 입력하세용~" required>
 	    			</td>
 	    			<td>
 	    				<input class="btn btn-warning btn-sm" type="submit" value="작성">
@@ -84,18 +96,15 @@
 	</div>
 		<!-- 댓글 뿌리기 -->
 		<c:forEach var="comment"  items="${list}">
-			<table style="margin-left: 30px; margin-bottom: 30px;">
+			<table style="margin-left: 30px; margin-bottom: 30px;"  class="table table-bordered table-hover">
 				<tr>
 					<td width="200px">${comment.co_mb_num}</td>
-					<td width="700px"><span style="margin-left:10px;">${comment.co_cont}}</span></td>
-					<td><span style="margin-left:20px"><button type="button" class="btn btn-info btn-sm">삭제</button></span></td>
-				   	<td>
-					   	<span style="margin-left:20px">
-						<a href="commentDelete.do?co_num=${comment.co_num}&bd_num=${vo.bd_num}">
+					<td width="700px"><span style="margin-left:10px;">${comment.co_cont}</span></td>
+					<td><span style="margin-left:20px">
+						<a href="commentDelete.do?co_num=${comment.co_num}&bd_num=${comment.bd_num}">
 						<button type="button" class="btn btn-info btn-sm">삭제</button>
 						</a>
-						</span>
-					</td>
+					</span></td>
 				 </tr>
 			</table>
 		</c:forEach>

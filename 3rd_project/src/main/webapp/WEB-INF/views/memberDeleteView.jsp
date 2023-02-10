@@ -22,7 +22,6 @@
 				location.href = "${cpath}/Main.do";
 						    
 			})
-		
 			
 			$("#submit").on("click", function(){
 				if($("#mb_pw").val()==""){

@@ -1,9 +1,11 @@
 package com.doptori.mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.stereotype.Repository;
 
 import com.doptori.entity.Board;
 import com.doptori.entity.Comment;
@@ -29,6 +31,8 @@ public interface BoardMapper {
 	public void boardDelete(int bd_num);
 	// 게시글 조회수
 	public void boardCount(int bd_num);
+	// 게시글 업데이트
+	public void boardContentUpdate(Board vo);
 	
 	@Update("update board set bd_cnt=bd_cnt+1 where bd_num=#{bd_num}")
 	public void updateCount(int bd_num);
@@ -40,13 +44,16 @@ public interface BoardMapper {
 	public void replySeqUpdate(Board parent);
 	// 답글 등록
 	public void replyInsert(Board vo);
-	
 	// 댓글 등록
 	public void commentInsert(Comment vo);	
 	// 댓글 목록보기
 	public List<Comment> commentSelect(int bd_num);
-	// 댓슬 삭제
+	// 댓글 삭제
 	public void commentDelete(int co_num);
+	
+	// 페이징
+	public ArrayList<Board> list2(String sel, String sword, int start, int pcnt);
+	public int getChong(int pcnt, String sel, String sword); // (전체) 총합은 숫자 ->int
 	
 	
 
