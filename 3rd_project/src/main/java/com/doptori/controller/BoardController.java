@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.doptori.entity.Board;
 import com.doptori.entity.Comment;
@@ -146,14 +147,21 @@ public class BoardController {
 	 */
 	@RequestMapping("/boardContent.do/{bd_num}")
 	public String boardContent(@PathVariable("bd_num")int bd_num, Model model) {
+		
+		
 		Board vo = mapper.boardContent(bd_num);	
 		
 		// 조회수 업데이트
 		mapper.boardCount(bd_num);
-		
+
 		List<Comment> list = mapper.commentSelect(bd_num);
+		
 		model.addAttribute("vo", vo);
 		model.addAttribute("list", list);
+		
+		
+		
+		
 		return "boardContent";
 		
 	}
@@ -230,7 +238,7 @@ public class BoardController {
 	@RequestMapping("/commentInsert.do")
 	public String commentInsert(Comment vo) {
 		mapper.commentInsert(vo);
-		return "redirect:/boardContent.do?bd_num=" + vo.getCo_bd_num();
+		return "redirect:/boardContent.do?co_num=" + vo.getCo_bd_num();
 	}
 	// 댓글 삭제
 	@RequestMapping("/commentDelete.do")

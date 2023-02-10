@@ -12,7 +12,12 @@
   <link rel="stylesheet" href="${cpath}/resources/css/index.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
+  <script type="text/javascript">
+	//회원탈퇴
+	function memberDeleteView(){
+		location.href = "${cpath}/memberDeleteView.do"
+	}
+  </script>
 </head>
 <body>
 	<div class="container">
@@ -80,6 +85,7 @@
 						</div>
 					</div>
 				</form>
+				<button class="btn btn-danger btn-sm" onclick="memberDeleteView()">회원탈퇴</button>
 			</div>
 		</div>
 	</div>		

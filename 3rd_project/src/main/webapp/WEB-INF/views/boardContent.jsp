@@ -64,8 +64,9 @@
 			 </tr>
 		</table>
 		
-		<form action="commentInsert.do" method="post">
-			<input type="hidden" name="bd_num" value="${vo.bd_num}">
+		<!-- 댓글 작성 -->
+		<form action="${cpath}/commentInsert.do" method="post">
+			<input type="hidden" name="bd_num" value="${comment.co_num}">
 	    	<table style="margin-left: 30px; margin-bottom: 30px;">
 	    		<tr>
 	    			<td width="200px">
@@ -73,7 +74,7 @@
 	    				<input class="form-control" type="hidden" name="co_mb_num" readonly="readonly">
 	    			</td>
 	    			<td width="700px">
-	    				<input class="form-control" type="text" name="co_cont" placeholder="내용을 입력하세용~">
+	    				<input class="form-control" type="text" name="co_cont" placeholder="내용을 입력하세용~" required>
 	    			</td>
 	    			<td>
 	    				<input class="btn btn-warning btn-sm" type="submit" value="작성">
@@ -85,18 +86,15 @@
 	</div>
 		<!-- 댓글 뿌리기 -->
 		<c:forEach var="comment"  items="${list}">
-			<table style="margin-left: 30px; margin-bottom: 30px;">
+			<table style="margin-left: 30px; margin-bottom: 30px;"  class="table table-bordered table-hover">
 				<tr>
 					<td width="200px">${comment.co_mb_num}</td>
-					<td width="700px"><span style="margin-left:10px;">${comment.co_cont}}</span></td>
-					<td><span style="margin-left:20px"><button type="button" class="btn btn-info btn-sm">삭제</button></span></td>
-				   	<td>
-					   	<span style="margin-left:20px">
-						<a href="commentDelete.do?co_num=${comment.co_num}&bd_num=${vo.bd_num}">
+					<td width="700px"><span style="margin-left:10px;">${comment.co_cont}</span></td>
+					<td><span style="margin-left:20px">
+						<a href="commentDelete.do?co_num=${comment.co_num}&bd_num=${comment.bd_num}">
 						<button type="button" class="btn btn-info btn-sm">삭제</button>
 						</a>
-						</span>
-					</td>
+					</span></td>
 				 </tr>
 			</table>
 		</c:forEach>

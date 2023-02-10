@@ -57,7 +57,7 @@
       	delete from Member where mb_id=#{mb_id} and mb_pw=#{mb_pw}
  	</delete>
 	<!-- 패스워드 체크 -->
-	<select id="passChk" resultType="com.doptori.entity.Member" parameterType="com.doptori.entity.Member">
+	<select id="passChk" resultType="int">
 		select count(*) from Member where mb_id=#{mb_id} and mb_pw=#{mb_pw}
 	</select>
     

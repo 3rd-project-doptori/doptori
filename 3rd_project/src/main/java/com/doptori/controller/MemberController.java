@@ -74,7 +74,7 @@ public class MemberController {
 	
 	
 	
-	// 회원 탈퇴 해버리기 페이지
+	// 회원 탈퇴 페이지 이동
 	@RequestMapping("/memberDeleteView")
 	public String memberDeleteView() {
 		return "memberDeleteView";
@@ -88,7 +88,8 @@ public class MemberController {
 	}
 	// 회원 탈퇴 해버리기 (Delete 이벤트)
 	@RequestMapping("/userDelete.do")
-	public String userDelete(Member mvo, RedirectAttributes rttr, HttpSession session ) {
+	public String userDelete(Member mvo, RedirectAttributes rttr, HttpSession session) {
+		
 		// 세션에 있는 member를 가져와 member변수에 넣어줌
 		Member member = (Member) session.getAttribute("member");
 		// 세션에있는 비밀번호

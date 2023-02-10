@@ -4,7 +4,7 @@ public class Comment {
 
 	private	int co_num;
 	private int co_bd_num;
-	private	String co_mb_num;
+	private	int co_mb_num;
 	private	String co_cont;
 	private	String co_date;
 	
@@ -21,10 +21,10 @@ public class Comment {
 	public void setCo_bd_num(int co_bd_num) {
 		this.co_bd_num = co_bd_num;
 	}
-	public String getCo_mb_num() {
+	public int getCo_mb_num() {
 		return co_mb_num;
 	}
-	public void setCo_mb_num(String co_mb_num) {
+	public void setCo_mb_num(int co_mb_num) {
 		this.co_mb_num = co_mb_num;
 	}
 	public String getCo_date() {
