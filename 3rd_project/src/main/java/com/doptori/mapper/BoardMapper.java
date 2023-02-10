@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.stereotype.Repository;
 
 import com.doptori.entity.Board;
 import com.doptori.entity.Comment;
@@ -22,7 +23,7 @@ public interface BoardMapper {
 
 	// 게시글 상세보기
 	//public Board boardContent(int the_bd_num);
-	public Board boardContent(int the_bd_num);
+	public Board boardContent(int bd_num);
 	
 	// 게시글 수정
 	public void boardUpdate(Board vo);
