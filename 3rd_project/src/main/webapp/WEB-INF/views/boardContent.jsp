@@ -76,7 +76,7 @@
 		
 		<!-- 댓글 작성 -->
 		<form action="${cpath}/commentInsert.do" method="post">
-			<input type="hidden" name="bd_num" value="${comment.co_num}">
+			<input type="hidden" name="co_bd_num" value="${cvo.co_num}">
 	    	<table style="margin-left: 30px; margin-bottom: 30px;">
 	    		<tr>
 	    			<td width="200px">
@@ -94,14 +94,15 @@
 	    </form>
 	    
 	</div>
+	
 		<!-- 댓글 뿌리기 -->
-		<c:forEach var="comment"  items="${list}">
+		<c:forEach var="cvo" items="${list}">
 			<table style="margin-left: 30px; margin-bottom: 30px;"  class="table table-bordered table-hover">
 				<tr>
-					<td width="200px">${comment.co_mb_num}</td>
-					<td width="700px"><span style="margin-left:10px;">${comment.co_cont}</span></td>
+					<td width="200px">${cvo.co_mb_num}</td>
+					<td width="700px"><span style="margin-left:10px;">${cvo.co_cont}</span></td>
 					<td><span style="margin-left:20px">
-						<a href="commentDelete.do?co_num=${comment.co_num}&bd_num=${comment.bd_num}">
+						<a href="commentDelete.do?co_num=${cvo.co_num}&co_bd_num=${cvo.co_bd_num}">
 						<button type="button" class="btn btn-info btn-sm">삭제</button>
 						</a>
 					</span></td>

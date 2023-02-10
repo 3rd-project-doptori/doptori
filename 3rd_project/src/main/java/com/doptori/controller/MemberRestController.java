@@ -52,14 +52,15 @@ public class MemberRestController {
 		return result;
 	}
 	
+	/// 관리자 - 회원목록
 	@RequestMapping("/MemberList.do")
 	public List<Member> MemberList(){
 		List<Member> list = mapper.MemberList();
 		return list;
 	}
-	
+	// 관리자 - 회원 삭제
 	@RequestMapping("/MemberDelete.do")
-	public List<Member> MemberDelete(String	mb_num) {
+	public List<Member> MemberDelete(int mb_num) {
 		mapper.MemberDelete(mb_num);
 		List<Member> list = mapper.MemberList();
 		return list;

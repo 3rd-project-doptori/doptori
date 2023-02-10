@@ -250,9 +250,9 @@ public class BoardController {
 	
 	// 댓글 입력
 	@RequestMapping("/commentInsert.do")
-	public String commentInsert(Comment vo) {
-		mapper.commentInsert(vo);
-		return "redirect:/boardContent.do?co_num=" + vo.getCo_bd_num();
+	public String commentInsert(Comment cvo) {
+		mapper.commentInsert(cvo);
+		return "redirect:/boardContent.do?co_num=" + cvo.getCo_bd_num();
 	}
 	// 댓글 삭제
 	@RequestMapping("/commentDelete.do")

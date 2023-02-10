@@ -204,12 +204,14 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript">
+  
   function removeMember(index){
-		var id = $('.id'+index).text();
+	 // alert('클릭 감지');
+		var mb_num = $('.id'+index).text();
 		$.ajax({
-			url : 'MemberDelete.do',
+			url : '${cpath}/MemberDelete.do',
 			type : 'POST',
-			data : {'id' : id},
+			data : {'mb_num' : mb_num},
 			dataType : 'JSON',
 			success : resultJSON,
 			error : function(){
@@ -219,9 +221,10 @@
 	}
 	
 	$(function(){
-		$('#MemberList').click(function(){
+		$('#MemberList').click(
+		function(){
 			$.ajax({
-				url : 'MemberList.do',
+				url : '${cpath}/MemberList.do',
 				type : 'GET',
 				dataType : 'JSON',
 				success : resultJSON,
@@ -230,7 +233,6 @@
 				}
 			});
 		});
-		
 		
 		function resultJSON(data){
 			var html = '<table class="table table-hover table-bordered" align="center">';
