@@ -85,6 +85,7 @@
 	         <option value="30"> 30개 </option>
 	         <option value="50"> 50개 </option>
 	       </select>
+	       
 	       </font>
 	     </div>
 	       </h3></caption>

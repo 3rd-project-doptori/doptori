@@ -53,12 +53,16 @@
 			 	<td>${fn:split(vo.bd_date, " ")[1]}</td>
 			 </tr>
 			 <tr>
+			 	<td>조회수</td>
+			 	<td>${vo.bd_cnt}</td>
+			 </tr>
+			 <tr>
 			 	<td colspan="2">
 			 		<button class="btn btn-sm btn-success" onclick="goUpdate()">수정</button>
 			 		<a class="btn btn-sm btn-warning" href="<c:url value='/boardDelete.do/${vo.bd_num}' />">삭제</a>
 			 		<a class="btn btn-sm btn-info" href="<c:url value='/boardList.do' />">목록으로 돌아가기</a>
-			 		<c:if test="${loginMember.mb_id=='admin'}">
-			 		<button class="btn btn-sm btn-danger" onclick="goReply()" }>답글달기</button>			        
+			 		<c:if test="${loginMember.mb_id=='admin'}">	
+			 		<button class="btn btn-sm btn-danger" onclick="goReply()">답글달기></button>	        
 			 	    </c:if>
 			 	</td>
 			 </tr>

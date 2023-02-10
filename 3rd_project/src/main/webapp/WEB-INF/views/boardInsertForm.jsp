@@ -57,6 +57,7 @@
 		    <label class="control-label col-sm-2" for="bd_cont">내용</label>
 		    <div class="col-sm-10">
 		      <textarea class="form-control" rows="10" name="bd_cont" id="bd_cont" placeholder="내용을 입력하세요." required></textarea>
+
 		    </div>
 		  </div>
 		  <div class="form-group">
