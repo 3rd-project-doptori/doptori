@@ -10,16 +10,16 @@ import lombok.ToString;
 
 @Data
 @ToString
-public class DateData {
+public class DateData2 {
 	
-	int mb_num;
+	int fd_mb_num;
 	String year = "";
 	String month = "";
 	String date = "";
 	String value = "";
 	String db_startDate = "";
 	String db_endDate = "";	
-	ScheduleDto[] schedule_data_arr = new ScheduleDto[4];
+	farmdiary[] schedule_data_arr = new farmdiary[4];
 
 	public String getYear() {
 		return year;
@@ -66,24 +66,23 @@ public class DateData {
 	public void setDb_endDate(String db_endDate) {
 		this.db_endDate = db_endDate;
 	}
-
 	
-	public ScheduleDto[] getSchedule_data_arr() {
+	
+	public farmdiary[] getSchedule_data_arr() {
 		return schedule_data_arr;
 	}
-	public void setSchedule_data_arr(ScheduleDto[] schedule_data_arr) {
+	public void setSchedule_data_arr(farmdiary[] schedule_data_arr) {
 		this.schedule_data_arr = schedule_data_arr;
 	}
 	
-	
-	public int getMb_num() {
-		return mb_num;
+	public int getFd_mb_num() {
+		return fd_mb_num;
 	}
-	public void setMb_num(int mb_num) {
-		this.mb_num = mb_num;
+	public void setFd_mb_num(int fd_mb_num) {
+		this.fd_mb_num = fd_mb_num;
 	}
 	// 날짜에 관련된 달력정보를 가지는 메소드
-	public Map<String, Integer> today_info(DateData dateData) {
+	public Map<String, Integer> today_info(DateData2 dateData) {
 		// 날짜 캘린더 함수에 삽입.
 		Map<String, Integer> today_Data = new HashMap<String, Integer>();
 		Calendar cal = Calendar.getInstance();
@@ -161,7 +160,7 @@ public class DateData {
 	
 	// 스케줄 사용시 사용될 생성자
 	
-	public DateData(String year, String month, String date, String value, ScheduleDto[] schedule_data_arr) {
+	public DateData2(String year, String month, String date, String value, farmdiary[] schedule_data_arr) {
 		if ((month != null && month != "") && (date != null && date != "")) {
 			this.year = year;
 			this.month = month;
@@ -172,7 +171,7 @@ public class DateData {
 
 	}
 
-	public DateData() {
+	public DateData2() {
 	}
 
 	@Override

@@ -11,23 +11,20 @@
 <head>
 <title>캘린더</title>
 <script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <!-- jquery datepicker -->
 <link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"
+	href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css"
 	type="text/css" />
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.min.js"></script>
 <!-- jquery datepicker 끝 -->
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="${cpath}/resources/css/main.css" rel="stylesheet"
-	type="text/css">
-<script src="${cpath}/resources/js/board.js"></script>
-<script type="text/javaScript" language="javascript"></script>
+<link href="${cpath}/resources/css/res_index.css" rel="stylesheet"
+	type="text/css"/>
 <script
 	src="https://www.lgkids.co.kr/es_all/plugins/jscolor-2.0.5/jscolor.js"></script>
     <!-- Required meta tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 <script>
 	var idx;
 	var num;
@@ -181,47 +178,47 @@
 				con[0].style.display = 'none';
 			}
 			
-			$(function() {
-				$("#testDatepicker")
-						.datepicker(
-								{
-
-									dateFormat : "yy-mm-dd",
-									changeMonth : true,
-									changeYear : true,
-									dayNames : [ '월요일', '화요일', '수요일', '목요일',
-											'금요일', '토요일', '일요일' ],
-									dayNamesMin : [ '월', '화', '수', '목', '금',
-											'토', '일' ],
-									monthNamesShort : [ '1', '2', '3', '4',
-											'5', '6', '7', '8', '9', '10',
-											'11', '12' ]
-								});
-			});
-			function scheduleAdd() {
-				var schedule_add_form = document.schedule_add;
-				if (schedule_add_form.schedule_date.value == ""
-						|| schedule_add_form.schedule_date.value == null) {
-					alert("날짜를 입력해주세요.");
-					schedule_add_form.schedule_date.focus();
-					return false;
-				} else if (schedule_add_form.schedule_subject.value == ""
-						|| schedule_add_form.schedule_subject.value == null) {
-					alert("제목을 입력해주세요.");
-					schedule_add_form.schedule_date.focus();
-					return false;
-				}
-				schedule_add_form.submit();
-			}
 		</script>
-		    <script src="${cpath}/resources/assets/js/jquery-min.js"></script>
     <script src="${cpath}/resources/assets/js/popper.min.js"></script>
     <script src="${cpath}/resources/assets/js/bootstrap.min.js"></script>
     <script src="${cpath}/resources/assets/js/jquery.countdown.min.js"></script>
     <script src="${cpath}/resources/assets/js/jquery.counterup.min.js"></script>
 		<div id="mask_board_move"></div>
 		<div class = "normal_move_board_modal" id="addModal" style="display:none;">
-		
+		<script>
+			$(function() {
+			$("#testDatepicker")
+					.datepicker(
+							{
+
+								dateFormat : "yy-mm-dd",
+								changeMonth : true,
+								changeYear : true,
+								dayNames : [ '월요일', '화요일', '수요일', '목요일',
+										'금요일', '토요일', '일요일' ],
+								dayNamesMin : [ '월', '화', '수', '목', '금',
+										'토', '일' ],
+								monthNamesShort : [ '1', '2', '3', '4',
+										'5', '6', '7', '8', '9', '10',
+										'11', '12' ]
+							});
+		});
+		function scheduleAdd() {
+			var schedule_add_form = document.schedule_add;
+			if (schedule_add_form.schedule_date.value == ""
+					|| schedule_add_form.schedule_date.value == null) {
+				alert("날짜를 입력해주세요.");
+				schedule_add_form.schedule_date.focus();
+				return false;
+			} else if (schedule_add_form.schedule_subject.value == ""
+					|| schedule_add_form.schedule_subject.value == null) {
+				alert("제목을 입력해주세요.");
+				schedule_add_form.schedule_date.focus();
+				return false;
+			}
+			schedule_add_form.submit();
+		}
+		</script>
 		<div class="top" style="">
 			<div class="close" onclick="closeModal()">x</div>
 			<div class="subject">Add Schedule</div>
