@@ -19,10 +19,16 @@
 <body>
 
   <script type="text/javascript">
+  $(document).ready(function(){
+		// boardList라고 하는 함수 실행!
+		// 자바스크립트의 호이스팅
+		boardList();
+	});
+  
+  
 	  	function goForm() {
 	  		location.href="${cpath}/boardInsertForm.do"
 	  	}
-	  	
 	  	
 	  	
 	 	function move(my)
@@ -56,7 +62,8 @@
 	 	    	  return true;
 	 		  
 	    }
-
+	    
+	    
   </script>
 <div class="container">
   <h2>게시판 목록보기</h2>

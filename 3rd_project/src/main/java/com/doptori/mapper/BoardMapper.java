@@ -22,7 +22,7 @@ public interface BoardMapper {
 
 	// 게시글 상세보기
 	//public Board boardContent(int the_bd_num);
-	public Board boardContent(int bd_num);
+	public Board boardContent(int the_bd_num);
 	
 	// 게시글 수정
 	public void boardUpdate(Board vo);
@@ -30,6 +30,8 @@ public interface BoardMapper {
 	public void boardDelete(int bd_num);
 	// 게시글 조회수
 	public void boardCount(int bd_num);
+	// 게시글 업데이트
+	public void boardContentUpdate(Board vo);
 	
 	@Update("update board set bd_cnt=bd_cnt+1 where bd_num=#{bd_num}")
 	public void updateCount(int bd_num);
@@ -41,12 +43,11 @@ public interface BoardMapper {
 	public void replySeqUpdate(Board parent);
 	// 답글 등록
 	public void replyInsert(Board vo);
-	
 	// 댓글 등록
 	public void commentInsert(Comment vo);	
 	// 댓글 목록보기
 	public List<Comment> commentSelect(int bd_num);
-	// 댓슬 삭제
+	// 댓글 삭제
 	public void commentDelete(int co_num);
 	
 	// 페이징
