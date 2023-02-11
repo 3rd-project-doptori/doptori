@@ -15,8 +15,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
  <link rel="stylesheet" href="${cpath}/resources/css/index.css"> 
 
-</head>
-<body>
+
 
   <script type="text/javascript">
   $(document).ready(function(){
@@ -65,6 +64,8 @@
 	    
 	    
   </script>
+</head>
+<body>
 <div class="container">
   <h2>게시판 목록보기</h2>
   <div class="panel panel-default">
@@ -74,19 +75,19 @@
 	    	<caption> <h3 align="right"> <font size="2">
 	    	<div id="left" style="float:left;"> <!-- select 검색 창  -->
 		        <form method="post" action="${cpath}/boardList.do" onsubmit="return check(this)">
-		         <select name="sel" id="sel">
-		           <option value="0"> 선 택 </option>
-		           <option value="bd_title"> 제 목 </option>
-		           <option value="bd_cont"> 내 용 </option>
-		           <option value="bd_mb_num"> 작성자 </option>
+		         <select name="searchType" id="searchType">
+		           <option value="0">선 택</option>
+		           <option value="bd_title">제 목</option>
+		           <option value="bd_cont">내 용</option>
+		           <option value="bd_mb_num">작성자</option>
 		         </select>
-		         <input type="text" name="sword" size="10" value="${sword}">
+		         <input type="text" id="searchText" placeholder="검색어를 입력하세요." autocomplete="off" name="sword" size="20" value="${sword}">
 		         <input type="submit" value="검색">
 		        </form>
 		        
 		       </div>
 		<div id="right" style="float:right;"><font size="2">	       
-         <select onchange="move(this)" id="pcnt">
+         <select onchange="move(this)" id="pcnt" class="btn btn-default">
 	         <option value="10"> 10개 </option>
 	         <option value="20"> 20개 </option>
 	         <option value="30"> 30개 </option>
@@ -98,11 +99,11 @@
 	       </h3></caption>
 	    	<thead>
 		    	 <tr>
-		    	 	<td>번호</td>
-		    	 	<td>제목</td>
-		    	 	<td>작성자</td>
-		    	 	<td>작성일</td>
-		    	 	<td>조회수</td>
+		    	 	<th>번호</th>
+		    	 	<th>제목</th>
+		    	 	<th>작성자</th>
+		    	 	<th>작성일</th>
+		    	 	<th>조회수</th>
 		    	 </tr>
 	    	</thead>
 	    	<tbody>
@@ -179,7 +180,7 @@
 			     
 			     
 	    		<tr>
-	    			<td colspan="5"><button class="btn btn-sm btn-success" onclick="goForm()">글쓰기</button></td>
+	    			<td colspan="5"><button class="btn btn-sm btn-success pull-right" onclick="goForm()">글쓰기</button></td>
 	    		</tr>
 	    	</tbody>
     	</table>
