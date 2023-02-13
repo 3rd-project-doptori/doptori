@@ -16,7 +16,13 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="${cpath}/resources/css/res_index.css">
-
+    <link rel="stylesheet" href="${cpath}/resources/css/lineicons.css">
+    <link rel="stylesheet" href="${cpath}/resources/css/header.css">
+    <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.eot">
+    <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.svg">
+    <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.ttf">
+    <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.woff">
+    <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.woff2">
 
         <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -26,7 +32,17 @@
     <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#712cf9">
-
+    <style>
+    	@font-face {
+		  font-family: 'lineicons';
+		  src: url("${cpath}/resources/header/LineIcons.eot");
+		  src: url('${cpath}/resources/header/LineIcons.eot') format('embedded-opentype'),
+		       url('${cpath}/resources/header/LineIcons.woff2') format('woff2'),
+		       url('${cpath}/resources/header/LineIcons.woff') format('woff'),
+		       url('${cpath}/resources/header/LineIcons.ttf') format('truetype'),
+		       url('${cpath}/resources/header/LineIcons.svg') format('svg');
+		}
+    </style>
   </head>
   <body>
     <script type="text/javascript">
@@ -78,7 +94,7 @@
                     <a class="nav-link" href="#">직거래</a>
                   </li>
                   <li class="nav-item">
-                    <button class="nav-link" onclick="boardList()">게시판</button>
+                    <a class="nav-link" href="#" onclick="boardList()">Q&A</a>
                   </li>
                   
                 </ul>
@@ -89,34 +105,30 @@
 						</c:when>
 						
 						<c:otherwise>
-							<div class="form-group">
-							
-								<c:choose>
-								
-									<c:when test="${empty loginMember.mb_pic}">
-										<style>
-										img{
-					            		border-radius: 100%;
-					        			}
-										</style>
-										<a href="${cpath}/Mypage.do"><span><img src="resources/images/default3.png"></span></a>
-									</c:when>
-									
-									<c:otherwise>
-										<a href="${cpath}/Mypage.do"><span>${loginMember.mb_pic}</span></a>
-									</c:otherwise>
-									
-								</c:choose>
-								
-									<span>${loginMember.mb_nick}님 환영합니다 </span>
-									<a class="btn btn-sm btn-default" href="${cpath}/Logout.do">LogOut</a>
-									<button class="btn btn-sm btn-default" onclick="updateMember()">회원정보수정</button>
-								<c:if test="${loginMember.mb_id=='admin'}">
-									<button id="MemberList" class="btn btn-sm btn-default" >회원목록</button>
-									
-								</c:if>
-								
-							</div>
+							 <div class="nav-item dropdown">
+			                  <button class="dropdown-toggle bg-transparent border-0 bu" type="button" id="profile" data-bs-toggle="dropdown" aria-expanded="false">
+			                      <div class="info">
+			                        <div class="image">
+			                          <img src="fruits.png" alt=""/>
+			                        </div>
+			                      </div>
+			                  </button>
+			                  
+			                  <ul class="dropdown-menu dm2" aria-labelledby="static">
+			                    <li class="dropdown-item">
+			                      <a href="#0"><i class="lni lni-user"></i> View Profile</a>
+			                    </li>
+			                    <li class="dropdown-item">
+			                      <a href="#0"><i class="lni lni-alarm"></i> Notifications</a>
+			                    </li>
+			                    <li class="dropdown-item"><a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
+			                    </li>
+			                    <li class="dropdown-item"><a href="#0"> <i class="lni lni-cog"></i> Settings </a>
+			                    </li>
+			                    <li class="dropdown-item"><a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> LOGOUT </a>
+			                    </li>
+			                  </ul>
+			                </div>
 						</c:otherwise>
 						
 			         </c:choose>
