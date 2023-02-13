@@ -21,7 +21,7 @@ public class farmdiary {
 	private String fd_fertilizer;
 	private double fd_fertilizer_amount;
 	private String fd_man_name;
-	private String fd_worktime;
+	private double fd_worktime;
 	private String fd_weather;
 	private double fd_low_temp;
 	private double fd_high_temp;
@@ -117,10 +117,10 @@ public class farmdiary {
 	public void setFd_man_name(String fd_man_name) {
 		this.fd_man_name = fd_man_name;
 	}
-	public String getFd_worktime() {
+	public double getFd_worktime() {
 		return fd_worktime;
 	}
-	public void setFd_worktime(String fd_worktime) {
+	public void setFd_worktime(double fd_worktime) {
 		this.fd_worktime = fd_worktime;
 	}
 	public String getFd_weather() {
