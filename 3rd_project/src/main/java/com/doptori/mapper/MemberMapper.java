@@ -33,7 +33,7 @@ public interface MemberMapper {
 	//관리자 - 회원 목록
 	public List<Member> MemberList();
 	//관리자 - 회원삭제
-	public void MemberDelete(String mb_num);
+	public void MemberDelete(int mb_num);
 
 	
 }

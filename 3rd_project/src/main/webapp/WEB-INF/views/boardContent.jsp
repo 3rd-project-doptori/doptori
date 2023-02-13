@@ -76,14 +76,15 @@
 		
 		<!-- 댓글 작성 -->
 		<form action="${cpath}/commentInsert.do" method="post">
-			<input type="hidden" name="bd_num" value="${comment.co_num}">
+			<input type="hidden" id="bd_num" name="bd_num" value="${vo.bd_num}">
+			<input type="hidden" name="co_mb_num" value="${vo.bd_mb_num}">
 	    	<table style="margin-left: 30px; margin-bottom: 30px;">
 	    		<tr>
 	    			<td width="200px">
-	    				<span size="2">작석장는 나야 나</span>
-	    				<input class="form-control" type="hidden" name="co_mb_num" readonly="readonly">
+	    				<span size="2">베프</span>
+	    				<!-- <input class="form-control" type="hidden" name="co_mb_num" readonly="readonly"> -->
 	    			</td>
-	    			<td width="700px">
+	    			<td width="800px">
 	    				<input class="form-control" type="text" name="co_cont" placeholder="내용을 입력하세용~" required>
 	    			</td>
 	    			<td>
@@ -94,17 +95,28 @@
 	    </form>
 	    
 	</div>
-		<!-- 댓글 뿌리기 -->
-		<c:forEach var="comment"  items="${list}">
+	
+		<!-- 댓글 뿌리기(CommentList) -->
+		<c:forEach var="cvo" items="${list}">
 			<table style="margin-left: 30px; margin-bottom: 30px;"  class="table table-bordered table-hover">
 				<tr>
-					<td width="200px">${comment.co_mb_num}</td>
-					<td width="700px"><span style="margin-left:10px;">${comment.co_cont}</span></td>
-					<td><span style="margin-left:20px">
-						<a href="commentDelete.do?co_num=${comment.co_num}&bd_num=${comment.bd_num}">
-						<button type="button" class="btn btn-info btn-sm">삭제</button>
-						</a>
-					</span></td>
+					<td width="10%">${cvo.co_mb_num}</td>
+					<td width="60%"><span style="margin-left:10px;">${cvo.co_cont}</span></td>
+					<td width="30%"><span style="margin-left:5px;">${cvo.co_date}</span></td>
+					<td>
+						<form action="${cpath}/commentDelete.do" method="post">
+						<c:if test="${vo.bd_mb_num == cvo.co_mb_num}">
+							<button type="button" class="btn btn-info btn-sm">삭제</button>
+							<input  type="hidden" id="bd_num" name="bd_num" value="${vo.bd_num }">
+							<input  type="hidden" id="co_num" name="co_num" value="${cvo.co_num }">
+						</c:if>
+						</form>
+						<!-- <span style="margin-left:20px">
+							<a href="commentDelete.do?co_num=${cvo.co_num}&co_bd_num=${cvo.co_bd_num}">
+							<button type="button" class="btn btn-info btn-sm">삭제</button>
+							</a>
+						</span> -->
+					</td>
 				 </tr>
 			</table>
 		</c:forEach>
