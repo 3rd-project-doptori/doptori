@@ -114,18 +114,24 @@
 			                      </div>
 			                  </button>
 			                  
+			                  <c:if test="${loginMember.mb_id=='admin'}">
+			                    <button id="MemberList" class="btn btn-outline-secondary" >회원목록</button>
+			                   </c:if>
+			                    
 			                  <ul class="dropdown-menu dm2" aria-labelledby="static">
 			                    <li class="dropdown-item">
 			                      <a href="#0"><i class="lni lni-user"></i> View Profile</a>
 			                    </li>
 			                    <li class="dropdown-item">
-			                      <a href="#0"><i class="lni lni-alarm"></i> Notifications</a>
+			                      <a href="${cpath }/notice.do"><i class="lni lni-alarm"></i> Notifications</a>
 			                    </li>
 			                    <li class="dropdown-item"><a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
 			                    </li>
 			                    <li class="dropdown-item"><a href="#0"> <i class="lni lni-cog"></i> Settings </a>
 			                    </li>
 			                    <li class="dropdown-item"><a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> LOGOUT </a>
+			                    </li>
+			                    <li class="dropdown-item"><a href="${cpath}/updateMember.do"> <i class="lni lni-exit"></i> 회원정보수정 </a>
 			                    </li>
 			                  </ul>
 			                </div>

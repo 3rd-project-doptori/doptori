@@ -174,7 +174,7 @@
       </button>
     </div>
     <div class="content">
-     <%--  <div class="content__inner current" id="tab-1">
+      <div class="content__inner current" id="tab-1">
         <div class="table-responsive">
           <table class="table">
           
@@ -231,7 +231,7 @@
 						</td>
 						<td>${memberNames[status.index]}</td>     			
 						<td>${vo.bd_date}</td>  			
-						<td>${vo.bd_cnt}</td>     			
+						<%-- <td>${vo.bd_cnt}</td>  --%>    			
 	    			</tr>
 	    		</c:if>
 	    		</c:forEach>
@@ -286,17 +286,18 @@
 			       </td>
 			     </tr>
 			     
-			     
+			    <c:if test="${loginMember.mb_id=='admin'}">
 	    		<tr>
 	    			<td colspan="5"><button onclick="goForm()">글쓰기</button></td>
-	    		</tr>
+	    		</tr>]
+	    		</c:if>
 	    	</tfoot>
     	</table>
         </div>
-      </div> --%>
+      </div>
 
 
-      <div class="content__inner" id="tab-2">
+     <%--  <div class="content__inner" id="tab-2">
         <div class="table-responsive">
           <table class="table">
 	    	<caption> <h3 align="right"> <font size="2">
@@ -352,7 +353,7 @@
 						</td>
 						<td>${memberNames[status.index]}</td>     			
 						<td>${vo.bd_date}</td>  			
-						<%-- <td>${vo.bd_cnt}</td>    --%>  			
+						<td>${vo.bd_cnt}</td>     			
 	    			</tr>
 	    			</c:if>
 	    		</c:forEach>
@@ -413,7 +414,7 @@
 	    	</tfoot>
     	</table>
         </div>
-      </div>
+      </div> --%>
       
     </div>
   </div>

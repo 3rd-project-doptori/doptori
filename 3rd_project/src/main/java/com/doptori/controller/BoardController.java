@@ -120,6 +120,92 @@ public class BoardController {
 		return "notice_QnA_List";
 	}
 
+	@RequestMapping("/notice.do")
+	public String notice(Model model, HttpServletRequest request) {
+
+		HttpSession session = request.getSession();
+		Member loginMember = (Member) session.getAttribute("loginMember");
+
+		List<Board> list = mapper.boardList(loginMember.getMb_num());
+
+		List<String> memberNames = new ArrayList<>();
+		for (Board board : list) {
+			memberNames.add(mapper.memberNum2Name(board.getBd_mb_num()));
+		}
+		model.addAttribute("list", list);
+		model.addAttribute("memberNames", memberNames);
+
+		
+		// 게시판 목록 페이징 처리
+		int page,start;
+		
+		// 한 페이지의 레코드 갯수를 구하여 변수에 저장
+		int pcnt;
+		if(request.getParameter("pcnt") == null)
+		    pcnt = 10;
+		else
+			pcnt = Integer.parseInt(request.getParameter("pcnt"));
+		
+		// 원하는 페이지의 시작 인덱스값을 구하기
+		if(request.getParameter("page") == null) 
+			page = 1;
+		else 
+			page = Integer.parseInt(request.getParameter("page"));
+		
+		start = (page-1)*pcnt;
+		
+		
+		// 사용자가 페이지를 이동하기 위해 출력하는 범위
+		// pstart, pend
+		int pstart,pend;
+		
+		pstart=page/10; 
+		if(page%10 == 0)
+			pstart--;
+		
+		pstart = pstart*10+1;
+		pend = pstart+9;
+		
+		// list를 가져올때 검색필드(sel)와 검색단어(sword)를 같이 전달한다.
+		String sel;
+		if(request.getParameter("sel")==null)
+			sel="bd_title";
+		else
+			sel=request.getParameter("sel");
+						
+		String sword;
+		if(request.getParameter("sword")==null)
+			sword="";
+		else
+			sword=request.getParameter("sword");
+
+		
+		// (전체)총 페이지를 구한 후 view에 전달
+		int chong = mapper.getChong(pcnt,sel,sword);
+		 
+		// (전체)총 페이지보다 pend가 크다면  값을 변경
+		if(chong < pend) 
+			pend=chong;
+		
+		
+		ArrayList<Board> list2 = mapper.list2(sel,sword,start,pcnt);
+		model.addAttribute("list2",list2);
+		model.addAttribute("page",page); // 현재 페이지
+		model.addAttribute("pstart",pstart);
+		model.addAttribute("pend",pend);
+		model.addAttribute("chong",chong); // 총페이지
+		model.addAttribute("pcnt",pcnt);  // 페이지당 레코드 갯수
+		model.addAttribute("sel",sel);
+		model.addAttribute("sword",sword);
+
+		
+		return "notice";
+	}
+	
+	
+	
+	
+	
 	@RequestMapping("/boardInsertForm.do")
 	public void boardInsertForm() {
 	}
@@ -142,6 +228,24 @@ public class BoardController {
 		return "redirect:/notice_QnA_List.do";
 	}
 
+	
+	@RequestMapping("/boardInsert2.do")
+	public String boardInsert2(Board vo) throws IOException {
+		// 파일 업로드 처리
+		String bd_pic = null;
+		MultipartFile uploadFile = vo.getUploadFile();
+		if (!uploadFile.isEmpty()) {
+			String originalFileName = uploadFile.getOriginalFilename();
+			String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기
+			UUID uuid = UUID.randomUUID();	//UUID 구하기
+			bd_pic = uuid + "." + ext;
+			uploadFile.transferTo(new File("D:\\upload\\" + bd_pic));
+		}
+		vo.setBd_pic(bd_pic);
+		mapper.boardInsert(vo);
+
+		return "redirect:/notice.do";
+	}
 	/*
 	 * @RequestMapping("/boardContent.do/{bd_num}") 
 	 * public String boardContent(@PathVariable("bd_num")int the_bd_num, Model model) {
@@ -188,7 +292,6 @@ public class BoardController {
 
 		return "boardUpdateForm";
 	}
-
 	@PostMapping("/boardUpdate.do")
 	public String boardUpdate(Board vo) {
 
@@ -196,6 +299,15 @@ public class BoardController {
 
 		return "redirect:/notice_QnA_List.do";
 	}
+	
+	@PostMapping("/boardUpdate2.do")
+	public String boardUpdate2(Board vo) {
+
+		mapper.boardUpdate(vo);
+
+		return "redirect:/notice.do";
+	}
+	
 
 	@RequestMapping("/boardDelete.do/{bd_num}")
 	public String boardDelete(@PathVariable("bd_num") int bd_num, Model model) {
@@ -203,6 +315,13 @@ public class BoardController {
 		mapper.boardDelete(bd_num);
 
 		return "redirect:/notice_QnA_List.do";
+	}
+	@RequestMapping("/boardDelete2.do/{bd_num}")
+	public String boardDelete2(@PathVariable("bd_num") int bd_num, Model model) {
+
+		mapper.boardDelete(bd_num);
+
+		return "redirect:/notice.do";
 	}
 
 	@GetMapping("/updateCount/{bd_num}")
