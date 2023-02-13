@@ -131,7 +131,7 @@
 			                    </li>
 			                    <li class="dropdown-item"><a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> LOGOUT </a>
 			                    </li>
-			                    <li class="dropdown-item"><a href="${cpath}/updateMember.do"> <i class="lni lni-exit"></i> 회원정보수정 </a>
+			                    <li class="dropdown-item"><a href="${cpath}/updateMember.do"> <i class="lni lni-exit"></i> Edit profile  </a>
 			                    </li>
 			                  </ul>
 			                </div>

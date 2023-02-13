@@ -8,13 +8,37 @@
 <html>
 <head>
  <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, 그리고 Bootstrap 기여자들">
+    <meta name="generator" content="Hugo 0.104.2">
+  	
   <title>notice_qa</title>
+  
+  	<link rel="canonical" href="https://getbootstrap.kr/docs/5.2/examples/jumbotron/">
+  
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link rel="stylesheet" href="notice_qa.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="stylesheet" href="${cpath}/resources/css/res_index.css">
+    <link rel="stylesheet" href="${cpath}/resources/css/lineicons.css">
+    <link rel="stylesheet" href="${cpath}/resources/css/header.css">
+    <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.eot">
+    <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.svg">
+    <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.ttf">
+    <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.woff">
+    <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.woff2">
+
+        <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+	<meta name="theme-color" content="#712cf9">
   <style>
       .login{
       background-color: #FF809F;
@@ -109,7 +133,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#">Home</a>
+                  <a class="nav-link" aria-current="page" href="<c:url value='/Main.do' />">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -130,49 +154,60 @@
                   <a class="nav-link" href="#">직거래</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Q&A</a>
+                  <a class="nav-link" href="${cpath }/notice_QnA_List.do">Q&A</a>
                 </li>
                 
               </ul>
               
               <c:choose>
+	                
 			    		<c:when test="${empty loginMember}">
-							<button class="btn login" type="button" onclick="signin()">LOGIN</button>  
+							<button class="btn" type="button" onclick="signin()">LOGIN</button>  
 						</c:when>
+						
 						<c:otherwise>
-							<div class="form-group">
-								<c:choose>
-									<c:when test="${empty loginMember.mb_pic}">
-										<style>
-										img{
-					            		border-radius: 100%;
-					        			}
-										</style>
-										<a href="${cpath}/Mypage.do"><span><img src="resources/images/default3.png"></span></a>
-									</c:when>
-									<c:otherwise>
-										<a href="${cpath}/Mypage.do"><span>${loginMember.mb_pic}</span></a>
-									</c:otherwise>
-								</c:choose>
-									<span>${loginMember.mb_nick}님 환영합니다 </span>
-									<a class="btn login" href="${cpath}/Logout.do">LogOut</a>							
-							</div>
+							 <div class="nav-item dropdown">
+			                  <button class="dropdown-toggle bg-transparent border-0 bu" type="button" id="profile" data-bs-toggle="dropdown" aria-expanded="false">
+			                      <div class="info">
+			                        <div class="image">
+			                          <img src="fruits.png" alt=""/>
+			                        </div>
+			                      </div>
+			                  </button>
+			                  
+			                  <ul class="dropdown-menu dm2" aria-labelledby="static">
+			                    <li class="dropdown-item">
+			                      <a href="#0"><i class="lni lni-user"></i> View Profile</a>
+			                    </li>
+			                    <li class="dropdown-item">
+			                      <a href="${cpath }/notice.do"><i class="lni lni-alarm"></i> Notifications</a>
+			                    </li>
+			                    <li class="dropdown-item"><a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
+			                    </li>
+			                    <li class="dropdown-item"><a href="#0"> <i class="lni lni-cog"></i> Settings </a>
+			                    </li>
+			                    <li class="dropdown-item"><a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> LOGOUT </a>
+			                    </li>
+			                    <li class="dropdown-item"><a href="${cpath}/updateMember.do"> <i class="lni lni-exit"></i> Edit profile </a>
+			                    </li>
+			                  </ul>
+			                </div>
 						</c:otherwise>
-			     </c:choose>
-			     
+						
+			         </c:choose>
 			     
             </div>
           </div>
         </nav>
     </header>
-    <div class="tabs">
+    <!-- <div class="tabs">
       <button class="content__inner current" data-tab="tab-1">
         <div><span>공지사항</span></div>
       </button>
       <button class="content__inner"  data-tab="tab-2">
         <div><span>Q&A</span></div>
       </button>
-    </div>
+    </div> -->
     <div class="content">
       <div class="content__inner current" id="tab-1">
         <div class="table-responsive">
