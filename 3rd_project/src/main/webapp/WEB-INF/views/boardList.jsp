@@ -14,7 +14,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
  <link rel="stylesheet" href="${cpath}/resources/css/index.css"> 
-
+ <style>
+ th {
+        text-align: center;
+      }
+ 
+ </style>
 
 
   <script type="text/javascript">
