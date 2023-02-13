@@ -47,7 +47,7 @@
   </select>
   <!-- 회원정보 수정 -->
    <update id="userUpdate" parameterType="com.doptori.entity.Member">
-        update Member set mb_pw=#{mb_pw}, mb_nick=#{mb_nick}, mb_type=#{mb_type} 
+        update Member set mb_pic=#{mb_pic}, mb_file=#{mb_file}, mb_pw=#{mb_pw}, mb_nick=#{mb_nick}, mb_type=#{mb_type} 
         where mb_id=#{mb_id}
    </update>
    

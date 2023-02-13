@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 여러 mapper.xml이 있는 경우, id 겹치면 혼란이  되는 것을 방지하기 위해 -->
+<mapper namespace="com.doptori.mapper.FarmDiaryManageMapper">
+    <!-- 태그의 id는 mapper 인터페이스의 메소드 이름으로 한다. -->
+  <insert id="FarmDiaryManageInsert" parameterType="com.doptori.entity.farmdiary_manage">
+  	insert into farmdiary_manage (fdm_mb_num, fdm_type, fdm1_ad_num, fdm1_detail_address, fdm1_lot_area, fdm1_actual_area, fdm1_idle_area, fdm1_soil_check)
+  	values(#{fdm_mb_num},#{fdm_type},#{fdm1_ad_num},#{fdm1_detail_address},#{fdm1_lot_area},#{fdm1_actual_area},#{fdm1_idle_area},#{fdm1_soil_check})
+  </insert>
+  
+</mapper>

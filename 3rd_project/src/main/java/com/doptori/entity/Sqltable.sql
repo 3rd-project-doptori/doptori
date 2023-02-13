@@ -28,6 +28,7 @@ CREATE TABLE Address (
 
 select * from Member;
 INSERT INTO Member (mb_type, mb_id, mb_pw, mb_nick) VALUE('1', 'test3',  '1234', 'test3');
+
 INSERT INTO Farm (fm_mb_num, fm_ad_num, fm_detail, fm_name, fm_dong, fm_area, fm_cp_num) VALUE('1', '2', '세부 주소', '농장이름', '동이름', '1.5', '2');
 INSERT INTO Crop (cp_name, cp_type, cp_title, cp_cont) VALUE('토마토', '1',  '병해충', '내용설명');
 INSERT INTO Diary (di_mb_num, di_fm_num, di_date, di_note) VALUE('1', '1', '2023-02-20', '물주기');
@@ -252,3 +253,15 @@ ALTER TABLE farmdiary_manage ADD fdm7_grow_result TEXT;
 
 alter table farmdiary_manage add FOREIGN KEY (fdm1_ad_num) REFERENCES Address (ad_num);
 alter table farmdiary_manage add FOREIGN KEY (fdm2_cp_num) REFERENCES Crop (cp_num);
+
+alter table farmdiary_manage drop foreign key fdm1_ad_num;
+alter table farmdiary_manage drop foreign key fdm2_cp_num;
+alter table farmdiary_manage drop foreign key fdm_mb_num;
+
+CREATE TABLE Analysis (
+ an_num INT(4) NOT NULL AUTO_INCREMENT,
+ an_pic VARCHAR(3000),
+ an_result_pest TEXT,
+ an_result_grow TEXT,
+  PRIMARY KEY(an_num)
+);

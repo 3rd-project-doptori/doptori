@@ -39,6 +39,24 @@
 		    </div>
 		  </div>
 		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="writer">작성자:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" name="writer" id="writer" placeholder="작성자 이름">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="writer">작성자:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" name="writer" id="writer" placeholder="작성자 이름">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="writer">작성자:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" name="writer" id="writer" placeholder="작성자 이름">
+		    </div>
+		  </div>
+		  <div class="form-group">
 		  <!-- 부트스트랩은 한줄이 12 col-sm-2 col-sm-10 -->
 		    <div class="col-sm-offset-2 col-sm-10">
 		      <button type="submit" class="btn btn-success">등록</button>

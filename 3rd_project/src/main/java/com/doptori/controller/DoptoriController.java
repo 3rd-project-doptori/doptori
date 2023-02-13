@@ -24,5 +24,20 @@ public class DoptoriController {
 	public String signup() {
 		return "signup";
 	}
+	
+	@GetMapping("/analysis.do")
+	public String analysis() {
+		return "analysis";
+	}
+	
+	@GetMapping("/test.do")
+	public String test() {
+		return "test";
+	}
+	
+	@GetMapping("/FarmDiaryManage.do")
+	public String FarmDiaryManage() {
+		return "FarmDiaryManage";
+	}
 
 }

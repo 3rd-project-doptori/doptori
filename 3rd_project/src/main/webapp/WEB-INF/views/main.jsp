@@ -64,15 +64,15 @@
                     </a>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="<c:url value='/calendar2.do/${loginMember.getMb_num()}'/>">영농일지</a></li>
-                      <li><a class="dropdown-item" href="<c:url value='/calendar.do/${loginMember.getMb_num()}'/>">일지 목록</a></li>
-                      <li><a class="dropdown-item" href="#">일지 관리</a></li>
+                      <li><a class="dropdown-item" href="<c:url value='/FarmDiaryManage.do'/>">일지 목록</a></li>
+                      <li><a class="dropdown-item" href="<c:url value='/test.do'/>">일지 관리</a></li>
                     </ul>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">병해충정보</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">농작물분석</a>
+                    <a class="nav-link" href="<c:url value='/analysis.do'/>">농작물분석</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">직거래</a>
