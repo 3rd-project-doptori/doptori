@@ -1,3 +1,10 @@
+<%@ page import="java.util.List"%>
+<%@ page import="com.doptori.entity.Board"%>
+<%@ page import="com.doptori.entity.Comment"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="cpath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -76,7 +83,7 @@
       </button>
     </div>
     <div class="content">
-      <div class="content__inner" id="tab-1">
+      <div class="content__inner_" id="tab-1">
         <div class="table-responsive">
           <table class="table">
               <thead>

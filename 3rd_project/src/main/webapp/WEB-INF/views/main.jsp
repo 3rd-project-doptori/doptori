@@ -32,7 +32,7 @@
     <script type="text/javascript">
     
 	    function boardList(){
-	    	location.href = "${cpath}/boardList.do"
+	    	location.href = "${cpath}/notice_QnA_List.do"
 	    }
 	    
 	    function signin(){

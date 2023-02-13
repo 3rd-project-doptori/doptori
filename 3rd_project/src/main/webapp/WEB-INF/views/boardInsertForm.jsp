@@ -31,12 +31,11 @@
 		    <label class="control-label col-sm-2" for="bd_type">카테고리:</label>
 		    <div class="col-sm-10">
 		      <select name="bd_type" id="bd_type">
-                    <option value="">선택하기</option>
+                    <!-- <option value="">선택하기</option> -->
                     <c:if test="${loginMember.mb_id=='admin'}">
                     	<option value=1>공지사랑</option>
                     </c:if>
-	                <option value=2>커뮤니티</option>
-	                <option value=3>장터</option>
+	                	<option value=2>Q&A</option>
                 </select>
 		    </div>
 		</div>

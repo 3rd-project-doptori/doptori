@@ -38,8 +38,8 @@ public class BoardController {
 	// @RequestMapping("/boardListFrom.do")
 	// public void boardListFrom() {}
 
-	@RequestMapping("/boardList.do")
-	public String boardList(Model model, HttpServletRequest request) {
+	@RequestMapping("/notice_QnA_List.do")
+	public String notice_QnA_List(Model model, HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
 		Member loginMember = (Member) session.getAttribute("loginMember");
@@ -117,7 +117,7 @@ public class BoardController {
 		model.addAttribute("sword",sword);
 
 		
-		return "boardList";
+		return "notice_QnA_List";
 	}
 
 	@RequestMapping("/boardInsertForm.do")
@@ -139,7 +139,7 @@ public class BoardController {
 		vo.setBd_pic(bd_pic);
 		mapper.boardInsert(vo);
 
-		return "redirect:/boardList.do";
+		return "redirect:/notice_QnA_List.do";
 	}
 
 	/*
@@ -194,7 +194,7 @@ public class BoardController {
 
 		mapper.boardUpdate(vo);
 
-		return "redirect:/boardList.do";
+		return "redirect:/notice_QnA_List.do";
 	}
 
 	@RequestMapping("/boardDelete.do/{bd_num}")
@@ -202,7 +202,7 @@ public class BoardController {
 
 		mapper.boardDelete(bd_num);
 
-		return "redirect:/boardList.do";
+		return "redirect:/notice_QnA_List.do";
 	}
 
 	@GetMapping("/updateCount/{bd_num}")
@@ -245,7 +245,7 @@ public class BoardController {
 		// 답글 저장
 		mapper.replyInsert(vo);
 		
-		return "redirect:/boardList.do";
+		return "redirect:/notice_QnA_List.do";
 	}
 	
 	// 댓글 입력

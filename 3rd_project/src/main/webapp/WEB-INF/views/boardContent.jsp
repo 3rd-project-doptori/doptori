@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.doptori.entity.Board"%>
+<%@ page import="com.doptori.entity.Comment"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
@@ -66,7 +68,7 @@
 			 	<td colspan="2">
 			 		<button class="btn btn-sm btn-success" onclick="goUpdate()">수정</button>
 			 		<a class="btn btn-sm btn-warning" href="<c:url value='/boardDelete.do/${vo.bd_num}' />">삭제</a>
-			 		<a class="btn btn-sm btn-info" href="<c:url value='/boardList.do' />">목록으로 돌아가기</a>
+			 		<a class="btn btn-sm btn-info" href="<c:url value='/notice_QnA_List.do' />">목록으로 돌아가기</a>
 			 		<c:if test="${loginMember.mb_id=='admin'}">	
 			 		<button class="btn btn-sm btn-danger" onclick="goReply()">답글달기></button>	        
 			 	    </c:if>

@@ -15,6 +15,7 @@ public interface BoardMapper {
 
 	// 게시판 목록
 	public List<Board> boardList(int bd_mb_num);
+	public List<Board> boardList2(int mb_num);
 	// 게시판 목록에 (작성자) 회원의 번호가 아닌 닉네임으로 바꾸기(가변배열로 받아 )
 	public String memberNum2Name(int mb_num);
 
@@ -54,6 +55,7 @@ public interface BoardMapper {
 	// 페이징
 	public ArrayList<Board> list2(String sel, String sword, int start, int pcnt);
 	public int getChong(int pcnt, String sel, String sword); // (전체) 총합은 숫자 ->int
+	
 	
 	
 
