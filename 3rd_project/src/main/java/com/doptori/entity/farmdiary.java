@@ -9,7 +9,7 @@ public class farmdiary {
 
 	private int fd_num;
 	private int fd_mb_num;
-	private double fd_start;
+	private String fd_start;
 	private String fd_end;
 	private String fd_address;
 	private String fd_item;
@@ -44,11 +44,11 @@ public class farmdiary {
 	}
 	public void setFd_mb_num(int fd_mb_num) {
 		this.fd_mb_num = fd_mb_num;
-	}
-	public double getFd_start() {
+	}	
+	public String getFd_start() {
 		return fd_start;
 	}
-	public void setFd_start(double fd_start) {
+	public void setFd_start(String fd_start) {
 		this.fd_start = fd_start;
 	}
 	public String getFd_end() {

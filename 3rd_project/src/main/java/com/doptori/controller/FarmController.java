@@ -9,11 +9,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.doptori.entity.Crop;
 import com.doptori.entity.Farm;
 import com.doptori.entity.Member;
+import com.doptori.entity.farmdiary;
+import com.doptori.mapper.FarmDiaryMapper;
 import com.doptori.mapper.FarmMapper;
 
 
@@ -23,6 +26,8 @@ public class FarmController {
 
 	@Autowired
 	private FarmMapper mapper;
+	@Autowired
+	private FarmDiaryMapper mapper2;
 	
 	@RequestMapping("/FarmList.do")
 	public String FarmList(Model model,HttpServletRequest request) {
@@ -56,6 +61,14 @@ public class FarmController {
 		
 		return "FarmList";
 	}
+	
+	@RequestMapping("/test.do")
+	public String farmdiaryInsert(farmdiary vo) {
+		mapper2.farmdiaryInsert(vo);
+		return "/schedule/calendar2";
+	}
+	
+	
 	
 	@RequestMapping("/FarmList2.do")
 	public String FarmList2(Model model,HttpServletRequest request) {

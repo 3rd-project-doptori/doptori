@@ -1,5 +1,8 @@
 package com.doptori.controller;
 
+import java.io.File;
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,16 +12,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.doptori.entity.Member;
 import com.doptori.mapper.MemberMapper;
+import com.doptori.utils.UploadFileUtils;
 
 @Controller
 public class MemberController {
 	
 	@Autowired
 	private MemberMapper mapper;
+	
+	@Resource(name="uploadPath")
+	private String uploadPath;
+	
 	
 	// 아이디 중복체크
 	/*
@@ -66,7 +75,22 @@ public class MemberController {
 	public void updateMember() {}
 	// 회원 정보 수정(update 이벤트)
 	@RequestMapping("/userUpdate.do")
-	public String userUpdate(Member mvo, HttpSession session) {
+	public String userUpdate(Member mvo, MultipartFile file, HttpSession session)throws Exception {
+		
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+
+		if(file != null) {
+		 fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		} else {
+		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+
+		mvo.setMb_file(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		mvo.setMb_pic(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		
+		
 		mapper.userUpdate(mvo);
 		session.setAttribute("loginMember", mvo);
 		return "redirect:/Main.do";

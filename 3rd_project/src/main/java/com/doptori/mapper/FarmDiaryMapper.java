@@ -26,5 +26,7 @@ public interface FarmDiaryMapper {
 	/* 삭제하기 */
 	public int delete(farmdiary farmdiary);
 	
+	public void farmdiaryInsert(farmdiary vo);
+	
 	
 }
