@@ -16,6 +16,12 @@
  <link rel="stylesheet" href="${cpath}/resources/css/index.css"> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
+ <style>
+ th {
+        text-align: center;
+      }
+ 
+ </style>
 
 
   <script type="text/javascript">

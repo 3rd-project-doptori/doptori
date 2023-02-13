@@ -15,6 +15,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="${cpath}/resources/css/index.css"> 
+  <style>
+ th {
+        text-align: center;
+      }
+ 
+ </style>
 </head>
 <body>
  <script type="text/javascript">
@@ -34,32 +40,32 @@
     <div class="panel-heading">게시판</div>
     <div class="panel-body">
 		<table class="table table-bordered table-hover"> <tr> 
-			 	<td>제목</td>
+			 	<th>제목</th>
 			 	<td>${vo.bd_title}</td>
 			 </tr>	
 			 <tr>
-			 	<td>내용</td>
+			 	<th>내용</th>
 			 	<% pageContext.setAttribute("newline", "\n"); %>
 			 	<td>${fn:replace(vo.bd_cont, newline, "<br>")}</td>
 			 </tr>
 			 <tr>
-			 	<td>작성자</td>
+			 	<th>작성자</th>
 			 	<td><span>${vo.bd_mb_num}</span></td>
 			 </tr>
 			 <tr>
-			 	<td>작성일자</td>
+			 	<th>작성일자</th>
 			 	<td>${fn:split(vo.bd_date, " ")[0]}</td>
 			 </tr>
 			 <tr>	
-			 	<td>작성일시</td>
+			 	<th>작성일시</th>
 			 	<td>${fn:split(vo.bd_date, " ")[1]}</td>
 			 </tr>
 			 <tr>
-			 	<td>조회수</td>
+			 	<th>조회수</th>
 			 	<td>${vo.bd_cnt}</td>
 			 </tr>
 			 <tr>
-			 	<td>첨부파일</td>
+			 	<th>첨부파일</th>
 			 	<c:if test="${vo.bd_pic ne null}">
 					<td align="left"><a href="${cpath}/fileDownload.do?bd_pic=${vo.bd_pic}">${vo.bd_pic}</a></td>
 			 	</c:if>
