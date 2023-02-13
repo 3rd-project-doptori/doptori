@@ -24,6 +24,7 @@ import com.doptori.entity.Board;
 import com.doptori.entity.Comment;
 import com.doptori.entity.Member;
 import com.doptori.mapper.BoardMapper;
+import com.doptori.mapper.CommentMapper;
 
 @Controller
 public class BoardController {
@@ -31,6 +32,9 @@ public class BoardController {
 	@Autowired
 	private BoardMapper mapper;
 
+	@Autowired
+	private CommentMapper cmapper;
+	
 	// @RequestMapping("/boardListFrom.do")
 	// public void boardListFrom() {}
 
@@ -162,19 +166,15 @@ public class BoardController {
 	 */
 	@RequestMapping("/boardContent.do/{bd_num}")
 	public String boardContent(@PathVariable("bd_num")int bd_num, Model model) {
-		
-		
 		Board vo = mapper.boardContent(bd_num);	
-		
+		Comment cvo = cmapper.commentList(bd_num);
 		// 조회수 업데이트
 		mapper.boardCount(bd_num);
         
-		
 		model.addAttribute("vo", vo);
-		List<Comment> list = mapper.commentSelect(bd_num);
-		
-		
-		model.addAttribute("list", list);
+		model.addAttribute("cvo", cvo);
+		//List<Comment> list = mapper.commentSelect(bd_num);
+		//model.addAttribute("list", list);
 		
 		return "boardContent";
 		
@@ -249,15 +249,15 @@ public class BoardController {
 	}
 	
 	// 댓글 입력
-	@RequestMapping("/commentInsert.do")
-	public String commentInsert(Comment cvo) {
-		mapper.commentInsert(cvo);
-		return "redirect:/boardContent.do?co_num=" + cvo.getCo_bd_num();
-	}
+	//@RequestMapping("/commentInsert.do")
+	//public String commentInsert(Comment cvo) {
+	//	mapper.commentInsert(cvo);
+	//	return "redirect:/boardContent.do?co_num=" + cvo.getCo_bd_num();
+	//}
 	// 댓글 삭제
-	@RequestMapping("/commentDelete.do")
-	public String commentDelete(@Param(value="co_num") int co_num, @Param(value="co_bd_num") int co_bd_num) {
-		mapper.commentDelete(co_num);
-		return "redirect:/boardContent.do?co_num="+co_bd_num;
-	}
+	//@RequestMapping("/commentDelete.do")
+	//public String commentDelete(@Param(value="co_num") int co_num, @Param(value="co_bd_num") int co_bd_num) {
+	//	mapper.commentDelete(co_num);
+	//	return "redirect:/boardContent.do?co_num="+co_bd_num;
+	//}
 }

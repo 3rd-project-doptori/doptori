@@ -53,8 +53,10 @@
   
   <!-- 댓글 등록 -->
   <insert id="commentInsert" parameterType="com.doptori.entity.Board">
-      insert into Comment(co_bd_num, co_mb_num, co_cont)
-      values(#{co_bd_num}, #{co_mb_num}, #{co_cont})
+      insert into Comment(co_mb_num, co_cont)
+      values(#{co_mb_num}, #{co_cont})
+      <!-- insert into Comment(co_bd_num, co_mb_num, co_cont)
+      values(#{co_bd_num}, #{co_mb_num}, #{co_cont}) -->
   </insert>  
   <!-- 댓글 목록보기 -->
    <select id="commentSelect"  parameterType="int" resultType="com.doptori.entity.Board">
