@@ -30,11 +30,6 @@ public class DoptoriController {
 		return "analysis";
 	}
 	
-	@GetMapping("/test.do")
-	public String test() {
-		return "test";
-	}
-	
 	@GetMapping("/FarmDiaryManage.do")
 	public String FarmDiaryManage() {
 		return "FarmDiaryManage";

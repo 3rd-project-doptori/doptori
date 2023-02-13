@@ -1,5 +1,7 @@
 package com.doptori.entity;
 
+import java.sql.Date;
+
 import lombok.Data;
 import lombok.ToString;
 
@@ -9,8 +11,8 @@ public class farmdiary {
 
 	private int fd_num;
 	private int fd_mb_num;
-	private String fd_start;
-	private String fd_end;
+	private Date fd_start;
+	private Date fd_end;
 	private String fd_address;
 	private String fd_item;
 	private String fd_kind;
@@ -44,17 +46,17 @@ public class farmdiary {
 	}
 	public void setFd_mb_num(int fd_mb_num) {
 		this.fd_mb_num = fd_mb_num;
-	}	
-	public String getFd_start() {
+	}
+	public Date getFd_start() {
 		return fd_start;
 	}
-	public void setFd_start(String fd_start) {
+	public void setFd_start(Date fd_start) {
 		this.fd_start = fd_start;
 	}
-	public String getFd_end() {
+	public Date getFd_end() {
 		return fd_end;
 	}
-	public void setFd_end(String fd_end) {
+	public void setFd_end(Date fd_end) {
 		this.fd_end = fd_end;
 	}
 	public String getFd_address() {

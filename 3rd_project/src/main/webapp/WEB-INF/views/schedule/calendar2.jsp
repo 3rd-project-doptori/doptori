@@ -12,12 +12,6 @@
 <title>캘린더</title>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<!-- jquery datepicker -->
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"
-	type="text/css" />
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-<!-- jquery datepicker 끝 -->
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link href="${cpath}/resources/css/main.css" rel="stylesheet"
 	type="text/css">
@@ -85,24 +79,24 @@
 			<!--날짜 네비게이션  -->
 			<div class="navigation">
 				<a class="before_after_year"
-					href="${cpath}/calendar.do/${loginMember.getMb_num()}?year=${today_info.search_year-1}&month=${today_info.search_month-1}">
+					href="${cpath}/calendar2.do/${loginMember.getMb_num()}?year=${today_info.search_year-1}&month=${today_info.search_month-1}">
 					&lt;&lt; <!-- 이전해 -->
 				</a> <a class="before_after_month"
-					href="${cpath}/calendar.do/${loginMember.getMb_num()}?year=${today_info.before_year}&month=${today_info.before_month}">
+					href="${cpath}/calendar2.do/${loginMember.getMb_num()}?year=${today_info.before_year}&month=${today_info.before_month}">
 					&lt; <!-- 이전달 -->
 				</a> <span class="this_month"> &nbsp;${today_info.search_year}. <c:if
 						test="${today_info.search_month<10}">0</c:if>${today_info.search_month}
 				</span> <a class="before_after_month"
-					href="${cpath}/calendar.do/${loginMember.getMb_num()}?year=${today_info.after_year}&month=${today_info.after_month}">
+					href="${cpath}/calendar2.do/${loginMember.getMb_num()}?year=${today_info.after_year}&month=${today_info.after_month}">
 					<!-- 다음달 --> &gt;
 				</a> <a class="before_after_year"
-					href="${cpath}/calendar.do/${loginMember.getMb_num()}?year=${today_info.search_year+1}&month=${today_info.search_month-1}">
+					href="${cpath}/calendar2.do/${loginMember.getMb_num()}?year=${today_info.search_year+1}&month=${today_info.search_month-1}">
 					<!-- 다음해 --> &gt;&gt;
 				</a>
 			</div>
 			<div class="today_button_div">
 				<button type="button" class="buttonstyle"
-					onclick="javascript:location.href='${cpath}/calendar.do/${loginMember.getMb_num()}'"
+					onclick="javascript:location.href='${cpath}/calendar2.do/${loginMember.getMb_num()}'"
 					style="height: 30px; width: 80px;">Today</button>
 				<button type="button"
 					class="buttonstyle board_move openMask_board_move pointer"
@@ -158,10 +152,9 @@
 									varStatus="schedule_data_arr_status">
 
 									<a
-										href="${cpath}/schedule_show?schedule_idx=${scheduleList.schedule_idx}"
+										href="${cpath}/schedule_show?fd_num=${scheduleList.fd_num}"
 										onclick="window.open(this.href, '_blank', 'width=550,height=600,left=680%, top=200%, toolbars=no,scrollbars=no'); return false;"
-										class="date_subject "
-										style="color: ${scheduleList.schedule_mycolor}">${scheduleList.schedule_subject}</a>
+										class="date_subject ">${scheduleList.fd_step}</a>
 									<br>
 
 								</c:forEach>
@@ -185,23 +178,6 @@
 				con[0].style.display = 'none';
 			}
 			
-			$(function() {
-				$("#testDatepicker")
-						.datepicker(
-								{
-
-									dateFormat : "yy-mm-dd",
-									changeMonth : true,
-									changeYear : true,
-									dayNames : [ '월요일', '화요일', '수요일', '목요일',
-											'금요일', '토요일', '일요일' ],
-									dayNamesMin : [ '월', '화', '수', '목', '금',
-											'토', '일' ],
-									monthNamesShort : [ '1', '2', '3', '4',
-											'5', '6', '7', '8', '9', '10',
-											'11', '12' ]
-								});
-			});
 			function scheduleAdd() {
 				var schedule_add_form = document.schedule_add;
 				if (schedule_add_form.fd_start.value == ""
@@ -238,7 +214,7 @@
                     <div class="modal-body">
                         <table class="table table-bordered">
                             <colgroup>
-                                <col width=13%>
+                                <col width="13%">
                                 <col>
                             </colgroup>
                             <thead>
@@ -385,12 +361,12 @@
                                     <th scope="row">영농일지 공개 여부</th>
                                     <td colspan="3">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="fd_open" value="1">
-                                            <label class="form-check-label" for="inlineCheckbox1">공개</label>
+                                            <input class="form-check-input" type="radio" id="first_radio" name="fd_open" value="1" checked>
+                                            <label class="form-check-label" for="first_radio">공개</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="fd_open" value="0">
-                                            <label class="form-check-label" for="inlineCheckbox2">비공개</label>
+                                            <input class="form-check-input" type="radio" id="second_radio" name="fd_open" value="0">
+                                            <label class="form-check-label" for="second_radio">비공개</label>
                                         </div>
                                     </td>
                                 </tr>

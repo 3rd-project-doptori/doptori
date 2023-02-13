@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.doptori.entity.DateData2;
+import com.doptori.entity.Farm;
 import com.doptori.entity.farmdiary;
 import com.doptori.mapper.FarmDiaryMapper;
 
@@ -114,9 +115,20 @@ public class FarmDiaryController {
 				dateList.add(calendarData);
 			}
 		}
-
+		model.addAttribute("Schedule_list", Schedule_list);
+		
+		for (farmdiary farmdiary : Schedule_list) {
+			System.out.println(farmdiary.toString());
+		}
+		
+		
 		// 배열에 담음
 		model.addAttribute("dateList", dateList); // 날짜 데이터 배열
+		
+		for (DateData2 farmdiary2 : dateList) {
+			System.out.println(farmdiary2.toString());
+		}
+		
 		model.addAttribute("today_info", today_info);
 		return "/schedule/calendar2";
 	}

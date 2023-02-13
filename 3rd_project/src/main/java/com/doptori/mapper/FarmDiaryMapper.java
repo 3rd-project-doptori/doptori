@@ -28,5 +28,8 @@ public interface FarmDiaryMapper {
 	
 	public void farmdiaryInsert(farmdiary vo);
 	
+	public ArrayList<farmdiary> schedule_list2(DateData2 dateData);
+	
+	
 	
 }

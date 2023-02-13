@@ -251,7 +251,7 @@ ALTER TABLE farmdiary_manage ADD fdm7_pest_result TEXT;
 ALTER TABLE farmdiary_manage ADD fdm7_grow_pic VARCHAR(3000);
 ALTER TABLE farmdiary_manage ADD fdm7_grow_result TEXT;
 
-alter table farmdiary_manage add FOREIGN KEY (fdm1_ad_num) REFERENCES Address (ad_num);
+alter table Comment add FOREIGN KEY (co_bd_num) REFERENCES Board (bd_num);
 alter table farmdiary_manage add FOREIGN KEY (fdm2_cp_num) REFERENCES Crop (cp_num);
 
 alter table farmdiary_manage drop foreign key fdm1_ad_num;

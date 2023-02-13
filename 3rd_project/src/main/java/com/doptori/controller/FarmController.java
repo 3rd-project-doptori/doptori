@@ -62,13 +62,6 @@ public class FarmController {
 		return "FarmList";
 	}
 	
-	@RequestMapping("/test.do")
-	public String farmdiaryInsert(farmdiary vo) {
-		mapper2.farmdiaryInsert(vo);
-		return "/schedule/calendar2";
-	}
-	
-	
 	
 	@RequestMapping("/FarmList2.do")
 	public String FarmList2(Model model,HttpServletRequest request) {
