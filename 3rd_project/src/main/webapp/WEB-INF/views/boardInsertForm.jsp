@@ -36,6 +36,7 @@
                     	<option value=1>공지사항</option>
                     </c:if>
 	                	<option value=2>Q&A</option>
+	                	<option value=3>직거래</option>
                 </select>
 		    </div>
 		</div>
