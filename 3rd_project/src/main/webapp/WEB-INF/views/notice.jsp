@@ -325,7 +325,7 @@
 			    <c:if test="${loginMember.mb_id=='admin'}">
 	    		<tr>
 	    			<td colspan="5"><button onclick="goForm()">글쓰기</button></td>
-	    		</tr>]
+	    		</tr>
 	    		</c:if>
 	    	</tfoot>
     	</table>

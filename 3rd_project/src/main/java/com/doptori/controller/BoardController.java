@@ -329,45 +329,45 @@ public class BoardController {
 	}
 
 	
-	@RequestMapping("/noticeInsert.do")
-	public String noticeInsert(Board vo) throws IOException {
-		// 파일 업로드 처리
-		String bd_pic = null;
-		MultipartFile uploadFile = vo.getUploadFile();
-		if (!uploadFile.isEmpty()) {
-			String originalFileName = uploadFile.getOriginalFilename();
-			String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기
-			UUID uuid = UUID.randomUUID();	//UUID 구하기
-			bd_pic = uuid + "." + ext;
-			uploadFile.transferTo(new File("D:\\upload\\" + bd_pic));
-		}
-		vo.setBd_pic(bd_pic);
-		mapper.boardInsert(vo);
-
-		return "redirect:/notice.do";
-	}
+//	@RequestMapping("/boardInsert.do")
+//	public String noticeInsert(Board vo) throws IOException {
+//		// 파일 업로드 처리
+//		String bd_pic = null;
+//		MultipartFile uploadFile = vo.getUploadFile();
+//		if (!uploadFile.isEmpty()) {
+//			String originalFileName = uploadFile.getOriginalFilename();
+//			String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기
+//			UUID uuid = UUID.randomUUID();	//UUID 구하기
+//			bd_pic = uuid + "." + ext;
+//			uploadFile.transferTo(new File("D:\\upload\\" + bd_pic));
+//		}
+//		vo.setBd_pic(bd_pic);
+//		mapper.boardInsert(vo);
+//
+//		return "redirect:/notice.do";
+//	}
 	
-	@RequestMapping("/boardInsertForm3.do")
-	public void boardInsertForm3() {
-	}
+	//@RequestMapping("/boardInsertForm3.do")
+	//public void boardInsertForm3() {
+	//}
 	
-	@RequestMapping("/boardInsert3.do")
-	public String boardInsert3(Board vo) throws IOException {
-		// 파일 업로드 처리
-		String bd_pic = null;
-		MultipartFile uploadFile = vo.getUploadFile();
-		if (!uploadFile.isEmpty()) {
-			String originalFileName = uploadFile.getOriginalFilename();
-			String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기
-			UUID uuid = UUID.randomUUID();	//UUID 구하기
-			bd_pic = uuid + "." + ext;
-			uploadFile.transferTo(new File("D:\\upload\\" + bd_pic));
-		}
-		vo.setBd_pic(bd_pic);
-		mapper.boardInsert(vo);
-
-		return "redirect:/TradeList.do";
-	}
+//	@RequestMapping("/boardInsert.do")
+//	public String TradeInsert(Board vo) throws IOException {
+//		// 파일 업로드 처리
+//		String bd_pic = null;
+//		MultipartFile uploadFile = vo.getUploadFile();
+//		if (!uploadFile.isEmpty()) {
+//			String originalFileName = uploadFile.getOriginalFilename();
+//			String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기
+//			UUID uuid = UUID.randomUUID();	//UUID 구하기
+//			bd_pic = uuid + "." + ext;
+//			uploadFile.transferTo(new File("D:\\upload\\" + bd_pic));
+//		}
+//		vo.setBd_pic(bd_pic);
+//		mapper.boardInsert(vo);
+//
+//		return "redirect:/TradeList.do";
+//	}
 	/*
 	 * @RequestMapping("/boardContent.do/{bd_num}") 
 	 * public String boardContent(@PathVariable("bd_num")int the_bd_num, Model model) {

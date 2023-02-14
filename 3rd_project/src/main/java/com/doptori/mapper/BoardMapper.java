@@ -62,6 +62,7 @@ public interface BoardMapper {
 	
 	public Comment commentList(int bd_num);
 	
+	// 메인화면 공지사항
 	public List<Board> MainboardList(Board vo);
 	
 	

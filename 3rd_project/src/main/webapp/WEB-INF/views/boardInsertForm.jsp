@@ -21,7 +21,6 @@
 </head>
 <body>
 <div class="container">
-  <h2>Q&A</h2>
   <div class="panel panel-default">
     <div class="panel-heading">Q&A 글쓰기</div>
     <div class="panel-body">

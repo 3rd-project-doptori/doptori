@@ -80,7 +80,7 @@
 	
 	
 	  	function goForm() {
-	  		location.href="${cpath}/boardInsertForm3.do"
+	  		location.href="${cpath}/boardInsertForm.do"
 	  	}
 	  	
 	  	
@@ -381,7 +381,7 @@
 	    	</thead>
 	    	<tbody class="table-group-divider">
 	    		<c:forEach var="vo" items="${list}" varStatus="status">
-	    			<c:if test="${vo.bd_type == '2' }">
+	    			<c:if test="${vo.bd_type == '3' }">
 	    			<tr>
 						<th scope="row">${vo.bd_num}</th>						
 						<c:if test="${vo.bd_level > 0}">
