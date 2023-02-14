@@ -327,6 +327,10 @@ public class BoardController {
 
 		return "redirect:/QnA_List.do";
 	}
+	
+	@RequestMapping("/boardInsertForm2.do")
+	public void boardInsertForm2() {
+	}
 
 	
 //	@RequestMapping("/boardInsert.do")
@@ -350,7 +354,6 @@ public class BoardController {
 	//@RequestMapping("/boardInsertForm3.do")
 	//public void boardInsertForm3() {
 	//}
-	
 //	@RequestMapping("/boardInsert.do")
 //	public String TradeInsert(Board vo) throws IOException {
 //		// 파일 업로드 처리
