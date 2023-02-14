@@ -160,13 +160,13 @@
                   <a class="nav-link" href="#">병해충정보</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">농작물분석</a>
+                  <a class="nav-link" href="<c:url value='/analysis.do'/>">농작물분석</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">직거래</a>
+                  <a class="nav-link" href="<c:url value='/TradeList.do'/>">직거래</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Q&A</a>
+                  <a class="nav-link" href="<c:url value='/QnA_List.do'/>">Q&A</a>
                 </li>
                 
               </ul>
@@ -343,7 +343,7 @@
         </div>
       </div> --%>
 
-
+	<h3>Q&A</h3>
       <div class="content__inner" id="tab-2">
         <div class="table-responsive">
           <table class="table">

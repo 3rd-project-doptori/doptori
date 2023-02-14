@@ -7,23 +7,23 @@
 <!DOCTYPE html>
 <html>
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, 그리고 Bootstrap 기여자들">
     <meta name="generator" content="Hugo 0.104.2">
-  	
-  <title>notice_qa</title>
-  
-  	<link rel="canonical" href="https://getbootstrap.kr/docs/5.2/examples/jumbotron/">
-  
+    
+<title>TradeList</title>
+
+	<link rel="canonical" href="https://getbootstrap.kr/docs/5.2/examples/jumbotron/">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link rel="stylesheet" href="notice_qa.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link rel="stylesheet" href="${cpath}/resources/css/res_index.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="${cpath}/resources/css/res_index.css">
     <link rel="stylesheet" href="${cpath}/resources/css/lineicons.css">
     <link rel="stylesheet" href="${cpath}/resources/css/header.css">
     <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.eot">
@@ -51,30 +51,42 @@
           background-color: #FF4D79;
           color: white;
       }
+      
+      
+      @font-face {
+		  font-family: 'lineicons';
+		  src: url("${cpath}/resources/header/LineIcons.eot");
+		  src: url('${cpath}/resources/header/LineIcons.eot') format('embedded-opentype'),
+		       url('${cpath}/resources/header/LineIcons.woff2') format('woff2'),
+		       url('${cpath}/resources/header/LineIcons.woff') format('woff'),
+		       url('${cpath}/resources/header/LineIcons.ttf') format('truetype'),
+		       url('${cpath}/resources/header/LineIcons.svg') format('svg');
+		}
+      
   </style>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
- <script type="text/javascript">
- 
- function signin(){
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+	function signin(){
 		location.href = "${cpath}/signin.do"
 	}
-
- 
-  $(document).ready(function(){
+	
+	
+	$(document).ready(function(){
 		// boardList라고 하는 함수 실행!
 		// 자바스크립트의 호이스팅
 		boardList();
 	});
-  
-  
+	
+	
 	  	function goForm() {
-	  		location.href="${cpath}/boardInsertForm.do"
+	  		location.href="${cpath}/boardInsertForm3.do"
 	  	}
 	  	
 	  	
 	 	function move(my)
 	    {
-	 	   location="notice.do?pcnt="+my.value;
+	 	   location="boardList.do?pcnt="+my.value;
 	    }
 	    window.onload=function()
 	    {
@@ -148,13 +160,13 @@
                   <a class="nav-link" href="#">병해충정보</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="${cpath }/analysis.do">농작물분석</a>
+                  <a class="nav-link" href="<c:url value='/analysis.do'/>">농작물분석</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="${cpath }/TradeList.do">직거래</a>
+                  <a class="nav-link" href="<c:url value='/TradeList.do'/>">직거래</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="${cpath }/QnA_List.do">Q&A</a>
+                  <a class="nav-link" href="<c:url value='/QnA_List.do'/>">Q&A</a>
                 </li>
                 
               </ul>
@@ -177,7 +189,7 @@
 			                  
 			                  <ul class="dropdown-menu dm2" aria-labelledby="static">
 			                    <li class="dropdown-item">
-			                      <a href="${cpath}/mypage.do"><i class="lni lni-user"></i> View Profile</a>
+			                      <a href="#0"><i class="lni lni-user"></i> View Profile</a>
 			                    </li>
 			                    <li class="dropdown-item">
 			                      <a href="${cpath }/notice.do"><i class="lni lni-alarm"></i> Notifications</a>
@@ -188,13 +200,14 @@
 			                    </li>
 			                    <li class="dropdown-item"><a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> LOGOUT </a>
 			                    </li>
-			                    <li class="dropdown-item"><a href="${cpath}/updateMember.do"> <i class="lni lni-exit"></i> Edit profile </a>
+			                    <li class="dropdown-item"><a href="${cpath}/updateMember.do"> <i class="lni lni-exit"></i> Edit profile  </a>
 			                    </li>
 			                  </ul>
 			                </div>
 						</c:otherwise>
 						
 			         </c:choose>
+			     
 			     
             </div>
           </div>
@@ -208,15 +221,14 @@
         <div><span>Q&A</span></div>
       </button>
     </div> -->
-    <h3>공지사항</h3>
     <div class="content">
-      <div class="content__inner current" id="tab-1">
+     <%--  <div class="content__inner current" id="tab-1">
         <div class="table-responsive">
           <table class="table">
           
 	    	<caption> <h3 align="right"> <font size="2">
 	    	<div id="left" style="float:left;"> <!-- select 검색 창  -->
-		        <form method="post" action="${cpath}/notice.do" onsubmit="return check(this)">
+		        <form method="post" action="${cpath}/boardList.do" onsubmit="return check(this)">
 		         <select name="searchType" id="searchType">
 		           <option value="0">선 택</option>
 		           <option value="bd_title">제 목</option>
@@ -267,7 +279,7 @@
 						</td>
 						<td>${memberNames[status.index]}</td>     			
 						<td>${vo.bd_date}</td>  			
-						<%-- <td>${vo.bd_cnt}</td>  --%>    			
+						<td>${vo.bd_cnt}</td>     			
 	    			</tr>
 	    		</c:if>
 	    		</c:forEach>
@@ -279,7 +291,7 @@
 			       <td colspan="5" align="center">
 			        <!-- 10페이지 단위로 이전 이동하기  :  -->
 			       <c:if test="${pstart != 1}"> <!-- 첫번재 그룹이 아닐때는  -->
-			        	<a href="notice.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> << </a>
+			        	<a href="boardList.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> << </a>
 			       </c:if>
 			       <c:if test="${pstart == 1}"> <!-- 첫번째 그룹일때(1~10)는 이전 10페이지 이동 X -->
 			       《<!-- 넘어가는 꺽세 -->
@@ -287,7 +299,7 @@
 			       
 			        <!-- 1페이지 단위로 이전으로 가기 => 현재페이지에서 1을 뺀 페이지로 이동 --> 
 			       <c:if test="${page != 1}"> <!-- 현재 페이지가 1이 아닌경우 -->
-			        	<a href="notice.do?page=${page-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ◀  </a>
+			        	<a href="boardList.do?page=${page-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ◀  </a>
 			       </c:if>
 			       <c:if test="${page == 1}"> <!-- 현재페이지가 1인경우 -->
 			                     ◀
@@ -301,12 +313,12 @@
 			            <c:if test="${page != i}"> <!-- 출력되는 페이지가 현재페이지와 다르다면 -->
 			               <c:set var="st" value=""/>
 			            </c:if>
-			            <a href="notice.do?page=${i}&pcnt=${pcnt}&sel=${sel}&sword=${sword}" ${st}> ${i} </a>
+			            <a href="boardList.do?page=${i}&pcnt=${pcnt}&sel=${sel}&sword=${sword}" ${st}> ${i} </a>
 			         </c:forEach>
 			         
 			       <!-- 1페이지 단위로 다음 이동하기 -->
 			       <c:if test="${page != chong}"> <!-- 현재 페이지가 마지막 페이지가 아니라면 -->
-			        	<a href="notice.do?page=${page+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ▶  </a>
+			        	<a href="boardList.do?page=${page+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ▶  </a>
 			       </c:if>
 			       <c:if test="${page == chong}"> <!-- 현재 페이지가 마지막 페이지라면 -->
 			                     ▶
@@ -314,7 +326,7 @@
 			        
 			       <!-- 10페이지 단위로 다음 이동하기 -->
 			       <c:if test="${chong != pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막이 아닐겨우 -->
-			         	<a href="notice.do?page=${pend+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> >> </a>
+			         	<a href="boardList.do?page=${pend+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> >> </a>
 			       </c:if>
 			       <c:if test="${chong == pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막일 경우 -->
 			    	   》 <!-- 넘어가는 꺽세 -->
@@ -322,23 +334,22 @@
 			       </td>
 			     </tr>
 			     
-			    <c:if test="${loginMember.mb_id=='admin'}">
+			     
 	    		<tr>
 	    			<td colspan="5"><button onclick="goForm()">글쓰기</button></td>
-	    		</tr>]
-	    		</c:if>
+	    		</tr>
 	    	</tfoot>
     	</table>
         </div>
-      </div>
+      </div> --%>
 
-
-     <%--  <div class="content__inner" id="tab-2">
+	<h3>직거래</h3>
+      <div class="content__inner" id="tab-2">
         <div class="table-responsive">
           <table class="table">
 	    	<caption> <h3 align="right"> <font size="2">
 	    	<div id="left" style="float:left;"> <!-- select 검색 창  -->
-		        <form method="post" action="${cpath}/boardList.do" onsubmit="return check(this)">
+		        <form method="post" action="${cpath}/QnA_List.do" onsubmit="return check(this)">
 		         <select name="searchType" id="searchType">
 		           <option value="0">선 택</option>
 		           <option value="bd_title">제 목</option>
@@ -389,7 +400,7 @@
 						</td>
 						<td>${memberNames[status.index]}</td>     			
 						<td>${vo.bd_date}</td>  			
-						<td>${vo.bd_cnt}</td>     			
+						<%-- <td>${vo.bd_cnt}</td>    --%>  			
 	    			</tr>
 	    			</c:if>
 	    		</c:forEach>
@@ -401,7 +412,7 @@
 			       <td colspan="5" align="center">
 			        <!-- 10페이지 단위로 이전 이동하기  :  -->
 			       <c:if test="${pstart != 1}"> <!-- 첫번재 그룹이 아닐때는  -->
-			        	<a href="boardList.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> << </a>
+			        	<a href="TradeList.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> << </a>
 			       </c:if>
 			       <c:if test="${pstart == 1}"> <!-- 첫번째 그룹일때(1~10)는 이전 10페이지 이동 X -->
 			       《<!-- 넘어가는 꺽세 -->
@@ -409,7 +420,7 @@
 			       
 			        <!-- 1페이지 단위로 이전으로 가기 => 현재페이지에서 1을 뺀 페이지로 이동 --> 
 			       <c:if test="${page != 1}"> <!-- 현재 페이지가 1이 아닌경우 -->
-			        	<a href="boardList.do?page=${page-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ◀  </a>
+			        	<a href="TradeList.do?page=${page-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ◀  </a>
 			       </c:if>
 			       <c:if test="${page == 1}"> <!-- 현재페이지가 1인경우 -->
 			                     ◀
@@ -423,12 +434,12 @@
 			            <c:if test="${page != i}"> <!-- 출력되는 페이지가 현재페이지와 다르다면 -->
 			               <c:set var="st" value=""/>
 			            </c:if>
-			            <a href="boardList.do?page=${i}&pcnt=${pcnt}&sel=${sel}&sword=${sword}" ${st}> ${i} </a>
+			            <a href="TradeList.do?page=${i}&pcnt=${pcnt}&sel=${sel}&sword=${sword}" ${st}> ${i} </a>
 			         </c:forEach>
 			         
 			       <!-- 1페이지 단위로 다음 이동하기 -->
 			       <c:if test="${page != chong}"> <!-- 현재 페이지가 마지막 페이지가 아니라면 -->
-			        	<a href="boardList.do?page=${page+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ▶  </a>
+			        	<a href="TradeList.do?page=${page+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ▶  </a>
 			       </c:if>
 			       <c:if test="${page == chong}"> <!-- 현재 페이지가 마지막 페이지라면 -->
 			                     ▶
@@ -436,7 +447,7 @@
 			        
 			       <!-- 10페이지 단위로 다음 이동하기 -->
 			       <c:if test="${chong != pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막이 아닐겨우 -->
-			         	<a href="boardList.do?page=${pend+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> >> </a>
+			         	<a href="TradeList.do?page=${pend+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> >> </a>
 			       </c:if>
 			       <c:if test="${chong == pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막일 경우 -->
 			    	   》 <!-- 넘어가는 꺽세 -->
@@ -450,7 +461,7 @@
 	    	</tfoot>
     	</table>
         </div>
-      </div> --%>
+      </div>
       
     </div>
   </div>

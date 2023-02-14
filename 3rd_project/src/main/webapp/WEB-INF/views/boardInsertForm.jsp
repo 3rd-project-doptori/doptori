@@ -21,9 +21,9 @@
 </head>
 <body>
 <div class="container">
-  <h2>게시판 글쓰기</h2>
+  <h2>Q&A</h2>
   <div class="panel panel-default">
-    <div class="panel-heading">게시판</div>
+    <div class="panel-heading">Q&A 글쓰기</div>
     <div class="panel-body">
     	<form class="form-horizontal" action="${cpath}/boardInsert.do" method="post"  enctype="multipart/form-data">
 		  
@@ -33,7 +33,7 @@
 		      <select name="bd_type" id="bd_type">
                     <!-- <option value="">선택하기</option> -->
                     <c:if test="${loginMember.mb_id=='admin'}">
-                    	<option value=1>공지사랑</option>
+                    	<option value=1>공지사항</option>
                     </c:if>
 	                	<option value=2>Q&A</option>
                 </select>
