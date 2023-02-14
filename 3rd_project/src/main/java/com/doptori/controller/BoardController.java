@@ -307,6 +307,10 @@ public class BoardController {
 
 		return "redirect:/QnA_List.do";
 	}
+	
+	@RequestMapping("/boardInsertForm2.do")
+	public void boardInsertForm2() {
+	}
 
 	
 	@RequestMapping("/boardInsert2.do")
@@ -327,9 +331,6 @@ public class BoardController {
 		return "redirect:/notice.do";
 	}
 	
-	@RequestMapping("/boardInsertForm3.do")
-	public void boardInsertForm3() {
-	}
 	
 	@RequestMapping("/boardInsert3.do")
 	public String boardInsert3(Board vo) throws IOException {
