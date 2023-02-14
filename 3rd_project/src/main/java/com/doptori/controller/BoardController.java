@@ -38,8 +38,8 @@ public class BoardController {
 	// @RequestMapping("/boardListFrom.do")
 	// public void boardListFrom() {}
 
-	@RequestMapping("/notice_QnA_List.do")
-	public String notice_QnA_List(Model model, HttpServletRequest request) {
+	@RequestMapping("/QnA_List.do")
+	public String QnA_List(Model model, HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
 		Member loginMember = (Member) session.getAttribute("loginMember");
@@ -117,7 +117,7 @@ public class BoardController {
 		model.addAttribute("sword",sword);
 
 		
-		return "notice_QnA_List";
+		return "QnA_List";
 	}
 
 	@RequestMapping("/notice.do")
@@ -203,9 +203,6 @@ public class BoardController {
 	}
 	
 	
-	
-	
-	
 	@RequestMapping("/boardInsertForm.do")
 	public void boardInsertForm() {
 	}
@@ -225,7 +222,7 @@ public class BoardController {
 		vo.setBd_pic(bd_pic);
 		mapper.boardInsert(vo);
 
-		return "redirect:/notice_QnA_List.do";
+		return "redirect:/QnA_List.do";
 	}
 
 	
@@ -271,14 +268,16 @@ public class BoardController {
 	@RequestMapping("/boardContent.do/{bd_num}")
 	public String boardContent(@PathVariable("bd_num")int bd_num, Model model) {
 		Board vo = mapper.boardContent(bd_num);	
-		Comment cvo = cmapper.commentList(bd_num);
+		//Comment cvo = mapper.commentList(bd_num);
+		
 		// 조회수 업데이트
 		mapper.boardCount(bd_num);
         
 		model.addAttribute("vo", vo);
-		model.addAttribute("cvo", cvo);
-		//List<Comment> list = mapper.commentSelect(bd_num);
-		//model.addAttribute("list", list);
+		//model.addAttribute("cvo", cvo);
+		
+		List<Comment> list = mapper.commentSelect(bd_num);
+		model.addAttribute("list", list);
 		
 		return "boardContent";
 		
@@ -297,7 +296,7 @@ public class BoardController {
 
 		mapper.boardUpdate(vo);
 
-		return "redirect:/notice_QnA_List.do";
+		return "redirect:QnA_List.do";
 	}
 	
 	@PostMapping("/boardUpdate2.do")
@@ -364,19 +363,19 @@ public class BoardController {
 		// 답글 저장
 		mapper.replyInsert(vo);
 		
-		return "redirect:/notice_QnA_List.do";
+		return "redirect:/QnA_List.do";
 	}
 	
 	// 댓글 입력
-	//@RequestMapping("/commentInsert.do")
-	//public String commentInsert(Comment cvo) {
-	//	mapper.commentInsert(cvo);
-	//	return "redirect:/boardContent.do?co_num=" + cvo.getCo_bd_num();
-	//}
+	@RequestMapping("/commentInsert.do")
+	public String commentInsert(Comment cvo) {
+		mapper.commentInsert(cvo);
+		return "redirect:/boardContent.do?co_num=" + cvo.getCo_bd_num();
+	}
 	// 댓글 삭제
-	//@RequestMapping("/commentDelete.do")
-	//public String commentDelete(@Param(value="co_num") int co_num, @Param(value="co_bd_num") int co_bd_num) {
-	//	mapper.commentDelete(co_num);
-	//	return "redirect:/boardContent.do?co_num="+co_bd_num;
-	//}
+	@RequestMapping("/commentDelete.do")
+	public String commentDelete(@Param(value="co_num") int co_num, @Param(value="co_bd_num") int co_bd_num) {
+		mapper.commentDelete(co_num);
+		return "redirect:/boardContent.do?co_num="+co_bd_num;
+	}
 }

@@ -45,6 +45,8 @@ public interface BoardMapper {
 	public void replySeqUpdate(Board parent);
 	// 답글 등록
 	public void replyInsert(Board vo);
+	
+	
 	// 댓글 등록
 	public void commentInsert(Comment vo);	
 	// 댓글 목록보기
@@ -55,6 +57,14 @@ public interface BoardMapper {
 	// 페이징
 	public ArrayList<Board> list2(String sel, String sword, int start, int pcnt);
 	public int getChong(int pcnt, String sel, String sword); // (전체) 총합은 숫자 ->int
+	
+	
+	
+	public Comment commentList(int bd_num);
+	
+	public List<Board> MainboardList(Board vo);
+	
+	
 	
 	
 	
