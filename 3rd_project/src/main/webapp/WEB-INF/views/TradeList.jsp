@@ -7,13 +7,13 @@
 <!DOCTYPE html>
 <html>
 <head>
- <meta charset="UTF-8">
+<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, 그리고 Bootstrap 기여자들">
     <meta name="generator" content="Hugo 0.104.2">
-  	
-  <title>notice_qa</title>
+    
+<title>TradeList</title>
 
 	<link rel="canonical" href="https://getbootstrap.kr/docs/5.2/examples/jumbotron/">
 
@@ -64,23 +64,23 @@
 		}
       
   </style>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
- <script type="text/javascript">
- 
- function signin(){
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+	function signin(){
 		location.href = "${cpath}/signin.do"
 	}
-
- 
-  $(document).ready(function(){
+	
+	
+	$(document).ready(function(){
 		// boardList라고 하는 함수 실행!
 		// 자바스크립트의 호이스팅
 		boardList();
 	});
-  
-  
+	
+	
 	  	function goForm() {
-	  		location.href="${cpath}/boardInsertForm.do"
+	  		location.href="${cpath}/boardInsertForm3.do"
 	  	}
 	  	
 	  	
@@ -343,7 +343,7 @@
         </div>
       </div> --%>
 
-	<h3>Q&A</h3>
+	<h3>직거래</h3>
       <div class="content__inner" id="tab-2">
         <div class="table-responsive">
           <table class="table">
@@ -412,7 +412,7 @@
 			       <td colspan="5" align="center">
 			        <!-- 10페이지 단위로 이전 이동하기  :  -->
 			       <c:if test="${pstart != 1}"> <!-- 첫번재 그룹이 아닐때는  -->
-			        	<a href="QnA_List.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> << </a>
+			        	<a href="TradeList.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> << </a>
 			       </c:if>
 			       <c:if test="${pstart == 1}"> <!-- 첫번째 그룹일때(1~10)는 이전 10페이지 이동 X -->
 			       《<!-- 넘어가는 꺽세 -->
@@ -420,7 +420,7 @@
 			       
 			        <!-- 1페이지 단위로 이전으로 가기 => 현재페이지에서 1을 뺀 페이지로 이동 --> 
 			       <c:if test="${page != 1}"> <!-- 현재 페이지가 1이 아닌경우 -->
-			        	<a href="QnA_List.do?page=${page-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ◀  </a>
+			        	<a href="TradeList.do?page=${page-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ◀  </a>
 			       </c:if>
 			       <c:if test="${page == 1}"> <!-- 현재페이지가 1인경우 -->
 			                     ◀
@@ -434,12 +434,12 @@
 			            <c:if test="${page != i}"> <!-- 출력되는 페이지가 현재페이지와 다르다면 -->
 			               <c:set var="st" value=""/>
 			            </c:if>
-			            <a href="QnA_List.do?page=${i}&pcnt=${pcnt}&sel=${sel}&sword=${sword}" ${st}> ${i} </a>
+			            <a href="TradeList.do?page=${i}&pcnt=${pcnt}&sel=${sel}&sword=${sword}" ${st}> ${i} </a>
 			         </c:forEach>
 			         
 			       <!-- 1페이지 단위로 다음 이동하기 -->
 			       <c:if test="${page != chong}"> <!-- 현재 페이지가 마지막 페이지가 아니라면 -->
-			        	<a href="QnA_List.do?page=${page+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ▶  </a>
+			        	<a href="TradeList.do?page=${page+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ▶  </a>
 			       </c:if>
 			       <c:if test="${page == chong}"> <!-- 현재 페이지가 마지막 페이지라면 -->
 			                     ▶
@@ -447,7 +447,7 @@
 			        
 			       <!-- 10페이지 단위로 다음 이동하기 -->
 			       <c:if test="${chong != pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막이 아닐겨우 -->
-			         	<a href="QnA_List.do?page=${pend+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> >> </a>
+			         	<a href="TradeList.do?page=${pend+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> >> </a>
 			       </c:if>
 			       <c:if test="${chong == pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막일 경우 -->
 			    	   》 <!-- 넘어가는 꺽세 -->

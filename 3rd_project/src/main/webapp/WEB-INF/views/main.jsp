@@ -93,10 +93,10 @@
                     <a class="nav-link" href="<c:url value='/analysis.do'/>">농작물분석</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">직거래</a>
+                    <a class="nav-link" href="<c:url value='/TradeList.do'/>">직거래</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="boardList()">Q&A</a>
+                    <a class="nav-link" href="<c:url value='/QnA_List.do'/>" onclick="boardList()">Q&A</a>
                   </li>
                   
                 </ul>

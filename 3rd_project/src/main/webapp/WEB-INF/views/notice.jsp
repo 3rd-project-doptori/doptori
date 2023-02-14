@@ -148,10 +148,10 @@
                   <a class="nav-link" href="#">병해충정보</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">농작물분석</a>
+                  <a class="nav-link" href="${cpath }/analysis.do">농작물분석</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">직거래</a>
+                  <a class="nav-link" href="${cpath }/TradeList.do">직거래</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="${cpath }/QnA_List.do">Q&A</a>
@@ -208,6 +208,7 @@
         <div><span>Q&A</span></div>
       </button>
     </div> -->
+    <h3>공지사항</h3>
     <div class="content">
       <div class="content__inner current" id="tab-1">
         <div class="table-responsive">
