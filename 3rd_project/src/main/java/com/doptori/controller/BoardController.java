@@ -286,6 +286,26 @@ public class BoardController {
 	}
 	
 	
+	@RequestMapping("/MyboardList.do")
+	public String MyboardList(Model model, HttpServletRequest request) {
+
+		HttpSession session = request.getSession();
+		Member loginMember = (Member) session.getAttribute("loginMember");
+
+		List<Board> list = mapper.boardList(loginMember.getMb_num());
+
+		List<String> memberNames = new ArrayList<>();
+		for (Board board : list) {
+			memberNames.add(mapper.memberNum2Name(board.getBd_mb_num()));
+		}
+		model.addAttribute("list", list);
+		model.addAttribute("memberNames", memberNames);
+		
+		return "MyboardList";
+	}
+	
+	
+	
 	@RequestMapping("/boardInsertForm.do")
 	public void boardInsertForm() {
 	}
@@ -313,8 +333,8 @@ public class BoardController {
 	}
 
 	
-	@RequestMapping("/boardInsert2.do")
-	public String boardInsert2(Board vo) throws IOException {
+	@RequestMapping("/noticeInsert.do")
+	public String noticeInsert(Board vo) throws IOException {
 		// 파일 업로드 처리
 		String bd_pic = null;
 		MultipartFile uploadFile = vo.getUploadFile();
@@ -405,9 +425,8 @@ public class BoardController {
 
 		return "redirect:QnA_List.do";
 	}
-	
-	@PostMapping("/boardUpdate2.do")
-	public String boardUpdate2(Board vo) {
+	@PostMapping("/noticeUpdate.do")
+	public String noticeUpdate(Board vo) {
 
 		mapper.boardUpdate(vo);
 
@@ -427,11 +446,11 @@ public class BoardController {
 
 		mapper.boardDelete(bd_num);
 
-		return "redirect:/notice_QnA_List.do";
+		return "redirect:/QnA_List.do";
 	}
 	
-	@RequestMapping("/boardDelete2.do/{bd_num}")
-	public String boardDelete2(@PathVariable("bd_num") int bd_num, Model model) {
+	@RequestMapping("/noticeDelete.do/{bd_num}")
+	public String noticeDelete(@PathVariable("bd_num") int bd_num, Model model) {
 
 		mapper.boardDelete(bd_num);
 
@@ -504,7 +523,9 @@ public class BoardController {
 		
 		return "redirect:/TradeList.do";
 	}
-	
+
+
+
 	// 댓글 입력
 	@RequestMapping("/commentInsert.do")
 	public String commentInsert(Comment cvo) {

@@ -72,9 +72,12 @@
 			 </tr>
 			 <tr>
 			 	<td colspan="2">
+			 		<c:if test="${vo.bd_mb_num eq loginMember.mb_num}">	
 			 		<button class="btn btn-sm btn-success" onclick="goUpdate()">수정</button>
 			 		<a class="btn btn-sm btn-warning" href="<c:url value='/boardDelete.do/${vo.bd_num}' />">삭제</a>
-			 		<a class="btn btn-sm btn-info" href="<c:url value='/notice_QnA_List.do' />">목록으로 돌아가기</a>
+			 		</c:if>
+			 		<a class="btn btn-default" href="javascript:history.go(-1)">뒤로가기</a>
+			 		<%-- <a class="btn btn-sm btn-info" href="<c:url value='/QnA_List.do' />">목록으로 돌아가기</a> --%>
 			 		<c:if test="${loginMember.mb_id=='admin'}">	
 			 		<button class="btn btn-sm btn-danger" onclick="goReply()">답글달기></button>	        
 			 	    </c:if>
