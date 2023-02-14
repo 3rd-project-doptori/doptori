@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 여러 mapper.xml이 있는 경우, id 겹치면 혼란이  되는 것을 방지하기 위해 -->
+<mapper namespace="com.doptori.mapper.AddressMapper">
+    <!-- 태그의 id는 mapper 인터페이스의 메소드 이름으로 한다. -->
+    
+  <!-- 시군구 목록 -->
+  <select id="gugunList" resultType="com.doptori.entity.Address">
+  	SELECT ad_gugun FROM Address GROUP BY ad_gugun;
+  </select>
+  
+  <!-- 읍면동 목록 -->
+  <select id="dongList" resultType="com.doptori.entity.Address">
+  	SELECT ad_num, ad_gugun, ad_dong FROM Address GROUP BY ad_dong, ad_gugun, ad_num;
+  </select>
+  
+  <!-- 전체 주소 찾기 -->
+  <select id="fulladdress" resultType="com.doptori.entity.Address" parameterType="int">
+  	SELECT * FROM Address where ad_num=#{fdm1_ad_num};
+  </select>
+  
+</mapper>

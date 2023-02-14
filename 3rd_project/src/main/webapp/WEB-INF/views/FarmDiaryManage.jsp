@@ -16,21 +16,15 @@ $(document).ready(function(){
 	var temp;
 	
 	$.ajax({
-		url : "SetBclsArea",
+		url : "${cpath}/ad_gugun.do",
 		type : "get",
 		dataType : "json",
 		success : function(res){
 			//console.log(res);
 			$("#selectbox").html("");
-			for(var i=0 ; i<res.length ; i++){
-				if(i==0){
-					temp=res[i]
-				}
-				else if(res[i]=='전국'){
-					continue
-				}
-				$("#selectbox").append("<option value="+res[i]+">"+res[i]+"</option>");
-			}			
+			$.each(res, (index, obj)=>{
+				$("#selectbox").append("<option value="+obj.ad_gugun+">"+obj.ad_gugun+"</option>");
+			});	
 		},
 		error : function(){
 			alert("Ajax 통신 실패!!");	
@@ -38,17 +32,15 @@ $(document).ready(function(){
 	});
 	
 	$.ajax({
-		url : "SetArea",
+		url : "${cpath}/ad_dong.do",
 		type : "get",
 		dataType : "json",
 		success : function(res){
 			//console.log(res);
 			$("#selectNextbox").html("");
-			for(var i=0 ; i<res.length ; i++){
-				if(res[i].b_cls==temp){
-				$("#selectNextbox").append("<option value="+res[i].s_cls+">"+res[i].s_cls+"</option>");
-				}
-			}			
+			$.each(res, (index, obj)=>{
+				$("#selectNextbox").append("<option value="+obj.ad_dong+">"+obj.ad_dong+"</option>");
+			});
 		},
 		error : function(){
 			alert("Ajax 통신 실패!!");	
@@ -59,24 +51,23 @@ $(document).ready(function(){
 function changeSelect(){
 	var select = $("#selectbox option:selected").text();
 	$.ajax({
-		url : "SetArea",
+		url : "${cpath}/ad_dong.do",
 		type : "get",
 		dataType : "json",
 		success : function(res){
 			//console.log(res);
 			$("#selectNextbox").html("");
-			for(var i=0 ; i<res.length ; i++){
-				if(res[i].b_cls==select){
-				$("#selectNextbox").append("<option value="+res[i].s_cls+">"+res[i].s_cls+"</option>");
+			$.each(res, (index, obj)=>{
+				if (obj.ad_gugun==select) {
+				$("#selectNextbox").append("<option value="+obj.ad_num+">"+obj.ad_dong+"</option>");
 				}
-			}			
+			});		
 		},
 		error : function(){
 			alert("Ajax 통신 실패!!");	
 		}
 	});	
 }
-
 </script>
 </head>
 <body>
@@ -106,9 +97,8 @@ function changeSelect(){
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="fdm1_ad_num">필지번호:</label>
 		    <div class="col-sm-10">
-		    	<select id="selectbox" name="b_cls"  class="area" placeholder="지역" onchange="changeSelect()"></select>
-	        	<select id="selectNextbox" name="s_cls" class="area2" placeholder="지역"></select>
-		      <input type="text" class="form-control" name="fdm1_ad_num" id="fdm1_ad_num" placeholder="필지번호">
+		    	<select id="selectbox" name="ad_gugun"  class="area" placeholder="지역" onchange="changeSelect()"></select>
+	        	<select id="selectNextbox" name="ad_dong" class="area2" placeholder="지역"></select>
 		    </div>
 		  </div>
 		  <div class="form-group">

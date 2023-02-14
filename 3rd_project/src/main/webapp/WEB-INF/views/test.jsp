@@ -1,199 +1,160 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="${cpath}/resources/css/index.css"> 
-</head>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{cmmn/adminLayout}">
 <body>
-<div class="container">
-  <h2>게시판 글쓰기</h2>
-  <div class="panel panel-default">
-    <div class="panel-heading">게시판</div>
-    <div class="panel-body">
-    	<form action="${cpath}/test.do" method="post">
-						<%-- <input type="hidden" name="year" value="${today_info.search_year}" />
-						<input type="hidden" name="month" value="${today_info.search_month-1}" /> --%>
-						<input type="hidden" name="fd_mb_num" value="${loginMember.mb_num}" />
-                    <div class="modal-body">
-                        <table class="table table-bordered">
-                            <colgroup>
-                                <col width=13%>
-                                <col>
-                            </colgroup>
-                            <thead>
-                            <tr>
-                                <th scope="col">시작일</th>
-                                <th>
-                                    <input type="date" id="fd_start" name="fd_start">
-                                </th>
-                                <th class="color">종료일</th>
-                                <th>
-                                    <input type="date" id="fd_end" name="fd_end">
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">품목</th>
-                                <td colspan="3">
-                                    <select class="form" id="fd_item" name="fd_item">
-                                        <option selected>품목</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">필지</th>
-                                <td colspan="3">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="fd_address" name="fd_address" value="option1">
-                                        <label class="form-check-label" for="inlineCheckbox1">전라남도 순천시 OOO 111</label>
-                                    </div>
-                                </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">품종</th>
-                                    <td>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="fd_kind" name="fd_kind" value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">딸기 토마토</label>
-                                        </div>
-                                    </td>
-                                    <th class="color">작업단계</th>
-                                    <td>
-                                    	<div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="fd_step" name="fd_step" value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">작업단계</label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="color">
-                                <th scope="row">작업내용</th>
-                                <td colspan="3">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a comment here" id="fd_cont" name="fd_cont" style="height: 100px"></textarea>
-                                        <label for="floatingTextarea2">Comments</label>
-                                    </div>
-                                </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">활동유형</th>
-                                    <td>
-                                    	<div>
-                                            <input type="text" id="fd_pesticide" name="fd_pesticide" value="option1" placeholder="농약명">
-                                            <input type="text" id="fd_pesticide_amount" name="fd_pesticide_amount" value="1.2" placeholder="살포량">
-                                        </div>
-                                    </td>
-                                    <td>
-                                    	<div>
-                                            <input type="text" id="fd_fertilizer" name="fd_fertilizer" value="option2" placeholder="비료명">
-                                            <input type="text" id="fd_fertilizer_amount" name="fd_fertilizer_amount" value="1.4" placeholder="사용량">
-                                        </div>
-                                    </td>
-                                    <td>
-                                    	<div>
-                                            <input type="text" id="fd_man_name" name="fd_man_name" value="option3" placeholder="인력명">
-                                            <input type="text" id="fd_worktime" name="fd_worktime" value="1.5" placeholder="투입시간">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">날씨정보</th>
-                                    <td colspan="3">
-                                        <div class="cont">
-                                            <div>
-                                                <ul class="ul">
-                                                    <li class="li">
-                                                        <span class="stitle,weather">날씨</span>
-                                                        <select id="fd_weather" name="fd_weather" title="날씨 선택">
-                                                            <option value="1" selected>맑음</option>
-                                                            <option value="2">구름 조금</option>
-                                                            <option value="3">구름 많음</option>
-                                                            <option value="4">흐림</option>
-                                                            <option value="5">비</option>
-                                                            <option value="6">눈/비</option>
-                                                            <option value="7">눈</option>
-                                                        </select>
-                                                    </li>
-                                                    <li class="li">
-                                                        <div>
-                                                            <span class="stitle">최저기온</span>
-                                                            <input type="text" value="" name="fd_low_temp" id="fd_low_temp" class="alR" onkeyup="numberChk('low_temp');"> ℃
-                                                        </div>
-                                                    </li>
-                                                    <li class="li">
-                                                        <div>
-                                                            <span class="stitle">최고기온</span>
-                                                            <input type="text" name="fd_high_temp" id="fd_high_temp" class="alR" onkeyup="numberChk('high_temp');"> ℃
-                                                        </div>
-                                                    </li>
-                                                    <li class="li">
-                                                        <div>
-                                                            <span class="stitle">강수량</span>
-                                                            <input type="text" name="fd_precipitation" id="fd_precipitation" class="alR" onkeyup="numberChk('r12');"> mm
-                                                        </div>
-                                                    </li>
-                                                    <li class="li">
-                                                        <div>
-                                                            <span class="stitle">습도</span>
-                                                            <input type="text"value="" name="fd_humid" id="fd_humid" class="alR" onkeyup="numberChk('reh');"> %
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                
-                                                <!-- <p><span>*강수량 및 습도는 전날 평균량 기준으로 조회됩니다.</span></p> -->
-                                                
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">사진첨부</th>
-                                    <td colspan="3">
-                                        <div class="mb-3">
-                                            <label for="formFileMultiple" class="form-label">총 10장만 등록 가능합니다</label>
-                                            <input class="form-control" type="file" id="fd_picture1" name="fd_picture1" multiple>
-                                            <input class="form-control" type="file" id="fd_picture2" name="fd_picture2" multiple>
-                                            <input class="form-control" type="file" id="fd_picture3" name="fd_picture3" multiple>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">영농일지 공개 여부</th>
-                                    <td colspan="3">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="fd_open" name="fd_open" value="1">
-                                            <label class="form-check-label" for="inlineCheckbox1">공개</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="fd_open" value="0">
-                                            <label class="form-check-label" for="inlineCheckbox2">비공개</label>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Send message</button>
-                    </div>
-                    </form>
-    </div>
-    <div class="panel-footer"></div>
-  </div>
-</div>
+<div layout:fragment="content">
+	<script type="text/javascript">
+	var fileArr;
+	var fileInfoArr=[];
 
+	//썸네일 클릭시 삭제.
+	function fileRemove(index) {
+	    console.log("index: "+index);
+	    fileInfoArr.splice(index,1);
+	 
+	    var imgId="#img_id_"+index;
+	    $(imgId).remove();
+	    console.log(fileInfoArr);
+	}
+
+	//썸네일 미리보기.
+	function previewImage(targetObj, View_area) {
+	    var files=targetObj.files;
+	    fileArr=Array.prototype.slice.call(files);
+	    
+	    var preview = document.getElementById(View_area); //div id
+	    var ua = window.navigator.userAgent;
+	 
+	    //ie일때(IE8 이하에서만 작동)
+	    if (ua.indexOf("MSIE") > -1) {
+	        targetObj.select();
+	        try {
+	            var src = document.selection.createRange().text; // get file full path(IE9, IE10에서 사용 불가)
+	            var ie_preview_error = document.getElementById("ie_preview_error_" + View_area);
+	 
+	 
+	            if (ie_preview_error) {
+	                preview.removeChild(ie_preview_error); //error가 있으면 delete
+	            }
+	 
+	            var img = document.getElementById(View_area); //이미지가 뿌려질 곳
+	 
+	            //이미지 로딩, sizingMethod는 div에 맞춰서 사이즈를 자동조절 하는 역할
+	            img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+src+"', sizingMethod='scale')";
+	        } catch (e) {
+	            if (!document.getElementById("ie_preview_error_" + View_area)) {
+	                var info = document.createElement("<p>");
+	                info.id = "ie_preview_error_" + View_area;
+	                info.innerHTML = e.name;
+	                preview.insertBefore(info, null);
+	            }
+	        }
+	        //ie가 아닐때(크롬, 사파리, FF)
+	    } else {
+	        var files = targetObj.files;
+	        for ( var i = 0; i < files.length; i++) {
+	            var file = files[i];
+	            fileInfoArr.push(file);
+	 
+	            var imageType = /image.*/; //이미지 파일일경우만.. 뿌려준다.
+	            if (!file.type.match(imageType))
+	                continue;
+	            // var prevImg = document.getElementById("prev_" + View_area); //이전에 미리보기가 있다면 삭제
+	            // if (prevImg) {
+	            //     preview.removeChild(prevImg);
+	            // }
+	 
+	            var span=document.createElement('span');
+	            span.id="img_id_" +i;
+	            span.style.width = '100px';
+	            span.style.height = '100px';
+	            preview.appendChild(span);
+	 
+	            var img = document.createElement("img");
+	            img.className="addImg";
+	            img.classList.add("obj");
+	            img.file = file;
+	            img.style.width='inherit';
+	            img.style.height='inherit';
+	            img.style.cursor='pointer';
+	            const idx=i;
+	            img.onclick=()=>fileRemove(idx);   //이미지를 클릭했을 때.
+	            span.appendChild(img);
+	 
+	            if (window.FileReader) { // FireFox, Chrome, Opera 확인.
+	                var reader = new FileReader();
+	                reader.onloadend = (function(aImg) {
+	                    return function(e) {
+	                        aImg.src = e.target.result;
+	                    };
+	                })(img);
+	                reader.readAsDataURL(file);
+	            } else { // safari is not supported FileReader
+	                //alert('not supported FileReader');
+	                if (!document.getElementById("sfr_preview_error_"
+	                    + View_area)) {
+	                    var info = document.createElement("p");
+	                    info.id = "sfr_preview_error_" + View_area;
+	                    info.innerHTML = "not supported FileReader";
+	                    preview.insertBefore(info, null);
+	                }
+	            }
+	        }
+	    }
+	}
+	
+	//form데이터 전송
+	function dataSubmit() {
+	    var token = $("meta[name='_csrf']").attr("content");
+	    var header = $("meta[name='_csrf_header']").attr("content");
+	 
+	    var data=new FormData($("#storeAddForm")[0]);
+	 
+	    $.ajax({
+	        beforeSend: function(xhr){
+	            xhr.setRequestHeader(header,token);
+	        },
+	        url: "url",
+	        data: data,
+	        processData:false,
+	        contentType:false,
+	        enctype:'multipart/form-data',
+	        type:"POST",
+	    }).done(function (fragment) {
+	        $("#resultDiv").replaceWith(fragment);
+	    });
+	}
+
+	</script>
+ 
+    <div class="row border-bottom" style="margin-top: 10px; margin-bottom: 10px;"></div>
+ 
+    <form id="addForm">
+        <div style="display: inline;">
+            <label for="img_upload">
+                <img src="/img/photo_add.png" style="width:100px; height:100px; cursor: pointer;">
+            </label>
+            <input type="file" name="img_upload" id="img_upload"
+                   onchange="previewImage(this,'View_area')"
+                   style="display: none;" multiple>
+ 
+            <span id='View_area'
+                  style='position:relative; color: black; border: 0px solid black;'>
+        </span>
+        </div>
+ 
+        <div style="align-content: center; width: 100%; text-align: center;">
+            <input type="button" class="btn" style="background: #FF6491; color: #FFF2F6;" onclick="dataSubmit();"
+                   value="전송하기">
+        </div>
+ 
+        <div id="resultDiv">
+            <p th:text="${log}"></p>
+        </div>
+    </form>
+</div>
 </body>
 </html>
