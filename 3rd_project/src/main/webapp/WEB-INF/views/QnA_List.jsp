@@ -86,7 +86,7 @@
 	  	
 	 	function move(my)
 	    {
-	 	   location="boardList.do?pcnt="+my.value;
+	 	   location="QnA_List.do?pcnt="+my.value;
 	    }
 	    window.onload=function()
 	    {
@@ -160,13 +160,13 @@
                   <a class="nav-link" href="#">병해충정보</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">농작물분석</a>
+                  <a class="nav-link" href="<c:url value='/analysis.do'/>">농작물분석</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">직거래</a>
+                  <a class="nav-link" href="<c:url value='/TradeList.do'/>">직거래</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Q&A</a>
+                  <a class="nav-link" href="<c:url value='/QnA_List.do'/>">Q&A</a>
                 </li>
                 
               </ul>
@@ -189,7 +189,7 @@
 			                  
 			                  <ul class="dropdown-menu dm2" aria-labelledby="static">
 			                    <li class="dropdown-item">
-			                      <a href="#0"><i class="lni lni-user"></i> View Profile</a>
+			                      <a href="${cpath}/mypage.do"><i class="lni lni-user"></i> View Profile</a>
 			                    </li>
 			                    <li class="dropdown-item">
 			                      <a href="${cpath }/notice.do"><i class="lni lni-alarm"></i> Notifications</a>
@@ -343,13 +343,13 @@
         </div>
       </div> --%>
 
-
+	<h3>Q&A</h3>
       <div class="content__inner" id="tab-2">
         <div class="table-responsive">
           <table class="table">
 	    	<caption> <h3 align="right"> <font size="2">
 	    	<div id="left" style="float:left;"> <!-- select 검색 창  -->
-		        <form method="post" action="${cpath}/boardList.do" onsubmit="return check(this)">
+		        <form method="post" action="${cpath}/QnA_List.do" onsubmit="return check(this)">
 		         <select name="searchType" id="searchType">
 		           <option value="0">선 택</option>
 		           <option value="bd_title">제 목</option>
@@ -412,7 +412,7 @@
 			       <td colspan="5" align="center">
 			        <!-- 10페이지 단위로 이전 이동하기  :  -->
 			       <c:if test="${pstart != 1}"> <!-- 첫번재 그룹이 아닐때는  -->
-			        	<a href="boardList.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> << </a>
+			        	<a href="QnA_List.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> << </a>
 			       </c:if>
 			       <c:if test="${pstart == 1}"> <!-- 첫번째 그룹일때(1~10)는 이전 10페이지 이동 X -->
 			       《<!-- 넘어가는 꺽세 -->
@@ -420,7 +420,7 @@
 			       
 			        <!-- 1페이지 단위로 이전으로 가기 => 현재페이지에서 1을 뺀 페이지로 이동 --> 
 			       <c:if test="${page != 1}"> <!-- 현재 페이지가 1이 아닌경우 -->
-			        	<a href="boardList.do?page=${page-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ◀  </a>
+			        	<a href="QnA_List.do?page=${page-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ◀  </a>
 			       </c:if>
 			       <c:if test="${page == 1}"> <!-- 현재페이지가 1인경우 -->
 			                     ◀
@@ -434,12 +434,12 @@
 			            <c:if test="${page != i}"> <!-- 출력되는 페이지가 현재페이지와 다르다면 -->
 			               <c:set var="st" value=""/>
 			            </c:if>
-			            <a href="boardList.do?page=${i}&pcnt=${pcnt}&sel=${sel}&sword=${sword}" ${st}> ${i} </a>
+			            <a href="QnA_List.do?page=${i}&pcnt=${pcnt}&sel=${sel}&sword=${sword}" ${st}> ${i} </a>
 			         </c:forEach>
 			         
 			       <!-- 1페이지 단위로 다음 이동하기 -->
 			       <c:if test="${page != chong}"> <!-- 현재 페이지가 마지막 페이지가 아니라면 -->
-			        	<a href="boardList.do?page=${page+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ▶  </a>
+			        	<a href="QnA_List.do?page=${page+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ▶  </a>
 			       </c:if>
 			       <c:if test="${page == chong}"> <!-- 현재 페이지가 마지막 페이지라면 -->
 			                     ▶
@@ -447,7 +447,7 @@
 			        
 			       <!-- 10페이지 단위로 다음 이동하기 -->
 			       <c:if test="${chong != pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막이 아닐겨우 -->
-			         	<a href="boardList.do?page=${pend+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> >> </a>
+			         	<a href="QnA_List.do?page=${pend+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> >> </a>
 			       </c:if>
 			       <c:if test="${chong == pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막일 경우 -->
 			    	   》 <!-- 넘어가는 꺽세 -->

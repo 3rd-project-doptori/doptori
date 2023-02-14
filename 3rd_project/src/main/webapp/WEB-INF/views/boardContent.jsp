@@ -72,9 +72,12 @@
 			 </tr>
 			 <tr>
 			 	<td colspan="2">
+			 		<c:if test="${vo.bd_mb_num eq loginMember.mb_num}">	
 			 		<button class="btn btn-sm btn-success" onclick="goUpdate()">수정</button>
 			 		<a class="btn btn-sm btn-warning" href="<c:url value='/boardDelete.do/${vo.bd_num}' />">삭제</a>
-			 		<a class="btn btn-sm btn-info" href="<c:url value='/notice_QnA_List.do' />">목록으로 돌아가기</a>
+			 		</c:if>
+			 		<a class="btn btn-default" href="javascript:history.go(-1)">뒤로가기</a>
+			 		<%-- <a class="btn btn-sm btn-info" href="<c:url value='/QnA_List.do' />">목록으로 돌아가기</a> --%>
 			 		<c:if test="${loginMember.mb_id=='admin'}">	
 			 		<button class="btn btn-sm btn-danger" onclick="goReply()">답글달기></button>	        
 			 	    </c:if>
@@ -84,15 +87,16 @@
 		
 		<!-- 댓글 작성 -->
 		<form action="${cpath}/commentInsert.do" method="post">
-			<input type="hidden" id="bd_num" name="bd_num" value="${vo.bd_num}">
-			<input type="hidden" name="co_mb_num" value="${vo.bd_mb_num}">
+			<%-- <input type="hidden" id="bd_num" name="bd_num" value="${vo.bd_num}">
+			<input type="hidden" name="co_mb_num" value="${vo.bd_mb_num}"> --%>
 	    	<table style="margin-left: 30px; margin-bottom: 30px;">
 	    		<tr>
-	    			<td width="200px">
+	    			<td width="10%">
 	    				<span size="2">베프</span>
-	    				<!-- <input class="form-control" type="hidden" name="co_mb_num" readonly="readonly"> -->
+	    				<input type="hidden" name="co_bd_num" value="${cvo.co_bd_num}">
+	    				<input class="form-control" type="hidden" name="co_mb_num" readonly="readonly">
 	    			</td>
-	    			<td width="800px">
+	    			<td width="90%">
 	    				<input class="form-control" type="text" name="co_cont" placeholder="내용을 입력하세용~" required>
 	    			</td>
 	    			<td>
@@ -110,20 +114,20 @@
 				<tr>
 					<td width="10%">${cvo.co_mb_num}</td>
 					<td width="60%"><span style="margin-left:10px;">${cvo.co_cont}</span></td>
-					<td width="30%"><span style="margin-left:5px;">${cvo.co_date}</span></td>
-					<td>
-						<form action="${cpath}/commentDelete.do" method="post">
+					<td width="20%"><span style="margin-left:5px;">${cvo.co_date}</span></td>
+					<td width="10%">
+						<%-- <form action="${cpath}/commentDelete.do" method="post">
 						<c:if test="${vo.bd_mb_num == cvo.co_mb_num}">
 							<button type="button" class="btn btn-info btn-sm">삭제</button>
 							<input  type="hidden" id="bd_num" name="bd_num" value="${vo.bd_num }">
 							<input  type="hidden" id="co_num" name="co_num" value="${cvo.co_num }">
 						</c:if>
-						</form>
-						<!-- <span style="margin-left:20px">
-							<a href="commentDelete.do?co_num=${cvo.co_num}&co_bd_num=${cvo.co_bd_num}">
+						</form> --%>
+						<span style="margin-left:20px">
+							<a href="/${cpath } }commentDelete.do?co_num=${cvo.co_num}&co_bd_num=${cvo.co_num}">
 							<button type="button" class="btn btn-info btn-sm">삭제</button>
 							</a>
-						</span> -->
+						</span>
 					</td>
 				 </tr>
 			</table>

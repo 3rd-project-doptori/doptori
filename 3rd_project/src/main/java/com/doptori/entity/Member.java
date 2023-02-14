@@ -1,5 +1,7 @@
 package com.doptori.entity;
 
+import java.util.List;
+
 public class Member {
 	
 	private	int mb_num;
@@ -14,7 +16,7 @@ public class Member {
 	private	String mb_re_num;
 	private	String mb_date;
 	
-	
+	private List<Board> userBoardList;
 	
 	// getter, setter 만들기
 	public int getMb_num() {
@@ -82,6 +84,12 @@ public class Member {
 	}
 	public void setMb_date(String mb_date) {
 		this.mb_date = mb_date;
+	}
+	public List<Board> getUserBoardList() {
+		return userBoardList;
+	}
+	public void setUserBoardList(List<Board> userBoardList) {
+		this.userBoardList = userBoardList;
 	}
 	@Override
 	public String toString() {

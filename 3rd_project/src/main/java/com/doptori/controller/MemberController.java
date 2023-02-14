@@ -66,13 +66,14 @@ public class MemberController {
 		return "redirect:/Main.do";
 	}
 	
-	// 회원 정보 수정 페이지
+	
+	// 회원 정보 수정 페이지로 이동
 	//@RequestMapping("/updateMember.do")
 	//public String updateMember() {
 	//	return "updateMember";
 	//}
-	@RequestMapping("/updateMember.do")
-	public void updateMember() {}
+	@RequestMapping("/mypage.do")
+	public void mypage() {}
 	// 회원 정보 수정(update 이벤트)
 	@RequestMapping("/userUpdate.do")
 	public String userUpdate(Member mvo, MultipartFile file, HttpSession session)throws Exception {
@@ -93,7 +94,7 @@ public class MemberController {
 		
 		mapper.userUpdate(mvo);
 		session.setAttribute("loginMember", mvo);
-		return "redirect:/Main.do";
+		return "redirect:/mypage.do";
 	}
 	
 	
@@ -134,9 +135,9 @@ public class MemberController {
 	
 //	
 	
-	@GetMapping("/Mypage.do")
-	public String Mypage() {
-		return "Mypage";
-	}
+	//@GetMapping("/Mypage.do")
+	//public String Mypage() {
+	//	return "Mypage";
+	//}
 	
 }

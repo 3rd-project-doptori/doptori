@@ -59,7 +59,7 @@
 						<label class="control-label col-sm-2">비밀번호 : </label>
 						<div class="col-sm-10">
 							<!--  form-control 한줄 채워줌 -->
-							<input type="password" class="form-control" placeholder="비밀번호를 입력하세요."  value="${loginMember.mb_pw}"></input>
+							<input type="password" class="form-control" placeholder="비밀번호를 입력하세요."  value="${loginMember.mb_pw}"/>
 						</div>
 					</div>
 					<div class="form-group">

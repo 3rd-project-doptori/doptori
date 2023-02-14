@@ -23,7 +23,6 @@
     
     <main>
         <div class="container py-4">
-
             <div class="row align-items-md-stretch">
                 <div class="col-md-6">
                     <div class="h-100 p-5 border rounded-3">

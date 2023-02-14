@@ -21,9 +21,8 @@
 </head>
 <body>
 <div class="container">
-  <h2>게시판 글쓰기</h2>
   <div class="panel panel-default">
-    <div class="panel-heading">게시판</div>
+    <div class="panel-heading">Q&A 글쓰기</div>
     <div class="panel-body">
     	<form class="form-horizontal" action="${cpath}/boardInsert.do" method="post"  enctype="multipart/form-data">
 		  
@@ -33,9 +32,10 @@
 		      <select name="bd_type" id="bd_type">
                     <!-- <option value="">선택하기</option> -->
                     <c:if test="${loginMember.mb_id=='admin'}">
-                    	<option value=1>공지사랑</option>
+                    	<option value=1>공지사항</option>
                     </c:if>
 	                	<option value=2>Q&A</option>
+	                	<option value=3>직거래</option>
                 </select>
 		    </div>
 		</div>
@@ -68,7 +68,8 @@
 		    <div class="col-sm-offset-2 col-sm-10">
 		      <button type="submit" class="btn btn-default">등록</button>
 		      <button type="reset" class="btn btn-default">초기화</button>
-		      <a class="btn btn-sm btn-info" href="<c:url value='/boardList.do' />">목록으로 돌아가기</a>
+		      <a class="btn btn-default" href="javascript:history.go(-1)">뒤로가기</a>
+		      <%-- <a class="btn btn-sm btn-info" href="<c:url value='/boardList.do' />">목록으로 돌아가기</a> --%>
 		    </div>
 		  </div>
 		</form>

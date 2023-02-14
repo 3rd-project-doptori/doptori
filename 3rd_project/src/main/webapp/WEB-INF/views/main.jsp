@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="com.doptori.entity.Board"%>
+<%@ page import="java.util.List"%>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
 <!doctype html>
 <html lang="ko">
@@ -48,7 +50,7 @@
     <script type="text/javascript">
     
 	    function boardList(){
-	    	location.href = "${cpath}/notice_QnA_List.do"
+	    	location.href = "${cpath}/QnA_List.do"
 	    }
 	    
 	    function signin(){
@@ -91,10 +93,10 @@
                     <a class="nav-link" href="<c:url value='/analysis.do'/>">농작물분석</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">직거래</a>
+                    <a class="nav-link" href="<c:url value='/TradeList.do'/>">직거래</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="boardList()">Q&A</a>
+                    <a class="nav-link" href="<c:url value='/QnA_List.do'/>" onclick="boardList()">Q&A</a>
                   </li>
                   
                 </ul>
@@ -120,7 +122,7 @@
 			                    
 			                  <ul class="dropdown-menu dm2" aria-labelledby="static">
 			                    <li class="dropdown-item">
-			                      <a href="#0"><i class="lni lni-user"></i> View Profile</a>
+			                      <a href="${cpath}/mypage.do"><i class="lni lni-user"></i> View Profile</a>
 			                    </li>
 			                    <li class="dropdown-item">
 			                      <a href="${cpath }/notice.do"><i class="lni lni-alarm"></i> Notifications</a>
@@ -131,7 +133,7 @@
 			                    </li>
 			                    <li class="dropdown-item"><a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> LOGOUT </a>
 			                    </li>
-			                    <li class="dropdown-item"><a href="${cpath}/updateMember.do"> <i class="lni lni-exit"></i> Edit profile  </a>
+			                    <li class="dropdown-item"><a href="${cpath}/mypage.do"> <i class="lni lni-exit"></i> Edit profile  </a>
 			                    </li>
 			                  </ul>
 			                </div>
@@ -190,28 +192,42 @@
     </div>
 
     <div class="container-fluid py-5">
-        <h3>공지사항</h3>
+        <h3><a href="${cpath}/notice.do"> 공지사항</a></h3>
         <table class="table table-sm text-center align-middle">
-            <colgroup>
-                <col width=10%>
-                <col>
-    
-            </colgroup>
-            <tr class="table-light">
-                <th>번호</th>
-                <th>제목</th>
-    
-            </tr>
-            <tr class="table-group-divider">
-                <th>1</th>
-                <td>제목제목제목제목제목제목</td>
-    
-            </tr>
-            <tr>
-                <th>2</th>
-                <td>제목제목제목제목제목제목</td>
-            </tr>
-        </table>
+	    	<thead>
+		    	 <tr>
+		    	 	<td width="10%" scope="col">번호</td>
+		    	 	<td width="60%" scope="col">제목</td>
+		    	 	<td width="40%" scope="col">작성일</td>
+		    	 	<!-- <th scope="col">조회수</th> -->
+		    	 </tr>
+	    	</thead>
+	    	<tbody class="table-group-divider">
+	    	<c:forEach var="vo" items="${list}" varStatus="status">
+		    	<c:if test="${vo.bd_type == '1' }">
+		    			<tr class="table-group-divider">
+		    				<td scope="row">${vo.bd_num}</th>
+		    				<%-- <c:if test="${vo.bd_level > 0}">
+								<c:forEach begin="1" end="${vo.bd_level }">
+									<span style="padding-left: 10px"></span>
+								</c:forEach>
+							</c:if> --%>
+							<td align="left">
+							<<%-- c:if test="${vo.bd_level > 0}">
+								<c:forEach begin="1" end="${vo.bd_level }">
+									<span style="padding-left: 10px"></span>
+								</c:forEach>
+							</c:if> --%>
+							<c:url var="contentlink" value="/boardContent.do/${vo.bd_num}" />		
+							<a href="${contentlink}">${vo.bd_title}</a>
+							</td>  			
+							<td>${vo.bd_date}</td>  			
+							<%-- <td>${vo.bd_cnt}</td>  --%>    			
+		    			</tr>
+		    	</c:if>
+	    	</c:forEach> 
+	    	</tbody>
+	    </table>
     </div>
 
     <footer class="pt-3 mt-4 text-muted border-top">
