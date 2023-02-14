@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*--------------------------------
 
 Lineicons Free Web Font
@@ -7,15 +6,15 @@ Version: 4.0
 
 -------------------------------- */
 
-/* @font-face {
+@font-face {
   font-family: 'lineicons';
-  src: url('/3rd_project/src/main/webapp/resources/header/LineIcons.eot');
-  src: url('/3rd_project/src/main/webapp/resources/header/LineIcons.eot') format('embedded-opentype'),
-       url('/3rd_project/src/main/webapp/resources/header/LineIcons.woff2') format('woff2'),
-       url('/3rd_project/src/main/webapp/resources/header/LineIcons.woff') format('woff'),
-       url('/3rd_project/src/main/webapp/resources/header/LineIcons.ttf') format('truetype'),
-       url('/3rd_project/src/main/webapp/resources/header/LineIcons.svg') format('svg');
-} */
+  src: url('../font/LineIcons.eot');
+  src: url('../font/lineicons.eot') format('embedded-opentype'),
+       url('../font/lineicons.woff2') format('woff2'),
+       url('../font/lineicons.woff') format('woff'),
+       url('../font/lineicons.ttf') format('truetype'),
+       url('../font/lineicons.svg') format('svg');
+}
 
 /* base class */
 .lni {

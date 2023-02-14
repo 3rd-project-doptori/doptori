@@ -68,7 +68,8 @@
 		    <div class="col-sm-offset-2 col-sm-10">
 		      <button type="submit" class="btn btn-default">등록</button>
 		      <button type="reset" class="btn btn-default">초기화</button>
-		      <a class="btn btn-sm btn-info" href="<c:url value='/boardList.do' />">목록으로 돌아가기</a>
+		      <a class="btn btn-default" href="javascript:history.go(-1)">뒤로가기</a>
+		      <%-- <a class="btn btn-sm btn-info" href="<c:url value='/boardList.do' />">목록으로 돌아가기</a> --%>
 		    </div>
 		  </div>
 		</form>

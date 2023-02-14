@@ -50,6 +50,7 @@
 			  <div class="form-group">
 			    <div class="col-sm-offset-2 col-sm-10">
 			      <button type="submit" class="btn btn-default">수정</button>
+			      <a class="btn btn-default" href="javascript:history.go(-1)">뒤로가기</a>
 			    </div>
 			  </div>
 			</form>

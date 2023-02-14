@@ -86,7 +86,7 @@
 	  	
 	 	function move(my)
 	    {
-	 	   location="boardList.do?pcnt="+my.value;
+	 	   location="QnA_List.do?pcnt="+my.value;
 	    }
 	    window.onload=function()
 	    {
@@ -189,7 +189,7 @@
 			                  
 			                  <ul class="dropdown-menu dm2" aria-labelledby="static">
 			                    <li class="dropdown-item">
-			                      <a href="#0"><i class="lni lni-user"></i> View Profile</a>
+			                      <a href="${cpath}/mypage.do"><i class="lni lni-user"></i> View Profile</a>
 			                    </li>
 			                    <li class="dropdown-item">
 			                      <a href="${cpath }/notice.do"><i class="lni lni-alarm"></i> Notifications</a>
