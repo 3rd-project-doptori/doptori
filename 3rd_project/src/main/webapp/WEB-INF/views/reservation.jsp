@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Settings | PlainAdmin Demo</title>
+    <title>마이페이지_예약내역</title>
 
     <!-- ========== All CSS files linkup ========= -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="${cpath}/resources/css/main.css" />
   </head>
   <body>
-    <!-- ======== sidebar-nav start =========== -->
+     <!-- ======== sidebar-nav start =========== -->
     <aside class="sidebar-nav-wrapper">
       <div class="navbar-logo">
         <a href="">
@@ -61,7 +61,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="${cpath}/MyboardList.do">
+            <a href="${cpath}/writing.do">
               <span class="icon">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -100,55 +100,44 @@
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-lg-7">
-<<<<<<< HEAD
               <div class="title-wrapper pt-30">
                 <div class="row text-start">
                   <div class="col-md-3">
                     <div class="title mb-30">
-                      <h2>회원정보<h2>
-                      <hr>
+                      <h2>예약내역</h2>
                     </div>
                   </div>
                 </div>
                 <!-- end row -->
               </div>
-=======
->>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
               <div class="card-style settings-card-1 mb-30">
                 <div class="profile-info">
-                  <div class="d-flex align-items-center mb-30">
-                    <div class="profile-image">
-                      <img src="assets/images/profile/profile-1.png" alt="" />
-                      <div class="update-image">
-                        <input type="file" /><i class="lni lni-cloud-upload"></i>
-                        
+                  <div id="Accordion_wrap">
+                    <div class="que">
+                     <span>This is first question.</span>
+                      <div class="arrow-wrap">
+                       <span class="arrow-top">↑</span>
+                       <span class="arrow-bottom">↓</span>
                       </div>
+                     
                     </div>
-                    <div class="profile-meta">
-                      <!-- 사용자 닉네임 -->
-                      <h5 class="text-bold text-dark mb-10">정보수정</h5> 
+                    <div class="anw">
+                     <span>This is first answer.</span>
+                    </div>
+                    <div class="que">
+                     <span>This is second question.</span>
+                    </div>
+                    <div class="anw">
+                     <span>This is second answer.</span>
+                    </div>
+                    <div class="que">
+                     <span>This is third question.</span>
+                    </div>
+                    <div class="anw">
+                     <span>This is third answer.</span>
                     </div>
                   </div>
-                  <div class="input-style-1">
-                    <label>ID</label>
-                    <input type="email" placeholder="admin@example.com" />
-                  </div>
-                  <div class="input-style-1">
-                    <label>Password</label>
-                    <input type="password" placeholder="password" />
-                  </div>
-                  <div class="input-style-1">
-                    <label>NICKNAME</label>
-                    <input type="nickname" placeholder=""/>
-                  </div>
-                  <div class="col-12 d-flex justify-content-center">
-                    <button class="btn btn-secondary">
-                      수정
-                    </button>
-                    <button class="btn btn-outline-secondary">
-                      탈퇴
-                    </button>
-                  </div>
+               
                 </div>
               </div>
               <!-- end card -->
@@ -168,10 +157,7 @@
     </main>
     <!-- ========= All Javascript files linkup ======== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="${cpath}/resources/js/moment.min.js"></script>
-    <script src="${cpath}/resources/js/jvectormap.min.js"></script>
-    <script src="${cpath}/resources/js/world-merc.js"></script>
-    <script src="${cpath}/resources/js/polyfill.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="${cpath}/resources/js/main1.js"></script>
   </body>
 </html>

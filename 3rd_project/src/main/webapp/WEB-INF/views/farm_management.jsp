@@ -1,17 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>영농일지_관리</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="${cpath}/resources/css/farm_management.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>    
-    <script type="text/javascript">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>영농일지_관리</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="${cpath}/resources/css/farm_management.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript">
 $(document).ready(function(){
 	
 	FarmDiaryManageList();
@@ -49,7 +55,11 @@ $(document).ready(function(){
 			alert("Ajax 통신 실패!!");	
 		}
 	});	
-});
+	
+	
+}); // ready 끝
+
+		
 
 function changeSelect(){
 	var select = $("#selectbox option:selected").text();
@@ -161,314 +171,350 @@ function callBack(data){
 </script>
 </head>
 
-  <body>
-    <div class="container py-4">
+<body>
+	<div class="container py-4">
 
-      <main>
-        <ul class="row nav nav-pills justify-content-center" id="pills-tab" role="tablist">
-            <li class="nav-item col-auto" role="presentation">
-              <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">필지관리</button>
-            </li>
-            <li class="nav-item col-auto" role="presentation">
-              <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">품목관리</button>
-            </li>
-            <li class="nav-item col-auto" role="presentation">
-              <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">교육관리</button>
-            </li>
-            <li class="nav-item col-auto" role="presentation">
-              <button class="nav-link" id="pills-people-tab" data-bs-toggle="pill" data-bs-target="#pills-people" type="button" role="tab" aria-controls="pills-people" aria-selected="false">인력관리</button>
-            </li>
-        </ul>
-        <div class="tab-content text-center container top" id="pills-tabContent">
-        <!-- 필지관리 -->
-          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <div class="row bg-light">
-              <form class="row p-3 gx-3 justify-content-center">
-                <div class="col-auto">
-                  <select class="form-select" id="autoSizingSelect">
-                    <option selected>주소</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                </div>
-                <div class="col-5">
-                  <input type="text" class="form-control input-group" id="autoSizingInput" placeholder="검색어를 입력하세요">
-                </div>
-                <div class="col-auto">
-                  <button type="submit" class="btn btn-primary">검색</button>
-                </div>
-              </form>
-            </div>
+		<main>
+			<ul class="row nav nav-pills justify-content-center" id="pills-tab"
+				role="tablist">
+				<li class="nav-item col-auto" role="presentation">
+					<button class="nav-link active" id="pills-home-tab"
+						data-bs-toggle="pill" data-bs-target="#pills-home" type="button"
+						role="tab" aria-controls="pills-home" aria-selected="true">필지관리</button>
+				</li>
+				<li class="nav-item col-auto" role="presentation">
+					<button class="nav-link" id="pills-profile-tab"
+						data-bs-toggle="pill" data-bs-target="#pills-profile"
+						type="button" role="tab" aria-controls="pills-profile"
+						aria-selected="false">품목관리</button>
+				</li>
+				<li class="nav-item col-auto" role="presentation">
+					<button class="nav-link" id="pills-contact-tab"
+						data-bs-toggle="pill" data-bs-target="#pills-contact"
+						type="button" role="tab" aria-controls="pills-contact"
+						aria-selected="false">교육관리</button>
+				</li>
+				<li class="nav-item col-auto" role="presentation">
+					<button class="nav-link" id="pills-people-tab"
+						data-bs-toggle="pill" data-bs-target="#pills-people" type="button"
+						role="tab" aria-controls="pills-people" aria-selected="false">인력관리</button>
+				</li>
+			</ul>
+			<div class="tab-content text-center container top"
+				id="pills-tabContent">
+				<!-- 필지관리 -->
+				<div class="tab-pane fade show active" id="pills-home"
+					role="tabpanel" aria-labelledby="pills-home-tab">
+					<div class="row bg-light">
+						<form class="row p-3 gx-3 justify-content-center">
+							<div class="col-auto">
+								<select class="form-select" id="autoSizingSelect">
+									<option selected>주소</option>
+									<option value="1">One</option>
+									<option value="2">Two</option>
+									<option value="3">Three</option>
+								</select>
+							</div>
+							<div class="col-5">
+								<input type="text" class="form-control input-group"
+									id="autoSizingInput" placeholder="검색어를 입력하세요">
+							</div>
+							<div class="col-auto">
+								<button type="submit" class="btn btn-primary">검색</button>
+							</div>
+						</form>
+					</div>
 
-            <!-- 모달 -->
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
-              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#필지관리" data-bs-whatever="@management">등록</button>
-            </div>
-            <div class="modal fade modal-lg" id="필지관리" tabindex="-1" aria-labelledby="필지관리" aria-hidden="true">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h1 class="modal-title fs-5">필지관리</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                 	 <form class="form-horizontal" action="${cpath}/FarmDiaryManage.do" method="post">
-                 	 <input type="hidden" class="form-control" name="fdm_mb_num" id="fdm_mb_num" value="${loginMember.mb_num}">
-                      <div class="modal-body">
-                          <table class="table table-bordered">
-                              <colgroup>
-                                  <col width="18%">
-                                  <col>
-                              </colgroup>
-                              <thead>
-                              <tr>
-                                  <th scope="col">관리 유형</th>
-                                  <th>
-                                     <select name="fdm_type" id="fdm_type">
-					                    <option value="">선택하기</option>
-					                    <option value=1>필지관리</option>
-						                <option value=2>품목관리</option>
-						                <option value=3>비료관리</option>
-						                <option value=4>교육관리</option>
-						                <option value=5>인력관리</option>
-						                <option value=6>거래관리</option>
-						                <option value=7>분석관리</option>
-						             </select>
-                                  </th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                                  <tr>
-                                      <th scope="row">필지주소</th>
-                                      <td>
-                                          <select id="selectbox"   class="area" placeholder="지역" onchange="changeSelect()"></select>
-	        							  <select id="selectNextbox" name="fdm1_ad_num" class="area2" placeholder="지역"></select>
-	        							  
-                                      </td>
-                                  </tr>
-                                  <tr class="color">
-                                  <th scope="row">세부주소</th>
-                                  <td>
-                                      <div class="form-floating">
-                                      	<input type="text" class="form-control" name="fdm1_detail_address" id="fdm1_detail_address" placeholder="세부주소">
-                                      </div>
-                                  </td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">필지면적</th>
-                                      <td>
-                                      	<input type="text" class="form-control" name="fdm1_lot_area" id="fdm1_lot_area" placeholder="필지면적">	
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">실재배면적</th>
-                                      <td>
-										<input type="text" class="form-control" name="fdm1_actual_area" id="fdm1_actual_area" placeholder="실재배면적">	
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">유휴면적</th>
-                                      <td>
-                                      	<input type="text" class="form-control" name="fdm1_idle_area" id="fdm1_idle_area" placeholder="유휴면적">	
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">토양점검 여부</th>
-                                      <td>
-                                      	<div>
-                                       	<input type="checkbox" class="form-control" name="fdm1_soil_check" id="fdm1_soil_check" value="1" checked>
-                                       	</div>
-                                      </td>
-                                  </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-primary">Send message</button>
-                      </div>
-                  	</form>
-                  </div>
-              </div>
-            </div>        
-          
-          <!-- 확인하기 -->
-          <div class="table-responsive" id="list" style="display:block">content</div>
-        </div>
+					<!-- 모달 -->
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
+						<button class="btn btn-primary" data-bs-toggle="modal"
+							data-bs-target="#필지관리" data-bs-whatever="@management">등록</button>
+					</div>
+					<div class="modal fade modal-lg" id="필지관리" tabindex="-1"
+						aria-labelledby="필지관리" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h1 class="modal-title fs-5">필지관리</h1>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<form class="form-horizontal"
+									action="${cpath}/FarmDiaryManage.do" method="post">
+									<input type="hidden" class="form-control" name="fdm_mb_num"
+										id="fdm_mb_num" value="${loginMember.mb_num}">
+									<div class="modal-body">
+										<table class="table table-bordered">
+											<colgroup>
+												<col width="18%">
+												<col>
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col">관리 유형</th>
+													<th><select name="fdm_type" id="fdm_type">
+															<option value="">선택하기</option>
+															<option value=1>필지관리</option>
+															<option value=2>품목관리</option>
+															<option value=3>비료관리</option>
+															<option value=4>교육관리</option>
+															<option value=5>인력관리</option>
+															<option value=6>거래관리</option>
+															<option value=7>분석관리</option>
+													</select></th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<th scope="row">필지주소</th>
+													<td><select id="selectbox" class="area"
+														placeholder="지역" onchange="changeSelect()"></select> <select
+														id="selectNextbox" name="fdm1_ad_num" class="area2"
+														placeholder="지역"></select></td>
+												</tr>
+												<tr class="color">
+													<th scope="row">세부주소</th>
+													<td>
+														<div class="form-floating">
+															<input type="text" class="form-control"
+																name="fdm1_detail_address" id="fdm1_detail_address"
+																placeholder="세부주소">
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">필지면적</th>
+													<td><input type="text" class="form-control"
+														name="fdm1_lot_area" id="fdm1_lot_area" placeholder="필지면적">
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">실재배면적</th>
+													<td><input type="text" class="form-control"
+														name="fdm1_actual_area" id="fdm1_actual_area"
+														placeholder="실재배면적"></td>
+												</tr>
+												<tr>
+													<th scope="row">유휴면적</th>
+													<td><input type="text" class="form-control"
+														name="fdm1_idle_area" id="fdm1_idle_area"
+														placeholder="유휴면적"></td>
+												</tr>
+												<tr>
+													<th scope="row">토양점검 여부</th>
+													<td>
+														<div>
+															<input type="checkbox" class="form-control"
+																name="fdm1_soil_check" id="fdm1_soil_check" value="1"
+																checked>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary"
+											data-bs-dismiss="modal">Close</button>
+										<button type="submit" class="btn btn-primary">Send
+											message</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
 
-          <!-- 품목관리 -->
-          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-            <div class="row bg-light">
-              <form class="row p-3 gx-3 justify-content-center">
-                <div class="col-auto">
-                  <select class="form-select" id="autoSizingSelect">
-                    <option selected>주소</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                </div>
-                <div class="col-5">
-                  <input type="text" class="form-control input-group" id="autoSizingInput" placeholder="검색어를 입력하세요">
-                </div>
-                <div class="col-auto">
-                  <button type="submit" class="btn btn-primary">검색</button>
-                </div>
-              </form>
-            </div>
-            
-          <!-- 모달 -->
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
-              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#품목관리" data-bs-whatever="@management">등록</button>
-            </div>
-            <div class="modal fade modal-lg" id="품목관리" tabindex="-1" aria-labelledby="품목관리" aria-hidden="true">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h1 class="modal-title fs-5">픔목관리</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                 	 <form class="form-horizontal" action="${cpath}/FarmDiaryManage2.do" method="post">
-                 	 <input type="hidden" class="form-control" name="fdm_mb_num" id="fdm_mb_num" value="${loginMember.mb_num}">
-                      <div class="modal-body">
-                          <table class="table table-bordered">
-                              <colgroup>
-                                  <col width="18%">
-                                  <col>
-                              </colgroup>
-                              <thead>
-                              <tr>
-                                  <th scope="col">관리 유형</th>
-                                  <th>
-                                     <select name="fdm_type" id="fdm_type">
-					                    <option value="">선택하기</option>
-					                    <option value=1>필지관리</option>
-						                <option value=2>품목관리</option>
-						                <option value=3>비료관리</option>
-						                <option value=4>교육관리</option>
-						                <option value=5>인력관리</option>
-						                <option value=6>거래관리</option>
-						                <option value=7>분석관리</option>
-						             </select>
-                                  </th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                                  <tr>
-                                      <th scope="row">필지주소</th>
-                                      <td>
-                                          <select id="selectbox2"   class="form-control" name="fdm1_actual_area" id="fdm1_actual_area"></select>
-                                      </td>
-                                  </tr>
-                                  <tr class="color">
-                                  <th scope="row">품목</th>
-                                  <td>
-                                      <select id="selectbox3" class="form-control" name="fdm2_item" id="fdm2_item" onchange="changeSelect()">
-                                      	<option value="">품목을 선택하세요.</option>
-					                    <option value=1>딸기</option>
-						                <option value=2>토마토</option>
-						                <option value=3>수박</option>
-						                <option value=4>참외</option>
-						                <option value=5>멜론</option>
-						                <option value=6>파인애플</option>
-                                      </select>
-                                  </td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">품종</th>
-                                      <td>
-                                      	<select id="selectbox3" class="form-control" name="fdm2_kind" id="fdm2_kind" >
-                                      	<option value="">품목을 선택하세요.</option>
-					                    <option value=1>딸기</option>
-						                <option value=2>토마토</option>
-						                <option value=3>수박</option>
-						                <option value=4>참외</option>
-						                <option value=5>멜론</option>
-						                <option value=6>파인애플</option>
-                                      </select>	
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">재배면적</th>
-                                      <td>
-										<input type="text" class="form-control" name="fdm2_culture_area" id="fdm2_culture_area" placeholder="재배면적">	
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">계약 재배 여부</th>
-                                      <td>
-                                      	<input type="radio" class="form-control" name="fdm2_contract" id="fdm2_contract" value="1"> 예
-                                      	<input type="radio" class="form-control" name="fdm2_contract" id="fdm2_contract" value="0" checked> 아니오	
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">목표생산량</th>
-                                      <td>
-                                      	<div>
-                                       	<input type="text" class="form-control" name="fdm2_target" id="fdm2_target" placeholder="목표생산량">	
-                                       	</div>
-                                      </td>
-                                  </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-primary">Send message</button>
-                      </div>
-                  	</form>
-                  </div>
-              </div>
-            </div>        
-          
-          <!-- 확인하기 -->
-          <div class="table-responsive" id="list2" style="display:block">content</div>
-        </div>
-          
-          
-          
-          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-            <div class="row bg-light">
-              <form class="row p-3 gx-3 justify-content-center">
-                <div class="col-5">
-                  <input type="text" class="form-control input-group" id="autoSizingInput" placeholder="인력명을 입력하세요">
-                </div>
-                <div class="col-auto">
-                  <button type="submit" class="btn btn-primary">검색</button>
-                </div>
-              </form>
-            </div>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
-              <button class="btn btn-primary" type="button">등록</button>
-            </div>
-          </div>
-          
-          
-          
-          
-          <div class="tab-pane fade" id="pills-people" role="tabpanel" aria-labelledby="pills-people-tab">
-            <div class="row bg-light">
-              <form class="row p-3 gx-3 justify-content-center">
-                <div class="col-5">
-                  <input type="text" class="form-control input-group" id="autoSizingInput" placeholder="인력명을 입력하세요">
-                </div>
-                <div class="col-auto">
-                  <button type="submit" class="btn btn-primary">검색</button>
-                </div>
-              </form>
-            </div>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
-              <button class="btn btn-primary" type="button">등록</button>
-            </div>
-          </div>
+					<!-- 확인하기 -->
+					<div class="table-responsive" id="list" style="display: block">content</div>
+				</div>
+
+				<!-- 품목관리 -->
+				<div class="tab-pane fade" id="pills-profile" role="tabpanel"
+					aria-labelledby="pills-profile-tab">
+					<div class="row bg-light">
+						<form class="row p-3 gx-3 justify-content-center">
+							<div class="col-auto">
+								<select class="form-select" id="autoSizingSelect">
+									<option selected>주소</option>
+									<option value="1">One</option>
+									<option value="2">Two</option>
+									<option value="3">Three</option>
+								</select>
+							</div>
+							<div class="col-5">
+								<input type="text" class="form-control input-group"
+									id="autoSizingInput" placeholder="검색어를 입력하세요">
+							</div>
+							<div class="col-auto">
+								<button type="submit" class="btn btn-primary">검색</button>
+							</div>
+						</form>
+					</div>
+
+					<!-- 모달 -->
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
+						<button class="btn btn-primary" data-bs-toggle="modal"
+							data-bs-target="#품목관리" data-bs-whatever="@management">등록</button>
+					</div>
+					<div class="modal fade modal-lg" id="품목관리" tabindex="-1"
+						aria-labelledby="품목관리" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h1 class="modal-title fs-5">픔목관리</h1>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<form class="form-horizontal"
+									action="${cpath}/FarmDiaryManage2.do" method="post">
+									<input type="hidden" class="form-control" name="fdm_mb_num"
+										id="fdm_mb_num" value="${loginMember.mb_num}">
+									<div class="modal-body">
+										<table class="table table-bordered">
+											<colgroup>
+												<col width="18%">
+												<col>
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col">관리 유형</th>
+													<th><select name="fdm_type" id="fdm_type">
+															<option value="">선택하기</option>
+															<option value=1>필지관리</option>
+															<option value=2>품목관리</option>
+															<option value=3>비료관리</option>
+															<option value=4>교육관리</option>
+															<option value=5>인력관리</option>
+															<option value=6>거래관리</option>
+															<option value=7>분석관리</option>
+													</select></th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<th scope="row">필지주소</th>
+													<td><select id="selectbox2" class="form-control"
+														name="fdm1_actual_area" id="fdm1_actual_area"></select></td>
+												</tr>
+												<tr class="color">
+													<th scope="row">품목</th>
+													<td><select id="selectbox3" class="form-control"
+														name="fdm2_item" id="fdm2_item" onchange="changeSelect()">
+															<option value="">품목을 선택하세요.</option>
+															<option value=1>딸기</option>
+															<option value=2>토마토</option>
+															<option value=3>수박</option>
+															<option value=4>참외</option>
+															<option value=5>멜론</option>
+															<option value=6>파인애플</option>
+													</select></td>
+												</tr>
+												<tr>
+													<th scope="row">품종</th>
+													<td><select id="selectbox3" class="form-control"
+														name="fdm2_kind" id="fdm2_kind">
+															<option value="">품목을 선택하세요.</option>
+															<option value=1>딸기</option>
+															<option value=2>토마토</option>
+															<option value=3>수박</option>
+															<option value=4>참외</option>
+															<option value=5>멜론</option>
+															<option value=6>파인애플</option>
+													</select></td>
+												</tr>
+												<tr>
+													<th scope="row">재배면적</th>
+													<td><input type="text" class="form-control"
+														name="fdm2_culture_area" id="fdm2_culture_area"
+														placeholder="재배면적"></td>
+												</tr>
+												<tr>
+													<th scope="row">계약 재배 여부</th>
+													<td><input type="radio" class="form-control"
+														name="fdm2_contract" id="fdm2_contract" value="1">
+														예 <input type="radio" class="form-control"
+														name="fdm2_contract" id="fdm2_contract" value="0" checked>
+														아니오</td>
+												</tr>
+												<tr>
+													<th scope="row">목표생산량</th>
+													<td>
+														<div>
+															<input type="text" class="form-control"
+																name="fdm2_target" id="fdm2_target" placeholder="목표생산량">
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary"
+											data-bs-dismiss="modal">Close</button>
+										<button type="submit" class="btn btn-primary">Send
+											message</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+					<!-- 확인하기 -->
+					<div class="table-responsive" id="list2" style="display: block">content</div>
+				</div>
 
 
-        </div>
-      </main>
-    </div>
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="${cpath}/resources/js/farm_management.js"></script>
-  </body>
+
+				<div class="tab-pane fade" id="pills-contact" role="tabpanel"
+					aria-labelledby="pills-contact-tab">
+					<div class="row bg-light">
+						<form class="row p-3 gx-3 justify-content-center">
+							<div class="col-5">
+								<input type="text" class="form-control input-group"
+									id="autoSizingInput" placeholder="인력명을 입력하세요">
+							</div>
+							<div class="col-auto">
+								<button type="submit" class="btn btn-primary">검색</button>
+							</div>
+						</form>
+					</div>
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
+						<button class="btn btn-primary" type="button">등록</button>
+					</div>
+				</div>
+
+
+
+
+				<div class="tab-pane fade" id="pills-people" role="tabpanel"
+					aria-labelledby="pills-people-tab">
+					<div class="row bg-light">
+						<form class="row p-3 gx-3 justify-content-center">
+							<div class="col-5">
+								<input type="text" class="form-control input-group"
+									id="autoSizingInput" placeholder="인력명을 입력하세요">
+							</div>
+							<div class="col-auto">
+								<button type="submit" class="btn btn-primary">검색</button>
+							</div>
+						</form>
+					</div>
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
+						<button class="btn btn-primary" type="button">등록</button>
+					</div>
+				</div>
+
+
+			</div>
+		</main>
+	</div>
+	<!-- JavaScript Bundle with Popper -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="${cpath}/resources/js/farm_management.js"></script>
+</body>
 </html>
