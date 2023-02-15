@@ -370,8 +370,8 @@
 	       </font>
 	     </div>
 	       </h3></caption>
-	    	<thead>
-		    	 <tr>
+	       <thead align="center" >
+		    	 <tr style=" font-weight: bold;">
 		    	 	<th width="10%" scope="col">번호</th>
 		    	 	<th width="60%" scope="col">제목</th>
 		    	 	<th width="10%" scope="col">작성자</th>
