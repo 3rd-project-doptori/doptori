@@ -114,6 +114,7 @@
                   <div class="col-md-3">
                     <div class="title mb-30">
                       <h2>회원정보<h2>
+                      <hr>
                     </div>
                   </div>
                 </div>
