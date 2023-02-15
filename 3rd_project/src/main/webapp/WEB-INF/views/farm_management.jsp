@@ -14,9 +14,12 @@
 	rel="stylesheet"
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="${cpath}/resources/css/farm_management.css">
+<link rel="stylesheet" href="${cpath}/resources/css/farm_management.css"/>
+<link rel="stylesheet" href="${cpath}/resources/css/lineicons.css" />
+    <link rel="stylesheet" href="${cpath}/resources/css/main.css" />
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="${cpath}/resources/js/main1.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	
@@ -82,7 +85,6 @@ function changeSelect(){
 	});	
 }
 
-
 function FarmDiaryManageList(){
 		$.ajax({
 			url: "${cpath}/FarmDiaryManageList.do",
@@ -102,17 +104,36 @@ function callBack(data){
 		console.log(data);
 		var cnt = 1;
   		var bList = "";
-  						var bList2 = "";
-  						var cnt2 = 1;
-  		bList += "<h4>등록 확인</h4>";
-  		bList += "<table class='table recruit'>";
-  		bList += "<colgroup><col width='10%'><col></colgroup>";
-  		bList += "<tbody>";
+  		bList += "<section class='section'>";
+  		bList += "<div class='container-fluid'>";
+  		bList += "<div class='row justify-content-center'>";
+  		bList += "<div class='col-lg-7'>";
+  		bList += "<div class='title-wrapper pt-30'>";
+  		bList += "<div class='row text-start'>";
+  		bList += "<div class='col-md-3'>";
+  		bList += "<div class='title mb-30'>";
+  		bList += "<h2>필지 관리 목록</h2>";
+  		bList += "</div></div></div>";
+  		bList += "</div>";
+  		bList += "<div class='card-style settings-card-1 mb-30'>";
+  		bList += "<div class='profile-info'>";
+  		bList += "<div id='Accordion_wrap'>";
   		$.each(data, (index, obj)=>{
-		bList += "<tr class='item'>";
-		bList += "<td>" + cnt + "</td>";
-		bList += "<td>" + obj.ad_sido +" " + obj.ad_gugun + " " + obj.ad_dong + " " + obj.ad_ri + "</td></tr>";
-		bList += "<tr class='hide'>";
+  		bList += "<div class='que'>";
+  		bList += "<span>" + cnt + "</span>";
+  		bList += "<span>" + obj.ad_sido +" " + obj.ad_gugun + " " + obj.ad_dong + " " + obj.ad_ri + "</span>";
+  		bList += "<div class='arrow-wrap'>";
+  		bList += "<span class='arrow-top'>↑</span>";
+  		bList += "<span class='arrow-bottom'>↓</span>";
+  		bList += "</div>";
+  		bList += "</div>";
+  		bList += "<div class='anw'>";
+  		bList += "<div>";
+		bList += "<span>필지주소 : </span>";
+		bList += "<span>" + obj.ad_sido +" " + obj.ad_gugun + " " + obj.ad_dong + " " + obj.ad_ri + " " + obj.fdm1_detail_address + "</span>";
+		bList += "</div>";
+		bList += "</div>";	
+		/* bList += "<tr class='hide'>";
 		bList += "<td></td>";
 		bList += "<td>";
 		bList += "<table class='table'>";
@@ -155,11 +176,16 @@ function callBack(data){
 		}
 		bList += "</div>";
 		bList += "</td>";
-		bList += "</tr>";
+		bList += "</tr>"; */
 		cnt++;
   		});// each 끝!!
-  			bList += "</tbody>";
-  			bList += "</table>";			
+  			bList += "</div>";		
+  			bList += "</div>";		
+  			bList += "</div>";		
+  			bList += "</div>";		
+  			bList += "</div>";		
+  			bList += "</div>";	
+  			bList += "</section>";	
 
   		$("#list").html(bList);
   		
@@ -509,12 +535,9 @@ function callBack(data){
 		</main>
 	</div>
 	<!-- JavaScript Bundle with Popper -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+	<script src="${cpath}/resources/assets/js/popper.min.js"></script>
 	<script src="${cpath}/resources/js/farm_management.js"></script>
+
 </body>
 </html>

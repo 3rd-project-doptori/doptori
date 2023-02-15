@@ -144,13 +144,17 @@
 			                    <li class="dropdown-item">
 			                      <a href="${cpath }/notice.do"><i class="lni lni-alarm"></i> Notifications</a>
 			                    </li>
-			                    <li class="dropdown-item"><a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
+			                    <li class="dropdown-item">
+			                      <a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
 			                    </li>
-			                    <li class="dropdown-item"><a href="#0"> <i class="lni lni-cog"></i> Settings </a>
+			                    <li class="dropdown-item">
+			                      <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
 			                    </li>
-			                    <li class="dropdown-item"><a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> LOGOUT </a>
+			                    <li class="dropdown-item">
+			                      <a href="${cpath}/updateMember.do"> <i class="lni lni-exit"></i> Edit Profile  </a>
 			                    </li>
-			                    <li class="dropdown-item"><a href="${cpath}/updateMember.do"> <i class="lni lni-exit"></i> Edit profile  </a>
+			                    <li class="dropdown-item">
+			                      <a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> Logout </a>
 			                    </li>
 			                  </ul>
 			                </div>
@@ -163,7 +167,7 @@
           </div>
         </nav>
     </header>
-  <h2>게시판 상세보기</h2>
+  <h2>직거래 게시판 상세보기</h2>
   <div class="content__inner" id="tab-2">
         <div class="table-responsive">
 		<table class="table table-bordered table-hover"> 

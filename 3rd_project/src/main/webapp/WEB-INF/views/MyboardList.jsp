@@ -130,7 +130,7 @@
                     
                     <table class="table">
 				    	<thead align="center">
-					    	 <tr>
+					    	 <tr style=" font-weight: bold;">
 					    	 	<th width="7%" scope="col">번호</th>
 					    	 	<th width="65%" scope="col">제목</th>
 					    	 	<th width="28%" scope="col">작성일</th>
