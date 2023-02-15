@@ -99,9 +99,9 @@ function callBack(data){
   		bList += "<colgroup><col width='10%'><col></colgroup>";
   		bList += "<tbody>";
   		$.each(data, (index, obj)=>{
-		bList += "<tr class='item' id='" + cnt + "'>";
+		bList += "<tr class='item'>";
 		bList += "<td>" + cnt + "</td>";
-		bList += "<td>" + obj.ad_sido + obj.ad_gugun + obj.ad_dong + obj.ad_ri + "</td></tr>";
+		bList += "<td>" + obj.ad_sido +" " + obj.ad_gugun + " " + obj.ad_dong + " " + obj.ad_ri + "</td></tr>";
 		bList += "<tr class='hide'>";
 		bList += "<td></td>";
 		bList += "<td>";
@@ -113,7 +113,7 @@ function callBack(data){
 		bList += "<thead>";
 		bList += "<tr>";
 		bList += "<th scope='col'>필지주소</th>";
-		bList += "<th>" + obj.ad_sido + obj.ad_gugun + obj.ad_dong + obj.ad_ri + obj.fdm1_detail_address + "</th>";;	
+		bList += "<th>" + obj.ad_sido +" " + obj.ad_gugun + " " + obj.ad_dong + " " + obj.ad_ri + " " + obj.fdm1_detail_address + "</th>";;	
 		bList += "</tr>";
 		bList += "</thead>";
 		bList += "<tbody>";
@@ -180,6 +180,7 @@ function callBack(data){
             </li>
         </ul>
         <div class="tab-content text-center container top" id="pills-tabContent">
+        <!-- 필지관리 -->
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
             <div class="row bg-light">
               <form class="row p-3 gx-3 justify-content-center">
@@ -295,7 +296,7 @@ function callBack(data){
           <div class="table-responsive" id="list" style="display:block">content</div>
         </div>
 
-          <!--  -->
+          <!-- 품목관리 -->
           <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
             <div class="row bg-light">
               <form class="row p-3 gx-3 justify-content-center">
@@ -315,10 +316,117 @@ function callBack(data){
                 </div>
               </form>
             </div>
+            
+          <!-- 모달 -->
             <div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
-              <button class="btn btn-primary" type="button">등록</button>
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#품목관리" data-bs-whatever="@management">등록</button>
             </div>
-          </div>
+            <div class="modal fade modal-lg" id="품목관리" tabindex="-1" aria-labelledby="품목관리" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h1 class="modal-title fs-5">픔목관리</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                 	 <form class="form-horizontal" action="${cpath}/FarmDiaryManage2.do" method="post">
+                 	 <input type="hidden" class="form-control" name="fdm_mb_num" id="fdm_mb_num" value="${loginMember.mb_num}">
+                      <div class="modal-body">
+                          <table class="table table-bordered">
+                              <colgroup>
+                                  <col width="18%">
+                                  <col>
+                              </colgroup>
+                              <thead>
+                              <tr>
+                                  <th scope="col">관리 유형</th>
+                                  <th>
+                                     <select name="fdm_type" id="fdm_type">
+					                    <option value="">선택하기</option>
+					                    <option value=1>필지관리</option>
+						                <option value=2>품목관리</option>
+						                <option value=3>비료관리</option>
+						                <option value=4>교육관리</option>
+						                <option value=5>인력관리</option>
+						                <option value=6>거래관리</option>
+						                <option value=7>분석관리</option>
+						             </select>
+                                  </th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <th scope="row">필지주소</th>
+                                      <td>
+                                          <select id="selectbox2"   class="form-control" name="fdm1_actual_area" id="fdm1_actual_area"></select>
+                                      </td>
+                                  </tr>
+                                  <tr class="color">
+                                  <th scope="row">품목</th>
+                                  <td>
+                                      <select id="selectbox3" class="form-control" name="fdm2_item" id="fdm2_item" onchange="changeSelect()">
+                                      	<option value="">품목을 선택하세요.</option>
+					                    <option value=1>딸기</option>
+						                <option value=2>토마토</option>
+						                <option value=3>수박</option>
+						                <option value=4>참외</option>
+						                <option value=5>멜론</option>
+						                <option value=6>파인애플</option>
+                                      </select>
+                                  </td>
+                                  </tr>
+                                  <tr>
+                                      <th scope="row">품종</th>
+                                      <td>
+                                      	<select id="selectbox3" class="form-control" name="fdm2_kind" id="fdm2_kind" >
+                                      	<option value="">품목을 선택하세요.</option>
+					                    <option value=1>딸기</option>
+						                <option value=2>토마토</option>
+						                <option value=3>수박</option>
+						                <option value=4>참외</option>
+						                <option value=5>멜론</option>
+						                <option value=6>파인애플</option>
+                                      </select>	
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <th scope="row">재배면적</th>
+                                      <td>
+										<input type="text" class="form-control" name="fdm2_culture_area" id="fdm2_culture_area" placeholder="재배면적">	
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <th scope="row">계약 재배 여부</th>
+                                      <td>
+                                      	<input type="radio" class="form-control" name="fdm2_contract" id="fdm2_contract" value="1"> 예
+                                      	<input type="radio" class="form-control" name="fdm2_contract" id="fdm2_contract" value="0" checked> 아니오	
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <th scope="row">목표생산량</th>
+                                      <td>
+                                      	<div>
+                                       	<input type="text" class="form-control" name="fdm2_target" id="fdm2_target" placeholder="목표생산량">	
+                                       	</div>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary">Send message</button>
+                      </div>
+                  	</form>
+                  </div>
+              </div>
+            </div>        
+          
+          <!-- 확인하기 -->
+          <div class="table-responsive" id="list2" style="display:block">content</div>
+        </div>
+          
+          
+          
           <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
             <div class="row bg-light">
               <form class="row p-3 gx-3 justify-content-center">
@@ -334,6 +442,10 @@ function callBack(data){
               <button class="btn btn-primary" type="button">등록</button>
             </div>
           </div>
+          
+          
+          
+          
           <div class="tab-pane fade" id="pills-people" role="tabpanel" aria-labelledby="pills-people-tab">
             <div class="row bg-light">
               <form class="row p-3 gx-3 justify-content-center">

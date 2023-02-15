@@ -30,7 +30,6 @@ public class FarmDiaryMangeRestController {
 		HttpSession session = request.getSession();
 		 Member loginMember = (Member) session.getAttribute("loginMember");
 		List<farmdiary_manage> FarmDiaryManageList = mapper.FarmDiaryManageList(loginMember.getMb_num());
-		
 		System.out.println(FarmDiaryManageList);
 		return FarmDiaryManageList;
 	}
