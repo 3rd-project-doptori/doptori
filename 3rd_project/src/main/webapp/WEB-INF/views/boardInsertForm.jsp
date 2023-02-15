@@ -163,7 +163,7 @@
 	<h3>글쓰기</h3>
       <div class="content__inner" id="tab-2">
         <div class="table-responsive">
-          <form class="form-horizontal" action="${cpath}/boardInsert.do" method="post"  enctype="multipart/form-data">
+          <form class="form-horizontal" action="${cpath}/boardInsert.do" method="post" enctype="multipart/form-data">
 		  
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="bd_type">카테고리:</label>
@@ -200,7 +200,8 @@
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="bd_pic">첨부파일</label>
 		    <div class="col-sm-10">
-		      <input type="file" name="uploadFile"/></td>
+		       <input type="file" name="uploadFile"/>
+		     <!--  <input type="file" name="bd_pic"/> -->
 			</div>
 		  </div>
 		  <div class="form-group">

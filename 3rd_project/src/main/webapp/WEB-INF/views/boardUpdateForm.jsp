@@ -188,7 +188,7 @@
 			    <div class="col-sm-10">
 			      <c:if test="${vo.bd_pic ne null}">
 					<td align="left"><a href="fileDownload.do?bd_pic=${vo.bd_pic}">${vo.bd_pic}</a></td>
-			 		</c:if>
+			 	  </c:if>
 			    </div>
 			  </div>
 			  <div class="form-group">

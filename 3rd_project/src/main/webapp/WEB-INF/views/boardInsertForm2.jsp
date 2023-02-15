@@ -61,7 +61,7 @@
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="bd_pic">첨부파일</label>
 		    <div class="col-sm-10">
-		      <input type="file" name="uploadFile"/></td>
+		      <input type="file" name="bd_pic"/></td>
 			</div>
 		  </div>
 		  <div class="form-group">

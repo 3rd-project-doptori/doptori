@@ -13,6 +13,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="${cpath}/resources/css/lineicons.css" />
     <link rel="stylesheet" href="${cpath}/resources/css/main.css" />
+    <style type="text/css">
+    	.select_img img	{margin: 20px 0; }
+    </style>
     <script type="text/javascript">
 	//회원탈퇴
 	function memberDeleteView(){
@@ -106,6 +109,16 @@
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-lg-7">
+            <div class="title-wrapper pt-30">
+                <div class="row text-start">
+                  <div class="col-md-3">
+                    <div class="title mb-30">
+                      <h2>정보수정</h2>
+                    </div>
+                  </div>
+                </div>
+                <!-- end row -->
+              </div>
               <div class="card-style settings-card-1 mb-30">
                 <div class="profile-info">
                 
@@ -116,18 +129,18 @@
                   
 					 <div class="profile-meta">
                        <!-- 사용자 닉네임 -->
-                       <h5 class="text-bold text-dark mb-10">정보수정</h5> 
+                       <h5 class="text-bold text-dark mb-10"></h5> 
                      </div>
                   
                       <div class="profile-image">
                      	 <img src="assets/images/profile/profile-1.png" alt="" />
                      		 <div class="update-image">
-                        		<input type="file" /><i class="lni lni-cloud-upload"></i>
+                     		 	<label for="gdsImg"></label>
+							 	<input type="file" id="gdsImg" name="file" /><i class="lni lni-cloud-upload"></i>
+                        		<!-- <input type="file" /><i class="lni lni-cloud-upload"></i> -->
+							<div class="select_img"><img src="" /></div>
                        		</div>
-						<%--  <label class="control-label col-sm-2">사진 :   </label>
-							 <input type="file" id="gdsImg" name="file" />
-							 <div class="select_img"><img src="" /></div>
-							 
+ 
 							 <script>
 							  $("#gdsImg").change(function(){
 							   if(this.files && this.files[0]) {
@@ -140,8 +153,8 @@
 							  });
 							 </script>
 							 
-							 <%=request.getRealPath("/") %>
-							  --%>
+							 <%-- <%=request.getRealPath("/") %> --%>
+							  
 					 </div>
 					 
 				  </div>
@@ -207,6 +220,7 @@
 					</div>
 					
 				</form>
+				</div>	
 					
 					<div class="col-12 d-flex justify-content-left">
 						<button class="btn btn-outline-secondary" onclick="memberDeleteView()">회원탈퇴</button>

@@ -311,18 +311,30 @@ public class BoardController {
 	}
 
 	@RequestMapping("/boardInsert.do")
-	public String boardInsert(Board vo) throws IOException {
+	public String boardInsert(Board vo//, @RequestParam("bd_pic") MultipartFile file
+			) throws IOException  {
+		
 		// 파일 업로드 처리
-		String bd_pic = null;
-		MultipartFile uploadFile = vo.getUploadFile();
-		if (!uploadFile.isEmpty()) {
-			String originalFileName = uploadFile.getOriginalFilename();
-			String ext = FilenameUtils.getExtension(originalFileName);	//확장자 구하기
-			UUID uuid = UUID.randomUUID();	//UUID 구하기
-			bd_pic = uuid + "." + ext;
-			uploadFile.transferTo(new File("D:\\upload\\" + bd_pic));
-		}
-		vo.setBd_pic(bd_pic);
+		  String bd_pic = null; 
+		  MultipartFile uploadFile = vo.getUploadFile(); 
+		  if (!uploadFile.isEmpty()) { 
+			  String originalFileName = uploadFile.getOriginalFilename(); 
+			  String ext = FilenameUtils.getExtension(originalFileName); //확장자 구하기
+			  UUID uuid = UUID.randomUUID(); //UUID 구하기 
+			  bd_pic = uuid + "." + ext;
+			  uploadFile.transferTo(new File("D:\\upload\\" + bd_pic)); 
+		  }
+		  vo.setBd_pic(bd_pic);
+		 
+		/*
+		 * String bd_pic = file.getOriginalFilename(); File f = new File("c:\\upload\\"
+		 * + bd_pic);
+		 * 
+		 * try { file.transferTo(f); vo.setBd_pic(bd_pic);
+		 * 
+		 * } catch (IOException e) { e.printStackTrace(); }
+		 */
+		
 		mapper.boardInsert(vo);
 
 		return "redirect:/QnA_List.do";
