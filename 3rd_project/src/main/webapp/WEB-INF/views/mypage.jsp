@@ -147,6 +147,9 @@
                     <button class="btn btn-outline-secondary">
                       탈퇴
                     </button>
+                    <button class="btn btn-default">
+                      뒤로가기         
+                    </button>
                   </div>
                 </div>
               </div>
