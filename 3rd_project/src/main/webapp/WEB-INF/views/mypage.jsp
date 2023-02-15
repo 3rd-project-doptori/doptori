@@ -13,19 +13,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="${cpath}/resources/css/lineicons.css" />
     <link rel="stylesheet" href="${cpath}/resources/css/main.css" />
+    <script type="text/javascript">
+	//회원탈퇴
+	function memberDeleteView(){
+		location.href = "${cpath}/memberDeleteView.do"
+	}
+  </script>
   </head>
   <body>
     <!-- ======== sidebar-nav start =========== -->
     <aside class="sidebar-nav-wrapper">
       <div class="navbar-logo">
-        <a href="">
+        <a href="${cpath }/Main.do">
           <img src="assets/images/logo/logo.svg" alt="logo" />
         </a>
       </div>
       <nav class="sidebar-nav">
         <ul>
           <li class="nav-item">
-            <a href="${cpath}/writing.do">
+            <a href="${cpath}/mypage.do">
               <span class="icon">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -114,19 +120,17 @@
               </div>
 
               <div class="card-style settings-card-1 mb-30">
-                <div class="profile-info">
+              	<div class="profile-info">
+                
+                <form class="form-horizontal" id="updateMember" action="${cpath}/userUpdate.do" method="post" enctype="multipart/form-data">
+					
                   <div class="d-flex align-items-center mb-30">
-                    <div class="profile-image">
-                      <img src="assets/images/profile/profile-1.png" alt="" />
-                      <div class="update-image">
-                        <input type="file" /><i class="lni lni-cloud-upload"></i>
-                        
-                      </div>
-                    </div>
-                    <div class="profile-meta">
+					
+					<div class="profile-meta">
                       <!-- 사용자 닉네임 -->
                       <h5 class="text-bold text-dark mb-10">정보수정</h5> 
                     </div>
+<<<<<<< HEAD
                   </div>
                   <div class="input-style-1">
                     <label>ID</label>
@@ -151,6 +155,121 @@
                       뒤로가기         
                     </button>
                   </div>
+=======
+					
+                      <div class="profile-image">
+                     	 <img src="assets/images/profile/profile-1.png" alt="" />
+                     		 <div class="update-image">
+                        		<input type="file" /><i class="lni lni-cloud-upload"></i>
+                       		</div>
+						<%--  <label class="control-label col-sm-2">사진 :   </label>
+							 <input type="file" id="gdsImg" name="file" />
+							 <div class="select_img"><img src="" /></div>
+							 
+							 <script>
+							  $("#gdsImg").change(function(){
+							   if(this.files && this.files[0]) {
+							    var reader = new FileReader;
+							    reader.onload = function(data) {
+							     $(".select_img img").attr("src", data.target.result).width(500);        
+							    }
+							    reader.readAsDataURL(this.files[0]);
+							   }
+							  });
+							 </script>
+							 
+							 <%=request.getRealPath("/") %>
+							  --%>
+					 </div>
+					 
+					</div>
+					
+					
+					
+					<!-- 아이디 -->
+					<div class="input-style-1">
+						<label>아이디 : </label>
+						<div class="col-sm-10">
+							<input type="text" name="mb_id" value="${loginMember.mb_id}" readonly="readonly">
+						</div>
+					</div>
+
+					<!-- 비밀번호 -->
+					<div class="input-style-1">
+						<label>비밀번호 : </label>
+						<div class="col-sm-10">
+							<input type="password" placeholder="비밀번호를 입력하세요."  value="${loginMember.mb_pw}"/>
+						</div>
+					</div>
+					<!-- 비밀번호 확인-->
+					<div class="input-style-1">
+						<label>비밀번호 확인 : </label>
+						<div class="col-sm-10">
+							<input type="password" placeholder="비밀번호를 입력하세요."
+							name="mb_pw" value="${loginMember.mb_pw}"></input>
+						</div>
+					</div>
+					
+					<!-- 닉네임 -->
+					<div class="input-style-1">
+						<label>닉네임 : </label>
+						<div class="col-sm-10">
+							<input type="text" name="mb_nick" placeholder="닉네임을 입력하세요."
+								value="${loginMember.mb_nick}">
+						</div>
+					</div>
+
+					<!-- 회원구분-->
+					<div class="input-style-1">
+					    <label for="mb_type">회원 선택:</label>
+					    <div>
+					      <select name="mb_type">
+			                    <option value="choose">회원 선택</option>
+			                    <c:if test="${loginMember.mb_id=='admin'}">
+			                    	<option value=0>관리자</option>
+			                    </c:if>
+			                    <option value=1>농업인</option>
+				                <option value=2>일반인</option>
+			                </select>
+					    </div>
+					</div>
+
+
+					<!-- 작성 완료 / 취소 -->
+					
+					<div class="col-12 d-flex justify-content-center">
+						<button type="submit" class="btn btn-secondary">수정</button>
+						<button type="reset" class="btn btn-secondary">되돌리기</button>
+						<a class="btn btn-secondary" href="javascript:history.go(-1)">뒤로가기</a>
+					</div>
+					
+				</form>
+					
+					<div class="col-12 d-flex justify-content-left">
+						<button class="btn btn-outline-secondary" onclick="memberDeleteView()">회원탈퇴</button>
+					</div>	
+				
+					
+				    <!-- 
+                    <div class="anw">
+                     <span>This is first answer.</span>
+                    </div>
+                    <div class="que">
+                     <span>This is second question.</span>
+                    </div>
+                    <div class="anw">
+                     <span>This is second answer.</span>
+                    </div>
+                    <div class="que">
+                     <span>This is third question.</span>
+                    </div>
+                    <div class="anw">
+                     <span>This is third answer.</span>
+                    </div>
+                  </div> -->
+                  
+                   
+>>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
                 </div>
               </div>
               <!-- end card -->
