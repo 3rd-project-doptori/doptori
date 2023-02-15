@@ -201,10 +201,10 @@
 			                      <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
 			                    </li>
 			                    <li class="dropdown-item">
-			                      <a href="${cpath}/updateMember.do"> <i class="lni lni-exit"></i> Edit Profile  </a>
+			                      <a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> Logout </a>
 			                    </li>
 			                    <li class="dropdown-item">
-			                      <a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> Logout </a>
+			                      <a href="${cpath}/updateMember.do"> <i class="lni lni-exit"></i> Edit Profile  </a>
 			                    </li>
 			                  </ul>
 			                </div>
@@ -393,7 +393,7 @@
 								<span style="padding-left: 10px"></span>
 							</c:forEach>
 						</c:if>
-						<c:url var="contentlink" value="/boardContent.do/${vo.bd_num}" />		
+						<c:url var="contentlink" value="/boardContent2.do/${vo.bd_num}" />		
 						<td>
 						<c:if test="${vo.bd_level > 0}">
 							<c:forEach begin="1" end="${vo.bd_level }">

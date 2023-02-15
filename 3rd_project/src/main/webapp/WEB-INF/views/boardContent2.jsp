@@ -35,7 +35,7 @@
  	
  </script>
 <div class="container">
-  <h2>게시판 상세보기</h2>
+  <h2>Q&A 게시판 상세보기</h2>
   <div class="panel panel-default">
     <div class="panel-heading">게시판</div>
     <div class="panel-body">
