@@ -106,6 +106,19 @@
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-lg-7">
+
+              <div class="title-wrapper pt-30">
+                <div class="row text-start">
+                  <div class="col-md-3">
+                    <div class="title mb-30">
+                      <h2>회원정보<h2>
+
+                    </div>
+                  </div>
+                </div>
+                <!-- end row -->
+              </div>
+
               <div class="card-style settings-card-1 mb-30">
               	<div class="profile-info">
                 
