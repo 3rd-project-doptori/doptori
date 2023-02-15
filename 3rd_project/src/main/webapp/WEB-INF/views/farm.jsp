@@ -18,14 +18,14 @@
      <!-- ======== sidebar-nav start =========== -->
     <aside class="sidebar-nav-wrapper">
       <div class="navbar-logo">
-        <a href="">
+        <a href="${cpath }/Main.do">
           <img src="assets/images/logo/logo.svg" alt="logo" />
         </a>
       </div>
       <nav class="sidebar-nav">
         <ul>
           <li class="nav-item">
-            <a href="${cpath}/writing.do">
+            <a href="${cpath}/mypage.do">
               <span class="icon">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -61,7 +61,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="${cpath}/writing.do">
+            <a href="${cpath}/MyboardList.do">
               <span class="icon">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
