@@ -92,78 +92,61 @@ function callBack(data){
 		console.log(data);
 		var cnt = 1;
   		var bList = "";
-  		bList += "<h4>등록 확인</h4>"
+  						var bList2 = "";
+  						var cnt2 = 1;
+  		bList += "<h4>등록 확인</h4>";
   		bList += "<table class='table recruit'>";
   		bList += "<colgroup><col width='10%'><col></colgroup>";
   		bList += "<tbody>";
   		$.each(data, (index, obj)=>{
-		bList += "<tr class='item' id='list2'>";
-  			
-  				$.ajax({
-  					url : "${cpath}/fulladdress.do/" + obj.fdm1_ad_num,
-  					type : "get",
-  					dataType : "json",
-  					success : function(res){
-  							var bList2 = "<td>" + cnt + "</td>";
-  						$.each(res, (index, obj2)=>{
-  							bList2 += "<td>" + obj2.ad_sido + obj2.ad_gugun + obj2.ad_dong + obj2.ad_ri + "</td></tr>";
-  							bList2 += "<tr class='hide'>";
-  				  			bList2 += "<td></td>";
-  				  			bList2 += "<td>";
-  				  			bList2 += "<table class='table'>";
-  				  			bList2 += "<colgroup>";
-  				  			bList2 += "<col width='18%'>";
-  				  			bList2 += "<col>";
-  				  			bList2 += "</colgroup>";
-  				  			bList2 += "<thead>";
-  				  			bList2 += "<tr>";
-  				  			bList2 += "<th scope='col'>필지주소</th>";
-  				  			bList2 += "<th>";	
-  							bList2 += obj2.ad_sido + obj2.ad_gugun + obj2.ad_dong + obj2.ad_ri;
-  							console.log(obj2.ad_sido);
-  						});
-  						$("#list2").html(bList2);
-  					},
-  					error : function(){
-  						alert("Ajax 통신 실패!!");	
-  					}
-  				});
-  			
-  			bList += " " + obj.fdm1_detail_address; 			
-  			bList += "</th>";
-  			bList += "</tr>";
-  			bList += "</thead>";
-  			bList += "<tbody>";
-  			bList += "<tr>";
-  			bList += "<th scope='row'>필지면적</th>";
-  			bList += "<td>" + obj.fdm1_lot_area + "</td>";
-  			bList += "</tr>";
-  			bList += "<tr>";
-  			bList += "<th scope='row'>실재배면적</th>";
-  			bList += "<td>" + obj.fdm1_actual_area + "</td>";
-  			bList += "</tr>";
-  			bList += "<tr>";
-  			bList += "<th scope='row'>유휴면적</th>";
-  			bList += "<td>" + obj.fdm1_idle_area + "</td>";
-  			bList += "</tr>";
-  			bList += "<tr>";
-  			bList += "<th scope='row'>토양점검 여부</th>";
-  			bList += "<td>" + obj.fdm1_soil_check + "</td>";
-  			bList += "</tr>";
-  			bList += "</tbody>";
-  			bList += "</table>";
-  			bList += "<div class='d-flex justify-content-end'>";
-  			if("${loginMember.mb_num}" == obj.fdm_mb_num){
-	  			bList += "<button class='btn btn-secondary btn-sm' onclick='goUpdate(" + obj.fdm_num + ")'>수정</button>";
-	  			bList += "<button class='btn btn-outline-secondary onclick='goDel(" + obj.fdm_num + ")'>삭제</button>";
-  			}else{
-  				bList += "<button disabled class='btn btn-secondary btn-sm' onclick='goUpdate(" + obj.fdm_num + ")'>수정</button>";
-  	  			bList += "<button disabled class='btn btn-outline-secondary btn-sm' onclick='goDel(" + obj.fdm_num + ")'>삭제</button>";
-  			}
-  			bList += "</div>";
-  			bList += "</td>";
-  			bList += "</tr>";
-  			cnt++;
+		bList += "<tr class='item' id='" + cnt + "'>";
+		bList += "<td>" + cnt + "</td>";
+		bList += "<td>" + obj.ad_sido + obj.ad_gugun + obj.ad_dong + obj.ad_ri + "</td></tr>";
+		bList += "<tr class='hide'>";
+		bList += "<td></td>";
+		bList += "<td>";
+		bList += "<table class='table'>";
+		bList += "<colgroup>";
+		bList += "<col width='18%'>";
+		bList += "<col>";
+		bList += "</colgroup>";
+		bList += "<thead>";
+		bList += "<tr>";
+		bList += "<th scope='col'>필지주소</th>";
+		bList += "<th>" + obj.ad_sido + obj.ad_gugun + obj.ad_dong + obj.ad_ri + obj.fdm1_detail_address + "</th>";;	
+		bList += "</tr>";
+		bList += "</thead>";
+		bList += "<tbody>";
+		bList += "<tr>";
+		bList += "<th scope='row'>필지면적</th>";
+		bList += "<td>" + obj.fdm1_lot_area + "</td>";
+		bList += "</tr>";
+		bList += "<tr>";
+		bList += "<th scope='row'>실재배면적</th>";
+		bList += "<td>" + obj.fdm1_actual_area + "</td>";
+		bList += "</tr>";
+		bList += "<tr>";
+		bList += "<th scope='row'>유휴면적</th>";
+		bList += "<td>" + obj.fdm1_idle_area + "</td>";
+		bList += "</tr>";
+		bList += "<tr>";
+		bList += "<th scope='row'>토양점검 여부</th>";
+		bList += "<td>" + obj.fdm1_soil_check + "</td>";
+		bList += "</tr>";
+		bList += "</tbody>";
+		bList += "</table>";
+		bList += "<div class='d-flex justify-content-end'>";
+		if("${loginMember.mb_num}" == obj.fdm_mb_num){
+			bList += "<button class='btn btn-secondary btn-sm' onclick='goUpdate(" + obj.fdm_num + ")'>수정</button>";
+			bList += "<button class='btn btn-outline-secondary onclick='goDel(" + obj.fdm_num + ")'>삭제</button>";
+		}else{
+			bList += "<button disabled class='btn btn-secondary btn-sm' onclick='goUpdate(" + obj.fdm_num + ")'>수정</button>";
+  			bList += "<button disabled class='btn btn-outline-secondary btn-sm' onclick='goDel(" + obj.fdm_num + ")'>삭제</button>";
+		}
+		bList += "</div>";
+		bList += "</td>";
+		bList += "</tr>";
+		cnt++;
   		});// each 끝!!
   			bList += "</tbody>";
   			bList += "</table>";			

@@ -45,7 +45,11 @@ public class farmdiary_manage {
 	private String fdm7_grow_pic;
 	private String fdm7_grow_result;
 	
-	
+	private String ad_num;
+	private String ad_sido;
+	private String ad_gugun;
+	private String ad_dong;
+	private String ad_ri;
 	
 
 	
@@ -303,28 +307,65 @@ public class farmdiary_manage {
 	}
 	
 	
+	
+	
+	public String getAd_num() {
+		return ad_num;
+	}
+	public void setAd_num(String ad_num) {
+		this.ad_num = ad_num;
+	}
+	public String getAd_sido() {
+		return ad_sido;
+	}
+	public void setAd_sido(String ad_sido) {
+		this.ad_sido = ad_sido;
+	}
+	public String getAd_gugun() {
+		return ad_gugun;
+	}
+	public void setAd_gugun(String ad_gugun) {
+		this.ad_gugun = ad_gugun;
+	}
+	public String getAd_dong() {
+		return ad_dong;
+	}
+	public void setAd_dong(String ad_dong) {
+		this.ad_dong = ad_dong;
+	}
+	public String getAd_ri() {
+		return ad_ri;
+	}
+	public void setAd_ri(String ad_ri) {
+		this.ad_ri = ad_ri;
+	}
+	
+	
+	
 	@Override
 	public String toString() {
 		return "farmdiary_manage [fdm_num=" + fdm_num + ", fdm_type=" + fdm_type + ", fdm_mb_num=" + fdm_mb_num
 				+ ", fdm1_ad_num=" + fdm1_ad_num + ", fdm1_detail_address=" + fdm1_detail_address + ", fdm1_lot_area="
 				+ fdm1_lot_area + ", fdm1_actual_area=" + fdm1_actual_area + ", fdm1_idle_area=" + fdm1_idle_area
-				+ ", fdm1_soil_check=" + fdm1_soil_check + ", fdm2_item=" + fdm2_item + ", fdm2_kind=" + fdm2_kind
-				+ ", fdm2_culture_area=" + fdm2_culture_area + ", fdm2_contract=" + fdm2_contract + ", fdm2_target="
-				+ fdm2_target + ", fdm3_fertilizer=" + fdm3_fertilizer + ", fdm3_fertilizer_kind="
-				+ fdm3_fertilizer_kind + ", fdm3_pesticide=" + fdm3_pesticide + ", fdm3_pesticide_kind="
-				+ fdm3_pesticide_kind + ", fdm4_edu_start=" + fdm4_edu_start + ", fdm4_edu_end=" + fdm4_edu_end
-				+ ", fdm4_edu_name=" + fdm4_edu_name + ", fdm4_edu_place=" + fdm4_edu_place + ", fdm4_edu_cont="
-				+ fdm4_edu_cont + ", fdm4_edu_pic=" + fdm4_edu_pic + ", fdm5_man_name=" + fdm5_man_name
-				+ ", fdm5_man_phone=" + fdm5_man_phone + ", fdm5_man_ability=" + fdm5_man_ability + ", fdm5_man_cost="
-				+ fdm5_man_cost + ", fdm5_man_memo=" + fdm5_man_memo + ", fdm6_account=" + fdm6_account
-				+ ", fdm6_represent=" + fdm6_represent + ", fdm6_regi_num=" + fdm6_regi_num + ", fdm6_phone="
-				+ fdm6_phone + ", fdm6_address=" + fdm6_address + ", fdm6_sectors=" + fdm6_sectors + ", fdm6_business="
-				+ fdm6_business + ", fdm7_date=" + fdm7_date + ", fdm7_pest_pic=" + fdm7_pest_pic
-				+ ", fdm7_pest_result=" + fdm7_pest_result + ", fdm7_grow_pic=" + fdm7_grow_pic + ", fdm7_grow_result="
-				+ fdm7_grow_result + "]";
+				+ ", fdm1_soil_check=" + fdm1_soil_check + ", fdm2_cp_num=" + fdm2_cp_num + ", fdm2_item=" + fdm2_item
+				+ ", fdm2_kind=" + fdm2_kind + ", fdm2_culture_area=" + fdm2_culture_area + ", fdm2_contract="
+				+ fdm2_contract + ", fdm2_target=" + fdm2_target + ", fdm3_fertilizer=" + fdm3_fertilizer
+				+ ", fdm3_fertilizer_kind=" + fdm3_fertilizer_kind + ", fdm3_pesticide=" + fdm3_pesticide
+				+ ", fdm3_pesticide_kind=" + fdm3_pesticide_kind + ", fdm4_edu_start=" + fdm4_edu_start
+				+ ", fdm4_edu_end=" + fdm4_edu_end + ", fdm4_edu_name=" + fdm4_edu_name + ", fdm4_edu_place="
+				+ fdm4_edu_place + ", fdm4_edu_cont=" + fdm4_edu_cont + ", fdm4_edu_pic=" + fdm4_edu_pic
+				+ ", fdm5_man_name=" + fdm5_man_name + ", fdm5_man_phone=" + fdm5_man_phone + ", fdm5_man_ability="
+				+ fdm5_man_ability + ", fdm5_man_cost=" + fdm5_man_cost + ", fdm5_man_memo=" + fdm5_man_memo
+				+ ", fdm6_account=" + fdm6_account + ", fdm6_represent=" + fdm6_represent + ", fdm6_regi_num="
+				+ fdm6_regi_num + ", fdm6_phone=" + fdm6_phone + ", fdm6_address=" + fdm6_address + ", fdm6_sectors="
+				+ fdm6_sectors + ", fdm6_business=" + fdm6_business + ", fdm7_date=" + fdm7_date + ", fdm7_pest_pic="
+				+ fdm7_pest_pic + ", fdm7_pest_result=" + fdm7_pest_result + ", fdm7_grow_pic=" + fdm7_grow_pic
+				+ ", fdm7_grow_result=" + fdm7_grow_result + ", ad_num=" + ad_num + ", ad_sido=" + ad_sido
+				+ ", ad_gugun=" + ad_gugun + ", ad_dong=" + ad_dong + ", ad_ri=" + ad_ri + "]";
 	}
 	
 	
+
 	
 	
 }
