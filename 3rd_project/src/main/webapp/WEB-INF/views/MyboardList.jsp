@@ -116,7 +116,7 @@
               <div class="card-style settings-card-1 mb-30">
                 <div class="profile-info">
                   <div id="Accordion_wrap">
-                    <div class="que">
+                 <!--    <div class="que">
                      <span>This is first question.</span>
                       <div class="arrow-wrap">
                        <span class="arrow-top">↑</span>
@@ -124,12 +124,12 @@
                       </div>
                      
                     </div>
-                    
+                     -->
                     
                     
                     
                     <table class="table">
-				    	<thead>
+				    	<thead align="center">
 					    	 <tr>
 					    	 	<th width="7%" scope="col">번호</th>
 					    	 	<th width="65%" scope="col">제목</th>
@@ -156,7 +156,7 @@
 				    
 				    
 				    
-				    
+				    <!-- 
 				    	
                     <div class="anw">
                      <span>This is first answer.</span>
@@ -173,7 +173,7 @@
                     <div class="anw">
                      <span>This is third answer.</span>
                     </div>
-                  </div>
+                  </div> -->
                
                 </div>
               </div>

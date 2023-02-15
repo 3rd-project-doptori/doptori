@@ -370,8 +370,8 @@
 	       </font>
 	     </div>
 	       </h3></caption>
-	    	<thead>
-		    	 <tr>
+	    	<thead align="center" >
+		    	 <tr style=" font-weight: bold;">
 		    	 	<th width="10%" scope="col">번호</th>
 		    	 	<th width="60%" scope="col">제목</th>
 		    	 	<th width="10%" scope="col">작성자</th>
@@ -383,7 +383,7 @@
 	    		<c:forEach var="vo" items="${list}" varStatus="status">
 	    			<c:if test="${vo.bd_type == '2' }">
 	    			<tr>
-						<th scope="row">${vo.bd_num}</th>						
+						<td align="center"  scope="row">${vo.bd_num}</td>						
 						<c:if test="${vo.bd_level > 0}">
 							<c:forEach begin="1" end="${vo.bd_level }">
 								<span style="padding-left: 10px"></span>
@@ -398,8 +398,8 @@
 						</c:if>
 						<a href="${contentlink}">${vo.bd_title}</a>
 						</td>
-						<td>${memberNames[status.index]}</td>     			
-						<td>${vo.bd_date}</td>  			
+						<td align="center" >${memberNames[status.index]}</td>     			
+						<td align="center" >${vo.bd_date}</td>  			
 						<%-- <td>${vo.bd_cnt}</td>    --%>  			
 	    			</tr>
 	    			</c:if>
