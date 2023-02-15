@@ -102,61 +102,23 @@
     
 
       <!-- ========== section start ========== -->
-      <section class="section">
+       <section class="section">
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-lg-7">
-
-              <div class="title-wrapper pt-30">
-                <div class="row text-start">
-                  <div class="col-md-3">
-                    <div class="title mb-30">
-                      <h2>회원정보<h2>
-
-                    </div>
-                  </div>
-                </div>
-                <!-- end row -->
-              </div>
-
               <div class="card-style settings-card-1 mb-30">
-              	<div class="profile-info">
+                <div class="profile-info">
+                
                 
                 <form class="form-horizontal" id="updateMember" action="${cpath}/userUpdate.do" method="post" enctype="multipart/form-data">
 					
                   <div class="d-flex align-items-center mb-30">
-					
-					<div class="profile-meta">
-                      <!-- 사용자 닉네임 -->
-                      <h5 class="text-bold text-dark mb-10">정보수정</h5> 
-                    </div>
-
-                  </div>
-                  <div class="input-style-1">
-                    <label>ID</label>
-                    <input type="email" placeholder="admin@example.com" />
-                  </div>
-                  <div class="input-style-1">
-                    <label>Password</label>
-                    <input type="password" placeholder="password" />
-                  </div>
-                  <div class="input-style-1">
-                    <label>NICKNAME</label>
-                    <input type="nickname" placeholder=""/>
-                  </div>
-                  <div class="col-12 d-flex justify-content-center">
-                    <button class="btn btn-secondary">
-                      수정
-                    </button>
-                    <button class="btn btn-outline-secondary">
-                      탈퇴
-                    </button>
-                    <button class="btn btn-default">
-                      뒤로가기         
-                    </button>
-                  </div>
-
-					
+                  
+					 <div class="profile-meta">
+                       <!-- 사용자 닉네임 -->
+                       <h5 class="text-bold text-dark mb-10">정보수정</h5> 
+                     </div>
+                  
                       <div class="profile-image">
                      	 <img src="assets/images/profile/profile-1.png" alt="" />
                      		 <div class="update-image">
@@ -182,7 +144,8 @@
 							  --%>
 					 </div>
 					 
-					</div>
+				  </div>
+					
 					
 					
 					
@@ -269,7 +232,6 @@
                   </div> -->
                   
                    
-
                 </div>
               </div>
               <!-- end card -->
