@@ -130,7 +130,7 @@
                       <!-- 사용자 닉네임 -->
                       <h5 class="text-bold text-dark mb-10">정보수정</h5> 
                     </div>
-<<<<<<< HEAD
+
                   </div>
                   <div class="input-style-1">
                     <label>ID</label>
@@ -155,7 +155,7 @@
                       뒤로가기         
                     </button>
                   </div>
-=======
+
 					
                       <div class="profile-image">
                      	 <img src="assets/images/profile/profile-1.png" alt="" />
@@ -269,7 +269,7 @@
                   </div> -->
                   
                    
->>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
+
                 </div>
               </div>
               <!-- end card -->
