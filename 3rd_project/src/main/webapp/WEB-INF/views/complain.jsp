@@ -1,24 +1,21 @@
-<%@ page import="com.doptori.entity.Board"%>
-<%@ page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>마이페이지_내가 쓴 글</title>
+    <title>마이페이지_건의사항</title>
 
     <!-- ========== All CSS files linkup ========= -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="${cpath}/resources/css/lineicons.css" />
     <link rel="stylesheet" href="${cpath}/resources/css/main.css" />
-</head>
-<body>
-    <!-- ======== sidebar-nav start =========== -->
+  </head>
+  <body>
+     <!-- ======== sidebar-nav start =========== -->
     <aside class="sidebar-nav-wrapper">
       <div class="navbar-logo">
         <a href="">
@@ -64,7 +61,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="${cpath}/MyboardList.do">
+            <a href="${cpath}/writing.do">
               <span class="icon">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -107,7 +104,7 @@
                 <div class="row text-start">
                   <div class="col-md-3">
                     <div class="title mb-30">
-                      <h2>내가 쓴 글</h2>
+                      <h2>건의답변</h2>
                     </div>
                   </div>
                 </div>
@@ -116,7 +113,7 @@
               <div class="card-style settings-card-1 mb-30">
                 <div class="profile-info">
                   <div id="Accordion_wrap">
-                 <!--    <div class="que">
+                    <div class="que">
                      <span>This is first question.</span>
                       <div class="arrow-wrap">
                        <span class="arrow-top">↑</span>
@@ -124,40 +121,6 @@
                       </div>
                      
                     </div>
-                     -->
-                    
-                    
-                    
-                    <table class="table">
-				    	<thead align="center">
-					    	 <tr>
-					    	 	<th width="7%" scope="col">번호</th>
-					    	 	<th width="65%" scope="col">제목</th>
-					    	 	<th width="28%" scope="col">작성일</th>
-					    	 	<!-- <th scope="col">조회수</th> -->
-					    	 </tr>
-				    	</thead>
-				    	<tbody class="table-group-divider">
-				    		<c:forEach var="vo" items="${list}" varStatus="status">
-				    			<c:if test="${vo.bd_mb_num eq loginMember.mb_num}">
-				    			<tr>
-									<th scope="row">${vo.bd_num}</th>
-									<td>
-									<c:url var="contentlink" value="/boardContent.do/${vo.bd_num}" />		
-									<a href="${contentlink}">${vo.bd_title}</a>
-									</td>  			
-									<td>${vo.bd_date}</td>  			
-									<%-- <td>${vo.bd_cnt}</td>    --%>  			
-				    			</tr>
-				    			</c:if>
-				    		</c:forEach>
-				    	</tbody>
-				    </table>	
-				    
-				    
-				    
-				    <!-- 
-				    	
                     <div class="anw">
                      <span>This is first answer.</span>
                     </div>
@@ -173,8 +136,8 @@
                     <div class="anw">
                      <span>This is third answer.</span>
                     </div>
-                  </div> -->
-              	 </div>
+                  </div>
+               
                 </div>
               </div>
               <!-- end card -->
@@ -196,5 +159,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="${cpath}/resources/js/main1.js"></script>
-</body>
+  </body>
 </html>

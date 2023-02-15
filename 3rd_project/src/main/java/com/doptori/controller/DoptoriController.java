@@ -53,4 +53,25 @@ public class DoptoriController {
 		return "farm_management";
 	}
 	
+	@GetMapping("/mypage.do")
+	public String mypage() {
+		return "mypage";
+	}
+	
+	@GetMapping("/complain.do")
+	public String complain() {
+		return "complain";
+	}
+	@GetMapping("/writing.do")
+	public String writing() {
+		return "writing";
+	}
+	@GetMapping("/farm.do")
+	public String farm() {
+		return "farm";
+	}
+	@GetMapping("/reservation.do")
+	public String reservation() {
+		return "reservation";
+	}
 }
