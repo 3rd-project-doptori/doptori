@@ -14,7 +14,7 @@ CREATE TABLE Member (
   UNIQUE KEY(mb_nick)
 );
 
-ALTER TABLE Reserve ADD  re_cp_num int(4) not null AFTER re_place;
+ALTER TABLE farmdiary ADD  fd_file1 VARCHAR(3000) AFTER fd_picture1;
 alter table Reserve drop column re_cp_name;
 
 CREATE TABLE Address (
@@ -49,13 +49,17 @@ CREATE TABLE Farm (
   FOREIGN KEY (fm_cp_num) REFERENCES Crop (cp_num)
 );
 
+drop table Crop;
+
 CREATE TABLE Crop (
- cp_num INT(4) NOT NULL AUTO_INCREMENT,
- cp_name VARCHAR(200),
+ cp_info_num INT(4) NOT NULL AUTO_INCREMENT,
+ cp_num INT(4),
+ cp_item VARCHAR(200),
+ cp_kind VARCHAR(200),
  cp_type INT(4),
  cp_title VARCHAR(2000),
  cp_cont TEXT,
-  PRIMARY KEY(cp_num)
+ PRIMARY KEY(cp_info_num)
 );
 
 select * from Crop;

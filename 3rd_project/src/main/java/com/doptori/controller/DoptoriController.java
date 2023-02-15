@@ -48,4 +48,9 @@ public class DoptoriController {
 		return "FarmDiaryManage";
 	}
 
+	@GetMapping("/farm_management.do")
+	public String farm_management() {
+		return "farm_management";
+	}
+	
 }

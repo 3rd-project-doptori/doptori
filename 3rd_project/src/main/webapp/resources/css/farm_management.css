@@ -1,0 +1,114 @@
+
+select:focus, input:focus {
+  box-shadow: none !important;
+}
+
+.top{
+  margin-top: 3rem;
+}
+
+.mar{
+  margin-top: 1.5rem;
+}
+
+.login{
+  background-color: #FF809F;
+  border: none;
+  color: white;
+}
+
+.login:hover{
+  background-color: #FF4D79;
+  color: white;
+
+}
+
+/* ===== input style ===== */
+.input-style-1 {
+  position: relative;
+  margin-bottom: 30px;
+}
+.input-style-1 label {
+  font-size: 14px;
+  font-weight: 900;
+  color: #262d3f;
+  display: block;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.input-style-1 input,
+.input-style-1 textarea {
+  width: 100%;
+  background: rgba(239, 239, 239, 0.5);
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  padding: 16px;
+  color: #5d657b;
+  resize: none;
+  transition: all 0.3s;
+}
+.input-style-1 input:focus,
+.input-style-1 textarea:focus {
+  border-color: #4a6cf7;
+  background: #fff;
+}
+.input-style-1 input[type=date], .input-style-1 input[type=time],
+.input-style-1 textarea[type=date],
+.input-style-1 textarea[type=time] {
+  background: transparent;
+}
+
+dt{
+  text-align: start;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+table{
+  border-top: 1px solid gray;
+}
+
+.mg{
+  margin-top: 8rem;
+}
+
+dd{
+  display: flex;
+  justify-content: end;
+  font-size: 0.8rem;
+}
+
+h4{
+  font-weight: 600;
+  text-align: start;
+  margin-bottom: 1.5rem;
+}
+
+.table-responsive{
+  margin-top: 7rem;
+}
+
+.accordion{
+  margin-top: 1rem;
+}
+
+.lab{
+  display: flex;
+  align-items: center;
+}
+
+.hide {
+  display:none;
+}  
+
+.show {
+  display:table-row;
+}  
+
+.item td {
+  cursor:pointer;
+}  
+
+.recruit{
+  margin-top: 15px;
+}

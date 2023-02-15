@@ -5,7 +5,7 @@ var previewTemplate = dropzonePreviewNode.parentNode.innerHTML;
 dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode);
 
 const dropzone = new Dropzone(".dropzone", {
-    url: "https://httpbin.org/post", // 파일을 업로드할 서버 주소 url. 
+    url: "${cpath}/AnalysisInsert.do", // 파일을 업로드할 서버 주소 url. 
     method: "post", // 기본 post로 request 감. put으로도 할수있음
     
     previewTemplate: previewTemplate, // 만일 기본 테마를 사용하지않고 커스텀 업로드 테마를 사용하고 싶다면

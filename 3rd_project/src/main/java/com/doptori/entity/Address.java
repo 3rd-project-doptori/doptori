@@ -40,6 +40,15 @@ public class Address {
 	public void setAd_ri(String ad_ri) {
 		this.ad_ri = ad_ri;
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "Address [ad_num=" + ad_num + ", ad_sido=" + ad_sido + ", ad_gugun=" + ad_gugun + ", ad_dong=" + ad_dong
+				+ ", ad_ri=" + ad_ri + "]";
+	}
 
+	
+	
 	
 }
