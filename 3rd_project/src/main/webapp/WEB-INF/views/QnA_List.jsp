@@ -192,15 +192,19 @@
 			                      <a href="${cpath}/mypage.do"><i class="lni lni-user"></i> View Profile</a>
 			                    </li>
 			                    <li class="dropdown-item">
-			                      <a href="${cpath }/notice.do"><i class="lni lni-alarm"></i> Notifications</a>
+			                      <a href="${cpath}/notice.do"><i class="lni lni-alarm"></i> Notifications</a>
 			                    </li>
-			                    <li class="dropdown-item"><a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
+			                    <li class="dropdown-item">
+			                      <a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
 			                    </li>
-			                    <li class="dropdown-item"><a href="#0"> <i class="lni lni-cog"></i> Settings </a>
+			                    <li class="dropdown-item">
+			                      <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
 			                    </li>
-			                    <li class="dropdown-item"><a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> LOGOUT </a>
+			                    <li class="dropdown-item">
+			                      <a href="${cpath}/updateMember.do"> <i class="lni lni-exit"></i> Edit Profile  </a>
 			                    </li>
-			                    <li class="dropdown-item"><a href="${cpath}/updateMember.do"> <i class="lni lni-exit"></i> Edit profile  </a>
+			                    <li class="dropdown-item">
+			                      <a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> Logout </a>
 			                    </li>
 			                  </ul>
 			                </div>
