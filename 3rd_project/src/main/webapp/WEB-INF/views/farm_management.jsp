@@ -9,192 +9,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>영농일지_관리</title>
+<!-- ========== All CSS files linkup ========= -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="${cpath}/resources/css/farm_management.css"/>
 <link rel="stylesheet" href="${cpath}/resources/css/lineicons.css" />
-    <link rel="stylesheet" href="${cpath}/resources/css/main.css" />
+<link rel="stylesheet" href="${cpath}/resources/css/main.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="${cpath}/resources/js/main1.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	
-	FarmDiaryManageList();
-	
-	var temp;
-	
-	$.ajax({
-		url : "${cpath}/ad_gugun.do",
-		type : "get",
-		dataType : "json",
-		success : function(res){
-			//console.log(res);
-			$("#selectbox").html("");
-			$.each(res, (index, obj)=>{
-				$("#selectbox").append("<option value="+obj.ad_gugun+">"+obj.ad_gugun+"</option>");
-			});	
-		},
-		error : function(){
-			alert("Ajax 통신 실패!!");	
-		}
-	});
-	
-	$.ajax({
-		url : "${cpath}/ad_dong.do",
-		type : "get",
-		dataType : "json",
-		success : function(res){
-			//console.log(res);
-			$("#selectNextbox").html("");
-			$.each(res, (index, obj)=>{
-				$("#selectNextbox").append("<option value="+obj.ad_dong+">"+obj.ad_dong+"</option>");
-			});
-		},
-		error : function(){
-			alert("Ajax 통신 실패!!");	
-		}
-	});	
-	
-	
-}); // ready 끝
 
-		
-
-function changeSelect(){
-	var select = $("#selectbox option:selected").text();
-	$.ajax({
-		url : "${cpath}/ad_dong.do",
-		type : "get",
-		dataType : "json",
-		success : function(res){
-			//console.log(res);
-			$("#selectNextbox").html("");
-			$.each(res, (index, obj)=>{
-				if (obj.ad_gugun==select) {
-				$("#selectNextbox").append("<option value="+obj.ad_num+">"+obj.ad_dong+"</option>");
-				}
-			});		
-		},
-		error : function(){
-			alert("Ajax 통신 실패!!");	
-		}
-	});	
-}
-
-function FarmDiaryManageList(){
-		$.ajax({
-			url: "${cpath}/FarmDiaryManageList.do",
-			type: "get",
-			dataType: "json",
-			success: callBack,
-			error: function(){
-				alert("error");
-			}
-			
-		});// ajax 끝!!
-		
-	}// FarmDiaryManageList 함수 끝!!
-
-	
-function callBack(data){
-		console.log(data);
-		var cnt = 1;
-  		var bList = "";
-  		bList += "<section class='section'>";
-  		bList += "<div class='container-fluid'>";
-  		bList += "<div class='row justify-content-center'>";
-  		bList += "<div class='col-lg-7'>";
-  		bList += "<div class='title-wrapper pt-30'>";
-  		bList += "<div class='row text-start'>";
-  		bList += "<div class='col-md-3'>";
-  		bList += "<div class='title mb-30'>";
-  		bList += "<h2>필지 관리 목록</h2>";
-  		bList += "</div></div></div>";
-  		bList += "</div>";
-  		bList += "<div class='card-style settings-card-1 mb-30'>";
-  		bList += "<div class='profile-info'>";
-  		bList += "<div id='Accordion_wrap'>";
-  		$.each(data, (index, obj)=>{
-  		bList += "<div class='que'>";
-  		bList += "<span>" + cnt + "</span>";
-  		bList += "<span>" + obj.ad_sido +" " + obj.ad_gugun + " " + obj.ad_dong + " " + obj.ad_ri + "</span>";
-  		bList += "<div class='arrow-wrap'>";
-  		bList += "<span class='arrow-top'>↑</span>";
-  		bList += "<span class='arrow-bottom'>↓</span>";
-  		bList += "</div>";
-  		bList += "</div>";
-  		bList += "<div class='anw'>";
-  		bList += "<div>";
-		bList += "<span>필지주소 : </span>";
-		bList += "<span>" + obj.ad_sido +" " + obj.ad_gugun + " " + obj.ad_dong + " " + obj.ad_ri + " " + obj.fdm1_detail_address + "</span>";
-		bList += "</div>";
-		bList += "</div>";	
-		/* bList += "<tr class='hide'>";
-		bList += "<td></td>";
-		bList += "<td>";
-		bList += "<table class='table'>";
-		bList += "<colgroup>";
-		bList += "<col width='18%'>";
-		bList += "<col>";
-		bList += "</colgroup>";
-		bList += "<thead>";
-		bList += "<tr>";
-		bList += "<th scope='col'>필지주소</th>";
-		bList += "<th>" + obj.ad_sido +" " + obj.ad_gugun + " " + obj.ad_dong + " " + obj.ad_ri + " " + obj.fdm1_detail_address + "</th>";;	
-		bList += "</tr>";
-		bList += "</thead>";
-		bList += "<tbody>";
-		bList += "<tr>";
-		bList += "<th scope='row'>필지면적</th>";
-		bList += "<td>" + obj.fdm1_lot_area + "</td>";
-		bList += "</tr>";
-		bList += "<tr>";
-		bList += "<th scope='row'>실재배면적</th>";
-		bList += "<td>" + obj.fdm1_actual_area + "</td>";
-		bList += "</tr>";
-		bList += "<tr>";
-		bList += "<th scope='row'>유휴면적</th>";
-		bList += "<td>" + obj.fdm1_idle_area + "</td>";
-		bList += "</tr>";
-		bList += "<tr>";
-		bList += "<th scope='row'>토양점검 여부</th>";
-		bList += "<td>" + obj.fdm1_soil_check + "</td>";
-		bList += "</tr>";
-		bList += "</tbody>";
-		bList += "</table>";
-		bList += "<div class='d-flex justify-content-end'>";
-		if("${loginMember.mb_num}" == obj.fdm_mb_num){
-			bList += "<button class='btn btn-secondary btn-sm' onclick='goUpdate(" + obj.fdm_num + ")'>수정</button>";
-			bList += "<button class='btn btn-outline-secondary onclick='goDel(" + obj.fdm_num + ")'>삭제</button>";
-		}else{
-			bList += "<button disabled class='btn btn-secondary btn-sm' onclick='goUpdate(" + obj.fdm_num + ")'>수정</button>";
-  			bList += "<button disabled class='btn btn-outline-secondary btn-sm' onclick='goDel(" + obj.fdm_num + ")'>삭제</button>";
-		}
-		bList += "</div>";
-		bList += "</td>";
-		bList += "</tr>"; */
-		cnt++;
-  		});// each 끝!!
-  			bList += "</div>";		
-  			bList += "</div>";		
-  			bList += "</div>";		
-  			bList += "</div>";		
-  			bList += "</div>";		
-  			bList += "</div>";	
-  			bList += "</section>";	
-
-  		$("#list").html(bList);
-  		
-  	}// callBack 함수 끝!!
-	
-	
-	
-	
-</script>
 </head>
 
 <body>
@@ -351,7 +176,65 @@ function callBack(data){
 					</div>
 
 					<!-- 확인하기 -->
-					<div class="table-responsive" id="list" style="display: block">content</div>
+					<!-- ========== section start ========== -->
+					<section class="section">
+						<div class="container-fluid">
+							<div class="row justify-content-center">
+								<div class="col-lg-7">
+									<div class="title-wrapper pt-30">
+										<div class="row text-start">
+											<div class="col-md-3">
+												<div class="title mb-30">
+													<h2>필지 목록</h2>
+												</div>
+											</div>
+										</div>
+										<!-- end row -->
+									</div>
+									<div class="card-style settings-card-1 mb-30">
+										<div class="profile-info">
+											<div id="Accordion_wrap">
+											<c:forEach items="${list}" var="vo">
+												<div class="que">
+													<span>${vo.ad_sido}</span>
+													<span>${vo.ad_gugun}</span>
+													<span>${vo.ad_dong}</span>
+													<span>${vo.ad_ri}</span>
+													<span>${vo.fdm1_detail_address}</span>
+												</div>
+												<div class="anw">
+													<p>필지주소 : ${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri} ${vo.fdm1_detail_address}</p>
+													<p>필지 면적 : ${vo.fdm1_lot_area}m<sup>2</sup></p>
+													<p>실재배 면적 : ${vo.fdm1_actual_area}m<sup>2</sup></p>
+													<p>유휴 면적 : ${vo.fdm1_idle_area}m<sup>2</sup></p>
+													<c:choose>
+														<c:when test="${vo.fdm1_soil_check==1}">
+															<p>토양점검 여부 : 예</p>
+														</c:when>
+														<c:otherwise>
+															<p>토양점검 여부 : 아니오</p>
+														</c:otherwise>
+													</c:choose>
+												</div>
+											</c:forEach>
+												
+											</div>
+
+										</div>
+									</div>
+									<!-- end card -->
+								</div>
+								<!-- end col -->
+
+
+								<!-- end col -->
+							</div>
+							<!-- end row -->
+						</div>
+						<!-- end container -->
+					</section>
+					<!-- ========== section end ========== -->
+
 				</div>
 
 				<!-- 품목관리 -->
@@ -534,10 +417,160 @@ function callBack(data){
 			</div>
 		</main>
 	</div>
-	<!-- JavaScript Bundle with Popper -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-	<script src="${cpath}/resources/assets/js/popper.min.js"></script>
-	<script src="${cpath}/resources/js/farm_management.js"></script>
+	<script type="text/javascript">
+$(document).ready(function(){
+	
+	FarmDiaryManageList();
+	
+	var temp;
+	
+	$.ajax({
+		url : "${cpath}/ad_gugun.do",
+		type : "get",
+		dataType : "json",
+		success : function(res){
+			//console.log(res);
+			$("#selectbox").html("");
+			$.each(res, (index, obj)=>{
+				$("#selectbox").append("<option value="+obj.ad_gugun+">"+obj.ad_gugun+"</option>");
+			});	
+		},
+		error : function(){
+			alert("Ajax 통신 실패!!");	
+		}
+	});
+	
+	$.ajax({
+		url : "${cpath}/ad_dong.do",
+		type : "get",
+		dataType : "json",
+		success : function(res){
+			//console.log(res);
+			$("#selectNextbox").html("");
+			$.each(res, (index, obj)=>{
+				$("#selectNextbox").append("<option value="+obj.ad_dong+">"+obj.ad_dong+"</option>");
+			});
+		},
+		error : function(){
+			alert("Ajax 통신 실패!!");	
+		}
+	});	
+	
+	
+}); // ready 끝
 
+		
+
+function changeSelect(){
+	var select = $("#selectbox option:selected").text();
+	$.ajax({
+		url : "${cpath}/ad_dong.do",
+		type : "get",
+		dataType : "json",
+		success : function(res){
+			//console.log(res);
+			$("#selectNextbox").html("");
+			$.each(res, (index, obj)=>{
+				if (obj.ad_gugun==select) {
+				$("#selectNextbox").append("<option value="+obj.ad_num+">"+obj.ad_dong+"</option>");
+				}
+			});		
+		},
+		error : function(){
+			alert("Ajax 통신 실패!!");	
+		}
+	});	
+}
+
+function FarmDiaryManageList(){
+		$.ajax({
+			url: "${cpath}/FarmDiaryManageList.do",
+			type: "get",
+			dataType: "json",
+			success: callBack,
+			error: function(){
+				alert("error");
+			}
+			
+		});// ajax 끝!!
+		
+	}// FarmDiaryManageList 함수 끝!!
+
+	
+function callBack(data){
+		console.log(data);
+		var cnt = 1;
+  		var bList = "";
+  		$.each(data, (index, obj)=>{
+  		bList += "<div class='que'>";
+  		bList += "<span>" + cnt + "</span>";
+  		bList += "<span>" + obj.ad_sido +" " + obj.ad_gugun + " " + obj.ad_dong + " " + obj.ad_ri + "</span>";
+  		bList += "</div>";
+  		bList += "<div class='anw'>";
+  		bList += "<div>";
+		bList += "<span>필지주소 : </span>";
+		bList += "<span>" + obj.ad_sido +" " + obj.ad_gugun + " " + obj.ad_dong + " " + obj.ad_ri + " " + obj.fdm1_detail_address + "</span>";
+		bList += "</div>";
+		bList += "</div>";	
+		/* bList += "<tr class='hide'>";
+		bList += "<td></td>";
+		bList += "<td>";
+		bList += "<table class='table'>";
+		bList += "<colgroup>";
+		bList += "<col width='18%'>";
+		bList += "<col>";
+		bList += "</colgroup>";
+		bList += "<thead>";
+		bList += "<tr>";
+		bList += "<th scope='col'>필지주소</th>";
+		bList += "<th>" + obj.ad_sido +" " + obj.ad_gugun + " " + obj.ad_dong + " " + obj.ad_ri + " " + obj.fdm1_detail_address + "</th>";;	
+		bList += "</tr>";
+		bList += "</thead>";
+		bList += "<tbody>";
+		bList += "<tr>";
+		bList += "<th scope='row'>필지면적</th>";
+		bList += "<td>" + obj.fdm1_lot_area + "</td>";
+		bList += "</tr>";
+		bList += "<tr>";
+		bList += "<th scope='row'>실재배면적</th>";
+		bList += "<td>" + obj.fdm1_actual_area + "</td>";
+		bList += "</tr>";
+		bList += "<tr>";
+		bList += "<th scope='row'>유휴면적</th>";
+		bList += "<td>" + obj.fdm1_idle_area + "</td>";
+		bList += "</tr>";
+		bList += "<tr>";
+		bList += "<th scope='row'>토양점검 여부</th>";
+		bList += "<td>" + obj.fdm1_soil_check + "</td>";
+		bList += "</tr>";
+		bList += "</tbody>";
+		bList += "</table>";
+		bList += "<div class='d-flex justify-content-end'>";
+		if("${loginMember.mb_num}" == obj.fdm_mb_num){
+			bList += "<button class='btn btn-secondary btn-sm' onclick='goUpdate(" + obj.fdm_num + ")'>수정</button>";
+			bList += "<button class='btn btn-outline-secondary onclick='goDel(" + obj.fdm_num + ")'>삭제</button>";
+		}else{
+			bList += "<button disabled class='btn btn-secondary btn-sm' onclick='goUpdate(" + obj.fdm_num + ")'>수정</button>";
+  			bList += "<button disabled class='btn btn-outline-secondary btn-sm' onclick='goDel(" + obj.fdm_num + ")'>삭제</button>";
+		}
+		bList += "</div>";
+		bList += "</td>";
+		bList += "</tr>"; */
+		cnt++;
+  		});// each 끝!!
+
+  		$("#Accordion_wrap2").html(bList);
+  	}// callBack 함수 끝!!
+	
+	
+	
+	
+</script>
+	<!-- ========= All Javascript files linkup ======== -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous"></script>
+	<script src="${cpath}/resources/js/main1.js"></script>
 </body>
 </html>

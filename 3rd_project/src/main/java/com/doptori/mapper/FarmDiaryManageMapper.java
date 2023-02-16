@@ -17,4 +17,7 @@ public interface FarmDiaryManageMapper {
 
 	List<farmdiary_manage> FarmDiaryManageList(int mb_num);
 
+	List<farmdiary_manage> FarmDiaryManageList2(int mb_num);
+
+
 }

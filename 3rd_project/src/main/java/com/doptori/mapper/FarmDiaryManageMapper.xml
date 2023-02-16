@@ -19,4 +19,8 @@
   	select Address.*, farmdiary_manage.* from Address INNER JOIN farmdiary_manage ON Address.ad_num = farmdiary_manage.fdm1_ad_num where fdm_mb_num=#{mb_num};
   </select>
   
+  <select id="FarmDiaryManageList2" parameterType="int" resultType="com.doptori.entity.farmdiary_manage">
+  	select Address.*, farmdiary_manage.* from Address INNER JOIN farmdiary_manage ON Address.ad_num = farmdiary_manage.fdm1_ad_num where fdm_mb_num=#{mb_num};
+  </select>
+  
 </mapper>

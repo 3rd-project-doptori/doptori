@@ -83,7 +83,7 @@
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="<c:url value='/calendar2.do/${loginMember.getMb_num()}'/>">영농일지</a></li>
                       <li><a class="dropdown-item" href="<c:url value='/FarmDiaryManage.do'/>">일지 목록</a></li>
-                      <li><a class="dropdown-item" href="<c:url value='/farm_management.do'/>">일지 관리</a></li>
+                      <li><a class="dropdown-item" href="<c:url value='FarmDiaryManageList2.do'/>">일지 관리</a></li>
                     </ul>
                   </li>
                   <li class="nav-item">

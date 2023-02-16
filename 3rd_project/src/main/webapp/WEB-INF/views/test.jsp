@@ -2,159 +2,163 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{cmmn/adminLayout}">
-<body>
-<div layout:fragment="content">
-	<script type="text/javascript">
-	var fileArr;
-	var fileInfoArr=[];
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마이페이지_농장관리</title>
 
-	//썸네일 클릭시 삭제.
-	function fileRemove(index) {
-	    console.log("index: "+index);
-	    fileInfoArr.splice(index,1);
-	 
-	    var imgId="#img_id_"+index;
-	    $(imgId).remove();
-	    console.log(fileInfoArr);
-	}
+    <!-- ========== All CSS files linkup ========= -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="${cpath}/resources/css/lineicons.css" />
+    <link rel="stylesheet" href="${cpath}/resources/css/main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <!-- ======== sidebar-nav start =========== -->
+    <aside class="sidebar-nav-wrapper">
+      <div class="navbar-logo">
+        <a href="">
+          <img src="assets/images/logo/logo.svg" alt="logo" />
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="writing.html">
+              <span class="icon">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M9.16667 19.25H12.8333C12.8333 20.2584 12.0083 21.0834 11 21.0834C9.99167 21.0834 9.16667 20.2584 9.16667 19.25ZM19.25 17.4167V18.3334H2.75V17.4167L4.58333 15.5834V10.0834C4.58333 7.24171 6.41667 4.76671 9.16667 3.94171V3.66671C9.16667 2.65837 9.99167 1.83337 11 1.83337C12.0083 1.83337 12.8333 2.65837 12.8333 3.66671V3.94171C15.5833 4.76671 17.4167 7.24171 17.4167 10.0834V15.5834L19.25 17.4167ZM15.5833 10.0834C15.5833 7.51671 13.5667 5.50004 11 5.50004C8.43333 5.50004 6.41667 7.51671 6.41667 10.0834V16.5H15.5833V10.0834Z"
+                  />
+                </svg>
+              </span>
+              <span class="text">정보수정</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="reservation.html">
+              <span class="icon">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                  <path
+                    d="M17.4166 7.33333C18.9383 7.33333 20.1666 8.56167 20.1666 10.0833V15.5833H16.4999V19.25H5.49992V15.5833H1.83325V10.0833C1.83325 8.56167 3.06159 7.33333 4.58325 7.33333H5.49992V2.75H16.4999V7.33333H17.4166ZM7.33325 4.58333V7.33333H14.6666V4.58333H7.33325ZM14.6666 17.4167V13.75H7.33325V17.4167H14.6666ZM16.4999 13.75H18.3333V10.0833C18.3333 9.57917 17.9208 9.16667 17.4166 9.16667H4.58325C4.07909 9.16667 3.66659 9.57917 3.66659 10.0833V13.75H5.49992V11.9167H16.4999V13.75ZM17.4166 10.5417C17.4166 11.0458 17.0041 11.4583 16.4999 11.4583C15.9958 11.4583 15.5833 11.0458 15.5833 10.5417C15.5833 10.0375 15.9958 9.625 16.4999 9.625C17.0041 9.625 17.4166 10.0375 17.4166 10.5417Z"
+                  />
+                </svg>
+              </span>
+              <span class="text">예약내역</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="farm.html">
+              <span class="icon">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M4.58333 3.66675H17.4167C17.9029 3.66675 18.3692 3.8599 18.713 4.20372C19.0568 4.54754 19.25 5.01385 19.25 5.50008V16.5001C19.25 16.9863 19.0568 17.4526 18.713 17.7964C18.3692 18.1403 17.9029 18.3334 17.4167 18.3334H4.58333C4.0971 18.3334 3.63079 18.1403 3.28697 17.7964C2.94315 17.4526 2.75 16.9863 2.75 16.5001V5.50008C2.75 5.01385 2.94315 4.54754 3.28697 4.20372C3.63079 3.8599 4.0971 3.66675 4.58333 3.66675ZM4.58333 7.33341V11.0001H10.0833V7.33341H4.58333ZM11.9167 7.33341V11.0001H17.4167V7.33341H11.9167ZM4.58333 12.8334V16.5001H10.0833V12.8334H4.58333ZM11.9167 12.8334V16.5001H17.4167V12.8334H11.9167Z"
+                  />
+                </svg>
+              </span>
+              <span class="text">농장관리</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="writing.html">
+              <span class="icon">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M9.16667 19.25H12.8333C12.8333 20.2584 12.0083 21.0834 11 21.0834C9.99167 21.0834 9.16667 20.2584 9.16667 19.25ZM19.25 17.4167V18.3334H2.75V17.4167L4.58333 15.5834V10.0834C4.58333 7.24171 6.41667 4.76671 9.16667 3.94171V3.66671C9.16667 2.65837 9.99167 1.83337 11 1.83337C12.0083 1.83337 12.8333 2.65837 12.8333 3.66671V3.94171C15.5833 4.76671 17.4167 7.24171 17.4167 10.0834V15.5834L19.25 17.4167ZM15.5833 10.0834C15.5833 7.51671 13.5667 5.50004 11 5.50004C8.43333 5.50004 6.41667 7.51671 6.41667 10.0834V16.5H15.5833V10.0834Z"
+                  />
+                </svg>
+              </span>
+              <span class="text">내가 쓴 글</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="complain.html">
+              <span class="icon">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M9.16667 19.25H12.8333C12.8333 20.2584 12.0083 21.0834 11 21.0834C9.99167 21.0834 9.16667 20.2584 9.16667 19.25ZM19.25 17.4167V18.3334H2.75V17.4167L4.58333 15.5834V10.0834C4.58333 7.24171 6.41667 4.76671 9.16667 3.94171V3.66671C9.16667 2.65837 9.99167 1.83337 11 1.83337C12.0083 1.83337 12.8333 2.65837 12.8333 3.66671V3.94171C15.5833 4.76671 17.4167 7.24171 17.4167 10.0834V15.5834L19.25 17.4167ZM15.5833 10.0834C15.5833 7.51671 13.5667 5.50004 11 5.50004C8.43333 5.50004 6.41667 7.51671 6.41667 10.0834V16.5H15.5833V10.0834Z"
+                  />
+                </svg>
+              </span>
+              <span class="text">건의답변</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+     
+    </aside>
+    <div class="overlay"></div>
+    <!-- ======== sidebar-nav end =========== -->
 
-	//썸네일 미리보기.
-	function previewImage(targetObj, View_area) {
-	    var files=targetObj.files;
-	    fileArr=Array.prototype.slice.call(files);
-	    
-	    var preview = document.getElementById(View_area); //div id
-	    var ua = window.navigator.userAgent;
-	 
-	    //ie일때(IE8 이하에서만 작동)
-	    if (ua.indexOf("MSIE") > -1) {
-	        targetObj.select();
-	        try {
-	            var src = document.selection.createRange().text; // get file full path(IE9, IE10에서 사용 불가)
-	            var ie_preview_error = document.getElementById("ie_preview_error_" + View_area);
-	 
-	 
-	            if (ie_preview_error) {
-	                preview.removeChild(ie_preview_error); //error가 있으면 delete
-	            }
-	 
-	            var img = document.getElementById(View_area); //이미지가 뿌려질 곳
-	 
-	            //이미지 로딩, sizingMethod는 div에 맞춰서 사이즈를 자동조절 하는 역할
-	            img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+src+"', sizingMethod='scale')";
-	        } catch (e) {
-	            if (!document.getElementById("ie_preview_error_" + View_area)) {
-	                var info = document.createElement("<p>");
-	                info.id = "ie_preview_error_" + View_area;
-	                info.innerHTML = e.name;
-	                preview.insertBefore(info, null);
-	            }
-	        }
-	        //ie가 아닐때(크롬, 사파리, FF)
-	    } else {
-	        var files = targetObj.files;
-	        for ( var i = 0; i < files.length; i++) {
-	            var file = files[i];
-	            fileInfoArr.push(file);
-	 
-	            var imageType = /image.*/; //이미지 파일일경우만.. 뿌려준다.
-	            if (!file.type.match(imageType))
-	                continue;
-	            // var prevImg = document.getElementById("prev_" + View_area); //이전에 미리보기가 있다면 삭제
-	            // if (prevImg) {
-	            //     preview.removeChild(prevImg);
-	            // }
-	 
-	            var span=document.createElement('span');
-	            span.id="img_id_" +i;
-	            span.style.width = '100px';
-	            span.style.height = '100px';
-	            preview.appendChild(span);
-	 
-	            var img = document.createElement("img");
-	            img.className="addImg";
-	            img.classList.add("obj");
-	            img.file = file;
-	            img.style.width='inherit';
-	            img.style.height='inherit';
-	            img.style.cursor='pointer';
-	            const idx=i;
-	            img.onclick=()=>fileRemove(idx);   //이미지를 클릭했을 때.
-	            span.appendChild(img);
-	 
-	            if (window.FileReader) { // FireFox, Chrome, Opera 확인.
-	                var reader = new FileReader();
-	                reader.onloadend = (function(aImg) {
-	                    return function(e) {
-	                        aImg.src = e.target.result;
-	                    };
-	                })(img);
-	                reader.readAsDataURL(file);
-	            } else { // safari is not supported FileReader
-	                //alert('not supported FileReader');
-	                if (!document.getElementById("sfr_preview_error_"
-	                    + View_area)) {
-	                    var info = document.createElement("p");
-	                    info.id = "sfr_preview_error_" + View_area;
-	                    info.innerHTML = "not supported FileReader";
-	                    preview.insertBefore(info, null);
-	                }
-	            }
-	        }
-	    }
-	}
-	
-	//form데이터 전송
-	function dataSubmit() {
-	    var token = $("meta[name='_csrf']").attr("content");
-	    var header = $("meta[name='_csrf_header']").attr("content");
-	 
-	    var data=new FormData($("#storeAddForm")[0]);
-	 
-	    $.ajax({
-	        beforeSend: function(xhr){
-	            xhr.setRequestHeader(header,token);
-	        },
-	        url: "url",
-	        data: data,
-	        processData:false,
-	        contentType:false,
-	        enctype:'multipart/form-data',
-	        type:"POST",
-	    }).done(function (fragment) {
-	        $("#resultDiv").replaceWith(fragment);
-	    });
-	}
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper container py-4">
+    
 
-	</script>
- 
-    <div class="row border-bottom" style="margin-top: 10px; margin-bottom: 10px;"></div>
- 
-    <form id="addForm">
-        <div style="display: inline;">
-            <label for="img_upload">
-                <img src="/img/photo_add.png" style="width:100px; height:100px; cursor: pointer;">
-            </label>
-            <input type="file" name="img_upload" id="img_upload"
-                   onchange="previewImage(this,'View_area')"
-                   style="display: none;" multiple>
- 
-            <span id='View_area'
-                  style='position:relative; color: black; border: 0px solid black;'>
-        </span>
+      <!-- ========== section start ========== -->
+      <section class="section">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-lg-7">
+              <div class="title-wrapper pt-30">
+                <div class="row text-start">
+                  <div class="col-md-3">
+                    <div class="title mb-30">
+                      <h2>농장관리</h2>
+                    </div>
+                  </div>
+                </div>
+                <!-- end row -->
+              </div>
+              <div class="card-style settings-card-1 mb-30">
+                <div class="profile-info">
+                  <div id="Accordion_wrap">
+                    <div class="que">
+                     <span>This is first question.</span>
+                      <div class="arrow-wrap">
+                       <span class="arrow-top">↑</span>
+                       <span class="arrow-bottom">↓</span>
+                      </div>
+                     
+                    </div>
+                    <div class="anw">
+                     <span>This is first answer.</span>
+                    </div>
+                    <div class="que">
+                     <span>This is second question.</span>
+                    </div>
+                    <div class="anw">
+                     <span>This is second answer.</span>
+                    </div>
+                    <div class="que">
+                     <span>This is third question.</span>
+                    </div>
+                    <div class="anw">
+                     <span>This is third answer.</span>
+                    </div>
+                  </div>
+               
+                </div>
+              </div>
+              <!-- end card -->
+            </div>
+            <!-- end col -->
+
+            
+            <!-- end col -->
+          </div>
+          <!-- end row -->
         </div>
- 
-        <div style="align-content: center; width: 100%; text-align: center;">
-            <input type="button" class="btn" style="background: #FF6491; color: #FFF2F6;" onclick="dataSubmit();"
-                   value="전송하기">
-        </div>
- 
-        <div id="resultDiv">
-            <p th:text="${log}"></p>
-        </div>
-    </form>
-</div>
-</body>
+        <!-- end container -->
+      </section>
+      <!-- ========== section end ========== -->
+
+
+    </main>
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="${cpath}/resources/js/main1.js"></script>
+  </body>
 </html>

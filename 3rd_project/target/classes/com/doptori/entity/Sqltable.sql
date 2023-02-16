@@ -251,7 +251,7 @@ create table farmdiary(
 
 ALTER TABLE farmdiary_manage ADD fdm2_cp_num int(4) after fdm1_soil_check;
 ALTER TABLE farmdiary_manage ADD fdm7_pest_pic VARCHAR(3000);
-ALTER TABLE farmdiary_manage ADD fdm7_pest_result TEXT;
+ALTER TABLE farmdiary_manage ADD fdm7_analysislist TEXT;
 ALTER TABLE farmdiary_manage ADD fdm7_grow_pic VARCHAR(3000);
 ALTER TABLE farmdiary_manage ADD fdm7_grow_result TEXT;
 
@@ -261,6 +261,11 @@ alter table farmdiary_manage add FOREIGN KEY (fdm2_cp_num) REFERENCES Crop (cp_n
 alter table farmdiary_manage drop foreign key fdm1_ad_num;
 alter table farmdiary_manage drop foreign key fdm2_cp_num;
 alter table farmdiary_manage drop foreign key fdm_mb_num;
+
+ALTER TABLE farmdiary_manage DROP fdm7_pest_pic;
+ALTER TABLE farmdiary_manage DROP fdm7_pest_result;
+ALTER TABLE farmdiary_manage DROP fdm7_grow_pic;
+ALTER TABLE farmdiary_manage DROP fdm7_grow_result;
 
 CREATE TABLE Analysis (
  an_num INT(4) NOT NULL AUTO_INCREMENT,
