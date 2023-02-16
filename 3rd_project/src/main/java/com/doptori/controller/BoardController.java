@@ -39,7 +39,7 @@ public class BoardController {
 	// @RequestMapping("/boardListFrom.do")
 	// public void boardListFrom() {}
 
-	@RequestMapping("/TradeList.do")
+	@RequestMapping("/market.do")
 	public String TradeList(Model model, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
@@ -118,7 +118,7 @@ public class BoardController {
 		model.addAttribute("sword",sword);
 
 		
-		return "TradeList";
+		return "market";
 	}
 	
 	@RequestMapping("/QnA_List.do")
@@ -492,7 +492,7 @@ public class BoardController {
 		
 		mapper.boardUpdate(vo);
 		
-		return "redirect:TradeList.do";
+		return "redirect:market.do";
 	}
 
 	@RequestMapping("/boardDelete.do/{bd_num}")
@@ -516,7 +516,7 @@ public class BoardController {
 
 		mapper.boardDelete(bd_num);
 
-		return "redirect:/TradeList.do";
+		return "redirect:/market.do";
 	}
 
 	@GetMapping("/updateCount/{bd_num}")
@@ -575,7 +575,7 @@ public class BoardController {
 		// 답글 저장
 		mapper.replyInsert(vo);
 		
-		return "redirect:/TradeList.do";
+		return "redirect:/market.do";
 	}
 
 

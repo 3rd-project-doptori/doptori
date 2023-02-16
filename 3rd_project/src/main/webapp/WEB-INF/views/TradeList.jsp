@@ -15,55 +15,10 @@
     
 <title>TradeList</title>
 
-	<link rel="canonical" href="https://getbootstrap.kr/docs/5.2/examples/jumbotron/">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link rel="stylesheet" href="notice_qa.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <!-- CSS only -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="${cpath}/resources/css/res_index.css">
-    <link rel="stylesheet" href="${cpath}/resources/css/lineicons.css">
-    <link rel="stylesheet" href="${cpath}/resources/css/header.css">
-    <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.eot">
-    <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.svg">
-    <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.ttf">
-    <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.woff">
-    <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.woff2">
 
-        <!-- Favicons -->
-    <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
-	<meta name="theme-color" content="#712cf9">
-  <style>
-      .login{
-      background-color: #FF809F;
-      border: none;
-      color: white;
-      margin-left: 1rem;
-      }
-
-      .login:hover{
-          background-color: #FF4D79;
-          color: white;
-      }
-      
-      
-      @font-face {
-		  font-family: 'lineicons';
-		  src: url("${cpath}/resources/header/LineIcons.eot");
-		  src: url('${cpath}/resources/header/LineIcons.eot') format('embedded-opentype'),
-		       url('${cpath}/resources/header/LineIcons.woff2') format('woff2'),
-		       url('${cpath}/resources/header/LineIcons.woff') format('woff'),
-		       url('${cpath}/resources/header/LineIcons.ttf') format('truetype'),
-		       url('${cpath}/resources/header/LineIcons.svg') format('svg');
-		}
-      
-  </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript">
 
@@ -135,6 +90,7 @@
 </head>
 <body>
 	<div class="container py-4 folder">
+	<jsp:include page="/WEB-INF/views/header.jsp"/>
     <header class="pb-3 mb-4 border-bottom">
       <nav class="navbar navbar-expand-lg">
           <div class="container-fluid">
@@ -472,7 +428,6 @@
   
   <!-- partial -->
   <script  src="notice_qa.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 	
 </body>
 </html>
