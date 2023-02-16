@@ -1,7 +1,7 @@
-<%@ page import="java.util.List"%>
-<%@ page import="com.doptori.entity.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.doptori.entity.Board"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -33,7 +33,25 @@
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#712cf9">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript">
     
+    function signin(){
+		location.href = "${cpath}/signin.do"
+	}
+	
+	
+	$(document).ready(function(){
+		// boardList라고 하는 함수 실행!
+		// 자바스크립트의 호이스팅
+		boardList();
+	});
+	
+	
+	  	function goForm() {
+	  		location.href="${cpath}/market_detail.do"
+	  	}
+    </script>
     
     
 </head>
