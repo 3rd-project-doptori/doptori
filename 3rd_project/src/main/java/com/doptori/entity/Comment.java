@@ -1,5 +1,7 @@
 package com.doptori.entity;
 
+import java.util.Date;
+
 public class Comment {
 
 	private	int co_num;

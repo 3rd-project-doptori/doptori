@@ -32,7 +32,7 @@
   <update id="commentUpdate" parameterType="com.doptori.entity.Comment">
       update comment
       set
-      content =#{content}
+      content = #{content}
       where co_num = #{co_num}
   </update>
      

@@ -17,7 +17,7 @@ public interface CommentMapper {
 	public List<Comment> commentList();
 
 	// 댓글 작성
-	public int commentInsert(Comment comment);
+	public int commentInsert(Comment cvo);
 
 	// 댓글 수정
 	public int commentUpdate(Comment comment);
