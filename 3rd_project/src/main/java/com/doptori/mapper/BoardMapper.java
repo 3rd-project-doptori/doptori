@@ -47,8 +47,9 @@ public interface BoardMapper {
 	public void replyInsert(Board vo);
 	
 	
+	
 	// 댓글 등록
-	public void commentInsert(Comment vo);	
+	public int commentInsert(Comment vo);	
 	// 댓글 목록보기
 	public List<Comment> commentSelect(int bd_num);
 	// 댓글 삭제
@@ -60,10 +61,21 @@ public interface BoardMapper {
 	
 	
 	
+	
+	
 	public Comment commentList(int bd_num);
+	
+	
 	
 	// 메인화면 공지사항
 	public List<Board> MainboardList(Board vo);
+	
+	
+	
+	  // 게시물 번호가 존재하는지 검사
+    int checkBoardExist(int bd_num);
+	public boolean boardExists(int co_bd_num);
+
 	
 	
 	

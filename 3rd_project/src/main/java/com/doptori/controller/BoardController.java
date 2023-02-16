@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FilenameUtils;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +17,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.doptori.entity.Board;
 import com.doptori.entity.Comment;
@@ -405,23 +406,62 @@ public class BoardController {
 	 * 
 	 * return "boardContent"; }
 	 */
+	
+//	@RequestMapping("/boardContent.do/{bd_num}")
+//	public String boardContent(@PathVariable("bd_num")int bd_num, Model model, @ModelAttribute("co_bd_num")int co_bd_num) {
+//		Board vo = mapper.boardContent(bd_num);	
+//		//Comment cvo = mapper.commentList(bd_num);
+//		
+//		// 조회수 업데이트
+//		mapper.boardCount(bd_num);
+//        
+//		model.addAttribute("vo", vo);
+//		//model.addAttribute("cvo", cvo);
+//		
+//		List<Comment> list = mapper.commentSelect(bd_num);
+//		//model.addAttribute("list", list);
+//		if (co_bd_num != null) {
+//	        model.addAttribute("co_bd_num", co_bd_num); // FlashAttribute로 전달받은 데이터 처리
+//	    }
+//		
+//		return "boardContent";
+//		
+//	}
+	
+//	@RequestMapping("/boardContent.do/{bd_num}")
+//	public String boardContent(@PathVariable("bd_num") int bd_num, Model model, @RequestParam(value = "co_bd_num", defaultValue = "0") int co_bd_num) {
+//	    Board vo = mapper.boardContent(bd_num);
+//	    mapper.boardCount(bd_num);
+//	    model.addAttribute("vo", vo);
+//	    List<Comment> list = mapper.commentSelect(bd_num);
+//	    model.addAttribute("list", list);
+//	    if (co_bd_num != 0) {
+//	        model.addAttribute("co_bd_num", co_bd_num); // FlashAttribute로 전달받은 데이터 처리
+//	    }
+//	    return "boardContent";
+//	}
+
 	@RequestMapping("/boardContent.do/{bd_num}")
-	public String boardContent(@PathVariable("bd_num")int bd_num, Model model) {
-		Board vo = mapper.boardContent(bd_num);	
-		//Comment cvo = mapper.commentList(bd_num);
-		
-		// 조회수 업데이트
-		mapper.boardCount(bd_num);
-        
-		model.addAttribute("vo", vo);
-		//model.addAttribute("cvo", cvo);
-		
-		List<Comment> list = mapper.commentSelect(bd_num);
-		model.addAttribute("list", list);
-		
-		return "boardContent";
-		
+	public String boardContent(@PathVariable("bd_num") int bd_num, Model model, @RequestParam(value = "co_bd_num", defaultValue = "0") int co_bd_num) {
+	    Board vo;
+	    try {
+	        vo = mapper.boardContent(bd_num);
+	        if (vo == null) {
+	            throw new Exception("해당 게시물이 존재하지 않습니다.");
+	        }
+	        mapper.boardCount(bd_num);
+	        List<Comment> list = mapper.commentSelect(bd_num);
+	        if (co_bd_num != 0) {
+	            model.addAttribute("co_bd_num", co_bd_num);
+	        }
+	        model.addAttribute("vo", vo);
+	        model.addAttribute("list", list);
+	    } catch (Exception e) {
+	        model.addAttribute("error", e.getMessage());
+	    }
+	    return "boardContent";
 	}
+	
 	
 	@RequestMapping("/boardUpdateForm.do")
 	public String boardUpdateForm(int bd_num, Model model) {
@@ -539,18 +579,52 @@ public class BoardController {
 	}
 
 
-
-	// 댓글 입력
-	@RequestMapping("/commentInsert.do")
-	public String commentInsert(Comment cvo) {
-		mapper.commentInsert(cvo);
-		return "redirect:/boardContent.do?co_num=" + cvo.getCo_bd_num();
+	
+//	@RequestMapping("commentInsert.do")
+//	public String commentInsert(Comment cvo, HttpSession session, RedirectAttributes ra) throws Exception {
+//	
+//		Member loginMember = (Member)session.getAttribute("loginMember");
+//		cvo.setCo_mb_num(loginMember.getMb_num());
+//	 
+//		mapper.commentInsert(cvo);
+//		 ra.addFlashAttribute("co_bd_num", cvo.getCo_bd_num()); // 리다이렉트 시 데이터 전달을 위해 FlashAttribute 사용
+//		
+//		return "redirect:/boardContent.do?bd_num=" + cvo.getCo_bd_num();
+//	}
+	
+	
+	@PostMapping("/commentInsert.do")
+	public String commentInsert(Comment cvo, HttpSession session, RedirectAttributes ra) throws Exception {
+	    Member loginMember = (Member) session.getAttribute("loginMember");
+	    if (loginMember == null) {
+	        return "redirect:/signin.do";
+	    }
+	    cvo.setCo_mb_num(loginMember.getMb_num());
+	    try {
+	        mapper.commentInsert(cvo);
+	        ra.addAttribute("co_bd_num", cvo.getCo_bd_num());
+	        return "redirect:/boardContent.do/" + cvo.getCo_bd_num(); // 댓글이 등록된 게시물 페이지로 이동
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return "redirect:/QnA_List.do";
+	    }
 	}
 	
+	
+	// 댓글 입력
+//	@RequestMapping("/commentInsert.do")
+//	public String commentInsert(Comment cvo) {
+//		mapper.commentInsert(cvo);
+//		return "redirect:/boardContent.do?co_num=" + cvo.getCo_bd_num();
+//	}
+	
 	// 댓글 삭제
-	@RequestMapping("/commentDelete.do")
-	public String commentDelete(@Param(value="co_num") int co_num, @Param(value="co_bd_num") int co_bd_num) {
-		mapper.commentDelete(co_num);
-		return "redirect:/boardContent.do?co_num="+co_bd_num;
-	}
+//	@RequestMapping("/commentDelete.do")
+//	public String commentDelete(@Param(value="co_num") int co_num, @Param(value="co_bd_num") int co_bd_num) {
+//		mapper.commentDelete(co_num);
+//		return "redirect:/boardContent.do?co_num="+co_bd_num;
+//	}
+
+
+
 }
