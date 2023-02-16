@@ -62,12 +62,20 @@
       insert into Comment(co_bd_num, co_mb_num, co_cont)
       values(#{co_bd_num}, #{co_mb_num}, #{co_cont})
   </insert>  
+   <select id="boardExists" parameterType="int" resultType="int">
+    select count(*) from Board where bd_num = #{bd_num}
+  </select>
       <!-- insert into Comment(co_bd_num, co_mb_num, co_cont)
       values(#{co_bd_num}, #{co_mb_num}, #{co_cont}) -->
   <!-- 댓글 목록보기 -->
    <select id="commentSelect"  parameterType="int" resultType="com.doptori.entity.Comment">
-      select * from Comment where co_bd_num = #{co_num}
-      order by co_date desc
+     select c.co_num, c.co_bd_num, c.co_mb_num, c.co_cont, c.co_date, m.mb_nick
+	 from Comment c
+     inner join Member m
+         on c.co_mb_num = m.mb_num
+     where co_bd_num = #{co_bd_num}
+     <!--  select * from Comment where co_bd_num = #{co_num}
+      order by co_date desc -->
   </select>
   <!-- 댓글 삭제 -->
   <delete id="commentDelete"  parameterType="int">

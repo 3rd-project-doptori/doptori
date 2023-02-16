@@ -8,6 +8,8 @@ public class Comment {
 	private	String co_cont;
 	private	String co_date;
 	
+	private	String mb_nick;
+	
 	// getter, setter 만들기
 	public int getCo_num() {
 		return co_num;
@@ -38,6 +40,12 @@ public class Comment {
 	}
 	public void setCo_cont(String co_cont) {
 		this.co_cont = co_cont;
+	}
+	public String getMb_nick() {
+		return mb_nick;
+	}
+	public void setMb_nick(String mb_nick) {
+		this.mb_nick = mb_nick;
 	}
 	
 	
