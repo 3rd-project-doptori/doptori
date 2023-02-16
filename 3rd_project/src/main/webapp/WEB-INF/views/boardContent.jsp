@@ -68,6 +68,20 @@
       th {
         text-align: center;
       }
+      
+      
+       section.CommentForm { padding:30px 0; }
+ 		section.CommentForm div.input_area { margin:10px 0; }
+ 		section.CommentForm textarea { font-size:16px; font-family:'맑은 고딕', verdana; padding:10px; width:500px;; height:150px; }
+ 		section.CommentForm button { font-size:20px; padding:5px 10px; margin:10px 0; background:#fff; border:1px solid #ccc; }
+ 
+ 		section.CommentList { padding:30px 0; }
+ 		section.CommentList ol { padding:0; margin:0; }
+ 		section.CommentList ol li { padding:10px 0; border-bottom:2px solid #eee; }
+ 		section.CommentList div.userInfo { }
+ 		section.CommentList div.userInfo .userName { font-size:24px; font-weight:bold; }
+ 		section.CommentList div.userInfo .date { color:#999; display:inline-block; margin-left:10px; }
+ 		section.CommentList div.Content { padding:10px; margin:20px 0; }
  
   </style>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -113,7 +127,7 @@
                   <a class="nav-link" href="<c:url value='/analysis.do'/>">농작물분석</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<c:url value='/TradeList.do'/>">직거래</a>
+                  <a class="nav-link" href="<c:url value='/market.do'/>">직거래</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<c:url value='/QnA_List.do'/>">Q&A</a>
@@ -167,7 +181,7 @@
           </div>
         </nav>
     </header>
-  <h2>게시판 상세보기</h2>
+  <h2 class="display-7 fw-bold">게시판 상세보기</h2>
   <div class="content__inner" id="tab-2">
         <div class="table-responsive">
 		<table class="table table-bordered table-hover"> 
@@ -219,15 +233,16 @@
 			 </tr>
 		</table>
 		
+		
 		<!-- 댓글 작성 -->
-		<form action="${cpath}/commentInsert.do" method="post">
-			<%-- <input type="hidden" id="bd_num" name="bd_num" value="${vo.bd_num}">
-			<input type="hidden" name="co_mb_num" value="${vo.bd_mb_num}"> --%>
+		<%-- <form action="${cpath}/commentInsert.do" method="post">
+			<input type="hidden" id="bd_num" name="bd_num" value="${vo.bd_num}">
+			<input type="hidden" name="co_mb_num" value="${vo.bd_mb_num}">
 	    	<table style="margin-left: 30px; margin-bottom: 30px;">
 	    		<tr>
 	    			<td width="10%">
 	    				<span size="2">베프</span>
-	    				<input type="hidden" name="co_bd_num" value="${cvo.co_bd_num}">
+	    				<input type="hidden" name="bd_num" value="${cvo.co_bd_num}">
 	    				<input class="form-control" type="hidden" name="co_mb_num" readonly="readonly">
 	    			</td>
 	    			<td width="90%">
@@ -238,34 +253,74 @@
 	    			</td>
 	    		</tr>
 	    	</table>
-	    </form>
+	    </form> --%>
 	    
 	</div>
 	
+	
+    <c:set var="bd_num" value="${param.bd_num}" />
+<div id="reply">
+  <c:choose>
+    <c:when test="${empty loginMember}">
+      <p>소감을 남기시려면 <a href="${cpath}/signin.do">로그인</a>해주세요</p>
+    </c:when>
+    <c:otherwise>
+      <section class="CommentForm">
+        <form action="${cpath}/commentInsert.do?co_bd_num=${vo.bd_num}" method="post" autocomplete="off">
+          <c:if test="${not empty co_bd_num and co_bd_num ne 0}">
+            <input type="hidden" name="co_bd_num" value="${cvo.co_bd_num}">
+          </c:if>
+          <div class="input_area">
+            <textarea name="co_cont" id="repCon" required="required"></textarea>
+          </div>
+          <div class="input_area">
+            <button type="submit" id="reply_btn">댓글 등록</button>
+          </div>
+        </form>
+      </section>
+    </c:otherwise>
+  </c:choose>
+  <section class="CommentList">
+    <ol>
+      <c:forEach items="${list}" var="cvo">
+        <li>
+          <div class="userInfo">
+            <span class="userName">${cvo.co_mb_num}</span>
+            <span class="date">${cvo.co_date}</span>
+          </div>
+          <div class="Content">${cvo.co_cont}</div>
+        </li>
+      </c:forEach>
+    </ol>
+  </section>
+</div>
+		
+		
+		
 		<!-- 댓글 뿌리기(CommentList) -->
-		<c:forEach var="cvo" items="${list}">
+		<%-- <c:forEach var="cvo" items="${list}">
 			<table style="margin-left: 30px; margin-bottom: 30px;"  class="table table-bordered table-hover">
 				<tr>
 					<td width="10%">${cvo.co_mb_num}</td>
 					<td width="60%"><span style="margin-left:10px;">${cvo.co_cont}</span></td>
 					<td width="20%"><span style="margin-left:5px;">${cvo.co_date}</span></td>
 					<td width="10%">
-						<%-- <form action="${cpath}/commentDelete.do" method="post">
+						<form action="${cpath}/commentDelete.do" method="post">
 						<c:if test="${vo.bd_mb_num == cvo.co_mb_num}">
 							<button type="button" class="btn btn-info btn-sm">삭제</button>
 							<input  type="hidden" id="bd_num" name="bd_num" value="${vo.bd_num }">
 							<input  type="hidden" id="co_num" name="co_num" value="${cvo.co_num }">
 						</c:if>
-						</form> --%>
-						<span style="margin-left:20px">
-							<a href="/${cpath } }commentDelete.do?co_num=${cvo.co_num}&co_bd_num=${cvo.co_num}">
+						</form>
+						<!-- <span style="margin-left:20px">
+							<a href="${cpath }commentDelete.do?co_num=${cvo.co_num}&co_bd_num=${cvo.co_num}">
 							<button type="button" class="btn btn-info btn-sm">삭제</button>
 							</a>
-						</span>
+						</span> -->
 					</td>
 				 </tr>
 			</table>
-		</c:forEach>
+		</c:forEach> --%>
   </div>
 </div>
 

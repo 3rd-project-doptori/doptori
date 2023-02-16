@@ -24,6 +24,7 @@
     <main>
         <div class="container py-4">
         <jsp:include page="/WEB-INF/views/header.jsp"/>
+            <h2 class="display-7 fw-bold">농작물분석</h2>
             <div class="row align-items-md-stretch">
                 <div class="col-md-6">
                     <div class="h-100 p-5 border rounded-3">
