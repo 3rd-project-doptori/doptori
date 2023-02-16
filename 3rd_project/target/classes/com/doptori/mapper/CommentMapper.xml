@@ -4,22 +4,36 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.doptori.mapper.CommentMapper">
     
- <!-- 댓글 등록
+   <select id="commentCount" resultType="int">
+      select
+      count(*)
+      from comment
+   </select>
+    
+ <!-- 댓글 등록 -->
   <insert id="commentInsert" parameterType="com.doptori.entity.Comment">
       insert into Comment(co_bd_num, co_mb_num, co_cont)
       values(#{co_bd_num}, #{co_mb_num}, #{co_cont})
-  </insert>   -->
+  </insert>
       <!--insert into Comment(co_mb_num, co_cont) values(#{co_mb_num}, #{co_cont}) -->
   
-  <!-- 댓글 목록보기
+  <!-- 댓글 목록보기 -->
    <select id="commentList"  parameterType="int" resultType="com.doptori.entity.Comment">
       select * from Comment where co_bd_num = #{co_num}
       order by co_date desc
-  </select> -->
+  </select>
   
-  <!-- 댓글 삭제 
+  <!-- 댓글 삭제 -->
   <delete id="commentDelete"  parameterType="int">
       delete from Comment where co_num = #{co_num}
-  </delete> -->
+  </delete>
+  
+  <!-- 댓글 업데이트 -->
+  <update id="commentUpdate" parameterType="com.doptori.entity.Comment">
+      update comment
+      set
+      content =#{content}
+      where co_num = #{co_num}
+  </update>
      
 </mapper>

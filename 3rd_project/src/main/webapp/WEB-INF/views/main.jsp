@@ -15,7 +15,7 @@
     
     <link rel="canonical" href="https://getbootstrap.kr/docs/5.2/examples/jumbotron/">
     
-    <!-- CSS only -->
+    <!-- CSS only -->y
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="${cpath}/resources/css/res_index.css">
     <link rel="stylesheet" href="${cpath}/resources/css/lineicons.css">
@@ -116,9 +116,11 @@
 			                      </div>
 			                  </button>
 			                  
+			                  <!-- 비동기식 관리자 회원목록 보기 -->
 			                  <c:if test="${loginMember.mb_id=='admin'}">
 			                    <button id="MemberList" class="btn btn-outline-secondary" >회원목록</button>
 			                   </c:if>
+			                    
 			                    
 			                  <ul class="dropdown-menu dm2" aria-labelledby="static">
 			                    <li class="dropdown-item">
