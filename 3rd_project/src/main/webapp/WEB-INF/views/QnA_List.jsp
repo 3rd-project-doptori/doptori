@@ -145,7 +145,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="<c:url value='/Main.do' />">Home</a>
+                  <a class="nav-link" aria-current="page" href="<c:url value='/Main.do'/>">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -347,7 +347,7 @@
         </div>
       </div> --%>
 
-	<h3>Q&A</h3>
+	<h2 class="display-7 fw-bold">Q&A</h2>
       <div class="content__inner" id="tab-2">
         <div class="table-responsive">
           <table class="table">

@@ -127,7 +127,7 @@
                   <a class="nav-link" href="<c:url value='/analysis.do'/>">농작물분석</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<c:url value='/TradeList.do'/>">직거래</a>
+                  <a class="nav-link" href="<c:url value='/market.do'/>">직거래</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<c:url value='/QnA_List.do'/>">Q&A</a>
@@ -181,7 +181,7 @@
           </div>
         </nav>
     </header>
-  <h2>게시판 상세보기</h2>
+  <h2 class="display-7 fw-bold">게시판 상세보기</h2>
   <div class="content__inner" id="tab-2">
         <div class="table-responsive">
 		<table class="table table-bordered table-hover"> 

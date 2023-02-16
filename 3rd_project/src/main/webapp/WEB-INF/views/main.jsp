@@ -89,9 +89,9 @@
         <table class="table table-sm text-center align-middle">
 	    	<thead>
 		    	 <tr>
-		    	 	<td width="10%" scope="col">번호</td>
-		    	 	<td width="60%" scope="col">제목</td>
-		    	 	<td width="40%" scope="col">작성일</td>
+		    	 	<th width="10%" scope="col">번호</th>
+		    	 	<th width="60%" scope="col">제목</th>
+		    	 	<th width="40%" scope="col">작성일</th>
 		    	 	<!-- <th scope="col">조회수</th> -->
 		    	 </tr>
 	    	</thead>
