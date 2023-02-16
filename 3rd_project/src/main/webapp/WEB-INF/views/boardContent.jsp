@@ -167,7 +167,7 @@
           </div>
         </nav>
     </header>
-  <h2>직거래 게시판 상세보기</h2>
+  <h2>게시판 상세보기</h2>
   <div class="content__inner" id="tab-2">
         <div class="table-responsive">
 		<table class="table table-bordered table-hover"> 

@@ -201,10 +201,10 @@
 			                      <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
 			                    </li>
 			                    <li class="dropdown-item">
-			                      <a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> Logout </a>
+			                      <a href="${cpath}/updateMember.do"> <i class="lni lni-exit"></i> Edit Profile  </a>
 			                    </li>
 			                    <li class="dropdown-item">
-			                      <a href="${cpath}/updateMember.do"> <i class="lni lni-exit"></i> Edit Profile  </a>
+			                      <a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> Logout </a>
 			                    </li>
 			                  </ul>
 			                </div>
