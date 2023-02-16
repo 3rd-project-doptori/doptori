@@ -12,10 +12,11 @@
   
   }
   
+/*   
   img{
     width: 100%;
     border-radius: 50%;
-  }
+  } */
 
   .image{
     width: 45.33px;
@@ -96,4 +97,19 @@
     flex-shrink: 0;
     -webkit-font-smoothing: antialiased;
     font: 1em / 1 lineicons;
+}
+
+.im{
+	width: 200px;
+    height: 60px;
+}
+
+.nav-item{
+    font-size: large;
+    padding-right: 0.8rem;
+    font-weight: 500;
+}
+
+.nav-link{
+	color: #595959;
 }

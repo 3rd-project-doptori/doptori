@@ -13,8 +13,8 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, 그리고 Bootstrap 기여자들">
     <meta name="generator" content="Hugo 0.104.2">
     <title>MAIN</title>
-    
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="${cpath}/resources/css/res_index.css" />
     
     
   </head>
@@ -38,55 +38,85 @@
   <div class="container py-4">
     <jsp:include page="/WEB-INF/views/header.jsp"/>
 
-    <div class="p-5 mb-4 bg-light rounded-3">
+    <div class="p-3 mb-4 bg-light rounded-3">
     <div id="MemberListdiv" style="display:none;"></div>
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">Custom jumbotron</h1>
-        <p class="col-md-8 fs-4">베프는 어려운 과채작물 재배를 쉽고 편리하게 도와드립니다.<br>
-            <strong>생산</strong>부터 <strong>판매</strong> 서비스까지 제공하는 데이터 농업 플랫폼 
-            베프를 통해 <br> 신선하고 저렴한 과채 농사를 경험하실 수 있습니다.</p>
-        <button class="btn btn-primary btn-lg" type="button">Example button</button>
-      </div>
+      <div class="row container-fluid py-5 d-flex">
+          <div class="col-8 fon">
+            <h1>VEF_과채가채고</h1>
+            <p class="p">
+                어려운 과채작물 재배를 쉽고 편리하게 도와드립니다.<br>
+                <strong>생산</strong>부터 <strong>판매</strong> 서비스까지<br>
+                제공하는 데이터 농업 플랫폼 베프를 통해<br> 
+                신선하고 저렴한 과채 농사를 경험하실 수 있습니다.
+            </p>
+            <button class="btn btn-primary btn-lg" type="button">Example button</button>
+          </div>
+          <div class="col-4 d-flex justify-content-center">
+            <img src="${cpath}/resources/images/index_logo.png" class="he">
+          </div>
+        </div>
     </div>
 
-    <div class="row align-items-md-stretch">
-      <div class="col-md-6">
-        <div class="h-100 p-5 text-bg-dark rounded-3">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="" class="d-block w-100" alt="...">
+<div class="row align-items-md-stretch">
+        <div class="col-md-5">
+          <div class="h-100 p-5 text-bg-dark rounded-3">
+              <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="" class="d-block w-100" alt="...">
+                    </div>
                   </div>
-                  <div class="carousel-item">
-                    <img src="" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="" class="d-block w-100" alt="...">
-                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
+          </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="h-100 p-5 bg-light border rounded-3">
-          <h2>Add borders</h2>
-          <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
-          <button class="btn btn-outline-secondary" type="button">Example button</button>
-        </div>
-      </div>
-    </div>
 
-    <div class="container-fluid py-5">
+        <div class="col-md-7">
+          <div class="h-100 p-2 rounded-3 row g-0 border flex-md-row mb-4 shadow-sm h-md-250 position-relative justify-content-center text-center">
+            <div class="col-auto d-block d-lg-block">
+              <svg class="bd-placeholder-img" width="125" height="175" xmlns="http://www.w3.org/2000/svg" href="planner.png" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <a href="${cpath}/생육과정관리">
+                	<image href="${cpath}/resources/images/plant.png" width="100%" height="100%"></image>
+                </a>
+                <p>생육과정관리</p>
+              </svg>
+            </div>
+            <div class="col-auto d-block d-lg-block">
+              <svg class="bd-placeholder-img" width="125" height="175" xmlns="http://www.w3.org/2000/svg" href="planner.png" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <a href="${cpath}/병해충분석">
+                	<image href="${cpath}/resources/images/pests.png" width="100%" height="100%"></image>
+                </a>
+                <p>병해충관리</p>
+              </svg>
+            </div>
+            <div class="col-auto d-block d-lg-block">
+              <svg class="bd-placeholder-img" width="125" height="175" xmlns="http://www.w3.org/2000/svg" href="planner.png" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <a href="${cpath}/영농일지">
+                	<image href="${cpath}/resources/images/planner.png" width="100%" height="100%"></image>
+                </a>
+                <p>영농일지</p>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     <div class="tb">
         <h3><a href="${cpath}/notice.do"> 공지사항</a></h3>
-        <table class="table table-sm text-center align-middle">
+        <table class="table table-sm text-start align-middle">
 	    	<thead>
 		    	 <tr>
 		    	 	<td width="10%" scope="col">번호</td>
@@ -95,10 +125,10 @@
 		    	 	<!-- <th scope="col">조회수</th> -->
 		    	 </tr>
 	    	</thead>
-	    	<tbody class="table-group-divider">
+	    	<tbody>
 	    	<c:forEach var="vo" items="${list}" varStatus="status">
 		    	<c:if test="${vo.bd_type == '1' }">
-		    			<tr class="table-group-divider">
+		    			<tr>
 		    				<td scope="row">${vo.bd_num}</th>
 		    				<%-- <c:if test="${vo.bd_level > 0}">
 								<c:forEach begin="1" end="${vo.bd_level }">

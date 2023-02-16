@@ -15,7 +15,6 @@
   	
   <title>notice_qa</title>
   
-  	<link rel="canonical" href="https://getbootstrap.kr/docs/5.2/examples/jumbotron/">
   
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">

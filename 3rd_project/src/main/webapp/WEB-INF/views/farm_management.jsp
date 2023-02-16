@@ -16,7 +16,7 @@
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="${cpath}/resources/css/lineicons.css" />
-<link rel="stylesheet" href="${cpath}/resources/css/main.css" />
+<link rel="stylesheet" href="${cpath}/resources/css/farm_management_table.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -26,7 +26,7 @@
 	<div class="container py-4">
 	<jsp:include page="/WEB-INF/views/header.jsp"/>
 		<main>
-			<ul class="row nav nav-pills justify-content-center" id="pills-tab"
+			<ul class="row nav nav-pills justify-content-center top" id="pills-tab"
 				role="tablist">
 				<li class="nav-item col-auto" role="presentation">
 					<button class="nav-link active" id="pills-home-tab"
@@ -179,8 +179,8 @@
 					<!-- ========== section start ========== -->
 					<section class="section">
 						<div class="container-fluid">
-							<div class="row justify-content-center">
-								<div class="col-lg-7">
+							<div class="row ">
+								<div class="col-lg-7 top">
 									<div class="title-wrapper pt-30">
 										<div class="row text-start">
 											<div class="col-md-3">
@@ -409,7 +409,7 @@
 						</form>
 					</div>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
-						<button class="btn btn-primary" type="button">등록</button>
+						<button class="btn login" type="button">등록</button>
 					</div>
 				</div>
 
