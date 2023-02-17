@@ -33,7 +33,7 @@
       <header class="pb-3 mb-4 border-bottom">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-              <a class="navbar-brand im" href="${cpath}/main.jsp">
+              <a class="navbar-brand im" href="${cpath}/Main.do">
               	<img src="${cpath}/resources/images/header_logo.png" class="im">
               </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,7 +79,7 @@
 			                  <button class="dropdown-toggle bg-transparent border-0 bu" type="button" id="profile" data-bs-toggle="dropdown" aria-expanded="false">
 			                      <div class="info">
 			                        <div class="image">
-			                          <img src="fruits.png" alt=""/>
+			                          <img src="${cpath}/resources/images/default2.png" alt="" style="width: 2.5rem;"/>
 			                        </div>
 			                      </div>
 			                  </button>

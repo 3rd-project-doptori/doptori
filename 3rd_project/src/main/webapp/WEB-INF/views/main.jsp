@@ -40,7 +40,7 @@
 
     <div class="p-3 mb-4 bg-light rounded-3">
     <div id="MemberListdiv" style="display:none;"></div>
-      <div class="row container-fluid py-5 d-flex">
+      <div class="row container-fluid py-3 d-flex">
           <div class="col-8 fon">
             <h1>VEF_과채가채고</h1>
             <p class="p">
@@ -49,7 +49,6 @@
                 제공하는 데이터 농업 플랫폼 베프를 통해<br> 
                 신선하고 저렴한 과채 농사를 경험하실 수 있습니다.
             </p>
-            <button class="btn btn-primary btn-lg" type="button">Example button</button>
           </div>
           <div class="col-4 d-flex justify-content-center">
             <img src="${cpath}/resources/images/index_logo.png" class="he">
