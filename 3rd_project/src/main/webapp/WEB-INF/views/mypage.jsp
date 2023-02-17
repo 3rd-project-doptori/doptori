@@ -42,7 +42,7 @@
                   />
                 </svg>
               </span>
-              <span class="text">정보수정123</span>
+              <span class="text">정보수정</span>
             </a>
           </li>
           <li class="nav-item">

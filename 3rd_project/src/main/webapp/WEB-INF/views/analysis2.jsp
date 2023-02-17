@@ -24,11 +24,10 @@
     <main>
         <div class="container py-4">
         <jsp:include page="/WEB-INF/views/header.jsp"/>
-            <h2 class="display-7 fw-bold">병해충분석</h2>
             <div class="row align-items-md-stretch">
                 <div class="col-md-6">
                     <div class="h-100 p-5 border rounded-3">
-                	<h2 class="h2">병해충분석하기</h2>
+                	<h2 class="h2">병해충 분석하기</h2>
                         <div class="d-flex justify-content-center top">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
