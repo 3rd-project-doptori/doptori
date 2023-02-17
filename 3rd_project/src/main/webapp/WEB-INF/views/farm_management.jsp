@@ -195,26 +195,52 @@
 										<div class="profile-info">
 											<div id="Accordion_wrap">
 											<c:forEach items="${list}" var="vo">
-												<div class="que">
+											<c:set var="cnt" value="${cnt+1}" />
+												<div class="que" align="left">
+													<span>필지 ${cnt} : </span>
 													<span>${vo.ad_sido}</span>
 													<span>${vo.ad_gugun}</span>
 													<span>${vo.ad_dong}</span>
 													<span>${vo.ad_ri}</span>
 													<span>${vo.fdm1_detail_address}</span>
 												</div>
-												<div class="anw">
-													<p>필지주소 : ${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri} ${vo.fdm1_detail_address}</p>
-													<p>필지 면적 : ${vo.fdm1_lot_area}m<sup>2</sup></p>
-													<p>실재배 면적 : ${vo.fdm1_actual_area}m<sup>2</sup></p>
-													<p>유휴 면적 : ${vo.fdm1_idle_area}m<sup>2</sup></p>
-													<c:choose>
-														<c:when test="${vo.fdm1_soil_check==1}">
-															<p>토양점검 여부 : 예</p>
-														</c:when>
-														<c:otherwise>
-															<p>토양점검 여부 : 아니오</p>
-														</c:otherwise>
-													</c:choose>
+												<div class="anw" align="center">
+													<form action="">
+														<table>
+															<tr>
+																<td><P>필지 주소 : </P></td>
+																<td><p><select id="selectbox" class="area" placeholder="지역" onchange="changeSelect()" value></select>
+																<select id="selectNextbox" name="fdm1_ad_num" class="area2" placeholder="지역"></select>
+																<input type="text" class="form-control" name="fdm1_detail_address" id="fdm1_detail_address" placeholder="세부주소" value="${vo.fdm1_detail_address}">
+																${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri}</P></td>
+															</tr>
+															<tr>
+																<td><P>필지 면적 : </P></td>
+																<td><P>${vo.fdm1_lot_area}m<sup>2</sup></P></td>
+															</tr>
+															<tr>
+																<td><P>실재배 면적 : </P></td>
+																<td><P>${vo.fdm1_actual_area}m<sup>2</sup></P></td>
+															</tr>
+															<tr>
+																<td><P>유휴 면적 : </P></td>
+																<td><P>${vo.fdm1_idle_area}m<sup>2</sup></P></td>
+															</tr>
+															<tr>
+																<td><P>토양점검 여부 : </P></td>
+																<c:choose>
+																	<c:when test="${vo.fdm1_soil_check==1}">
+																		<td><P>예</P></td>
+																	</c:when>
+																	<c:otherwise>
+																		<td><P>아니오</P></td>
+																	</c:otherwise>
+																</c:choose>
+															</tr>
+															
+
+														</table>
+													</form>
 												</div>
 											</c:forEach>
 												
