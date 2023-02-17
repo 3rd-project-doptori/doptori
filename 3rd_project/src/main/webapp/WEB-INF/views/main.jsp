@@ -62,7 +62,7 @@
               <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                   <div class="carousel-inner">
                     <div class="carousel-item active">
-                      <img src="" class="d-block w-100" alt="...">
+                      <a  href="<c:url value='/market_detail.do'/>"><img src="${cpath}/resources/images/berry.jpg" class="d-block w-100" alt="..."></a>
                     </div>
                     <div class="carousel-item">
                       <img src="" class="d-block w-100" alt="...">
@@ -95,7 +95,7 @@
             </div>
             <div class="col-auto d-block d-lg-block">
               <svg class="bd-placeholder-img" width="125" height="175" xmlns="http://www.w3.org/2000/svg" href="planner.png" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <a href="${cpath}/병해충분석">
+                <a href="<c:url value='/analysis2.do'/>">
                 	<image href="${cpath}/resources/images/pests.png" width="100%" height="100%"></image>
                 </a>
                 <p>병해충관리</p>

@@ -91,7 +91,7 @@
 								<span>첨부파일</span>
 							</div>
 							<div class="write-form-right">
-						      	<input type="file" name="uploadFile"/>
+						      	<input type="file" name="uploadFile" multiple="multiple"/>
 							</div>
 						</li>
 						
