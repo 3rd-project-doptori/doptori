@@ -74,6 +74,7 @@
 </head>
 <body>
 	<div class="container py-4">
+	<jsp:include page="/WEB-INF/views/header.jsp"/>
 		<form name="calendarFrm" id="calendarFrm" action="" method="GET">
 			<input type="hidden" name="year" value="${today_info.search_year}" />
 			<input type="hidden" name="month"

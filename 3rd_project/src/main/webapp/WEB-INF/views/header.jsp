@@ -55,7 +55,7 @@
                     </ul>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">병해충정보</a>
+                    <a class="nav-link" href="<c:url value='/analysis2.do'/>">병해충정보</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="<c:url value='/analysis.do'/>">농작물분석</a>
@@ -104,10 +104,10 @@
 			                      <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
 			                    </li> --%>
 			                    <li class="dropdown-item">
-			                      <a href="${cpath}/mypage.do"> <i class="lni lni-user"></i> Edit Profile  </a>
+			                      <a href="${cpath}/mypage.do"> <i class="lni lni-user"></i> 회원정보수정 </a>
 			                    </li>
 			                    <li class="dropdown-item">
-			                      <a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> Logout </a>
+			                      <a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> 로그아웃 </a>
 			                    </li>
 			                  </ul>
 			                </div>

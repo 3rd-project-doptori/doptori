@@ -34,7 +34,7 @@
   <body>
     <div class="container py-4">
         <jsp:include page="/WEB-INF/views/header.jsp"/>
-    	<h2 class="display-7 fw-bold">직거래 상세보기</h2>
+    	<!-- <h2 class="display-7 fw-bold">직거래 상세보기</h2> -->
         <div class="row mb-2 justify-content-md-center main">
             <div class="col-md-5 hei">
                 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
