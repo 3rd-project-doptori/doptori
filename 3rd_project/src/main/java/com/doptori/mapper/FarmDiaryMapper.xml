@@ -5,13 +5,13 @@
 <mapper namespace="com.doptori.mapper.FarmDiaryMapper">
 	
 	<insert id="schedule_add">
-		insert into farmdiary(fd_mb_num, fd_start, fd_end, fd_address, fd_item, fd_kind, fd_step, fd_cont, fd_pesticide, fd_pesticide_amount, fd_fertilizer, fd_fertilizer_amount, fd_man_name, fd_worktime, fd_weather, fd_low_temp, fd_high_temp, fd_precipitation, fd_humid, fd_picture1, fd_file1, fd_picture2, fd_picture3, fd_open)
-		values (#{fd_mb_num}, #{fd_start}, #{fd_end}, #{fd_address}, #{fd_item}, #{fd_kind}, #{fd_step}, #{fd_cont}, #{fd_pesticide}, #{fd_pesticide_amount}, #{fd_fertilizer}, #{fd_fertilizer_amount}, #{fd_man_name}, #{fd_worktime}, #{fd_weather}, #{fd_low_temp}, #{fd_high_temp}, #{fd_precipitation}, #{fd_humid}, #{fd_picture1}, "test", #{fd_picture2}, #{fd_picture3}, #{fd_open})
+		insert into farmdiary(fd_mb_num, fd_start, fd_end, fd_address, fd_item, fd_kind, fd_step, fd_cont, fd_pesticide, fd_pesticide_amount, fd_fertilizer, fd_fertilizer_amount, fd_man_name, fd_worktime, fd_weather, fd_low_temp, fd_high_temp, fd_precipitation, fd_humid, fd_picture, fd_open)
+		values (#{fd_mb_num}, #{fd_start}, #{fd_end}, #{fd_address}, #{fd_item}, #{fd_kind}, #{fd_step}, #{fd_cont}, #{fd_pesticide}, #{fd_pesticide_amount}, #{fd_fertilizer}, #{fd_fertilizer_amount}, #{fd_man_name}, #{fd_worktime}, #{fd_weather}, #{fd_low_temp}, #{fd_high_temp}, #{fd_precipitation}, #{fd_humid}, #{fd_picture}, #{fd_open})
 	</insert>
 
 	<insert id="farmdiaryInsert" parameterType="com.doptori.entity.farmdiary">
-		insert into farmdiary(fd_mb_num, fd_start, fd_end, fd_address, fd_item, fd_kind, fd_step, fd_cont, fd_pesticide, fd_pesticide_amount, fd_fertilizer, fd_fertilizer_amount, fd_man_name, fd_worktime, fd_weather, fd_low_temp, fd_high_temp, fd_precipitation, fd_humid, fd_picture1, fd_picture2, fd_picture3, fd_open)
-		values (#{fd_mb_num}, #{fd_start}, #{fd_end}, #{fd_address}, #{fd_item}, #{fd_kind}, #{fd_step}, #{fd_cont}, #{fd_pesticide}, #{fd_pesticide_amount}, #{fd_fertilizer}, #{fd_fertilizer_amount}, #{fd_man_name}, #{fd_worktime}, #{fd_weather}, #{fd_low_temp}, #{fd_high_temp}, #{fd_precipitation}, #{fd_humid}, #{fd_picture1}, #{fd_picture2}, #{fd_picture3}, #{fd_open})
+		insert into farmdiary(fd_mb_num, fd_start, fd_end, fd_address, fd_item, fd_kind, fd_step, fd_cont, fd_pesticide, fd_pesticide_amount, fd_fertilizer, fd_fertilizer_amount, fd_man_name, fd_worktime, fd_weather, fd_low_temp, fd_high_temp, fd_precipitation, fd_humid, fd_picture, fd_open)
+		values (#{fd_mb_num}, #{fd_start}, #{fd_end}, #{fd_address}, #{fd_item}, #{fd_kind}, #{fd_step}, #{fd_cont}, #{fd_pesticide}, #{fd_pesticide_amount}, #{fd_fertilizer}, #{fd_fertilizer_amount}, #{fd_man_name}, #{fd_worktime}, #{fd_weather}, #{fd_low_temp}, #{fd_high_temp}, #{fd_precipitation}, #{fd_humid}, #{fd_picture}, #{fd_open})
 	</insert>
 	
 	
@@ -63,9 +63,7 @@
 	fd_high_temp=#{fd_high_temp},
 	fd_precipitation=#{fd_precipitation},
 	fd_humid=#{fd_humid},
-	fd_picture1=#{fd_picture1},
-	fd_picture2=#{fd_picture2},
-	fd_picture3=#{fd_picture3},
+	fd_picture=#{fd_picture},
 	fd_open=#{fd_open}
 	where fd_num=#{fd_num}
 	

@@ -29,10 +29,7 @@ public class farmdiary {
 	private double fd_high_temp;
 	private double fd_precipitation;
 	private double fd_humid;
-	private String fd_picture1;
-	private String fd_file1;
-	private String fd_picture2;
-	private String fd_picture3;
+	private String fd_picture;
 	private int fd_open;
 	
 	
@@ -156,30 +153,12 @@ public class farmdiary {
 	public void setFd_humid(double fd_humid) {
 		this.fd_humid = fd_humid;
 	}
-	public String getFd_picture1() {
-		return fd_picture1;
-	}
-	public void setFd_picture1(String fd_picture1) {
-		this.fd_picture1 = fd_picture1;
-	}
 	
-	public String getFd_file1() {
-		return fd_file1;
+	public String getFd_picture() {
+		return fd_picture;
 	}
-	public void setFd_file1(String fd_file1) {
-		this.fd_file1 = fd_file1;
-	}
-	public String getFd_picture2() {
-		return fd_picture2;
-	}
-	public void setFd_picture2(String fd_picture2) {
-		this.fd_picture2 = fd_picture2;
-	}
-	public String getFd_picture3() {
-		return fd_picture3;
-	}
-	public void setFd_picture3(String fd_picture3) {
-		this.fd_picture3 = fd_picture3;
+	public void setFd_picture(String fd_picture) {
+		this.fd_picture = fd_picture;
 	}
 	public int getFd_open() {
 		return fd_open;
@@ -197,10 +176,12 @@ public class farmdiary {
 				+ fd_pesticide_amount + ", fd_fertilizer=" + fd_fertilizer + ", fd_fertilizer_amount="
 				+ fd_fertilizer_amount + ", fd_man_name=" + fd_man_name + ", fd_worktime=" + fd_worktime
 				+ ", fd_weather=" + fd_weather + ", fd_low_temp=" + fd_low_temp + ", fd_high_temp=" + fd_high_temp
-				+ ", fd_precipitation=" + fd_precipitation + ", fd_humid=" + fd_humid + ", fd_picture1=" + fd_picture1
-				+ ", fd_file1=" + fd_file1 + ", fd_picture2=" + fd_picture2 + ", fd_picture3=" + fd_picture3
+				+ ", fd_precipitation=" + fd_precipitation + ", fd_humid=" + fd_humid + ", fd_picture=" + fd_picture
 				+ ", fd_open=" + fd_open + "]";
 	}
+	
+	
+	
 	
 	
 }

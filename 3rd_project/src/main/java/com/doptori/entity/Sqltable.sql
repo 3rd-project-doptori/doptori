@@ -231,16 +231,19 @@ create table farmdiary(
 	fd_high_temp DECIMAL(4,1),
 	fd_precipitation DECIMAL(4,1),
 	fd_humid DECIMAL(4,1),
-	fd_picture1 varchar(3000),
-	fd_picture2 varchar(3000),
-	fd_picture3 varchar(3000),
+	fd_picture varchar(3000),
 	fd_open int(1),
 	PRIMARY KEY(fd_num),
 	FOREIGN KEY (fd_mb_num) REFERENCES Member (mb_num)
 );
 
+alter table farmdiary drop column fd_picture1;
+alter table farmdiary drop column fd_file1;
+alter table farmdiary drop column fd_picture2;
+alter table farmdiary drop column fd_picture3;
+
 ALTER TABLE farmdiary_manage ADD fdm2_cp_num int(4) after fdm1_soil_check;
-ALTER TABLE farmdiary_manage ADD fdm7_pest_pic VARCHAR(3000);
+ALTER TABLE farmdiary ADD fd_picture VARCHAR(3000) after fd_humid;
 ALTER TABLE farmdiary_manage ADD fdm7_analysislist TEXT;
 ALTER TABLE farmdiary_manage ADD fdm7_grow_pic VARCHAR(3000);
 ALTER TABLE farmdiary_manage ADD fdm7_grow_result TEXT;
@@ -264,4 +267,10 @@ CREATE TABLE Analysis (
  an_result_pest TEXT,
  an_result_grow TEXT,
   PRIMARY KEY(an_num)
+);
+
+CREATE TABLE Step (
+ step_num INT(4) NOT NULL AUTO_INCREMENT,
+ step_name VARCHAR(100),
+  PRIMARY KEY(step_num)
 );

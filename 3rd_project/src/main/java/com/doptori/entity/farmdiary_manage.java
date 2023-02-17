@@ -40,10 +40,8 @@ public class farmdiary_manage {
 	private String fdm6_sectors;
 	private String fdm6_business;
 	private String fdm7_date;
-	private String fdm7_pest_pic;
-	private String fdm7_pest_result;
-	private String fdm7_grow_pic;
-	private String fdm7_grow_result;
+	private String fdm7_analysislist;
+
 	
 	private String ad_num;
 	private String ad_sido;
@@ -281,34 +279,17 @@ public class farmdiary_manage {
 	public void setFdm7_date(String fdm7_date) {
 		this.fdm7_date = fdm7_date;
 	}
-	public String getFdm7_pest_pic() {
-		return fdm7_pest_pic;
-	}
-	public void setFdm7_pest_pic(String fdm7_pest_pic) {
-		this.fdm7_pest_pic = fdm7_pest_pic;
-	}
-	public String getFdm7_pest_result() {
-		return fdm7_pest_result;
-	}
-	public void setFdm7_pest_result(String fdm7_pest_result) {
-		this.fdm7_pest_result = fdm7_pest_result;
-	}
-	public String getFdm7_grow_pic() {
-		return fdm7_grow_pic;
-	}
-	public void setFdm7_grow_pic(String fdm7_grow_pic) {
-		this.fdm7_grow_pic = fdm7_grow_pic;
-	}
-	public String getFdm7_grow_result() {
-		return fdm7_grow_result;
-	}
-	public void setFdm7_grow_result(String fdm7_grow_result) {
-		this.fdm7_grow_result = fdm7_grow_result;
-	}
 	
 	
 	
 	
+	
+	public String getFdm7_analysislist() {
+		return fdm7_analysislist;
+	}
+	public void setFdm7_analysislist(String fdm7_analysislist) {
+		this.fdm7_analysislist = fdm7_analysislist;
+	}
 	public String getAd_num() {
 		return ad_num;
 	}
@@ -341,7 +322,6 @@ public class farmdiary_manage {
 	}
 	
 	
-	
 	@Override
 	public String toString() {
 		return "farmdiary_manage [fdm_num=" + fdm_num + ", fdm_type=" + fdm_type + ", fdm_mb_num=" + fdm_mb_num
@@ -358,12 +338,14 @@ public class farmdiary_manage {
 				+ fdm5_man_ability + ", fdm5_man_cost=" + fdm5_man_cost + ", fdm5_man_memo=" + fdm5_man_memo
 				+ ", fdm6_account=" + fdm6_account + ", fdm6_represent=" + fdm6_represent + ", fdm6_regi_num="
 				+ fdm6_regi_num + ", fdm6_phone=" + fdm6_phone + ", fdm6_address=" + fdm6_address + ", fdm6_sectors="
-				+ fdm6_sectors + ", fdm6_business=" + fdm6_business + ", fdm7_date=" + fdm7_date + ", fdm7_pest_pic="
-				+ fdm7_pest_pic + ", fdm7_pest_result=" + fdm7_pest_result + ", fdm7_grow_pic=" + fdm7_grow_pic
-				+ ", fdm7_grow_result=" + fdm7_grow_result + ", ad_num=" + ad_num + ", ad_sido=" + ad_sido
+				+ fdm6_sectors + ", fdm6_business=" + fdm6_business + ", fdm7_date=" + fdm7_date
+				+ ", fdm7_analysislist=" + fdm7_analysislist + ", ad_num=" + ad_num + ", ad_sido=" + ad_sido
 				+ ", ad_gugun=" + ad_gugun + ", ad_dong=" + ad_dong + ", ad_ri=" + ad_ri + "]";
 	}
 	
+	
+	
+
 	
 
 	

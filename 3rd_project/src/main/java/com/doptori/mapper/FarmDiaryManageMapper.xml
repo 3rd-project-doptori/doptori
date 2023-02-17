@@ -10,11 +10,6 @@
   	values(#{fdm_mb_num},#{fdm_type},#{fdm1_ad_num},#{fdm1_detail_address},#{fdm1_lot_area},#{fdm1_actual_area},#{fdm1_idle_area},#{fdm1_soil_check})
   </insert>
   
-  <insert id="AnalysisInsert" parameterType="com.doptori.entity.farmdiary_manage">
-  	insert into farmdiary_manage (fdm_mb_num, fdm_type, fdm7_date, fdm7_pest_pic)
-  	values(#{mb_id},"7",now(),#{mb_type})
-  </insert>
-  
   <select id="FarmDiaryManageList" parameterType="int" resultType="com.doptori.entity.farmdiary_manage">
   	select Address.*, farmdiary_manage.* from Address INNER JOIN farmdiary_manage ON Address.ad_num = farmdiary_manage.fdm1_ad_num where fdm_mb_num=#{mb_num};
   </select>
