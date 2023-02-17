@@ -17,52 +17,12 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="${cpath}/resources/notice_detail.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         table{
             border-right: 0;
         }
-        #profile_img{
-        	height: 70px;
-			width: 70px;
-			text-align: center;
-        }
-        
-        </style>
+    </style>
 </head>
-<script type="text/javascript">
-//1. 댓글 목록을 가져오는 API 호출하는 함수
-function loadComments(postId) {
-  $.post('/comments', { postId: postId }, function(data) {
-    // 댓글 목록을 가져와서 화면에 표시
-    $('#comment-list').html(data);
-  });
-}
-
-// 2. 게시글 상세 정보 페이지를 로드할 때, 댓글 목록을 가져오는 API 호출
-$(document).ready(function() {
-  // URL에서 게시글 ID를 추출
-  var postId = window.location.pathname.split('/').pop();
-
-  // 댓글 목록을 가져오는 API 호출
-  loadComments(postId);
-});
-
-// 3. 댓글을 추가할 때마다 새로운 API 호출을 수행하고 댓글 목록을 다시 로드
-$('#comment-form').submit(function(event) {
-  event.preventDefault();
-  
-  // 새로운 댓글을 추가하는 API 호출
-  $.post('/comments/add', $(this).serialize(), function() {
-    // 댓글을 추가한 후, 댓글 목록을 다시 로드
-    var postId = window.location.pathname.split('/').pop();
-    loadComments(postId);
-    
-    // 입력 필드를 초기화
-    $('#comment-form')[0].reset();
-  });
-});
-</script>
 <body>
  <script type="text/javascript">
  	function goUpdate() {
@@ -93,7 +53,7 @@ $('#comment-form').submit(function(event) {
 	
  </script>
 
-	<div class="container py-4">
+		<div class="container py-4">
        <jsp:include page="/WEB-INF/views/header.jsp"/>
         <section class="mb-5">
             <table class="table table-bordered text-center">
@@ -106,7 +66,8 @@ $('#comment-form').submit(function(event) {
                 </colgroup>
             <tbody>
                 <tr>
-                    <th rowspan='2' align="center"><div><img id="profile_img" class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>${vo.mb_nick}</th>
+                    <th>이미지??  여긴 뭐가 들어 감?? 작성자 프로필 사진?  ${vo.mb_nick}</th>
+                    <td>${vo.mb_nick}</td>
                     <th>제목</th>
                     <td colspan="3">${vo.bd_title}</td>
                 </tr>
@@ -127,7 +88,7 @@ $('#comment-form').submit(function(event) {
 				 	</c:if>
 				</tr>
 				<tr>
-				 	<td colspan="5" align="right">
+				 	<td colspan="5" align="right">>
 				 		<c:if test="${vo.bd_mb_num eq loginMember.mb_num}">	
 				 		<button class="btn btn-sm btn-success" onclick="goUpdate()">수정</button>
 				 		</c:if>
@@ -160,33 +121,36 @@ $('#comment-form').submit(function(event) {
 				          <c:if test="${not empty co_bd_num and co_bd_num ne 0}">
 				            <input type="hidden" name="co_bd_num" value="${cvo.co_bd_num}">
 				          </c:if>
-				            <textarea type="text"  class="form-control me-2 tex" name="co_cont" id="repCon" required="required"></textarea>
-				           <button class="btn login sub" type="submit" id="reply_btn">등록</button>
-				           </form>
+				          <div>
+				            <textarea class="form-control me-2 tex" name="co_cont" id="repCon" required="required"></textarea>
+				          </div>
+				          <div>
+				            <button class="btn login sub" type="submit" id="reply_btn">등록</button>
+				          </div>
+				        </form>
 				    </c:otherwise>
 				  </c:choose>
                 
-                <!-- Single comment-->
-                <div class="d-flex mb-4"> 
                 
+                <div class="d-flex"> 
+                
+                <ol>
+			      <c:forEach var="cvo" items="${list}" >
+			        <li>
 			          <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
 			          <div class="ms-3">
-			          <ol>	
-			      <c:forEach var="cvo" items="${list}" >
-			          	<li>
-			          	<div class="fw-bold">${cvo.mb_nick}</div>
-			          				${cvo.co_cont}
-			           				${cvo.co_date}
-			           				
+			          <div class="fw-bold"><span>${cvo.mb_nick}</span></div>
+			            <span class="date">${cvo.co_date}</span>
+			          ${cvo.co_cont}
 			          <c:if test="${cvo.co_mb_num eq loginMember.mb_num || loginMember.mb_id=='admin'}">
 					  	  <a href="javascript:void(0);" onclick="deleteComment(${cvo.co_num}, ${vo.bd_num});">
-						  	<button type="button" class="btn btn-info btn-sm">삭제</button>
+						  <button type="button" class="btn btn-info btn-sm">삭제</button>
 						  </a>
 				      </c:if>
-				      </li>
+				      </div>
+			        </li>
 			      </c:forEach>
-			      </ol>
-			      </div>
+			    </ol>
                </div> 
                 
                 
@@ -197,6 +161,5 @@ $('#comment-form').submit(function(event) {
     
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>

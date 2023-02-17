@@ -18,6 +18,8 @@ public class Board {
 	private	int bd_seq; // 게시글 글의 순서
 	private	int bd_level; // 게시글 글의 깊이
 	
+	private	String mb_nick;
+	
 	/*
 	 * private int bd_delete; // 삭제유무
 	 */
@@ -152,6 +154,18 @@ public class Board {
 				+ ", bd_title=" + bd_title + ", bd_cont=" + bd_cont + ", bd_pic=" + bd_pic + ", bd_cnt=" + bd_cnt
 				+ ", bd_group=" + bd_group + ", bd_seq=" + bd_seq + ", bd_level=" + bd_level + ", uploadFile="
 				+ uploadFile + "]";
+	}
+
+
+
+
+	public String getMb_nick() {
+		return mb_nick;
+	}
+
+	public void setMb_nick(String mb_nick) {
+		this.mb_nick = mb_nick;
+		
 	}
 
 	

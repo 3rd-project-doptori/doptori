@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -441,6 +443,28 @@ public class BoardController {
 //	    return "boardContent";
 //	}
 
+//	@RequestMapping("/boardContent.do/{bd_num}")
+//	public String boardContent(@PathVariable("bd_num") int bd_num, Model model, @RequestParam(value = "co_bd_num", defaultValue = "0") int co_bd_num) {
+//	    Board vo;
+//	    try {
+//	        vo = mapper.boardContent(bd_num);
+//	        if (vo == null) {
+//	            throw new Exception("해당 게시물이 존재하지 않습니다.");
+//	        }
+//	        mapper.boardCount(bd_num);
+//	        List<Comment> list = mapper.commentSelect(bd_num);
+//	        if (co_bd_num != 0) {
+//	            model.addAttribute("co_bd_num", co_bd_num);
+//	        }
+//	        model.addAttribute("vo", vo);
+//	        model.addAttribute("list", list);
+//	    } catch (Exception e) {
+//	        model.addAttribute("error", e.getMessage());
+//	    }
+//	    return "boardContent";
+//	}
+	
+	
 	@RequestMapping("/boardContent.do/{bd_num}")
 	public String boardContent(@PathVariable("bd_num") int bd_num, Model model, @RequestParam(value = "co_bd_num", defaultValue = "0") int co_bd_num) {
 	    Board vo;
@@ -449,11 +473,21 @@ public class BoardController {
 	        if (vo == null) {
 	            throw new Exception("해당 게시물이 존재하지 않습니다.");
 	        }
+	        //조회수 출력
 	        mapper.boardCount(bd_num);
-	        List<Comment> list = mapper.commentSelect(bd_num);
+	        
+	        List<Comment> list = mapper.commentSelect(co_bd_num);
 	        if (co_bd_num != 0) {
 	            model.addAttribute("co_bd_num", co_bd_num);
 	        }
+	        
+	     // Board 작성자의 mb_nick 추가
+	        Member writer = mapper.getMember(vo.getBd_mb_num());
+	        if (writer != null) {
+	            vo.setMb_nick(writer.getMb_nick());
+	        }
+	        
+	        
 	        model.addAttribute("vo", vo);
 	        model.addAttribute("list", list);
 	    } catch (Exception e) {
@@ -461,7 +495,7 @@ public class BoardController {
 	    }
 	    return "boardContent";
 	}
-	
+
 	
 	@RequestMapping("/boardUpdateForm.do")
 	public String boardUpdateForm(int bd_num, Model model) {
@@ -619,12 +653,20 @@ public class BoardController {
 //	}
 	
 	// 댓글 삭제
+	
 //	@RequestMapping("/commentDelete.do")
-//	public String commentDelete(@Param(value="co_num") int co_num, @Param(value="co_bd_num") int co_bd_num) {
-//		mapper.commentDelete(co_num);
-//		return "redirect:/boardContent.do?co_num="+co_bd_num;
+//	public String commentDelete(@RequestParam("co_num") int co_num, @RequestParam("bd_num") int bd_num) {
+//	    mapper.commentDelete(co_num);
+//	    return "redirect:/boardContent.do?bd_num=" + bd_num;
 //	}
 
+	
+	@PostMapping("/commentDelete")
+	@ResponseBody
+	public ResponseEntity<String> commentDelete(@RequestParam("co_num") int co_num, @RequestParam("bd_num") int bd_num) {
+	    mapper.commentDelete(co_num);
+	    return ResponseEntity.ok("success");
+	}
 
 
 }

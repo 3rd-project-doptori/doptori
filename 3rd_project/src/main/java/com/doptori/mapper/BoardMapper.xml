@@ -9,13 +9,14 @@
     select * from Board order by bd_num desc, bd_group desc, bd_seq asc limit 5
   </select>
     
-    <!-- 게시판 목록보기 -->
-  <select id="boardList" parameterType="int" resultType="com.doptori.entity.Board">
-    select * from Board order by bd_num desc, bd_group desc, bd_seq asc
-  </select>
-  <!-- 게시판 목록에 (작성자)회원의 번호가 아닌 닉네임으로 바꾸기(가변배열로 받아 ) -->
+  <!-- 목록에 (작성자)회원의 번호가 아닌 닉네임으로 바꾸기(가변배열로 받아 ) -->
   <select id="memberNum2Name" parameterType="int" resultType="String">
     select mb_nick from Member where mb_num=#{mb_num} 
+  </select>
+ 
+  <!-- 게시판 목록보기 -->
+  <select id="boardList" parameterType="int" resultType="com.doptori.entity.Board">
+    select * from Board order by bd_num desc, bd_group desc, bd_seq asc
   </select>
   <!-- 게시글 등록 -->
   <insert id="boardInsert" parameterType="com.doptori.entity.Board">
@@ -24,8 +25,13 @@
   </insert>
   <!-- 게시글 상세보기 -->
   <select id="boardContent" parameterType="int" resultType="com.doptori.entity.Board">
-      select * from Board where bd_num=#{bd_num}
+      <!-- select * from Board where bd_num=#{bd_num} -->
+      SELECT b.*, m.mb_nick FROM Board b JOIN Member m ON b.bd_mb_num = m.mb_num WHERE b.bd_num=#{bd_num}
   </select>
+  <!-- 게시글 작성자를 회원번호가 아닌 이름으로 가져오기 위한 쿼리 -->
+  <select id="getMember" parameterType="int" resultType="com.doptori.entity.Member">
+    SELECT mb_num, mb_nick FROM Member WHERE mb_num=#{mb_num}
+	</select>
   <!-- 게시글 수정 -->
   <update id="boardUpdate" parameterType="com.doptori.entity.Board">
       update Board set bd_title=#{bd_title}, bd_cont=#{bd_cont}
@@ -74,9 +80,10 @@
      inner join Member m
          on c.co_mb_num = m.mb_num
      where co_bd_num = #{co_bd_num}
+     order by c.co_date desc
+  </select>
      <!--  select * from Comment where co_bd_num = #{co_num}
       order by co_date desc -->
-  </select>
   <!-- 댓글 삭제 -->
   <delete id="commentDelete"  parameterType="int">
       delete from Comment where co_num = #{co_num}

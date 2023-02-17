@@ -19,7 +19,7 @@
   
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <link rel="stylesheet" href="notice_qa.css">
+  <link rel="stylesheet" href="${cpath}/resources/css/notice_qa.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -335,132 +335,12 @@
     	</table>
         </div>
       </div>
-
-
-     <%--  <div class="content__inner" id="tab-2">
-        <div class="table-responsive">
-          <table class="table">
-	    	<caption> <h3 align="right"> <font size="2">
-	    	<div id="left" style="float:left;"> <!-- select 검색 창  -->
-		        <form method="post" action="${cpath}/boardList.do" onsubmit="return check(this)">
-		         <select name="searchType" id="searchType">
-		           <option value="0">선 택</option>
-		           <option value="bd_title">제 목</option>
-		           <option value="bd_cont">내 용</option>
-		           <option value="bd_mb_num">작성자</option>
-		         </select>
-		         <input type="text" id="searchText" placeholder="검색어를 입력하세요." autocomplete="off" name="sword" size="20" value="${sword}">
-		         <input type="submit" value="검색">
-		        </form>
-		    </div>
-		<div id="right" style="float:right;"><font size="2">	       
-         <select onchange="move(this)" id="pcnt">
-	         <option value="10"> 10개 </option>
-	         <option value="20"> 20개 </option>
-	         <option value="30"> 30개 </option>
-	         <option value="50"> 50개 </option>
-	       </select>
-	       </font>
-	     </div>
-	       </h3></caption>
-	    	<thead>
-		    	 <tr>
-		    	 	<th width="10%" scope="col">번호</th>
-		    	 	<th width="60%" scope="col">제목</th>
-		    	 	<th width="10%" scope="col">작성자</th>
-		    	 	<th width="20%" scope="col">작성일</th>
-		    	 	<!-- <th scope="col">조회수</th> -->
-		    	 </tr>
-	    	</thead>
-	    	<tbody class="table-group-divider">
-	    		<c:forEach var="vo" items="${list}" varStatus="status">
-	    			<c:if test="${vo.bd_type == '2' }">
-	    			<tr>
-						<th scope="row">${vo.bd_num}</th>						
-						<c:if test="${vo.bd_level > 0}">
-							<c:forEach begin="1" end="${vo.bd_level }">
-								<span style="padding-left: 10px"></span>
-							</c:forEach>
-						</c:if>
-						<c:url var="contentlink" value="/boardContent.do/${vo.bd_num}" />		
-						<td>
-						<c:if test="${vo.bd_level > 0}">
-							<c:forEach begin="1" end="${vo.bd_level }">
-								<span style="padding-left: 10px"></span>
-							</c:forEach>
-						</c:if>
-						<a href="${contentlink}">${vo.bd_title}</a>
-						</td>
-						<td>${memberNames[status.index]}</td>     			
-						<td>${vo.bd_date}</td>  			
-						<td>${vo.bd_cnt}</td>     			
-	    			</tr>
-	    			</c:if>
-	    		</c:forEach>
-	    	</tbody>	
-	    		
-	    	<tfoot>
-	    		<!-- 페이징 -->
-	    		<tr>
-			       <td colspan="5" align="center">
-			        <!-- 10페이지 단위로 이전 이동하기  :  -->
-			       <c:if test="${pstart != 1}"> <!-- 첫번재 그룹이 아닐때는  -->
-			        	<a href="boardList.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> << </a>
-			       </c:if>
-			       <c:if test="${pstart == 1}"> <!-- 첫번째 그룹일때(1~10)는 이전 10페이지 이동 X -->
-			       《<!-- 넘어가는 꺽세 -->
-			       </c:if>
-			       
-			        <!-- 1페이지 단위로 이전으로 가기 => 현재페이지에서 1을 뺀 페이지로 이동 --> 
-			       <c:if test="${page != 1}"> <!-- 현재 페이지가 1이 아닌경우 -->
-			        	<a href="boardList.do?page=${page-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ◀  </a>
-			       </c:if>
-			       <c:if test="${page == 1}"> <!-- 현재페이지가 1인경우 -->
-			                     ◀
-			       </c:if>
-			       
-			         <c:forEach begin="${pstart}" end="${pend}" var="i">  <!-- 페이지 출력하기 -->
-			           <!-- 현재 페이지의 색을 빨강 -->
-			            <c:if test="${page == i}"> <!-- 출력되는 페이지가 현재페이지와 같다면 -->
-			               <c:set var="st" value="style='color:darkblue;'"/>
-			            </c:if>
-			            <c:if test="${page != i}"> <!-- 출력되는 페이지가 현재페이지와 다르다면 -->
-			               <c:set var="st" value=""/>
-			            </c:if>
-			            <a href="boardList.do?page=${i}&pcnt=${pcnt}&sel=${sel}&sword=${sword}" ${st}> ${i} </a>
-			         </c:forEach>
-			         
-			       <!-- 1페이지 단위로 다음 이동하기 -->
-			       <c:if test="${page != chong}"> <!-- 현재 페이지가 마지막 페이지가 아니라면 -->
-			        	<a href="boardList.do?page=${page+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ▶  </a>
-			       </c:if>
-			       <c:if test="${page == chong}"> <!-- 현재 페이지가 마지막 페이지라면 -->
-			                     ▶
-			       </c:if>
-			        
-			       <!-- 10페이지 단위로 다음 이동하기 -->
-			       <c:if test="${chong != pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막이 아닐겨우 -->
-			         	<a href="boardList.do?page=${pend+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> >> </a>
-			       </c:if>
-			       <c:if test="${chong == pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막일 경우 -->
-			    	   》 <!-- 넘어가는 꺽세 -->
-			       </c:if>
-			       </td>
-			     </tr>
-
-	    		<tr>
-	    			<td colspan="5"><button onclick="goForm()">글쓰기</button></td>
-	    		</tr>
-	    	</tfoot>
-    	</table>
-        </div>
-      </div> --%>
       
     </div>
   </div>
   
   <!-- partial -->
-  <script  src="notice_qa.js"></script>
+  <script  src="${cpath}/resources/js/notice_qa.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 	
 </body>
