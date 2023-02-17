@@ -99,7 +99,7 @@
                           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                           <div class="d-flex justify-content-end align-items-center">
                               <div class="btn-group">
-                              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='market_detail.do'">View</button>
                               </div>
                           </div>
                           </div>
@@ -113,7 +113,7 @@
                           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                           <div class="d-flex justify-content-end align-items-center">
                               <div class="btn-group">
-                              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='market_detail.do'">View</button>
                               </div>
                           </div>
                           </div>
