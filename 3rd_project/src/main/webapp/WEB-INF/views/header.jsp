@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
-      <header class="pb-3 mb-4 border-bottom">
-      <link rel="canonical" href="https://getbootstrap.kr/docs/5.2/examples/jumbotron/">
       <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="${cpath}/resources/css/res_index.css">
+   <!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="${cpath}/resources/css/lineicons.css">
     <link rel="stylesheet" href="${cpath}/resources/css/header.css">
     <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.eot">
@@ -15,13 +12,13 @@
     <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.woff2">
 
         <!-- Favicons -->
-    <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<!--     <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
     <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
     <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
-    <meta name="theme-color" content="#712cf9">
+    <meta name="theme-color" content="#712cf9"> -->
     <style>
     	@font-face {
 		  font-family: 'lineicons';
@@ -33,16 +30,19 @@
 		       url('${cpath}/resources/header/LineIcons.svg') format('svg');
 		}
     </style>
+      <header class="pb-3 mb-4 border-bottom">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">Navbar</a>
+              <a class="navbar-brand im" href="${cpath}/Main.do">
+              	<img src="${cpath}/resources/images/header_logo.png" class="im">
+              </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" aria-current="page" href="${cpath }/Main.do">Home</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -50,8 +50,8 @@
                     </a>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="<c:url value='/calendar2.do/${loginMember.getMb_num()}'/>">영농일지</a></li>
-                      <li><a class="dropdown-item" href="<c:url value='/FarmDiaryManage.do'/>">일지 목록</a></li>
-                      <li><a class="dropdown-item" href="<c:url value='FarmDiaryManageList2.do'/>">일지 관리</a></li>
+                      <li><a class="dropdown-item" href="<c:url value='/FarmDiaryList.do'/>">일지 목록</a></li>
+                      <li><a class="dropdown-item" href="<c:url value='/FarmDiaryManageList2.do'/>">일지 관리</a></li>
                     </ul>
                   </li>
                   <li class="nav-item">
@@ -71,7 +71,7 @@
 	                <c:choose>
 	                
 			    		<c:when test="${empty loginMember}">
-							<button class="btn" type="button" onclick="signin()">LOGIN</button>  
+							<button class="btn login" type="button" onclick="signin()">LOGIN</button>  
 						</c:when>
 						
 						<c:otherwise>
@@ -79,7 +79,7 @@
 			                  <button class="dropdown-toggle bg-transparent border-0 bu" type="button" id="profile" data-bs-toggle="dropdown" aria-expanded="false">
 			                      <div class="info">
 			                        <div class="image">
-			                          <img src="fruits.png" alt=""/>
+			                          <img src="${cpath}/resources/images/default2.png" alt="" style="width: 2.5rem;"/>
 			                        </div>
 			                      </div>
 			                  </button>
@@ -91,7 +91,7 @@
 			                    
 			                    
 			                  <ul class="dropdown-menu dm2" aria-labelledby="static">
-			                    <li class="dropdown-item">
+			                    <%-- <li class="dropdown-item">
 			                      <a href="${cpath}/mypage.do"><i class="lni lni-user"></i> View Profile</a>
 			                    </li>
 			                    <li class="dropdown-item">
@@ -102,9 +102,9 @@
 			                    </li>
 			                    <li class="dropdown-item">
 			                      <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
-			                    </li>
+			                    </li> --%>
 			                    <li class="dropdown-item">
-			                      <a href="${cpath}/mypage.do"> <i class="lni lni-exit"></i> Edit Profile  </a>
+			                      <a href="${cpath}/mypage.do"> <i class="lni lni-user"></i> Edit Profile  </a>
 			                    </li>
 			                    <li class="dropdown-item">
 			                      <a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> Logout </a>

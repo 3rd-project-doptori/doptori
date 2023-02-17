@@ -24,9 +24,25 @@
     <main>
         <div class="container py-4">
         <jsp:include page="/WEB-INF/views/header.jsp"/>
+            <h2 class="display-7 fw-bold">농작물분석</h2>
             <div class="row align-items-md-stretch">
                 <div class="col-md-6">
                     <div class="h-100 p-5 border rounded-3">
+                	<h2 class="h2">병해충분석하기</h2>
+                        <div class="d-flex justify-content-center top">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <label class="form-check-label" for="inlineRadio1">설향</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                <label class="form-check-label" for="inlineRadio2">금실</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option2">
+                                <label class="form-check-label" for="inlineRadio3">토마토</label>
+                            </div>
+                        </div>
                         <div class="dropzone rounded-3">
 							
                         </div>

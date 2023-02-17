@@ -307,7 +307,10 @@ public class BoardController {
 		return "MyboardList";
 	}
 	
-	
+	@RequestMapping("/market_detail.do")
+	public String getmarket_detail() {
+		return "market_detail";
+	}
 	
 	@RequestMapping("/boardInsertForm.do")
 	public void boardInsertForm() {

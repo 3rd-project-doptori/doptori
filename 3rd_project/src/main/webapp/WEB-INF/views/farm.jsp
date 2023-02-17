@@ -57,7 +57,7 @@
                   />
                 </svg>
               </span>
-              <span class="text">농장관리</span>
+              <span class="text">일지관리</span>
             </a>
           </li>
           <li class="nav-item">
@@ -104,7 +104,7 @@
                 <div class="row text-start">
                   <div class="col-md-3">
                     <div class="title mb-30">
-                      <h2>농장관리</h2>
+                      <h2>일지관리</h2>
                     </div>
                   </div>
                 </div>

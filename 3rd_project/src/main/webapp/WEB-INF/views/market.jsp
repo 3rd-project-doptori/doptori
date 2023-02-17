@@ -13,7 +13,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, 그리고 Bootstrap 기여자들">
     <meta name="generator" content="Hugo 0.104.2">
     <title>직거래</title>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="${cpath}/resources/css/market.css">
 
     
@@ -49,6 +49,7 @@
    <div class="container py-4">
        <jsp:include page="/WEB-INF/views/header.jsp"/>
       <main>
+      	<h2 class="display-7 fw-bold">직거래</h2>
           <div class="album py-5">
               <div class="container">
                   <div class="res">
@@ -98,7 +99,7 @@
                           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                           <div class="d-flex justify-content-end align-items-center">
                               <div class="btn-group">
-                              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='market_detail.do'">View</button>
                               </div>
                           </div>
                           </div>
@@ -112,7 +113,7 @@
                           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                           <div class="d-flex justify-content-end align-items-center">
                               <div class="btn-group">
-                              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='market_detail.do'">View</button>
                               </div>
                           </div>
                           </div>
@@ -126,7 +127,7 @@
                           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                           <div class="d-flex justify-content-end align-items-center">
                               <div class="btn-group">
-                              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='market_detail.do'">View</button>
                               </div>
                           </div>
                           </div>

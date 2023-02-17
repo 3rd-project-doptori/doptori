@@ -192,9 +192,7 @@
                                     <td colspan="3">
                                         <div class="mb-3">
                                             <label for="formFileMultiple" class="form-label">총 10장만 등록 가능합니다</label>
-                                            <input class="form-control" type="file" id="formFileMultiple" name="fd_picture1" value=${schedule_show.fd_picture1 } multiple>
-                                            <input class="form-control" type="file" id="formFileMultiple" name="fd_picture2" value=${schedule_show.fd_picture2 } multiple>
-                                            <input class="form-control" type="file" id="formFileMultiple" name="fd_picture3" value=${schedule_show.fd_picture3 } multiple>
+                                            <input class="form-control" type="file" id="formFileMultiple" name="fd_picture" value=${schedule_show.fd_picture } multiple>
                                         </div>
                                     </td>
                                 </tr>

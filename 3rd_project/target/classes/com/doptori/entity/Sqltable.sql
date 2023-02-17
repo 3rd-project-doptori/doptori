@@ -4,7 +4,6 @@ CREATE TABLE Member (
  mb_id VARCHAR(200) NOT NULL,
  mb_pw VARCHAR(200) NOT NULL,
  mb_nick VARCHAR(200) NOT NULL,
- mb_fm_num VARCHAR(3000),
  mb_chatlist VARCHAR(3000),
  mb_pic VARCHAR(3000),
  mb_file VARCHAR(3000),
@@ -15,7 +14,7 @@ CREATE TABLE Member (
 );
 
 ALTER TABLE farmdiary ADD  fd_file1 VARCHAR(3000) AFTER fd_picture1;
-alter table Reserve drop column re_cp_name;
+alter table Member drop column mb_fm_name;
 
 CREATE TABLE Address (
  ad_num INT(8) NOT NULL AUTO_INCREMENT,
@@ -33,21 +32,6 @@ INSERT INTO Farm (fm_mb_num, fm_ad_num, fm_detail, fm_name, fm_dong, fm_area, fm
 INSERT INTO Crop (cp_name, cp_type, cp_title, cp_cont) VALUE('토마토', '1',  '병해충', '내용설명');
 INSERT INTO Diary (di_mb_num, di_fm_num, di_date, di_note) VALUE('1', '1', '2023-02-20', '물주기');
 
-
-CREATE TABLE Farm (
- fm_num INT(4) NOT NULL AUTO_INCREMENT,
- fm_mb_num INT(4) NOT NULL,
- fm_ad_num INT(8) NOT NULL,
- fm_detail VARCHAR(2000) NOT NULL,
- fm_name VARCHAR(200) NOT NULL,
- fm_dong VARCHAR(200) NOT NULL,
- fm_area DECIMAL(18,1),
- fm_cp_num INT(4),
-  PRIMARY KEY(fm_num),
-  FOREIGN KEY (fm_mb_num) REFERENCES Member (mb_num),
-  FOREIGN KEY (fm_ad_num) REFERENCES Address (ad_num),
-  FOREIGN KEY (fm_cp_num) REFERENCES Crop (cp_num)
-);
 
 drop table Crop;
 
@@ -139,7 +123,11 @@ CREATE TABLE Board (
  bd_title VARCHAR(2000) NOT NULL,
  bd_cont TEXT NOT NULL,
  bd_pic VARCHAR(3000),
- bd_cnt INT(4) ,
+ bd_cnt INT(4),
+ bd_re_num INT(4),
+ bd_group INT(4),
+ bd_seq INT(4),
+ bd_level INT(4),
   PRIMARY KEY(bd_num),
   FOREIGN KEY (bd_mb_num) REFERENCES Member (mb_num)
 );
@@ -216,6 +204,8 @@ create table farmdiary_manage(
 	fdm6_address varchar(1000),
 	fdm6_sectors varchar(100),
 	fdm6_business varchar(100),
+	fdm7_date datetime,
+	fdm7_analysislist TEXT,
 	PRIMARY KEY(fdm_num),
 	FOREIGN KEY (fdm_mb_num) REFERENCES Member (mb_num)
 );
@@ -241,16 +231,19 @@ create table farmdiary(
 	fd_high_temp DECIMAL(4,1),
 	fd_precipitation DECIMAL(4,1),
 	fd_humid DECIMAL(4,1),
-	fd_picture1 varchar(3000),
-	fd_picture2 varchar(3000),
-	fd_picture3 varchar(3000),
+	fd_picture varchar(3000),
 	fd_open int(1),
 	PRIMARY KEY(fd_num),
 	FOREIGN KEY (fd_mb_num) REFERENCES Member (mb_num)
 );
 
+alter table farmdiary drop column fd_picture1;
+alter table farmdiary drop column fd_file1;
+alter table farmdiary drop column fd_picture2;
+alter table farmdiary drop column fd_picture3;
+
 ALTER TABLE farmdiary_manage ADD fdm2_cp_num int(4) after fdm1_soil_check;
-ALTER TABLE farmdiary_manage ADD fdm7_pest_pic VARCHAR(3000);
+ALTER TABLE farmdiary ADD fd_picture VARCHAR(3000) after fd_humid;
 ALTER TABLE farmdiary_manage ADD fdm7_analysislist TEXT;
 ALTER TABLE farmdiary_manage ADD fdm7_grow_pic VARCHAR(3000);
 ALTER TABLE farmdiary_manage ADD fdm7_grow_result TEXT;
@@ -269,8 +262,15 @@ ALTER TABLE farmdiary_manage DROP fdm7_grow_result;
 
 CREATE TABLE Analysis (
  an_num INT(4) NOT NULL AUTO_INCREMENT,
- an_pic VARCHAR(3000),
+ an_pic_grow VARCHAR(3000),
+ an_pic_pest VARCHAR(3000),
  an_result_pest TEXT,
  an_result_grow TEXT,
   PRIMARY KEY(an_num)
+);
+
+CREATE TABLE Step (
+ step_num INT(4) NOT NULL AUTO_INCREMENT,
+ step_name VARCHAR(100),
+  PRIMARY KEY(step_num)
 );

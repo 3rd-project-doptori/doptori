@@ -15,7 +15,6 @@
   	
   <title>notice_qa</title>
   
-  	<link rel="canonical" href="https://getbootstrap.kr/docs/5.2/examples/jumbotron/">
   
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
@@ -123,87 +122,7 @@
 </head>
 <body>
 	<div class="container py-4 folder">
-    <header class="pb-3 mb-4 border-bottom">
-      <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="<c:url value='/Main.do' />">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    영농일지
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">일정관리</a></li>
-                    <li><a class="dropdown-item" href="#">일지쓰기</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">병해충정보</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="${cpath }/analysis.do">농작물분석</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="${cpath }/TradeList.do">직거래</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="${cpath }/QnA_List.do">Q&A</a>
-                </li>
-                
-              </ul>
-              
-              <c:choose>
-	                
-			    		<c:when test="${empty loginMember}">
-							<button class="btn" type="button" onclick="signin()">LOGIN</button>  
-						</c:when>
-						
-						<c:otherwise>
-							 <div class="nav-item dropdown">
-			                  <button class="dropdown-toggle bg-transparent border-0 bu" type="button" id="profile" data-bs-toggle="dropdown" aria-expanded="false">
-			                      <div class="info">
-			                        <div class="image">
-			                          <img src="fruits.png" alt=""/>
-			                        </div>
-			                      </div>
-			                  </button>
-			                  
-			                  <ul class="dropdown-menu dm2" aria-labelledby="static">
-			                    <li class="dropdown-item">
-			                      <a href="${cpath}/mypage.do"><i class="lni lni-user"></i> View Profile</a>
-			                    </li>
-			                    <li class="dropdown-item">
-			                      <a href="${cpath }/notice.do"><i class="lni lni-alarm"></i> Notifications</a>
-			                    </li>
-			                    <li class="dropdown-item">
-			                      <a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
-			                    </li>
-			                    <li class="dropdown-item">
-			                      <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
-			                    </li>
-			                    <li class="dropdown-item">
-			                      <a href="${cpath}/updateMember.do"> <i class="lni lni-exit"></i> Edit Profile </a>
-			                    </li>
-			                    <li class="dropdown-item">
-			                      <a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> Logout </a>
-			                    </li>
-			                  </ul>
-			                </div>
-						</c:otherwise>
-						
-			         </c:choose>
-			     
-            </div>
-          </div>
-        </nav>
-    </header>
+    <jsp:include page="/WEB-INF/views/header.jsp"/>
     <!-- <div class="tabs">
       <button class="content__inner current" data-tab="tab-1">
         <div><span>공지사항</span></div>

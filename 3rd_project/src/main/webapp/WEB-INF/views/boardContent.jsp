@@ -136,9 +136,9 @@ $('#comment-form').submit(function(event) {
 				 		</c:if>
 				 		<a class="btn btn-sm btn-default" href="javascript:history.go(-1)">뒤로가기</a>
 				 		<%-- <a class="btn btn-sm btn-info" href="<c:url value='/QnA_List.do' />">목록으로 돌아가기</a> --%>
-				 		<c:if test="${loginMember.mb_id=='admin'}">	
+				 		<%-- <c:if test="${loginMember.mb_id=='admin'}">	
 				 		<button class="btn btn-sm btn-danger" onclick="goReply()">답글달기</button>	        
-				 	    </c:if>
+				 	    </c:if> --%>
 				 	</td>
 			 </tr>
             </tbody>

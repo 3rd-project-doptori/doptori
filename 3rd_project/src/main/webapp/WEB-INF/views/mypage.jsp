@@ -66,7 +66,7 @@
                   />
                 </svg>
               </span>
-              <span class="text">농장관리</span>
+              <span class="text">일지관리</span>
             </a>
           </li>
           <li class="nav-item">
