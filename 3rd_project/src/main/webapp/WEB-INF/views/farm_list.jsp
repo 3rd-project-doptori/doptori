@@ -14,6 +14,7 @@
     <body>
         <div class="container py-4">
         <jsp:include page="/WEB-INF/views/header.jsp"/>
+        <main>
             <div class="row bg-light">
                 <form class="row p-3 gx-3 justify-content-center">
                 <label class="col-auto lab">품목</label>
@@ -99,6 +100,7 @@
             
                 </table>  
             </div>
+            </main>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="${cpath}/resources/js/farm_management.js"></script>

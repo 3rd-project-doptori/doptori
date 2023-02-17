@@ -55,7 +55,7 @@
                     </ul>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="<c:url value='/analysis2.do'/>">병해충정보</a>
+                    <a class="nav-link" href="<c:url value='/analysis2.do'/>">병해충분석</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="<c:url value='/analysis.do'/>">농작물분석</a>
