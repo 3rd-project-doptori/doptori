@@ -116,7 +116,7 @@
      <div class="tb">
         <h3><a href="${cpath}/notice.do"> 공지사항</a></h3>
         <table class="table table-sm text-start align-middle">
-	    	<thead>
+	    	<thead align="center">
 		    	 <tr>
 		    	 	<th width="10%" scope="col">번호</th>
 		    	 	<th width="60%" scope="col">제목</th>
@@ -124,11 +124,11 @@
 		    	 	<!-- <th scope="col">조회수</th> -->
 		    	 </tr>
 	    	</thead>
-	    	<tbody>
+	    	<tbody class="table-group-divider">
 	    	<c:forEach var="vo" items="${list}" varStatus="status">
 		    	<c:if test="${vo.bd_type == '1' }">
 		    			<tr>
-		    				<td scope="row">${vo.bd_num}</th>
+		    				<td align="center" scope="row">${vo.bd_num}</th>
 		    				<%-- <c:if test="${vo.bd_level > 0}">
 								<c:forEach begin="1" end="${vo.bd_level }">
 									<span style="padding-left: 10px"></span>
@@ -143,7 +143,7 @@
 							<c:url var="contentlink" value="/boardContent.do/${vo.bd_num}" />		
 							<a href="${contentlink}">${vo.bd_title}</a>
 							</td>  			
-							<td>${vo.bd_date}</td>  			
+							<td align="center">${vo.bd_date}</td>  			
 							<%-- <td>${vo.bd_cnt}</td>  --%>    			
 		    			</tr>
 		    	</c:if>
