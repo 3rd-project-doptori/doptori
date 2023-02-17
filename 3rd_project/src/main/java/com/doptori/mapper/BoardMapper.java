@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.doptori.entity.Board;
 import com.doptori.entity.Comment;
+import com.doptori.entity.Member;
 
 @Mapper
 public interface BoardMapper {
@@ -51,9 +52,10 @@ public interface BoardMapper {
 	// 댓글 등록
 	public int commentInsert(Comment vo);	
 	// 댓글 목록보기
-	public List<Comment> commentSelect(int bd_num);
+	//public List<Comment> commentSelect(int bd_num);
+	public List<Comment> commentSelect(int co_bd_num);
 	// 댓글 삭제
-	public void commentDelete(int co_num);
+	public int commentDelete(int co_num);
 	
 	// 페이징
 	public ArrayList<Board> list2(String sel, String sword, int start, int pcnt);
@@ -75,6 +77,14 @@ public interface BoardMapper {
 	  // 게시물 번호가 존재하는지 검사
     int checkBoardExist(int bd_num);
 	public boolean boardExists(int co_bd_num);
+	
+	
+	
+	public List<Comment> commentList(int bd_num, int mb_num);
+	
+	
+	public Member getMember(int bd_mb_num);
+	
 
 	
 	

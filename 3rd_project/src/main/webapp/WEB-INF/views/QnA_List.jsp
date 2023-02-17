@@ -18,7 +18,7 @@
 	
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <link rel="stylesheet" href="notice_qa.css">
+  <link rel="stylesheet" href="./notice_qa.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <!-- CSS only -->
  
@@ -110,15 +110,15 @@
 	 		      alert("검색단어를 입력하세요");
 	 		      return false;
 	 		   }
-	 	       else
-	 	    	  return true;
-	 		  
+	      else
+ 	    	  return true;
+ 	
 	    }
-	    
-	    $(document).ready(function(){
-	    	
-	    	$('div.tabs button').click(function(){
-	    		var tab_id = $(this).attr('data-tab');
+    
+    $(document).ready(function(){
+    	
+    	$('div.tabs button').click(function(){
+    		var tab_id = $(this).attr('data-tab');
 
 	    		$('div.tabs button').removeClass('current');
 	    		$('.content__inner').removeClass('current');
@@ -133,9 +133,14 @@
   </script>
 </head>
 <body>
+<<<<<<< HEAD
 	
 	
      
+=======
+	<div class="container py-4 folder">
+    <jsp:include page="/WEB-INF/views/header.jsp"/>
+>>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
     <!-- <div class="tabs">
       <button class="content__inner current" data-tab="tab-1">
         <div><span>공지사항</span></div>
@@ -145,6 +150,7 @@
       </button>
     </div> -->
     <div class="content">
+<<<<<<< HEAD
      <%--  <div class="content__inner current" id="tab-1">
         <div class="table-responsive">
           <table class="table">
@@ -269,6 +275,10 @@
    <jsp:include page="/WEB-INF/views/header.jsp"/>
 	<main>
 	<h2 class="display-7 fw-bold">Q&A</h2>
+=======
+    
+	<h2 class="display-7 fw-bold">Q&A</h2>
+>>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
       <div class="content__inner" id="tab-2">
         <div class="table-responsive">
           <table class="table">
@@ -391,8 +401,15 @@
     </div>
   </div>
   
+<<<<<<< HEAD
   <!-- partial -->
   <script  src="notice_qa.js"></script>
   
+=======
+  <!-- partial -->
+  <script  src="${cpath}/resources/js/notice_qa.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+>>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
 </body>
 </html>
