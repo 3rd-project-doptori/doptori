@@ -154,11 +154,8 @@
 												<tr>
 													<th scope="row">토양점검 여부</th>
 													<td>
-														<div>
-															<input type="checkbox" class="form-control"
-																name="fdm1_soil_check" id="fdm1_soil_check" value="1"
-																checked>
-														</div>
+														<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="1" checked> 예
+														<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="0" > 아니오
 													</td>
 												</tr>
 											</tbody>
@@ -209,31 +206,40 @@
 														<table>
 															<tr>
 																<td><P>필지 주소 : </P></td>
-																<td><p><select id="selectbox" class="area" placeholder="지역" onchange="changeSelect()" value></select>
-																<select id="selectNextbox" name="fdm1_ad_num" class="area2" placeholder="지역"></select>
+																<td><p><select id="selectbox2" class="area" placeholder="지역" onchange="changeSelect()"></select>
+																<select id="selectNextbox2" name="fdm1_ad_num" class="area2" placeholder="지역"></select>
 																<input type="text" class="form-control" name="fdm1_detail_address" id="fdm1_detail_address" placeholder="세부주소" value="${vo.fdm1_detail_address}">
 																${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri}</P></td>
 															</tr>
 															<tr>
 																<td><P>필지 면적 : </P></td>
-																<td><P>${vo.fdm1_lot_area}m<sup>2</sup></P></td>
+																<td><input type="text" class="form-control"
+														name="fdm1_lot_area" id="fdm1_lot_area" placeholder="필지 면적" value="${vo.fdm1_lot_area}">m<sup>2</sup></td>
 															</tr>
 															<tr>
 																<td><P>실재배 면적 : </P></td>
-																<td><P>${vo.fdm1_actual_area}m<sup>2</sup></P></td>
+																<td><input type="text" class="form-control"
+														name="fdm1_actual_area" id="fdm1_actual_area" placeholder="실재배 면적" value="${vo.fdm1_actual_area}">m<sup>2</sup></td>
 															</tr>
 															<tr>
 																<td><P>유휴 면적 : </P></td>
-																<td><P>${vo.fdm1_idle_area}m<sup>2</sup></P></td>
+																<td><input type="text" class="form-control"
+														name="fdm1_idle_area" id="fdm1_idle_area" placeholder="유휴 면적" value="${vo.fdm1_idle_area}">m<sup>2</sup></td>
 															</tr>
 															<tr>
-																<td><P>토양점검 여부 : </P></td>
+																<td><P>토양점검 여부 : </P></td>															
 																<c:choose>
 																	<c:when test="${vo.fdm1_soil_check==1}">
-																		<td><P>예</P></td>
+																		<td>
+																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="1" checked> 예
+																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="0" > 아니오
+																		</td>
 																	</c:when>
 																	<c:otherwise>
-																		<td><P>아니오</P></td>
+																		<td>
+																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="1" > 예
+																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="0" checked> 아니오
+																		</td>
 																	</c:otherwise>
 																</c:choose>
 															</tr>
@@ -459,7 +465,11 @@ $(document).ready(function(){
 			$("#selectbox").html("");
 			$.each(res, (index, obj)=>{
 				$("#selectbox").append("<option value="+obj.ad_gugun+">"+obj.ad_gugun+"</option>");
-			});	
+			});
+			$("#selectbox2").html("");
+			$.each(res, (index, obj)=>{
+				$("#selectbox2").append("<option value="+obj.ad_gugun+">"+obj.ad_gugun+"</option>");
+			});
 		},
 		error : function(){
 			alert("Ajax 통신 실패!!");	
@@ -476,6 +486,10 @@ $(document).ready(function(){
 			$.each(res, (index, obj)=>{
 				$("#selectNextbox").append("<option value="+obj.ad_dong+">"+obj.ad_dong+"</option>");
 			});
+			$("#selectNextbox2").html("");
+			$.each(res, (index, obj)=>{
+				$("#selectNextbox2").append("<option value="+obj.ad_dong+">"+obj.ad_dong+"</option>");
+			});
 		},
 		error : function(){
 			alert("Ajax 통신 실패!!");	
@@ -489,6 +503,7 @@ $(document).ready(function(){
 
 function changeSelect(){
 	var select = $("#selectbox option:selected").text();
+	var select2 = $("#selectbox2 option:selected").text();
 	$.ajax({
 		url : "${cpath}/ad_dong.do",
 		type : "get",
@@ -500,7 +515,13 @@ function changeSelect(){
 				if (obj.ad_gugun==select) {
 				$("#selectNextbox").append("<option value="+obj.ad_num+">"+obj.ad_dong+"</option>");
 				}
-			});		
+			});
+			$("#selectNextbox2").html("");
+			$.each(res, (index, obj)=>{
+				if (obj.ad_gugun==select2) {
+				$("#selectNextbox2").append("<option value="+obj.ad_num+">"+obj.ad_dong+"</option>");
+				}
+			});	
 		},
 		error : function(){
 			alert("Ajax 통신 실패!!");	

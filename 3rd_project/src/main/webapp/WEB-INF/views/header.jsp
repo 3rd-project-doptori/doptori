@@ -49,12 +49,34 @@
                       영농일지
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="<c:url value='/calendar2.do/${loginMember.getMb_num()}'/>">영농일지</a></li>
-                      <li><a class="dropdown-item" href="<c:url value='/FarmDiaryList.do'/>">일지 목록</a></li>
-                      <li><a class="dropdown-item" href="<c:url value='/FarmDiaryManageList2.do'/>">일지 관리</a></li>
+                      <c:if test="${loginMember == null}">
+                		<li><a class="dropdown-item" href="#" onClick="alert('로그인을 해주세요.')">영농일지</a></li>
+                		<li><a class="dropdown-item" href="#" onClick="alert('로그인을 해주세요.')">일지 목록</a></li>
+                      	<li><a class="dropdown-item" href="#" onClick="alert('로그인을 해주세요.')">일지 관리</a></li>
+					</c:if>
+					<c:if test="${loginMember != null}">
+						<li><a class="dropdown-item" href="<c:url value='/calendar2.do/${loginMember.getMb_num()}'/>">영농일지</a></li>
+						<li><a class="dropdown-item" href="<c:url value='/FarmDiaryList.do'/>">일지 목록</a></li>
+                      	<li><a class="dropdown-item" href="<c:url value='/FarmDiaryManageList2.do'/>">일지 관리</a></li>
+					</c:if>
                     </ul>
                   </li>
+                  <c:if test="${loginMember == null}">
                   <li class="nav-item">
+                    <a class="nav-link" href="#" onClick="alert('로그인을 해주세요.')">병해충분석</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" onClick="alert('로그인을 해주세요.')">농작물분석</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" onClick="alert('로그인을 해주세요.')">직거래</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" onClick="alert('로그인을 해주세요.')">Q&A</a>
+                  </li>
+                  </c:if>
+					<c:if test="${loginMember != null}">
+					<li class="nav-item">
                     <a class="nav-link" href="<c:url value='/analysis2.do'/>">병해충분석</a>
                   </li>
                   <li class="nav-item">
@@ -66,7 +88,8 @@
                   <li class="nav-item">
                     <a class="nav-link" href="<c:url value='/QnA_List.do'/>" onclick="boardList()">Q&A</a>
                   </li>
-                  
+					</c:if>
+					
                 </ul>
 	                <c:choose>
 	                
