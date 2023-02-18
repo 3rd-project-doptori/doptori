@@ -43,7 +43,6 @@
       color: white;
       margin-left: 1rem;
       }
-
       .login:hover{
           background-color: #FF4D79;
           color: white;
@@ -67,7 +66,6 @@
  function signin(){
 		location.href = "${cpath}/signin.do"
 	}
-
  
   $(document).ready(function(){
 		// boardList라고 하는 함수 실행!
@@ -95,7 +93,6 @@
 	 	   	document.getElementById("sel").value="${sel}";
 	 	  </c:if>
 	    }
-
 	    function check(my)
 	    { // select태그에서 첫번째 option태그는 X , sword입력칸은 값이 비어있으면 안된다..
 	 	  if(my.sel.selectedIndex==0) //if(my.sel.value=="0")
@@ -117,14 +114,11 @@
     	
     	$('div.tabs button').click(function(){
     		var tab_id = $(this).attr('data-tab');
-
 	    		$('div.tabs button').removeClass('current');
 	    		$('.content__inner').removeClass('current');
-
 	    		$(this).addClass('current');
 	    		$("#"+tab_id).addClass('current');
 	    	})
-
 	    })
 	    
 	    
@@ -274,7 +268,6 @@
   
   <!-- partial -->
   <script  src="${cpath}/resources/js/notice_qa.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 </body>
 </html>

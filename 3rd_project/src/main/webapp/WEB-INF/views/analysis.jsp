@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, 그리고 Bootstrap 기여자들">
     <meta name="generator" content="Hugo 0.104.2">
-    <title>병해충분석/생육과정분석</title>
+    <title>농작물분석/생육과정분석</title>
 
     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
@@ -24,11 +24,10 @@
     <main>
         <div class="container py-4">
         <jsp:include page="/WEB-INF/views/header.jsp"/>
-            <h2 class="display-7 fw-bold">농작물분석</h2>
             <div class="row align-items-md-stretch">
                 <div class="col-md-6">
                     <div class="h-100 p-5 border rounded-3">
-                	<h2 class="h2">농작물분석하기</h2>
+                	<h2 class="h2">농작물 분석하기</h2>
                         <div class="d-flex justify-content-center top">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">

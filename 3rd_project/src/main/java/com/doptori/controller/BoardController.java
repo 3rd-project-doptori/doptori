@@ -351,24 +351,49 @@ public class BoardController {
 //	}
 	
 	
+	//public String boardInsert(Board vo, Model model) throws IOException {
 	@RequestMapping("/boardInsert.do")
-	public String boardInsert(Board vo, Model model) throws IOException {
+	public String boardInsert(Board vo //@RequestParam("uploadFile") MultipartFile uploadFile
+			) throws IOException  {
+		
+		// 파일 업로드 처리
+		MultipartFile uploadFile = vo.getUploadFile(); 
+		String bd_pic = null; 
+		  if (!uploadFile.isEmpty()) { 
+			  String originalFileName = uploadFile.getOriginalFilename(); 
+			  String ext = FilenameUtils.getExtension(originalFileName); //확장자 구하기
+			  UUID uuid = UUID.randomUUID(); //UUID 구하기
+			  String[] uuids = uuid.toString().split("-");
+				
+			  String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."),originalFileName.length());
+			  String uniqueName = uuids[0];
+			  System.out.println("생성된 고유문자열" + uniqueName);
+			  System.out.println("확장자명" + fileExtension);
 
-	    // 파일 업로드 처리
-	    String bd_pic = null;
-	    MultipartFile uploadFile = vo.getUploadFile();
-	    if (!uploadFile.isEmpty()) {
-	        String originalFileName = uploadFile.getOriginalFilename();
-	        String ext = FilenameUtils.getExtension(originalFileName); // 확장자 구하기
-	        UUID uuid = UUID.randomUUID(); // UUID 구하기
-	        bd_pic = uuid + "." + ext;
-	        uploadFile.transferTo(new File("D:\\upload\\" + bd_pic));
-	    }
-	    vo.setBd_pic(bd_pic);
+			  String uploadFolder = "C:\\Users\\user\\git\\doptori\\3rd_project\\src\\main\\webapp\\resources\\images";
 
-	    mapper.boardInsert(vo);
-
-
+				
+				bd_pic = uploadFolder+"\\"+ uniqueName + fileExtension;
+				
+				File saveFile = new File(bd_pic); 
+				
+				uploadFile.transferTo(saveFile);
+				
+			  //uploadFile.transferTo(new File("D:\\uploads\\" + bd_pic));
+		  }
+		  vo.setBd_pic(bd_pic);
+		 
+		/*
+		 * String bd_pic = file.getOriginalFilename(); File f = new File("c:\\upload\\"
+		 * + bd_pic);
+		 * 
+		 * try { file.transferTo(f); vo.setBd_pic(bd_pic);
+		 * 
+		 * } catch (IOException e) { e.printStackTrace(); }
+		 */
+		
+		mapper.boardInsert(vo);
+	
 	    return "redirect:/QnA_List.do";
 	}
 	

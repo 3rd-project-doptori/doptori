@@ -62,7 +62,7 @@
               <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                   <div class="carousel-inner">
                     <div class="carousel-item active">
-                      <img src="" class="d-block w-100" alt="...">
+                      <a  href="<c:url value='/market_detail.do'/>"><img src="${cpath}/resources/images/berry.jpg" class="d-block w-100" alt="..."></a>
                     </div>
                     <div class="carousel-item">
                       <img src="" class="d-block w-100" alt="...">
@@ -95,7 +95,7 @@
             </div>
             <div class="col-auto d-block d-lg-block">
               <svg class="bd-placeholder-img" width="125" height="175" xmlns="http://www.w3.org/2000/svg" href="planner.png" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <a href="${cpath}/병해충분석">
+                <a href="<c:url value='/analysis2.do'/>">
                 	<image href="${cpath}/resources/images/pests.png" width="100%" height="100%"></image>
                 </a>
                 <p>병해충관리</p>
@@ -116,7 +116,7 @@
      <div class="tb">
         <h3><a href="${cpath}/notice.do"> 공지사항</a></h3>
         <table class="table table-sm text-start align-middle">
-	    	<thead>
+	    	<thead align="center">
 		    	 <tr>
 		    	 	<th width="10%" scope="col">번호</th>
 		    	 	<th width="60%" scope="col">제목</th>
@@ -124,11 +124,11 @@
 		    	 	<!-- <th scope="col">조회수</th> -->
 		    	 </tr>
 	    	</thead>
-	    	<tbody>
+	    	<tbody class="table-group-divider">
 	    	<c:forEach var="vo" items="${list}" varStatus="status">
 		    	<c:if test="${vo.bd_type == '1' }">
 		    			<tr>
-		    				<td scope="row">${vo.bd_num}</th>
+		    				<td align="center" scope="row">${vo.bd_num}</th>
 		    				<%-- <c:if test="${vo.bd_level > 0}">
 								<c:forEach begin="1" end="${vo.bd_level }">
 									<span style="padding-left: 10px"></span>
@@ -143,7 +143,7 @@
 							<c:url var="contentlink" value="/boardContent.do/${vo.bd_num}" />		
 							<a href="${contentlink}">${vo.bd_title}</a>
 							</td>  			
-							<td>${vo.bd_date}</td>  			
+							<td align="center">${vo.bd_date}</td>  			
 							<%-- <td>${vo.bd_cnt}</td>  --%>    			
 		    			</tr>
 		    	</c:if>

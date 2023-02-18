@@ -100,8 +100,12 @@
 								<span>첨부파일</span>
 							</div>
 							<div class="write-form-right">
+<<<<<<< HEAD
 						      	<input type="file" name="uploadFile"  onchange="previewImage(this)"/>
 								<img id="preview">
+=======
+						      	<input type="file" name="uploadFile" multiple="multiple"/>
+>>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
 							</div>
 						</li>
 						
