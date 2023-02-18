@@ -61,15 +61,28 @@
           <div class="h-100 p-5 text-bg-dark rounded-3">
               <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                   <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <a  href="<c:url value='/market_detail.do'/>"><img src="${cpath}/resources/images/berry.jpg" class="d-block w-100" alt="..."></a>
-                    </div>
-                    <div class="carousel-item">
-                      <img src="" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                      <img src="" class="d-block w-100" alt="...">
-                    </div>
+                  <c:if test="${loginMember == null}">
+                		<div class="carousel-item active">
+	                      <a  href="#" onClick="alert('로그인을 해주세요.')"><img src="${cpath}/resources/images/fruit1.jpg" class="d-block w-100" alt="..."></a>
+	                    </div>
+	                    <div class="carousel-item">
+	                       <a  href="#" onClick="alert('로그인을 해주세요.')"><img src="${cpath}/resources/images/fruit5.jpg" class="d-block w-100" alt="..."></a>
+	                    </div>
+	                    <div class="carousel-item">
+	                       <a  href="#" onClick="alert('로그인을 해주세요.')"><img src="${cpath}/resources/images/fruit3.jpg" class="d-block w-100" alt="..."></a>
+	                    </div>
+					</c:if>
+					<c:if test="${loginMember != null}">
+						<div class="carousel-item active">
+	                      <a  href="<c:url value='/market_detail.do'/>"><img src="${cpath}/resources/images/fruit1.jpg" class="d-block w-100" alt="..."></a>
+	                    </div>
+	                    <div class="carousel-item">
+	                       <a  href="<c:url value='/market_detail.do'/>"><img src="${cpath}/resources/images/fruit5.jpg" class="d-block w-100" alt="..."></a>
+	                    </div>
+	                    <div class="carousel-item">
+	                       <a  href="<c:url value='/market_detail.do'/>"><img src="${cpath}/resources/images/fruit3.jpg" class="d-block w-100" alt="..."></a>
+	                    </div>
+					</c:if>
                   </div>
                   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -135,7 +148,12 @@
       </div>
 
      <div class="tb">
-        <h3><a href="${cpath}/notice.do"> 공지사항</a></h3>
+     				<c:if test="${loginMember == null}">
+                		<h3><a href="#" onClick="alert('로그인을 해주세요.')"> 공지사항</a></h3>
+					</c:if>
+					<c:if test="${loginMember != null}">
+						<h3><a href="${cpath}/notice.do"> 공지사항</a></h3>
+					</c:if>
         <table class="table table-sm text-start align-middle">
 	    	<thead align="center">
 		    	 <tr>
