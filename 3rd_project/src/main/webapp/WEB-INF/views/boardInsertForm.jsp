@@ -8,7 +8,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, 그리고 Bootstrap 기여자들">
+    <meta name="generator" content="Hugo 0.104.2">
+
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
@@ -91,7 +100,8 @@
 								<span>첨부파일</span>
 							</div>
 							<div class="write-form-right">
-						      	<input type="file" name="uploadFile"/>
+						      	<input type="file" name="uploadFile"  onchange="previewImage(this)"/>
+								<img id="preview">
 							</div>
 						</li>
 						
@@ -113,6 +123,20 @@
 
 		</main>
 	</div>
-
+	<script>
+	  function previewImage(input) {
+	    var file = input.files[0];
+	    var img = document.getElementById("preview");
+	    if (file.type.match('image.*')) {
+	      var reader = new FileReader();
+	      reader.onload = (function(img) {
+	        return function(e) {
+	          img.src = e.target.result;
+	        };
+	      })(img);
+	      reader.readAsDataURL(file);
+	    }
+	  }
+	</script>
 </body>
 </html>

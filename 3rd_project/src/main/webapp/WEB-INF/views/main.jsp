@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="${cpath}/resources/css/res_index.css" />
     
     
-  </head>
+  </head> 
   <body>
     <script type="text/javascript">
     

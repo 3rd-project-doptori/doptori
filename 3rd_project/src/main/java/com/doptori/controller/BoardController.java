@@ -1,8 +1,12 @@
 package com.doptori.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.UUID;
 
@@ -316,35 +320,58 @@ public class BoardController {
 	public void boardInsertForm() {
 	}
 
+//	@RequestMapping("/boardInsert.do")
+//	public String boardInsert(Board vo//, @RequestParam("bd_pic") MultipartFile file
+//			) throws IOException  {
+//		
+//		// 파일 업로드 처리
+//		  String bd_pic = null; 
+//		  MultipartFile uploadFile = vo.getUploadFile(); 
+//		  if (!uploadFile.isEmpty()) { 
+//			  String originalFileName = uploadFile.getOriginalFilename(); 
+//			  String ext = FilenameUtils.getExtension(originalFileName); //확장자 구하기
+//			  UUID uuid = UUID.randomUUID(); //UUID 구하기 
+//			  bd_pic = uuid + "." + ext;
+//			  uploadFile.transferTo(new File("D:\\upload\\" + bd_pic)); 
+//		  }
+//		  vo.setBd_pic(bd_pic);
+//		 
+//		/*
+//		 * String bd_pic = file.getOriginalFilename(); File f = new File("c:\\upload\\"
+//		 * + bd_pic);
+//		 * 
+//		 * try { file.transferTo(f); vo.setBd_pic(bd_pic);
+//		 * 
+//		 * } catch (IOException e) { e.printStackTrace(); }
+//		 */
+//		
+//		mapper.boardInsert(vo);
+//
+//		return "redirect:/QnA_List.do";
+//	}
+	
+	
 	@RequestMapping("/boardInsert.do")
-	public String boardInsert(Board vo//, @RequestParam("bd_pic") MultipartFile file
-			) throws IOException  {
-		
-		// 파일 업로드 처리
-		  String bd_pic = null; 
-		  MultipartFile uploadFile = vo.getUploadFile(); 
-		  if (!uploadFile.isEmpty()) { 
-			  String originalFileName = uploadFile.getOriginalFilename(); 
-			  String ext = FilenameUtils.getExtension(originalFileName); //확장자 구하기
-			  UUID uuid = UUID.randomUUID(); //UUID 구하기 
-			  bd_pic = uuid + "." + ext;
-			  uploadFile.transferTo(new File("D:\\upload\\" + bd_pic)); 
-		  }
-		  vo.setBd_pic(bd_pic);
-		 
-		/*
-		 * String bd_pic = file.getOriginalFilename(); File f = new File("c:\\upload\\"
-		 * + bd_pic);
-		 * 
-		 * try { file.transferTo(f); vo.setBd_pic(bd_pic);
-		 * 
-		 * } catch (IOException e) { e.printStackTrace(); }
-		 */
-		
-		mapper.boardInsert(vo);
+	public String boardInsert(Board vo, Model model) throws IOException {
 
-		return "redirect:/QnA_List.do";
+	    // 파일 업로드 처리
+	    String bd_pic = null;
+	    MultipartFile uploadFile = vo.getUploadFile();
+	    if (!uploadFile.isEmpty()) {
+	        String originalFileName = uploadFile.getOriginalFilename();
+	        String ext = FilenameUtils.getExtension(originalFileName); // 확장자 구하기
+	        UUID uuid = UUID.randomUUID(); // UUID 구하기
+	        bd_pic = uuid + "." + ext;
+	        uploadFile.transferTo(new File("D:\\upload\\" + bd_pic));
+	    }
+	    vo.setBd_pic(bd_pic);
+
+	    mapper.boardInsert(vo);
+
+
+	    return "redirect:/QnA_List.do";
 	}
+	
 	
 	@RequestMapping("/boardInsertForm2.do")
 	public void boardInsertForm2() {

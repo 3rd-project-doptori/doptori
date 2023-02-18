@@ -13,16 +13,14 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, 그리고 Bootstrap 기여자들">
     <meta name="generator" content="Hugo 0.104.2">
   	
-  <title>notice_qa</title>
+  <title>QnA</title>
 
-	
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <link rel="stylesheet" href="./notice_qa.css">
+  <link rel="stylesheet" href="notice_qa.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <!-- CSS only -->
- 
-    <link rel="stylesheet" href="${cpath}/resources/css/res_index.css">
+  <link rel="stylesheet" href="${cpath}/resources/css/res_index.css">
     <link rel="stylesheet" href="${cpath}/resources/css/lineicons.css">
     <link rel="stylesheet" href="${cpath}/resources/css/header.css">
     <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.eot">
@@ -148,7 +146,9 @@
 	<h2 class="display-7 fw-bold">Q&A</h2>
       <div class="content__inner" id="tab-2">
         <div class="table-responsive">
+        
           <table class="table">
+          
 	    	<caption> <h3 align="right"> <font size="2">
 	    	<div id="left" style="float:left;"> <!-- select 검색 창  -->
 		        <form method="post" action="${cpath}/QnA_List.do" onsubmit="return check(this)">
@@ -161,17 +161,21 @@
 		         <input type="text" id="searchText" placeholder="검색어를 입력하세요." autocomplete="off" name="sword" size="20" value="${sword}">
 		         <input type="submit" value="검색">
 		        </form>
+		        
 		    </div>
-		<div id="right" style="float:right;"><font size="2">	       
-         <select onchange="move(this)" id="pcnt">
-	         <option value="10"> 10개 </option>
-	         <option value="20"> 20개 </option>
-	         <option value="30"> 30개 </option>
-	         <option value="50"> 50개 </option>
-	       </select>
-	       </font>
-	     </div>
+		    
+			<div id="right" style="float:right;"><font size="2">	       
+	         	<select onchange="move(this)" id="pcnt">
+		         <option value="10"> 10개 </option>
+		         <option value="20"> 20개 </option>
+		         <option value="30"> 30개 </option>
+		         <option value="50"> 50개 </option>
+		       </select>
+		       </font>
+		     </div>
+	     
 	       </h3></caption>
+	       
 	    	<thead align="center" >
 		    	 <tr style=" font-weight: bold;">
 		    	 	<th width="10%" scope="col">번호</th>

@@ -13,16 +13,14 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, 그리고 Bootstrap 기여자들">
     <meta name="generator" content="Hugo 0.104.2">
   	
-  <title>notice_qa</title>
-  
+  <title>notice</title>
   
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link rel="stylesheet" href="${cpath}/resources/css/notice_qa.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <!-- CSS only -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link rel="stylesheet" href="${cpath}/resources/css/res_index.css">
+   <link rel="stylesheet" href="${cpath}/resources/css/res_index.css">
     <link rel="stylesheet" href="${cpath}/resources/css/lineicons.css">
     <link rel="stylesheet" href="${cpath}/resources/css/header.css">
     <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.eot">
@@ -31,7 +29,7 @@
     <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.woff">
     <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.woff2">
 
-        <!-- Favicons -->
+   <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
