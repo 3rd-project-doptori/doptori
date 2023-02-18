@@ -2,6 +2,8 @@ package com.doptori.entity;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 import lombok.ToString;
 
@@ -31,6 +33,11 @@ public class farmdiary {
 	private double fd_humid;
 	private String fd_picture;
 	private int fd_open;
+	
+	private MultipartFile uploadFile; // 파일 업로드
+    private String realName;
+    private long size;
+	
 	
 	
 	public int getFd_num() {
@@ -168,6 +175,26 @@ public class farmdiary {
 	}
 	
 	
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+	public String getRealName() {
+		return realName;
+	}
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
+	public long getSize() {
+		return size;
+	}
+	public void setSize(long size) {
+		this.size = size;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "farmdiary [fd_num=" + fd_num + ", fd_mb_num=" + fd_mb_num + ", fd_start=" + fd_start + ", fd_end="
@@ -177,8 +204,12 @@ public class farmdiary {
 				+ fd_fertilizer_amount + ", fd_man_name=" + fd_man_name + ", fd_worktime=" + fd_worktime
 				+ ", fd_weather=" + fd_weather + ", fd_low_temp=" + fd_low_temp + ", fd_high_temp=" + fd_high_temp
 				+ ", fd_precipitation=" + fd_precipitation + ", fd_humid=" + fd_humid + ", fd_picture=" + fd_picture
-				+ ", fd_open=" + fd_open + "]";
+				+ ", fd_open=" + fd_open + ", uploadFile=" + uploadFile + ", realName=" + realName + ", size=" + size
+				+ "]";
 	}
+	
+	
+	
 	
 	
 	

@@ -1,11 +1,13 @@
 package com.doptori.controller;
 
 import java.io.File;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -76,20 +78,36 @@ public class MemberController {
 	public void mypage() {}
 	// 회원 정보 수정(update 이벤트)
 	@RequestMapping("/userUpdate.do")
-	public String userUpdate(Member mvo, MultipartFile file, HttpSession session)throws Exception {
+	public String userUpdate(Member mvo, HttpSession session)throws Exception {
 		
-		String imgUploadPath = uploadPath + File.separator + "imgUpload";
-		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
-		String fileName = null;
+		// 파일 업로드 처리
+		  String mb_pic = null;
+		  String mb_file = null;
+		  MultipartFile uploadFile = mvo.getUploadFile(); 
+		  if (!uploadFile.isEmpty()) { 
+			  String originalFileName = uploadFile.getOriginalFilename(); 
+			  String ext = FilenameUtils.getExtension(originalFileName); //확장자 구하기
+			  UUID uuid = UUID.randomUUID(); //UUID 구하기
+			  String[] uuids = uuid.toString().split("-");
 
-		if(file != null) {
-		 fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
-		} else {
-		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
-		}
+			  String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."),originalFileName.length());
+			  String uniqueName = uuids[0];
+			  System.out.println("생성된 고유문자열" + uniqueName);
+			  System.out.println("확장자명" + fileExtension);
 
-		mvo.setMb_file(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-		mvo.setMb_pic(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+			  String uploadFolder = "C:\\Users\\user\\git\\doptori\\3rd_project\\src\\main\\webapp\\resources\\images";
+
+			  
+			  mb_pic = uniqueName + fileExtension;
+			  mb_file = uploadFolder+"\\"+ uniqueName + fileExtension;
+
+				File saveFile = new File(mb_file); 
+
+				uploadFile.transferTo(saveFile);
+
+		  }
+		  mvo.setMb_pic(mb_pic);
+		  mvo.setMb_file(mb_file);
 		
 		
 		mapper.userUpdate(mvo);

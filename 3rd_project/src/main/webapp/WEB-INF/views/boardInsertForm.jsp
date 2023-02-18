@@ -100,7 +100,7 @@
 								<span>첨부파일</span>
 							</div>
 							<div class="write-form-right">
-						      	<input type="file" name="uploadFile"  onchange="previewImage(this)"/>
+						      	<input type="file" name="uploadFile"  multiple="multiple" onchange="previewImage(this)"/>
 						      	<!-- <input type="file" name="uploadFile" multiple="multiple"/> -->
 							</div>
 						</li>

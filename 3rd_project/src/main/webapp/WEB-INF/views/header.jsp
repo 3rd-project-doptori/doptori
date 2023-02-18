@@ -79,7 +79,14 @@
 			                  <button class="dropdown-toggle bg-transparent border-0 bu" type="button" id="profile" data-bs-toggle="dropdown" aria-expanded="false">
 			                      <div class="info">
 			                        <div class="image">
-			                          <img src="${cpath}/resources/images/default2.png" alt="" style="width: 2.5rem;"/>
+			                        	<c:choose>
+			                        		<c:when test="${empty loginMember.mb_pic}">
+					                          <img src="${cpath}/resources/images/default2.png" alt="" style="width: 2.5rem;"/>
+			                        		</c:when>
+				                        	<c:otherwise>
+				                        	  <img src="${cpath}/resources/images/${loginMember.mb_pic}" alt="" style="width: 3rem;"/>
+				                        	</c:otherwise>
+			                        	</c:choose>
 			                        </div>
 			                      </div>
 			                  </button>

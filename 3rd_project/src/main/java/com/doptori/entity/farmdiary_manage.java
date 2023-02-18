@@ -1,5 +1,7 @@
 package com.doptori.entity;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class farmdiary_manage {
 
 	private int fdm_num;
@@ -50,6 +52,10 @@ public class farmdiary_manage {
 	private String ad_ri;
 	
 
+	private MultipartFile uploadFile; // 파일 업로드
+    private String realName;
+    private long size;
+	
 	
 	public int getFdm_num() {
 		return fdm_num;
@@ -322,6 +328,28 @@ public class farmdiary_manage {
 	}
 	
 	
+	
+	
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+	public String getRealName() {
+		return realName;
+	}
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
+	public long getSize() {
+		return size;
+	}
+	public void setSize(long size) {
+		this.size = size;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "farmdiary_manage [fdm_num=" + fdm_num + ", fdm_type=" + fdm_type + ", fdm_mb_num=" + fdm_mb_num
@@ -340,8 +368,12 @@ public class farmdiary_manage {
 				+ fdm6_regi_num + ", fdm6_phone=" + fdm6_phone + ", fdm6_address=" + fdm6_address + ", fdm6_sectors="
 				+ fdm6_sectors + ", fdm6_business=" + fdm6_business + ", fdm7_date=" + fdm7_date
 				+ ", fdm7_analysislist=" + fdm7_analysislist + ", ad_num=" + ad_num + ", ad_sido=" + ad_sido
-				+ ", ad_gugun=" + ad_gugun + ", ad_dong=" + ad_dong + ", ad_ri=" + ad_ri + "]";
+				+ ", ad_gugun=" + ad_gugun + ", ad_dong=" + ad_dong + ", ad_ri=" + ad_ri + ", uploadFile=" + uploadFile
+				+ ", realName=" + realName + ", size=" + size + "]";
 	}
+	
+	
+	
 	
 	
 	

@@ -2,6 +2,8 @@ package com.doptori.entity;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Member {
 	
 	private	int mb_num;
@@ -17,6 +19,10 @@ public class Member {
 	private	String mb_date;
 	
 	private List<Board> userBoardList;
+	
+	private MultipartFile uploadFile; // 파일 업로드
+    private String realName;
+    private long size;
 	
 	// getter, setter 만들기
 	public int getMb_num() {
@@ -91,11 +97,34 @@ public class Member {
 	public void setUserBoardList(List<Board> userBoardList) {
 		this.userBoardList = userBoardList;
 	}
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+	public String getRealName() {
+		return realName;
+	}
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
+	public long getSize() {
+		return size;
+	}
+	public void setSize(long size) {
+		this.size = size;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Member [mb_num=" + mb_num + ", mb_type=" + mb_type + ", mb_id=" + mb_id + ", mb_pw=" + mb_pw
 				+ ", mb_nick=" + mb_nick + ", mb_fm_num=" + mb_fm_num + ", mb_chatlist=" + mb_chatlist + ", mb_pic="
-				+ mb_pic + ", mb_file=" + mb_file + ", mb_re_num=" + mb_re_num + ", mb_date=" + mb_date + "]";
+				+ mb_pic + ", mb_file=" + mb_file + ", mb_re_num=" + mb_re_num + ", mb_date=" + mb_date
+				+ ", userBoardList=" + userBoardList + ", uploadFile=" + uploadFile + ", realName=" + realName
+				+ ", size=" + size + "]";
 	}
+	
 	
 }

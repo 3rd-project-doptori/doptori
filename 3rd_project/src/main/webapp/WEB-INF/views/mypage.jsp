@@ -125,42 +125,14 @@
                 
                 <form class="form-horizontal" id="updateMember" action="${cpath}/userUpdate.do" method="post" enctype="multipart/form-data">
 					
-                  <div class="d-flex align-items-center mb-30">
-                  
-					 <div class="profile-meta">
-                       <!-- 사용자 닉네임 -->
-                       <h5 class="text-bold text-dark mb-10"></h5> 
-                     </div>
-                  
-                      <div class="profile-image">
-                     	 <img src="assets/images/profile/profile-1.png" alt="" />
-                     		 <div class="update-image">
-                     		 	<label for="gdsImg"></label>
-							 	<input type="file" id="gdsImg" name="file" /><i class="lni lni-cloud-upload"></i>
-                        		<!-- <input type="file" /><i class="lni lni-cloud-upload"></i> -->
-							<div class="select_img"><img src="" /></div>
-                       		</div>
- 
-							 <script>
-							  $("#gdsImg").change(function(){
-							   if(this.files && this.files[0]) {
-							    var reader = new FileReader;
-							    reader.onload = function(data) {
-							     $(".select_img img").attr("src", data.target.result).width(500);        
-							    }
-							    reader.readAsDataURL(this.files[0]);
-							   }
-							  });
-							 </script>
-							 
-							 <%-- <%=request.getRealPath("/") %> --%>
-							  
-					 </div>
-					 
-				  </div>
-					
-					
-					
+                  	<!-- 프로필 사진 -->
+					<div class="input-style-1">
+						<label>프로필 사진 : <img src="${cpath}/resources/images/${loginMember.mb_pic}" alt="" style="width: 7.5rem;"/></label>
+						<div class="col-sm-10">
+							<input type="file" name="uploadFile" onchange="previewImage(this)"/>
+							<img id="preview" style="width: 10rem;">
+						</div>
+					</div>
 					
 					<!-- 아이디 -->
 					<div class="input-style-1">
@@ -263,6 +235,21 @@
 
 
     </main>
+    <script>
+	  function previewImage(input) {
+	    var file = input.files[0];
+	    var img = document.getElementById("preview");
+	    if (file.type.match('image.*')) {
+	      var reader = new FileReader();
+	      reader.onload = (function(img) {
+	        return function(e) {
+	          img.src = e.target.result;
+	        };
+	      })(img);
+	      reader.readAsDataURL(file);
+	    }
+	  }
+	</script>
     <!-- ========= All Javascript files linkup ======== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
