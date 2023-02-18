@@ -85,6 +85,8 @@ public interface BoardMapper {
 	
 	public Member getMember(int bd_mb_num);
 	
+	public List<Board> getFileList(int bd_num);
+	
 
 	
 	

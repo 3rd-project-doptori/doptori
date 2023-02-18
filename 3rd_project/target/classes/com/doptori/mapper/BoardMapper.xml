@@ -47,6 +47,10 @@
   </update>
   
   
+  <select id="getFileList" parameterType="int" resultType="String">
+  SELECT bd_pic FROM board WHERE bd_num = #{bd_num}
+</select>
+  
   <!-- 답글 (뭐드라??)-->
    <select id="boardReply" parameterType="int" resultType="int">
       select bd_mb_num from Board 

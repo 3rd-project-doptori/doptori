@@ -1,10 +1,10 @@
 package com.doptori.controller;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URLConnection;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -524,7 +524,7 @@ public class BoardController {
 	public String boardContent(@PathVariable("bd_num") int bd_num, Model model, @RequestParam(value = "co_bd_num", defaultValue = "0") int co_bd_num) {
 	    Board vo;
 	    try {
-	        vo = mapper.boardContent(bd_num);
+	    	vo = mapper.boardContent(bd_num);
 	        if (vo == null) {
 	            throw new Exception("해당 게시물이 존재하지 않습니다.");
 	        }
@@ -536,15 +536,31 @@ public class BoardController {
 	            model.addAttribute("co_bd_num", co_bd_num);
 	        }
 	        
-	     // Board 작성자의 mb_nick 추가
+	        // Board 작성자의 mb_nick 추가
 	        Member writer = mapper.getMember(vo.getBd_mb_num());
 	        if (writer != null) {
 	            vo.setMb_nick(writer.getMb_nick());
 	        }
-	        
-	        
+	        	        
 	        model.addAttribute("vo", vo);
 	        model.addAttribute("list", list);
+	       
+	     // 파일 이미지 출력을 위한 코드
+	        if (vo.getBd_pic() != null) {
+	            String bd_pic = vo.getBd_pic();
+	            String ext = FilenameUtils.getExtension(bd_pic);
+	            String filename = FilenameUtils.getName(bd_pic);
+	            String mimeType = URLConnection.guessContentTypeFromName(filename);
+
+	            if (mimeType == null) {
+	                mimeType = "application/octet-stream";
+	            }
+
+	            byte[] bytes = Files.readAllBytes(Paths.get(bd_pic));
+	            model.addAttribute("bd_pic", "data:" + mimeType + ";base64," + Base64.getEncoder().encodeToString(bytes));
+	            model.addAttribute("bd_pic_ext", ext);
+	        }
+
 	    } catch (Exception e) {
 	        model.addAttribute("error", e.getMessage());
 	    }

@@ -135,7 +135,7 @@
 								</c:forEach>
 							</c:if> --%>
 							<td align="left">
-							<<%-- c:if test="${vo.bd_level > 0}">
+							<%-- c:if test="${vo.bd_level > 0}">
 								<c:forEach begin="1" end="${vo.bd_level }">
 									<span style="padding-left: 10px"></span>
 								</c:forEach>

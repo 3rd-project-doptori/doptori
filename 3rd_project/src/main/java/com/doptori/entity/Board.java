@@ -1,5 +1,7 @@
 package com.doptori.entity;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class Board {
@@ -165,6 +167,30 @@ public class Board {
 
 	public void setMb_nick(String mb_nick) {
 		this.mb_nick = mb_nick;
+		
+	}
+
+
+
+
+	public String getFile_path() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+	public void setFilePath(Object file_path) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+	public void setFilePathList(List<String> filePathList) {
+		// TODO Auto-generated method stub
 		
 	}
 
