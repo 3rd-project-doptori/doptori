@@ -330,9 +330,24 @@ public class BoardController {
 		  if (!uploadFile.isEmpty()) { 
 			  String originalFileName = uploadFile.getOriginalFilename(); 
 			  String ext = FilenameUtils.getExtension(originalFileName); //확장자 구하기
-			  UUID uuid = UUID.randomUUID(); //UUID 구하기 
-			  bd_pic = uuid + "." + ext;
-			  uploadFile.transferTo(new File("D:\\upload\\" + bd_pic)); 
+			  UUID uuid = UUID.randomUUID(); //UUID 구하기
+			  String[] uuids = uuid.toString().split("-");
+
+			  String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."),originalFileName.length());
+			  String uniqueName = uuids[0];
+			  System.out.println("생성된 고유문자열" + uniqueName);
+			  System.out.println("확장자명" + fileExtension);
+
+			  String uploadFolder = "C:\\Users\\user\\git\\doptori\\3rd_project\\src\\main\\webapp\\resources\\images";
+
+
+				bd_pic = uploadFolder+"\\"+ uniqueName + fileExtension;
+
+				File saveFile = new File(bd_pic); 
+
+				uploadFile.transferTo(saveFile);
+
+			  //uploadFile.transferTo(new File("D:\\uploads\\" + bd_pic));
 		  }
 		  vo.setBd_pic(bd_pic);
 		 
