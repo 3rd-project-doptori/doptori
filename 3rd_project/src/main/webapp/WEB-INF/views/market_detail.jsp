@@ -57,18 +57,18 @@
                     <div class="col p-4 d-flex flex-column position-static">
                         <table class="table">
                             <tr>
-                                <th class="text-center" scope="col" width="25%">명칭</th>
-                                <td scope="col">1</th>
+                                <th class="text-center" scope="col" width="25%">상품명</th>
+                                <td scope="col">딸기</td>
 
                             </thead>
                             <tbody class="text-start">
                             <tr>
                                 <th class="text-center" scope="row">중량</th>
-                                <td>1</td>
+                                <td>2kg</td>
                             </tr>
                             <tr>
                                 <th class="text-center" scope="row">가격</th>
-                                <td>1</td>
+                                <td>\ 가격을 입력해주세요</td>
                             </tr>
                             <tr>
                                 <th class="text-center" scope="row">상세정보</th>
@@ -76,6 +76,19 @@
                             </tr>
                             </tbody>
                         </table>
+                        
+                        <hr>
+                        <div class="row">
+							<div class="selected_option" style="text-align: right;">
+							</div>
+                        	<div style="text-align: center;">
+								<button class="btn btn-sm btn-outline-secondary" type="button">주문하기</button>
+								<button class="btn btn-sm btn-outline-secondary" type="button">장바구니</button>
+								<button class="btn btn-sm btn-outline-secondary" type="button">위시리스트</button>
+							</div>
+						</div>
+						<hr>
+
                     </div>
                 </div>
             </div>
