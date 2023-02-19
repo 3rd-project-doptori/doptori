@@ -21,4 +21,14 @@
   	SELECT * FROM Address where ad_num=#{fdm1_ad_num};
   </select>
   
+  <!-- 구군 모델 찾기 -->
+  <select id="gugunmodelList" resultType="com.doptori.entity.Address">
+  	SELECT ad_gugun FROM Address GROUP BY ad_gugun;
+  </select>
+  
+  <!-- 동 모델 찾기 -->
+  <select id="dongmodelList" resultType="com.doptori.entity.Address">
+  	SELECT ad_num, ad_gugun, ad_dong FROM Address GROUP BY ad_dong, ad_gugun, ad_num;
+  </select>
+  
 </mapper>

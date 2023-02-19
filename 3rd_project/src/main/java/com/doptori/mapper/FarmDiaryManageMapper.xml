@@ -10,12 +10,17 @@
   	values(#{fdm_mb_num},#{fdm_type},#{fdm1_ad_num},#{fdm1_detail_address},#{fdm1_lot_area},#{fdm1_actual_area},#{fdm1_idle_area},#{fdm1_soil_check})
   </insert>
   
+  <insert id="FarmDiaryManageInsert2" parameterType="com.doptori.entity.farmdiary_manage">
+  	insert into farmdiary_manage (fdm_mb_num, fdm_type, fdm1_ad_num, fdm2_item, fdm2_kind, fdm2_culture_area, fdm2_contract, fdm2_target)
+  	values(#{fdm_mb_num},#{fdm_type},#{fdm1_ad_num},#{fdm2_item},#{fdm2_kind},#{fdm2_culture_area},#{fdm2_contract},#{fdm2_target})
+  </insert>
+  
   <select id="FarmDiaryManageList" parameterType="int" resultType="com.doptori.entity.farmdiary_manage">
-  	select Address.*, farmdiary_manage.* from Address INNER JOIN farmdiary_manage ON Address.ad_num = farmdiary_manage.fdm1_ad_num where fdm_mb_num=#{mb_num};
+  	select Address.*, farmdiary_manage.* from Address INNER JOIN farmdiary_manage ON Address.ad_num = farmdiary_manage.fdm1_ad_num where fdm_mb_num=#{mb_num} and fdm_type=1;
   </select>
   
   <select id="FarmDiaryManageList2" parameterType="int" resultType="com.doptori.entity.farmdiary_manage">
-  	select Address.*, farmdiary_manage.* from Address INNER JOIN farmdiary_manage ON Address.ad_num = farmdiary_manage.fdm1_ad_num where fdm_mb_num=#{mb_num};
+  	select Address.*, farmdiary_manage.* from Address INNER JOIN farmdiary_manage ON Address.ad_num = farmdiary_manage.fdm1_ad_num where fdm_mb_num=#{mb_num} and fdm_type=2;
   </select>
   
 </mapper>

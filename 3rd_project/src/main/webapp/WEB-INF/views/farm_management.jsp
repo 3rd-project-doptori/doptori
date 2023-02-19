@@ -164,8 +164,7 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-bs-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-primary">Send
-											message</button>
+										<button type="submit" class="btn btn-primary">등록하기</button>
 									</div>
 								</form>
 							</div>
@@ -206,37 +205,49 @@
 														<table>
 															<tr>
 																<td><P>필지 주소 : </P></td>
-																<td><p><select id="selectbox2" class="area" placeholder="지역" onchange="changeSelect()"></select>
-																<select id="selectNextbox2" name="fdm1_ad_num" class="area2" placeholder="지역"></select>
-																<input type="text" class="form-control" name="fdm1_detail_address" id="fdm1_detail_address" placeholder="세부주소" value="${vo.fdm1_detail_address}">
-																${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri}</P></td>
+																<td colspan="2"><p>
+																<select id="selectbox" class="area" placeholder="지역" onchange="changeSelect()">
+																<c:forEach items="${gugunmodelList}" var="vo3">
+																	<option value="vo3.ad_gugun" <c:if test ="${vo3.ad_gugun eq vo.ad_gugun}">selected="selected"</c:if>>${vo3.ad_gugun}</option>
+																</c:forEach>
+																</select>
+																<select id="selectNextbox" name="fdm1_ad_num" class="area2" placeholder="지역">
+																<c:forEach items="${dongmodelList}" var="vo4">
+																	<option value="vo4.ad_num" <c:if test ="${vo4.ad_dong eq vo.ad_dong}">selected="selected"</c:if>>${vo4.ad_dong}</option>
+																</c:forEach>
+																</select>
+																<input type="text" class="form-control" name="fdm1_detail_address" id="fdm1_detail_address" placeholder="세부 주소" value="${vo.fdm1_detail_address}">
+																</P></td>
 															</tr>
 															<tr>
 																<td><P>필지 면적 : </P></td>
-																<td><input type="text" class="form-control"
-														name="fdm1_lot_area" id="fdm1_lot_area" placeholder="필지 면적" value="${vo.fdm1_lot_area}">m<sup>2</sup></td>
+																<td><P><input type="text" class="form-control"
+														name="fdm1_lot_area" id="fdm1_lot_area" placeholder="필지 면적" value="${vo.fdm1_lot_area}"></P></td>
+																<td><P>m<sup>2</sup></P></td>
 															</tr>
 															<tr>
 																<td><P>실재배 면적 : </P></td>
-																<td><input type="text" class="form-control"
-														name="fdm1_actual_area" id="fdm1_actual_area" placeholder="실재배 면적" value="${vo.fdm1_actual_area}">m<sup>2</sup></td>
+																<td><P><input type="text" class="form-control"
+														name="fdm1_actual_area" id="fdm1_actual_area" placeholder="실재배 면적" value="${vo.fdm1_actual_area}"></P></td>
+																<td><P>m<sup>2</sup></P></td>
 															</tr>
 															<tr>
 																<td><P>유휴 면적 : </P></td>
-																<td><input type="text" class="form-control"
-														name="fdm1_idle_area" id="fdm1_idle_area" placeholder="유휴 면적" value="${vo.fdm1_idle_area}">m<sup>2</sup></td>
+																<td><P><input type="text" class="form-control"
+														name="fdm1_idle_area" id="fdm1_idle_area" placeholder="유휴 면적" value="${vo.fdm1_idle_area}"></P></td>
+																<td><P>m<sup>2</sup></P></td>
 															</tr>
 															<tr>
 																<td><P>토양점검 여부 : </P></td>															
 																<c:choose>
 																	<c:when test="${vo.fdm1_soil_check==1}">
-																		<td>
+																		<td colspan="2" align="center">
 																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="1" checked> 예
 																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="0" > 아니오
 																		</td>
 																	</c:when>
 																	<c:otherwise>
-																		<td>
+																		<td colspan="2" align="center">
 																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="1" > 예
 																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="0" checked> 아니오
 																		</td>
@@ -316,64 +327,55 @@
 												<col width="18%">
 												<col>
 											</colgroup>
-											<thead>
-												<tr>
-													<th scope="col">관리 유형</th>
-													<th><select name="fdm_type" id="fdm_type">
-															<option value="">선택하기</option>
-															<option value=1>필지관리</option>
-															<option value=2>품목관리</option>
-															<option value=3>비료관리</option>
-															<option value=4>교육관리</option>
-															<option value=5>인력관리</option>
-															<option value=6>거래관리</option>
-															<option value=7>분석관리</option>
-													</select></th>
-												</tr>
-											</thead>
 											<tbody>
 												<tr>
 													<th scope="row">필지주소</th>
-													<td><select id="selectbox2" class="form-control"
-														name="fdm1_actual_area" id="fdm1_actual_area"></select></td>
+													<td><input type="hidden" class="form-control" name="fdm_type" id="fdm_type" value="2">
+													<select id="selectbox2" class="form-control"
+														name="fdm1_ad_num" id="fdm1_ad_num">
+														<c:forEach items="${list}" var="vo">
+														<c:set var="cnt2" value="${cnt2+1}" />
+															<option value="${vo.fdm1_ad_num}">${cnt2}. ${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri} ${vo.fdm1_detail_address}</option>												
+														</c:forEach>
+														</select></td>
 												</tr>
 												<tr class="color">
 													<th scope="row">품목</th>
 													<td><select id="selectbox3" class="form-control"
 														name="fdm2_item" id="fdm2_item" onchange="changeSelect()">
 															<option value="">품목을 선택하세요.</option>
-															<option value=1>딸기</option>
-															<option value=2>토마토</option>
-															<option value=3>수박</option>
-															<option value=4>참외</option>
-															<option value=5>멜론</option>
-															<option value=6>파인애플</option>
+															<option value="딸기">딸기</option>
+															<option value="토마토">토마토</option>
+															<option value="수박">수박</option>
+															<option value="참외">참외</option>
+															<option value="멜론">멜론</option>
+															<option value="파인애플">파인애플</option>
 													</select></td>
 												</tr>
 												<tr>
 													<th scope="row">품종</th>
 													<td><select id="selectbox3" class="form-control"
 														name="fdm2_kind" id="fdm2_kind">
-															<option value="">품목을 선택하세요.</option>
-															<option value=1>딸기</option>
-															<option value=2>토마토</option>
-															<option value=3>수박</option>
-															<option value=4>참외</option>
-															<option value=5>멜론</option>
-															<option value=6>파인애플</option>
+															<option value="">품종을 선택하세요.</option>
+															<option value="딸기">딸기</option>
+															<option value="토마토">토마토</option>
+															<option value="수박">수박</option>
+															<option value="참외">참외</option>
+															<option value="멜론">멜론</option>
+															<option value="파인애플">파인애플</option>
 													</select></td>
 												</tr>
 												<tr>
 													<th scope="row">재배면적</th>
 													<td><input type="text" class="form-control"
 														name="fdm2_culture_area" id="fdm2_culture_area"
-														placeholder="재배면적"></td>
+														placeholder="재배면적(㎡)"></td>
 												</tr>
 												<tr>
 													<th scope="row">계약 재배 여부</th>
-													<td><input type="radio" class="form-control"
+													<td><input type="radio" class="form"
 														name="fdm2_contract" id="fdm2_contract" value="1">
-														예 <input type="radio" class="form-control"
+														예 <input type="radio" class="form"
 														name="fdm2_contract" id="fdm2_contract" value="0" checked>
 														아니오</td>
 												</tr>
@@ -382,7 +384,7 @@
 													<td>
 														<div>
 															<input type="text" class="form-control"
-																name="fdm2_target" id="fdm2_target" placeholder="목표생산량">
+																name="fdm2_target" id="fdm2_target" placeholder="목표생산량(kg)">
 														</div>
 													</td>
 												</tr>
@@ -392,8 +394,7 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-bs-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-primary">Send
-											message</button>
+										<button type="submit" class="btn btn-primary">등록하기</button>
 									</div>
 								</form>
 							</div>
@@ -401,7 +402,126 @@
 					</div>
 
 					<!-- 확인하기 -->
-					<div class="table-responsive" id="list2" style="display: block">content</div>
+					<!-- ========== section start ========== -->
+					<section class="section">
+						<div class="container-fluid">
+							<div class="row ">
+								<div class="col-lg-7 top">
+									<div class="title-wrapper pt-30">
+										<div class="row text-start">
+											<div class="col-md-3">
+												<div class="title mb-30">
+													<h2>품목 목록</h2>
+												</div>
+											</div>
+										</div>
+										<!-- end row -->
+									</div>
+									<div class="card-style settings-card-1 mb-30">
+										<div class="profile-info">
+											<div id="Accordion_wrap">
+											<c:forEach items="${list2}" var="vo2">
+											<c:set var="cnt3" value="${cnt3+1}" />
+												<div class="que" align="left">
+													<span>필지 ${cnt3} : </span>
+													<span>${vo2.ad_sido}</span>
+													<span>${vo2.ad_gugun}</span>
+													<span>${vo2.ad_dong}</span>
+													<span>${vo2.ad_ri}</span>
+													<span>${vo2.fdm1_detail_address}</span>
+													<span>품목 : </span>
+													<span>${vo2.fdm2_item}</span>
+													<span>${vo2.fdm2_kind}</span>		
+												</div>
+												<div class="anw" align="center">
+													<form action="">
+														<table>
+															<tr>
+																<td><P>필지 주소 : </P></td>
+																<td><p><select id="selectbox2" class="form-control"
+														name="fdm1_ad_num" id="fdm1_ad_num">
+														<c:forEach items="${list}" var="vo">
+														<c:set var="cnt4" value="${cnt4+1}" />
+															<option value="${vo.fdm1_ad_num}" <c:if test ="${vo2.fdm1_ad_num eq vo.fdm1_ad_num}">selected="selected"</c:if>>
+															${cnt4}. ${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri} ${vo.fdm1_detail_address}</option>												
+														</c:forEach>
+														</select></P></td>
+															</tr>
+															<tr>
+																<td><P>품목: </P></td>
+																<td><select id="selectbox3" class="form-control"
+														name="fdm2_item" id="fdm2_item" onchange="changeSelect()">
+															<option value="">품목을 선택하세요.</option>
+															<option value="딸기">딸기</option>
+															<option value="토마토">토마토</option>
+															<option value="수박">수박</option>
+															<option value="참외">참외</option>
+															<option value="멜론">멜론</option>
+															<option value="파인애플">파인애플</option>
+													</select></td>
+															</tr>
+															<tr>
+																<td><P>품종 : </P></td>
+																<td><select id="selectbox3" class="form-control"
+														name="fdm2_kind" id="fdm2_kind">
+															<option value="">품종을 선택하세요.</option>
+															<option value="딸기">딸기</option>
+															<option value="토마토">토마토</option>
+															<option value="수박">수박</option>
+															<option value="참외">참외</option>
+															<option value="멜론">멜론</option>
+															<option value="파인애플">파인애플</option>
+													</select></td>
+															</tr>
+															<tr>
+																<td><P>재배 면적 : </P></td>
+																<td><input type="text" class="form-control" name="fdm2_culture_area" id="fdm2_culture_area" placeholder="재배면적(㎡)" value="${vo.fdm2_culture_area}">
+																</td>
+															</tr>
+															<tr>
+																<td><P>계약 재배 여부 : </P></td>													
+																<c:choose>
+																	<c:when test="${vo.fdm2_contract==1}">
+																		<td>
+																			<input type="radio" class="form" name="fdm2_contract" id="fdm2_contract" value="1" checked> 예
+																			<input type="radio" class="form" name="fdm2_contract" id="fdm2_contract" value="0" > 아니오
+																		</td>
+																	</c:when>
+																	<c:otherwise>
+																		<td>
+																			<input type="radio" class="form" name="fdm2_contract" id="fdm2_contract" value="1" > 예
+																			<input type="radio" class="form" name="fdm2_contract" id="fdm2_contract" value="0" checked> 아니오
+																		</td>
+																	</c:otherwise>
+																</c:choose>
+															</tr>
+															<tr>
+																<td><P>목표 생산량 : </P></td>
+																<td><input type="text" class="form-control"
+																name="fdm2_target" id="fdm2_target" placeholder="목표생산량(kg)" value="${vo.fdm2_target}"></td>
+															</tr>
+
+														</table>
+													</form>
+												</div>
+											</c:forEach>
+												
+											</div>
+
+										</div>
+									</div>
+									<!-- end card -->
+								</div>
+								<!-- end col -->
+
+
+								<!-- end col -->
+							</div>
+							<!-- end row -->
+						</div>
+						<!-- end container -->
+					</section>
+					<!-- ========== section end ========== -->
 				</div>
 
 
@@ -466,10 +586,6 @@ $(document).ready(function(){
 			$.each(res, (index, obj)=>{
 				$("#selectbox").append("<option value="+obj.ad_gugun+">"+obj.ad_gugun+"</option>");
 			});
-			$("#selectbox2").html("");
-			$.each(res, (index, obj)=>{
-				$("#selectbox2").append("<option value="+obj.ad_gugun+">"+obj.ad_gugun+"</option>");
-			});
 		},
 		error : function(){
 			alert("Ajax 통신 실패!!");	
@@ -485,10 +601,6 @@ $(document).ready(function(){
 			$("#selectNextbox").html("");
 			$.each(res, (index, obj)=>{
 				$("#selectNextbox").append("<option value="+obj.ad_dong+">"+obj.ad_dong+"</option>");
-			});
-			$("#selectNextbox2").html("");
-			$.each(res, (index, obj)=>{
-				$("#selectNextbox2").append("<option value="+obj.ad_dong+">"+obj.ad_dong+"</option>");
 			});
 		},
 		error : function(){
@@ -516,12 +628,6 @@ function changeSelect(){
 				$("#selectNextbox").append("<option value="+obj.ad_num+">"+obj.ad_dong+"</option>");
 				}
 			});
-			$("#selectNextbox2").html("");
-			$.each(res, (index, obj)=>{
-				if (obj.ad_gugun==select2) {
-				$("#selectNextbox2").append("<option value="+obj.ad_num+">"+obj.ad_dong+"</option>");
-				}
-			});	
 		},
 		error : function(){
 			alert("Ajax 통신 실패!!");	
