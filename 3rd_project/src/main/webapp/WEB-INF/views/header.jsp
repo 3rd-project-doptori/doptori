@@ -71,20 +71,8 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#" onClick="alert('로그인을 해주세요.')">직거래</a>
                   </li>
-                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    	게시판
-                    </a>
-                    <ul class="dropdown-menu">
-                      <c:if test="${loginMember == null}">
-                		<li><a class="dropdown-item" href="#" onClick="alert('로그인을 해주세요.')">공지사항</a></li>
-                		<li><a class="dropdown-item" href="#" onClick="alert('로그인을 해주세요.')">Q&A</a></li>
-					</c:if>
-					<c:if test="${loginMember != null}">
-						<li><a class="dropdown-item" href="<c:url value='/calendar2.do/${loginMember.getMb_num()}'/>">공지사항</a></li>
-						<li><a class="dropdown-item" href="<c:url value='/QnA_List.do'/>" onclick="boardList()"></a></li>
-					</c:if>
-                    </ul>
+                  <li class="nav-item">
+                    <a class="nav-link" href="<c:url value='/QnA_List2.do'/>">게시판</a>
                   </li>
                   </c:if>
 					<c:if test="${loginMember != null}">
@@ -97,23 +85,10 @@
                   <li class="nav-item">
                     <a class="nav-link" href="<c:url value='/market.do'/>">직거래</a>
                   </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    	게시판
-                    </a>
-                    <ul class="dropdown-menu">
-                      <c:if test="${loginMember == null}">
-                		<li><a class="dropdown-item" href="#" onClick="alert('로그인을 해주세요.')">공지사항</a></li>
-                		<li><a class="dropdown-item" href="#" onClick="alert('로그인을 해주세요.')">Q&A</a></li>
-					</c:if>
-					<c:if test="${loginMember != null}">
-						<li><a class="dropdown-item" href="<c:url value='/notice.do'/>">공지사항</a></li>
-						<li><a class="dropdown-item" href="<c:url value='/QnA_List.do'/>" onclick="boardList()">Q&A</a></li>
-					</c:if>
-                    </ul>
+                  <li class="nav-item">
+                    <a class="nav-link" href="<c:url value='/QnA_List2.do'/>">게시판</a>
                   </li>
-					</c:if>
-					
+                   </c:if>
                 </ul>
 	                <c:choose>
 	                
