@@ -127,6 +127,19 @@ public class BoardController {
 		return "market";
 	}
 	
+	@RequestMapping("/QnA_List2.do")
+	public String qnalist(Model model, HttpServletRequest request) {	
+		HttpSession session = request.getSession();
+		Member loginMember = (Member) session.getAttribute("loginMember");
+		
+		List<Board> qnalist = mapper.qnalist(loginMember.getMb_num());
+		model.addAttribute("qnalist", qnalist);
+		return "QnA_List2";
+	}
+	
+	
+	
+	
 	@RequestMapping("/QnA_List.do")
 	public String QnA_List(Model model, HttpServletRequest request) {
 

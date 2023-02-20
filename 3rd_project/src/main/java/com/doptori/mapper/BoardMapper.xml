@@ -103,5 +103,8 @@
       select ceil(count(*)/#{param1}) from Board <!-- sql문 ceil함수 사용 -->
     </select>
 
+     <select id="qnalist" parameterType="int" resultType="com.doptori.entity.Board">
+    select * from Board where bd_mb_num=#{bd_mb_num} and bd_type=2
+  </select>
   
 </mapper>
