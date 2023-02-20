@@ -46,7 +46,7 @@ public class BoardController {
 	// public void boardListFrom() {}
 
 	@RequestMapping("/market.do")
-	public String TradeList(Model model, HttpServletRequest request) {
+	public String Market(Model model, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		Member loginMember = (Member) session.getAttribute("loginMember");

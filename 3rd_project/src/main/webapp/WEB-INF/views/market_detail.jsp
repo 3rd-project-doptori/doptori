@@ -76,19 +76,6 @@
                             </tr>
                             </tbody>
                         </table>
-                        
-                        <hr>
-                        <div class="row">
-							<div class="selected_option" style="text-align: right;">
-							</div>
-                        	<div style="text-align: center;">
-								<button class="btn btn-sm btn-outline-secondary" type="button">주문하기</button>
-								<button class="btn btn-sm btn-outline-secondary" type="button">장바구니</button>
-								<button class="btn btn-sm btn-outline-secondary" type="button">위시리스트</button>
-							</div>
-						</div>
-						<hr>
-
                     </div>
                 </div>
             </div>
