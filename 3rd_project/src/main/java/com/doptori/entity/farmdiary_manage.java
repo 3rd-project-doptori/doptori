@@ -29,6 +29,7 @@ public class farmdiary_manage {
 	private String fdm4_edu_place;
 	private String fdm4_edu_cont;
 	private String fdm4_edu_pic;
+	private String fdm4_edu_file;	
 	private String fdm5_man_name;
 	private String fdm5_man_phone;
 	private int fdm5_man_ability;
@@ -290,6 +291,12 @@ public class farmdiary_manage {
 	
 	
 	
+	public String getFdm4_edu_file() {
+		return fdm4_edu_file;
+	}
+	public void setFdm4_edu_file(String fdm4_edu_file) {
+		this.fdm4_edu_file = fdm4_edu_file;
+	}
 	public String getFdm7_analysislist() {
 		return fdm7_analysislist;
 	}
@@ -349,7 +356,6 @@ public class farmdiary_manage {
 		this.size = size;
 	}
 	
-	
 	@Override
 	public String toString() {
 		return "farmdiary_manage [fdm_num=" + fdm_num + ", fdm_type=" + fdm_type + ", fdm_mb_num=" + fdm_mb_num
@@ -362,23 +368,15 @@ public class farmdiary_manage {
 				+ ", fdm3_pesticide_kind=" + fdm3_pesticide_kind + ", fdm4_edu_start=" + fdm4_edu_start
 				+ ", fdm4_edu_end=" + fdm4_edu_end + ", fdm4_edu_name=" + fdm4_edu_name + ", fdm4_edu_place="
 				+ fdm4_edu_place + ", fdm4_edu_cont=" + fdm4_edu_cont + ", fdm4_edu_pic=" + fdm4_edu_pic
-				+ ", fdm5_man_name=" + fdm5_man_name + ", fdm5_man_phone=" + fdm5_man_phone + ", fdm5_man_ability="
-				+ fdm5_man_ability + ", fdm5_man_cost=" + fdm5_man_cost + ", fdm5_man_memo=" + fdm5_man_memo
-				+ ", fdm6_account=" + fdm6_account + ", fdm6_represent=" + fdm6_represent + ", fdm6_regi_num="
-				+ fdm6_regi_num + ", fdm6_phone=" + fdm6_phone + ", fdm6_address=" + fdm6_address + ", fdm6_sectors="
-				+ fdm6_sectors + ", fdm6_business=" + fdm6_business + ", fdm7_date=" + fdm7_date
-				+ ", fdm7_analysislist=" + fdm7_analysislist + ", ad_num=" + ad_num + ", ad_sido=" + ad_sido
+				+ ", fdm4_edu_file=" + fdm4_edu_file + ", fdm5_man_name=" + fdm5_man_name + ", fdm5_man_phone="
+				+ fdm5_man_phone + ", fdm5_man_ability=" + fdm5_man_ability + ", fdm5_man_cost=" + fdm5_man_cost
+				+ ", fdm5_man_memo=" + fdm5_man_memo + ", fdm6_account=" + fdm6_account + ", fdm6_represent="
+				+ fdm6_represent + ", fdm6_regi_num=" + fdm6_regi_num + ", fdm6_phone=" + fdm6_phone + ", fdm6_address="
+				+ fdm6_address + ", fdm6_sectors=" + fdm6_sectors + ", fdm6_business=" + fdm6_business + ", fdm7_date="
+				+ fdm7_date + ", fdm7_analysislist=" + fdm7_analysislist + ", ad_num=" + ad_num + ", ad_sido=" + ad_sido
 				+ ", ad_gugun=" + ad_gugun + ", ad_dong=" + ad_dong + ", ad_ri=" + ad_ri + ", uploadFile=" + uploadFile
 				+ ", realName=" + realName + ", size=" + size + "]";
 	}
-	
-	
-	
-	
-	
-	
-
-	
 
 	
 	

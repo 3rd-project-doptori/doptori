@@ -13,7 +13,8 @@ CREATE TABLE Member (
   UNIQUE KEY(mb_nick)
 );
 
-ALTER TABLE farmdiary ADD  fd_file1 VARCHAR(3000) AFTER fd_picture1;
+ALTER TABLE farmdiary_manage ADD  fdm4_edu_file VARCHAR(3000) AFTER fdm4_edu_pic;
+ALTER TABLE Analysis ADD  an_file_grow VARCHAR(3000) AFTER an_pic_grow;
 alter table Member drop column mb_fm_name;
 
 CREATE TABLE Address (
@@ -237,8 +238,8 @@ create table farmdiary(
 	FOREIGN KEY (fd_mb_num) REFERENCES Member (mb_num)
 );
 
-alter table farmdiary drop column fd_picture1;
-alter table farmdiary drop column fd_file1;
+alter table Analysis drop column an_file_pest;
+alter table Analysis drop column an_pic_grow;
 alter table farmdiary drop column fd_picture2;
 alter table farmdiary drop column fd_picture3;
 

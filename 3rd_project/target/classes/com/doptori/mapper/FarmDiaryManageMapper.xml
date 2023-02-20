@@ -15,6 +15,11 @@
   	values(#{fdm_mb_num},#{fdm_type},#{fdm1_ad_num},#{fdm2_item},#{fdm2_kind},#{fdm2_culture_area},#{fdm2_contract},#{fdm2_target})
   </insert>
   
+  <insert id="FarmDiaryManageInsert4" parameterType="com.doptori.entity.farmdiary_manage">
+  	insert into farmdiary_manage (fdm_mb_num, fdm_type, fdm4_edu_start, fdm4_edu_end, fdm4_edu_name, fdm4_edu_place, fdm4_edu_cont, fdm4_edu_pic, fdm4_edu_file)
+  	values(#{fdm_mb_num},#{fdm_type},#{fdm4_edu_start},#{fdm4_edu_end},#{fdm4_edu_name},#{fdm4_edu_place},#{fdm4_edu_cont},#{fdm4_edu_pic},#{fdm4_edu_file})
+  </insert>
+  
   <select id="FarmDiaryManageList" parameterType="int" resultType="com.doptori.entity.farmdiary_manage">
   	select Address.*, farmdiary_manage.* from Address INNER JOIN farmdiary_manage ON Address.ad_num = farmdiary_manage.fdm1_ad_num where fdm_mb_num=#{mb_num} and fdm_type=1;
   </select>
@@ -23,4 +28,19 @@
   	select Address.*, farmdiary_manage.* from Address INNER JOIN farmdiary_manage ON Address.ad_num = farmdiary_manage.fdm1_ad_num where fdm_mb_num=#{mb_num} and fdm_type=2;
   </select>
   
+  <select id="FarmDiaryManageList4" parameterType="int" resultType="com.doptori.entity.farmdiary_manage">
+  	select * from farmdiary_manage where fdm_mb_num=#{mb_num} and fdm_type=4;
+  </select>
+  
+  <delete id="farmdiarydelete" parameterType="int">
+      delete from farmdiary_manage where fdm_num=#{fdm_num}
+  </delete>
+  
+  <update id="FarmDiaryManageUpdate" parameterType="com.doptori.entity.farmdiary_manage">
+      update farmdiary_manage set fdm1_ad_num=#{fdm1_ad_num}, fdm1_detail_address=#{fdm1_detail_address}, fdm1_lot_area=#{fdm1_lot_area}, fdm1_actual_area=#{fdm1_actual_area}, fdm1_idle_area=#{fdm1_idle_area}, fdm1_soil_check=#{fdm1_soil_check} where fdm_num=#{fdm_num}
+  </update>
+  
+   <update id="FarmDiaryManageUpdate2" parameterType="com.doptori.entity.farmdiary_manage">
+      update farmdiary_manage set fdm1_ad_num=#{fdm1_ad_num}, fdm2_item=#{fdm2_item}, fdm2_kind=#{fdm2_kind}, fdm2_culture_area=#{fdm2_culture_area}, fdm2_contract=#{fdm2_contract}, fdm2_target=#{fdm2_target} where fdm_num=#{fdm_num}
+  </update>
 </mapper>
