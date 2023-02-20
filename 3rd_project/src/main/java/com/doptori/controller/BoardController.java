@@ -133,12 +133,11 @@ public class BoardController {
 		Member loginMember = (Member) session.getAttribute("loginMember");
 		
 		List<Board> qnalist = mapper.qnalist(loginMember.getMb_num());
+		List<Board> noticelist = mapper.noticelist();
 		model.addAttribute("qnalist", qnalist);
+		model.addAttribute("noticelist", noticelist);
 		return "QnA_List2";
-	}
-	
-	
-	
+	}	
 	
 	@RequestMapping("/QnA_List.do")
 	public String QnA_List(Model model, HttpServletRequest request) {

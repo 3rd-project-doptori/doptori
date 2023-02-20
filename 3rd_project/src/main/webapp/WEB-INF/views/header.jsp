@@ -82,7 +82,7 @@
 					</c:if>
 					<c:if test="${loginMember != null}">
 						<li><a class="dropdown-item" href="<c:url value='/calendar2.do/${loginMember.getMb_num()}'/>">공지사항</a></li>
-						<li><a class="dropdown-item" href="<c:url value='/QnA_List.do'/>" onclick="boardList()"></a></li>
+						<li><a class="dropdown-item" href="<c:url value='/QnA_List2.do'/>"></a></li>
 					</c:if>
                     </ul>
                   </li>
@@ -108,7 +108,7 @@
 					</c:if>
 					<c:if test="${loginMember != null}">
 						<li><a class="dropdown-item" href="<c:url value='/notice.do'/>">공지사항</a></li>
-						<li><a class="dropdown-item" href="<c:url value='/QnA_List.do'/>" onclick="boardList()">Q&A</a></li>
+						<li><a class="dropdown-item" href="<c:url value='/QnA_List2.do'/>">Q&A</a></li>
 					</c:if>
                     </ul>
                   </li>
