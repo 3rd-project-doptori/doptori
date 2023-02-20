@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+	font-family: 'IBMPlexSansKR-Regular';
+}
 
 .bd-placeholder-img {
   font-size: 1.125rem;
@@ -61,9 +71,9 @@
 }
 
 .res{
-    display: flex;
-    justify-content: end;
-    margin-bottom: 1rem;
+	display: flex;
+    justify-content: start;
+    margin-bottom: 1.5rem;
 }
 
 .login{

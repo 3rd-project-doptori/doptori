@@ -1,13 +1,22 @@
 /*===========================
 		COMMON css
 ===========================*/
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+	font-family: 'IBMPlexSansKR-Regular';
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Inter", sans-serif !important;
   font-weight: normal;
   font-style: normal;
   color: #5d657b;

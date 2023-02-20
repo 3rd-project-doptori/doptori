@@ -61,8 +61,8 @@
    <div class="container py-4">
        <jsp:include page="/WEB-INF/views/header.jsp"/>
       <main>
-      	<h2 class="display-7 fw-bold">직거래</h2>
-          <div class="album py-5">
+      	<!-- <h2 class="display-7 fw-bold">직거래</h2> -->
+          <div class="album">
               <div class="container">
                   <div class="res">
                       <form class="d-flex col-sm-3 " role="search">

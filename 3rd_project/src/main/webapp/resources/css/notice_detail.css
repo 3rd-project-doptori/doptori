@@ -1,5 +1,12 @@
-html {
-	font-family: "Noto Sans KR", sans-serif;
+@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+	font-family: 'IBMPlexSansKR-Regular';
 }
 
 /* 노말라이즈 */
@@ -9,9 +16,7 @@ body, ul, li, h1, h2, h3, h4, h5, h6 {
 	list-style: none;
 }
 
-a:link {
-	color: lightblue;
-}
+
 
 /* 라이브러리 */
 .con {
@@ -226,4 +231,17 @@ html, body {
 .reply-list > table td:first-child::after {
     content:" : ";
     font-weight:bold;
+}
+
+.for{
+	margin-bottom: 3rem;
+}
+
+.sub{
+    width: 4rem;
+    height: 3rem;
+}
+
+textarea.form-control {
+	height: 3rem;
 }
