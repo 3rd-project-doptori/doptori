@@ -5,6 +5,12 @@ Crafted by Lineicons.com Team
 Version: 4.0
 
 -------------------------------- */
+@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 @font-face {
   font-family: 'lineicons';
@@ -15,6 +21,11 @@ Version: 4.0
        url('../font/lineicons.ttf') format('truetype'),
        url('../font/lineicons.svg') format('svg');
 }
+
+*{
+	font-family: 'IBMPlexSansKR-Regular';
+}
+
 
 /* base class */
 .lni {

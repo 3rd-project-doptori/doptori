@@ -13,7 +13,8 @@ CREATE TABLE Member (
   UNIQUE KEY(mb_nick)
 );
 
-ALTER TABLE farmdiary ADD  fd_file1 VARCHAR(3000) AFTER fd_picture1;
+ALTER TABLE farmdiary_manage ADD  fdm4_edu_file VARCHAR(3000) AFTER fdm4_edu_pic;
+ALTER TABLE Analysis ADD  an_file_grow VARCHAR(3000) AFTER an_pic_grow;
 alter table Member drop column mb_fm_name;
 
 CREATE TABLE Address (
@@ -50,7 +51,7 @@ select * from Crop;
 
 ALTER TABLE Crop ADD cp_kind VARCHAR(100) not null AFTER cp_item;
 
-alter table Crop drop column cp_name;
+alter table farmdiary_manage MODIFY fdm2_target DECIMAL(10,1);
 
 INSERT INTO Diary (di_mb_num, di_fm_num, di_cont, di_note) VALUE('1', '2',  '테스트1/테스트2/테스트3/테스트4', '오늘 특이사항4');
 select * from Diary;
@@ -237,8 +238,8 @@ create table farmdiary(
 	FOREIGN KEY (fd_mb_num) REFERENCES Member (mb_num)
 );
 
-alter table farmdiary drop column fd_picture1;
-alter table farmdiary drop column fd_file1;
+alter table Analysis drop column an_file_pest;
+alter table Analysis drop column an_pic_grow;
 alter table farmdiary drop column fd_picture2;
 alter table farmdiary drop column fd_picture3;
 

@@ -138,7 +138,7 @@ public class BoardController {
 		model.addAttribute("noticelist", noticelist);
 		return "QnA_List2";
 	}
-	
+
 	@RequestMapping("/QnA_List.do")
 	public String QnA_List(Model model, HttpServletRequest request) {
 

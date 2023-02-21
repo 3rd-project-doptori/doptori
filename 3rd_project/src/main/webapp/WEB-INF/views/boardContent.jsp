@@ -20,13 +20,11 @@
     <title>글 상세보기</title>
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-	<link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="${cpath}/resources/css/notice_detail.css">
+	
 
     <!-- CSS only -->
-    <link rel="stylesheet" href="${cpath}/resources/notice_detail.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <style>
         table{
             border-right: 0;
@@ -39,6 +37,7 @@
         
         </style>
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript">
 //1. 댓글 목록을 가져오는 API 호출하는 함수
 function loadComments(postId) {
@@ -118,7 +117,8 @@ $('#comment-form').submit(function(event) {
                     <th rowspan='2' align="center"><div><img id="profile_img" class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>${vo.mb_nick}</th>
                     <th>제목</th>
                     <td colspan="3">
-                    ${vo.bd_title}</td>
+                    	<h3>${vo.bd_title}</h3>
+                    </td>
                 </tr>
                 <tr>
                     <th>날짜</th>
@@ -176,7 +176,7 @@ $('#comment-form').submit(function(event) {
 				            <input type="hidden" name="co_bd_num" value="${cvo.co_bd_num}">
 				          </c:if>
 				            <textarea type="text"  class="form-control me-2 tex" name="co_cont" id="repCon" required="required"></textarea>
-				           <button class="btn login sub" type="submit" id="reply_btn">등록</button>
+				           <button class="btn btn-outline-secondary sub" type="submit" id="reply_btn">등록</button>
 				           </form>
 				    </c:otherwise>
 				  </c:choose>
@@ -211,7 +211,7 @@ $('#comment-form').submit(function(event) {
     
     
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>

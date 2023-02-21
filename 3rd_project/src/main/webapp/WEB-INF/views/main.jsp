@@ -38,7 +38,7 @@
   <div class="container py-4">
     <jsp:include page="/WEB-INF/views/header.jsp"/>
 
-    <div class="p-3 mb-4 bg-light rounded-3">
+    <div class="p-3 mb-5 bg-light rounded-3">
     <div id="MemberListdiv" style="display:none;"></div>
       <div class="row container-fluid py-3 d-flex">
           <div class="col-8 fon">
@@ -56,31 +56,31 @@
         </div>
     </div>
 
-<div class="row align-items-md-stretch">
+<div class="row align-items-md-stretch mat">
         <div class="col-md-5">
-          <div class="h-100 p-5 text-bg-dark rounded-3">
+          <div class="h-70 p-5 text-bg-dark rounded-3">
               <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                   <div class="carousel-inner">
                   <c:if test="${loginMember == null}">
                 		<div class="carousel-item active">
-	                      <a  href="#" onClick="alert('로그인을 해주세요.')"><img src="${cpath}/resources/images/fruit1.jpg" class="d-block w-100" alt="..."></a>
+	                      <a  href="#" onClick="alert('로그인을 해주세요.')"><img src="${cpath}/resources/images/fruit1.jpg" class="d-block w-70" alt="..."></a>
 	                    </div>
 	                    <div class="carousel-item">
-	                       <a  href="#" onClick="alert('로그인을 해주세요.')"><img src="${cpath}/resources/images/fruit5.jpg" class="d-block w-100" alt="..."></a>
+	                       <a  href="#" onClick="alert('로그인을 해주세요.')"><img src="${cpath}/resources/images/fruit5.jpg" class="d-block w-70" alt="..."></a>
 	                    </div>
 	                    <div class="carousel-item">
-	                       <a  href="#" onClick="alert('로그인을 해주세요.')"><img src="${cpath}/resources/images/fruit3.jpg" class="d-block w-100" alt="..."></a>
+	                       <a  href="#" onClick="alert('로그인을 해주세요.')"><img src="${cpath}/resources/images/fruit3.jpg" class="d-block w-70" alt="..."></a>
 	                    </div>
 					</c:if>
 					<c:if test="${loginMember != null}">
 						<div class="carousel-item active">
-	                      <a  href="<c:url value='/market_detail.do'/>"><img src="${cpath}/resources/images/fruit1.jpg" class="d-block w-100" alt="..."></a>
+	                      <a  href="<c:url value='/market_detail.do'/>"><img src="${cpath}/resources/images/fruit1.jpg" class="d-block w-70" alt="..."></a>
 	                    </div>
 	                    <div class="carousel-item">
-	                       <a  href="<c:url value='/market_detail.do'/>"><img src="${cpath}/resources/images/fruit5.jpg" class="d-block w-100" alt="..."></a>
+	                       <a  href="<c:url value='/market_detail.do'/>"><img src="${cpath}/resources/images/fruit5.jpg" class="d-block w-70" alt="..."></a>
 	                    </div>
 	                    <div class="carousel-item">
-	                       <a  href="<c:url value='/market_detail.do'/>"><img src="${cpath}/resources/images/fruit3.jpg" class="d-block w-100" alt="..."></a>
+	                       <a  href="<c:url value='/market_detail.do'/>"><img src="${cpath}/resources/images/fruit3.jpg" class="d-block w-70" alt="..."></a>
 	                    </div>
 					</c:if>
                   </div>
@@ -191,7 +191,7 @@
 	    </table>
     </div>
 
-    <footer class="pt-3 mt-4 text-muted border-top">
+    <footer class="pt-3 mt-5 text-muted border-top">
       &copy; 2023
     </footer>
   </div>
@@ -259,5 +259,6 @@
 		}
 	});
   </script>
+
   </body>
 </html>

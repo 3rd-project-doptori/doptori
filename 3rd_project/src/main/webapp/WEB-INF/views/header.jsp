@@ -30,7 +30,7 @@
 		       url('${cpath}/resources/header/LineIcons.svg') format('svg');
 		}
     </style>
-      <header class="pb-3 mb-4 border-bottom">
+      <header class="pb-3 mb-5 border-bottom">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
               <a class="navbar-brand im" href="${cpath}/Main.do">
@@ -71,8 +71,20 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#" onClick="alert('로그인을 해주세요.')">직거래</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#" onClick="alert('로그인을 해주세요.')">Q&A</a>
+                   <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    	게시판
+                    </a>
+                    <ul class="dropdown-menu">
+                      <c:if test="${loginMember == null}">
+                		<li><a class="dropdown-item" href="#" onClick="alert('로그인을 해주세요.')">공지사항</a></li>
+                		<li><a class="dropdown-item" href="#" onClick="alert('로그인을 해주세요.')">Q&A</a></li>
+					</c:if>
+					<c:if test="${loginMember != null}">
+						<li><a class="dropdown-item" href="<c:url value='/calendar2.do/${loginMember.getMb_num()}'/>">공지사항</a></li>
+						<li><a class="dropdown-item" href="<c:url value='/QnA_List2.do'/>"></a></li>
+					</c:if>
+                    </ul>
                   </li>
                   </c:if>
 					<c:if test="${loginMember != null}">
@@ -85,8 +97,20 @@
                   <li class="nav-item">
                     <a class="nav-link" href="<c:url value='/market.do'/>">직거래</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="<c:url value='/QnA_List.do'/>" onclick="boardList()">Q&A</a>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    	게시판
+                    </a>
+                    <ul class="dropdown-menu">
+                      <c:if test="${loginMember == null}">
+                		<li><a class="dropdown-item" href="#" onClick="alert('로그인을 해주세요.')">공지사항</a></li>
+                		<li><a class="dropdown-item" href="#" onClick="alert('로그인을 해주세요.')">Q&A</a></li>
+					</c:if>
+					<c:if test="${loginMember != null}">
+						<li><a class="dropdown-item" href="<c:url value='/notice.do'/>">공지사항</a></li>
+						<li><a class="dropdown-item" href="<c:url value='/QnA_List2.do'/>">Q&A</a></li>
+					</c:if>
+                    </ul>
                   </li>
 					</c:if>
 					

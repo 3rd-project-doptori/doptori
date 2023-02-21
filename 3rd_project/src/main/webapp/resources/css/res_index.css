@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+	font-family: 'IBMPlexSansKR-Regular';
+}
+
+.mat{
+	margin-top: 5rem;
+}
 
 .bd-placeholder-img {
   font-size: 1.125rem;
@@ -79,7 +93,7 @@ tr{
 }
 
 .tb{
-  margin-top: 3rem;
+  margin-top: 5rem;
 }
 
 .d-block{
@@ -87,7 +101,7 @@ tr{
 }
 
 .he{
-  height: 350px;
+  height: 280px;
 }
 	
 .fon{
@@ -102,10 +116,22 @@ h1{
 }
 
 .p{
-  font-size: x-large;
-  margin-bottom: 3rem;
+  /* margin-bottom: 3rem; */
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: black;
 }
 
+strong{
+	color: #FF4D79;
+    font-size: 2.5rem;
+}
+
+p{
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: #595959;
+}
 
 .table{
     border-bottom: 1px solid;
@@ -121,4 +147,8 @@ a:hover{
 
 .dropdown-item{
 	color: #595959;
+}
+
+.w-70{
+	width:70%;
 }

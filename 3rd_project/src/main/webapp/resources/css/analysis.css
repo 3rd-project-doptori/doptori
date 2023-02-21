@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+	font-family: 'IBMPlexSansKR-Regular';
+}
+
 img{
     width: 1.8rem;
 }
@@ -12,4 +23,9 @@ img{
 
 .top{
     margin-bottom: 1rem;
+}
+
+.form-check-input:checked{
+	background-color: #FF809F;
+    border-color: #FF809F;
 }

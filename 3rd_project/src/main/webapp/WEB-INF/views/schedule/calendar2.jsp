@@ -13,9 +13,8 @@
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="${cpath}/resources/css/main.css" rel="stylesheet"
-	type="text/css">
-<script src="${cpath}/resources/js/board.js"></script>
+<%-- <link href="${cpath}/resources/css/main.css" rel="stylesheet" type="text/css"> --%>
+<%-- <script src="${cpath}/resources/js/board.js"></script> --%>
 <script type="text/javaScript" language="javascript"></script>
 <script
 	src="https://www.lgkids.co.kr/es_all/plugins/jscolor-2.0.5/jscolor.js"></script>
@@ -93,14 +92,12 @@
 				</a>
 			</div>
 			<div class="today_button_div">
-				<button type="button" class="buttonstyle"
-					onclick="javascript:location.href='${cpath}/calendar2.do/${loginMember.getMb_num()}'"
-					style="height: 30px; width: 80px;">Today</button>
-				<button type="button"
-					class="buttonstyle board_move openMask_board_move pointer"
-					style="height: 30px; width: 130px;" onclick="modalClick()"
-					data-bs-toggle="modal" data-bs-target="#exampleModal"
-					data-bs-whatever="@mdo">Add Schedule</button>
+				<%-- <button type="button" class="login" onclick="javascript:location.href='${cpath}/calendar2.do/${loginMember.getMb_num()}'">
+					Today
+				</button> --%>
+				<button type="button" class="login" onclick="modalClick()" data-bs-toggle="modal" data-bs-target="#exampleModal"data-bs-whatever="@mdo">
+					Add Schedule
+				</button>
 			</div>
 			<table class="calendar_body">
 
@@ -191,8 +188,8 @@
 				schedule_add_form.submit();
 			}
 		</script>
-		<script src="${cpath}/resources/assets/js/popper.min.js"></script>
 		<script src="${cpath}/resources/assets/js/bootstrap.min.js"></script>
+		<script src="${cpath}/resources/assets/js/popper.min.js"></script>
 		<script src="${cpath}/resources/assets/js/jquery.countdown.min.js"></script>
 		<script src="${cpath}/resources/assets/js/jquery.counterup.min.js"></script>
 		<div id="mask_board_move"></div>

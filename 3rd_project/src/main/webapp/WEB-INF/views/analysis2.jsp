@@ -30,15 +30,11 @@
                 	<h2 class="h2">병해충 분석하기</h2>
                         <div class="d-flex justify-content-center top">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">설향</label>
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="strawberry_disease" checked="checked">
+                                <label class="form-check-label" for="inlineRadio1">딸기</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">금실</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option2">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="tomato_disease">
                                 <label class="form-check-label" for="inlineRadio3">토마토</label>
                             </div>
                         </div>
@@ -81,10 +77,9 @@
 
                 </div>
                 <div class="col-md-6">
-                    <div class="h-100 p-5 bg-light border rounded-3">
+                    <div class="h-100 p-5 bg-light border rounded-3" id="result">
                         <h2>결과보기</h2>
-                        <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
-                        <button class="btn btn-outline-secondary" type="button">Example button</button>
+                        
                     </div>
                 </div>
             </div>
