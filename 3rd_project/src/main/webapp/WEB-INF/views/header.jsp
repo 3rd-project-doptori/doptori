@@ -234,8 +234,15 @@
             socket.emit('READY');
 		});
 		
+		
 		socket.on('REFUSED',function(){
-			alert('상대가 이미 다른 대화에 참여중입니다');		
+			alert('상대가 이미 다른 대화에 참여중입니다. 메세지 기록만 남습니다.');
+			$('.chat-popup').toggleClass("active");
+            if(try_num==0){
+            	$(".footer").append("<button id='reserve_btn' onclick='set_reserve()'>예약</button>");
+            	try_num =1;
+            }
+            socket.emit('READY');
 		});
 
 
