@@ -374,7 +374,7 @@ public class BoardController {
 		
 		mapper.boardInsert(vo);
 
-		return "redirect:/QnA_List.do";
+		return "redirect:/QnA_List2.do";
 	}
 	
 	@RequestMapping("/boardInsertForm2.do")
@@ -567,7 +567,7 @@ public class BoardController {
 
 		mapper.boardUpdate(vo);
 
-		return "redirect:QnA_List.do";
+		return "redirect:QnA_List2.do";
 	}
 	@PostMapping("/noticeUpdate.do")
 	public String noticeUpdate(Board vo) {
@@ -590,7 +590,7 @@ public class BoardController {
 
 		mapper.boardDelete(bd_num);
 
-		return "redirect:/QnA_List.do";
+		return "redirect:/QnA_List2.do";
 	}
 	
 	@RequestMapping("/noticeDelete.do/{bd_num}")
@@ -696,7 +696,7 @@ public class BoardController {
 	        return "redirect:/boardContent.do/" + cvo.getCo_bd_num(); // 댓글이 등록된 게시물 페이지로 이동
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	        return "redirect:/QnA_List.do";
+	        return "redirect:/QnA_List2.do";
 	    }
 	}
 	
