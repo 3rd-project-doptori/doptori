@@ -125,11 +125,19 @@
                             </tr>
                             <tr>
                                 <th class="text-center" scope="row">가격</th>
-                                <td id ="re_price">20000원</td>
+
+                                <td>₩</td>
+
+                                <td id ="re_price">20,000원</td>
+
                             </tr>
                             <tr>
                                 <th class="text-center" scope="row">상세정보</th>
+
+                                <td>상세정보</td>
+
                                 <td id = "re_memo">당도가 높음</td>
+
                             </tr>
                             </tbody>
                         </table>
