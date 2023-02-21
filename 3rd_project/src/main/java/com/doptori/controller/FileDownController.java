@@ -20,7 +20,7 @@ public class FileDownController {
         //String path =  request.getSession().getServletContext().getRealPath("저장경로");
         
         String bd_pic = request.getParameter("bd_pic");
-        String realBd_pic = "C:\\Users\\user\\git\\doptori\\3rd_project\\src\\main\\webapp\\resources\\images";
+        String realBd_pic = "";
         System.out.println(bd_pic);
          
         try {
@@ -36,7 +36,7 @@ public class FileDownController {
         } catch (UnsupportedEncodingException ex) {
             System.out.println("UnsupportedEncodingException");
         }
-        realBd_pic = "C:\\Users\\user\\git\\doptori\\3rd_project\\src\\main\\webapp\\resources\\images";// + bd_pic;
+        realBd_pic = "C:\\Users\\user\\git\\doptori\\3rd_project\\src\\main\\webapp\\resources\\images\\" + bd_pic;
         System.out.println(realBd_pic);
         File file1 = new File(realBd_pic);
         if (!file1.exists()) {
