@@ -25,11 +25,68 @@
     <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
     <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
-    
-    <!-- Custom styles for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="${cpath}/resources/css/market_detail.css">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap">
+    <script>
+    	var my_num = Number('${loginMember.getMb_num()}');
+	    var try_num = 0;
+	    
+		function start_chat(){
+			var your_num = 1; //상대방의 회원번호. 여기에서는 임의로 넣음
+			if(my_num==your_num){
+				alert("자기 자신과는 채팅할 수 없습니다!");		
+			}else{
+				var who = new Object();
+	            who.my_num = my_num;
+	            who.your_num = your_num;
+	            socket.emit('START',who);
+			}
+		}
+       
+		
+		function set_reserve(){
+			var text = "<div class='bubble my-bubble'>예약 장소 : <input type='text' id='re_place'><br>";
+			text +="예약 시간 : <input type='date' id='re_selldate'><br>";
+			text += "<button onclick='reserve()'>예약 신청</button></div>"
+			$("#chat-box").append(text);
+		}
+		
+		function reserve(){
+			
+			var info = new Object();
+			//게시판 번호
+			info.re_bd_num = 44;
+			
+			//re_cp_name이 딸기면 re_cp_num이 1 아니면 토마토인데 토마토의 경우 2
+			var re_cp_name = document.getElementById('re_cp_name').innerHTML;
+			info.re_cp_num = 1;
+			if(re_cp_name!="딸기"){
+				info.re_cp_num = 2;
+			}
+			
+			//td 안에 있는 값 가져와서 숫자만 추출하기
+			const regex = /[^0-9]/g;
+			info.re_weight = Number(document.getElementById('re_weight').innerHTML.replace(regex, ""));
+			info.re_price = Number(document.getElementById('re_price').innerHTML.replace(regex, ""));
+			
+			info.re_memo = document.getElementById('re_memo').innerHTML;
+			info.re_place = $("#re_place").val();
+			info.re_selldate = $("#re_selldate").val();
+			socket.emit('RESERVE',info);
+			
+            var text = "<div class='bubble my-bubble'>"+"예약 신청을 보냈습니다."+"</div>"
+            $("#chat-box").append(text);
+            
+            var data = new Object();
+            data.message = "예약 신청을 보냈습니다.";
+            socket.emit('SEND',data)
+		}
+		
+		
+    </script>
+    
+    
 </head>
   <body>
     <div class="container py-4">
@@ -49,30 +106,30 @@
                 </div>
                 <div class="d-md-flex justify-content-md-center">
                     <button class="btn btn-sm btn-outline-secondary me-md-2" type="button">판매중</button>
-                    <button class="btn login" type="button">채팅하기</button>
+                    <button class="btn login" type="button" onclick="start_chat()">채팅하기</button>
                 </div>
             </div>
             <div class="col-md-7">
                 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                     <div class="col p-4 d-flex flex-column position-static">
-                        <table class="table">
+                        <table class="table" id="info">
                             <tr>
                                 <th class="text-center" scope="col" width="25%">상품명</th>
-                                <td scope="col">딸기</td>
+                                <td scope="col" id="re_cp_name">딸기</td>
 
                             </thead>
                             <tbody class="text-start">
                             <tr>
                                 <th class="text-center" scope="row">중량</th>
-                                <td>2kg</td>
+                                <td id="re_weight">2kg</td>
                             </tr>
                             <tr>
                                 <th class="text-center" scope="row">가격</th>
-                                <td>\ 가격을 입력해주세요</td>
+                                <td id ="re_price">20000원</td>
                             </tr>
                             <tr>
                                 <th class="text-center" scope="row">상세정보</th>
-                                <td>1</td>
+                                <td id = "re_memo">당도가 높음</td>
                             </tr>
                             </tbody>
                         </table>
@@ -118,5 +175,6 @@
             </div>
         </section> -->
     </div>
+      
   </body>
 </html>
