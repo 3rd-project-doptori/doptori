@@ -98,16 +98,16 @@
                   </tr>
               </thead>
               <tbody class="table-group-divider">
-                  <c:forEach items="${noticelist}" var="vo2" varStatus="status">
-				        <c:url var="contentlink" value="/boardContent.do/${vo2.bd_num}" />
-				        <c:set var="vo2_indexed" value="${noticelist[noticelist.size() - status.count]}" />
-				        <tr>   
-				            <th scope="row">${noticelist.size() - status.count + 1}</th>
-				            <td>${vo2_indexed.mb_nick}</td>
-				            <td><a href="${contentlink}">${vo2_indexed.bd_title}</a></td>
-				            <td>${vo2_indexed.bd_date}</td>
-				        </tr>
-				    </c:forEach>
+                  <c:forEach items="${noticelist}" var="vo" varStatus="status">
+					    <c:set var="vo_indexed" value="${noticelist[noticelist.size() - status.count]}" />
+					    <tr>   
+					        <th scope="row">${noticelist.size() - status.count + 1}</th>
+					        <td>${vo_indexed.mb_nick}</td>
+					        <c:url var="contentlink" value="/boardContent.do/${vo_indexed.bd_num}" />
+					        <td><a href="${contentlink}">${vo_indexed.bd_title}</a></td>
+					        <td>${vo_indexed.bd_date}</td>
+					    </tr>
+					</c:forEach>
               </tbody>
               <tfoot>
              <!-- 페이징 -->
@@ -220,15 +220,15 @@
               </thead>
               <tbody class="table-group-divider">
                   <c:forEach items="${qnalist}" var="vo" varStatus="status">
-				        <c:url var="contentlink" value="/boardContent.do/${vo.bd_num}" />
-				        <c:set var="vo_indexed" value="${qnalist[qnalist.size() - status.count]}" />
-				        <tr>   
-				            <th scope="row">${qnalist.size() - status.count + 1}</th>
-				            <td>${vo_indexed.mb_nick}</td>
-				            <td><a href="${contentlink}">${vo_indexed.bd_title}</a></td>
-				            <td>${vo_indexed.bd_date}</td>
-				        </tr>
-				    </c:forEach>
+					    <c:set var="vo_indexed" value="${qnalist[qnalist.size() - status.count]}" />
+					    <tr>   
+					        <th scope="row">${qnalist.size() - status.count + 1}</th>
+					        <td>${vo_indexed.mb_nick}</td>
+					        <c:url var="contentlink" value="/boardContent.do/${vo_indexed.bd_num}" />
+					        <td><a href="${contentlink}">${vo_indexed.bd_title}</a></td>
+					        <td>${vo_indexed.bd_date}</td>
+					    </tr>
+					</c:forEach>
               </tbody>
               <tfoot>
              <!-- 페이징 -->

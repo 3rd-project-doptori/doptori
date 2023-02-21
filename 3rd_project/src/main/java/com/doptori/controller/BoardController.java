@@ -1,7 +1,9 @@
 package com.doptori.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -500,17 +502,43 @@ public class BoardController {
 	
 	
 	@RequestMapping("/boardContent.do/{bd_num}")
-	public String boardContent(@PathVariable("bd_num") int bd_num, Model model, @RequestParam(value = "co_bd_num", defaultValue = "0") int co_bd_num) {
+	public String boardContent(@PathVariable("bd_num") int bd_num, Model model, HttpServletRequest request, @RequestParam(value = "co_bd_num", defaultValue = "0") int co_bd_num) {
 	    Board vo;
 	    try {
 	    	vo = mapper.boardContent(bd_num);
 	        if (vo == null) {
 	            throw new Exception("해당 게시물이 존재하지 않습니다.");
 	        }
+	        
 	        //조회수 출력
 	        mapper.boardCount(bd_num);
 	        
+	        // 댓글 목록 출력!
 	        List<Comment> list = mapper.commentSelect(co_bd_num);
+	        
+	        for (Comment cvo : list) {
+	            // 댓글 작성자의 프로필 사진 추가
+	            Member co_writer = mapper.getMember(cvo.getCo_mb_num());
+	            if (co_writer != null) {
+	                String fileName = co_writer.getMb_pic();
+	                String realPath = "C:\\Users\\user\\git\\doptori\\3rd_project\\src\\main\\webapp\\resources\\images\\" + fileName;
+	                File file = new File(realPath);
+	                if(file.exists()) {
+	                    try {
+	                        InputStream inputStream = new FileInputStream(file);
+	                        byte[] bytes = new byte[(int) file.length()];
+	                        inputStream.read(bytes);
+	                        String base64 = new String(Base64.getEncoder().encode(bytes));
+	                        String mb_pic_path = "data:image/jpeg;base64," + base64;
+	                        cvo.setMb_pic(mb_pic_path);
+	                        inputStream.close();
+	                    } catch (IOException e) {
+	                        e.printStackTrace();
+	                    }
+	                }
+	            }
+	        }
+	        
 	        if (co_bd_num != 0) {
 	            model.addAttribute("co_bd_num", co_bd_num);
 	        }
@@ -521,15 +549,33 @@ public class BoardController {
 	            vo.setMb_nick(writer.getMb_nick());
 	        }
 	        	 
-	        // Board 작성자의 mb_pic(프롶릴 사진) 추가
+	        // Board 작성자의 mb_pic(프로필 사진) 추가
 	        Member mb_pic = mapper.getMember(vo.getBd_mb_num());
 	        if (mb_pic != null) {
-	            vo.setMb_pic(mb_pic.getMb_pic());
+	            String fileName = mb_pic.getMb_pic();
+	            // 저장된 경로 설정
+	            String realPath = "C:\\Users\\user\\git\\doptori\\3rd_project\\src\\main\\webapp\\resources\\images\\" + fileName;
+	            // 파일을 불러와서 Base64 인코딩하여 model에 추가
+	            File file = new File(realPath);
+	            if(file.exists()) {
+	                InputStream inputStream = new FileInputStream(file);
+	                byte[] bytes = new byte[(int) file.length()];
+	                inputStream.read(bytes);
+	                String base64 = new String(Base64.getEncoder().encode(bytes));
+	                String mb_pic_path = "data:image/jpeg;base64," + base64;
+	                vo.setMb_pic(mb_pic_path);
+	                inputStream.close();
+	            }
 	        }
 	        
 	        model.addAttribute("vo", vo);
 	        model.addAttribute("list", list);
 	       
+	        // 작성자의 프로필 사진 추가
+	        if (vo.getMb_pic() != null) {
+	            model.addAttribute("mb_pic", vo.getMb_pic());
+	        }
+	        
 	        // 파일 이미지 출력을 위한 코드
 	        if (vo.getBd_pic() != null) {
 	            String bd_pic = vo.getBd_pic();

@@ -184,15 +184,14 @@ $('#comment-form').submit(function(event) {
                 <!-- Single comment-->
                 <div class="d-flex mb-4"> 
                 
-			          <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+			          <div class="flex-shrink-0"></div>
 			          <div class="ms-3">
 			          <ol>	
 			      <c:forEach var="cvo" items="${list}" >
 			          	<li>
-			          	<div class="fw-bold">${cvo.mb_nick}</div>
-			          				${cvo.co_cont}
+			          	<div class="fw-bold"><img src="${cpath}/resources/images/${cvo.mb_pic}" alt="..." style="width: 3rem;"/>${cvo.mb_nick}</div>
+			          				${cvo.co_cont}<span>ㅤㅤㅤㅤㅤㅤ</span>
 			           				${cvo.co_date}
-			           				
 			          <c:if test="${cvo.co_mb_num eq loginMember.mb_num || loginMember.mb_id=='admin'}">
 					  	  <a href="javascript:void(0);" onclick="deleteComment(${cvo.co_num}, ${vo.bd_num});">
 						  	<button type="button" class="btn btn-info btn-sm">삭제</button>

@@ -11,6 +11,7 @@ public class Comment {
 	private	String co_date;
 	
 	private	String mb_nick;
+	private	String mb_pic;
 	
 	// getter, setter 만들기
 	public int getCo_num() {
@@ -48,6 +49,12 @@ public class Comment {
 	}
 	public void setMb_nick(String mb_nick) {
 		this.mb_nick = mb_nick;
+	}
+	public String getMb_pic() {
+		return mb_pic;
+	}
+	public void setMb_pic(String mb_pic) {
+		this.mb_pic = mb_pic;
 	}
 	
 	
