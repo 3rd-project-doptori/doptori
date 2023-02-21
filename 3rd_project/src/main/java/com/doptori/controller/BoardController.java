@@ -46,7 +46,7 @@ public class BoardController {
 	// public void boardListFrom() {}
 
 	@RequestMapping("/market.do")
-	public String TradeList(Model model, HttpServletRequest request) {
+	public String Market(Model model, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		Member loginMember = (Member) session.getAttribute("loginMember");
@@ -125,6 +125,18 @@ public class BoardController {
 
 		
 		return "market";
+	}
+	
+	@RequestMapping("/QnA_List2.do")
+	public String qnalist(Model model, HttpServletRequest request) {	
+		HttpSession session = request.getSession();
+		Member loginMember = (Member) session.getAttribute("loginMember");
+		
+		List<Board> qnalist = mapper.qnalist(loginMember.getMb_num());
+		List<Board> noticelist = mapper.noticelist();
+		model.addAttribute("qnalist", qnalist);
+		model.addAttribute("noticelist", noticelist);
+		return "QnA_List2";
 	}
 	
 	@RequestMapping("/QnA_List.do")

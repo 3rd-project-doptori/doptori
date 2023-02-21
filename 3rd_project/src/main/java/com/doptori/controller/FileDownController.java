@@ -20,7 +20,7 @@ public class FileDownController {
         //String path =  request.getSession().getServletContext().getRealPath("저장경로");
         
         String bd_pic = request.getParameter("bd_pic");
-        String realBd_pic = "";
+        String realBd_pic = "C:\\Users\\user\\git\\doptori\\3rd_project\\src\\main\\webapp\\resources\\images";
         System.out.println(bd_pic);
          
         try {

@@ -103,5 +103,11 @@
       select ceil(count(*)/#{param1}) from Board <!-- sql문 ceil함수 사용 -->
     </select>
 
+     <select id="qnalist" parameterType="int" resultType="com.doptori.entity.Board">
+    select Member.*, Board.* from Member INNER JOIN Board ON Member.mb_num = Board.bd_mb_num where bd_mb_num=#{bd_mb_num} and bd_type=2
+  	</select>
   
+      <select id="noticelist" parameterType="int" resultType="com.doptori.entity.Board">
+    select Member.*, Board.* from Member INNER JOIN Board ON Member.mb_num = Board.bd_mb_num where bd_mb_num=10 and bd_type=1
+  	</select>
 </mapper>

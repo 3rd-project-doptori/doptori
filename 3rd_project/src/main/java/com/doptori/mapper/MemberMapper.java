@@ -26,7 +26,7 @@ public interface MemberMapper {
 
 	
 	// 회원탈퇴
-	public void userDelete(Member mvo);
+	public int userDelete(Member mvo);
 	// 회원탈퇴 시 비밀번호 확인
 	public int passChk(Member vo);
 
