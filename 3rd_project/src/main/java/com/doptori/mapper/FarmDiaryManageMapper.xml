@@ -15,9 +15,24 @@
   	values(#{fdm_mb_num},#{fdm_type},#{fdm1_ad_num},#{fdm2_item},#{fdm2_kind},#{fdm2_culture_area},#{fdm2_contract},#{fdm2_target})
   </insert>
   
+  <insert id="FarmDiaryManageInsert3" parameterType="com.doptori.entity.farmdiary_manage">
+  	insert into farmdiary_manage (fdm_mb_num, fdm_type, fdm5_man_name, fdm5_man_phone, fdm5_man_ability, fdm5_man_cost, fdm5_man_memo)
+  	values(#{fdm_mb_num},#{fdm_type},#{fdm5_man_name},#{fdm5_man_phone},#{fdm5_man_ability},#{fdm5_man_cost},#{fdm5_man_memo})
+  </insert>
+  
   <insert id="FarmDiaryManageInsert4" parameterType="com.doptori.entity.farmdiary_manage">
   	insert into farmdiary_manage (fdm_mb_num, fdm_type, fdm4_edu_start, fdm4_edu_end, fdm4_edu_name, fdm4_edu_place, fdm4_edu_cont, fdm4_edu_pic, fdm4_edu_file)
   	values(#{fdm_mb_num},#{fdm_type},#{fdm4_edu_start},#{fdm4_edu_end},#{fdm4_edu_name},#{fdm4_edu_place},#{fdm4_edu_cont},#{fdm4_edu_pic},#{fdm4_edu_file})
+  </insert>
+  
+  <insert id="FarmDiaryManageInsert5" parameterType="com.doptori.entity.farmdiary_manage">
+  	insert into farmdiary_manage (fdm_mb_num, fdm_type, fdm3_fertilizer, fdm3_fertilizer_kind, fdm3_pesticide, fdm3_pesticide_kind)
+  	values(#{fdm_mb_num},#{fdm_type},#{fdm3_fertilizer},#{fdm3_fertilizer_kind},#{fdm3_pesticide},#{fdm3_pesticide_kind})
+  </insert>
+  
+  <insert id="FarmDiaryManageInsert6" parameterType="com.doptori.entity.farmdiary_manage">
+  	insert into farmdiary_manage (fdm_mb_num, fdm_type, fdm6_account, fdm6_represent, fdm6_regi_num, fdm6_phone, fdm6_address, fdm6_sectors, fdm6_business)
+  	values(#{fdm_mb_num},#{fdm_type},#{fdm6_account},#{fdm6_represent},#{fdm6_regi_num},#{fdm6_phone},#{fdm6_address},#{fdm6_sectors},#{fdm6_business})
   </insert>
   
   <select id="FarmDiaryManageList" parameterType="int" resultType="com.doptori.entity.farmdiary_manage">
@@ -29,7 +44,23 @@
   </select>
   
   <select id="FarmDiaryManageList4" parameterType="int" resultType="com.doptori.entity.farmdiary_manage">
-  	select * from farmdiary_manage where fdm_mb_num=#{mb_num} and fdm_type=4;
+  	select fdm_num, fdm_type, fdm_mb_num, DATE_FORMAT(fdm4_edu_start,'%Y-%m-%d')as fdm4_edu_start, DATE_FORMAT(fdm4_edu_end,'%Y-%m-%d')as fdm4_edu_end, fdm4_edu_name, fdm4_edu_place, fdm4_edu_cont, fdm4_edu_pic, fdm4_edu_file from farmdiary_manage where fdm_mb_num=#{mb_num} and fdm_type=4;
+  </select>
+  
+  <select id="FarmDiaryManageList3" parameterType="int" resultType="com.doptori.entity.farmdiary_manage">
+  	select * from farmdiary_manage where fdm_mb_num=#{mb_num} and fdm_type=3;
+  </select>
+  
+  <select id="FarmDiaryManageList5" parameterType="int" resultType="com.doptori.entity.farmdiary_manage">
+	select * from farmdiary_manage where fdm_mb_num=#{mb_num} and fdm_type=5;
+  </select>
+  
+  <select id="FarmDiaryManageList6" parameterType="int" resultType="com.doptori.entity.farmdiary_manage">
+	select * from farmdiary_manage where fdm_mb_num=#{mb_num} and fdm_type=6;
+  </select>
+  
+  <select id="FarmDiaryManageList7" parameterType="int" resultType="com.doptori.entity.farmdiary_manage">
+	select Analysis.*, farmdiary_manage.* from Analysis INNER JOIN farmdiary_manage ON Analysis.an_num = farmdiary_manage.fdm7_an_num where fdm_mb_num=#{mb_num} and fdm_type=7;
   </select>
   
   <delete id="farmdiarydelete" parameterType="int">
@@ -40,7 +71,23 @@
       update farmdiary_manage set fdm1_ad_num=#{fdm1_ad_num}, fdm1_detail_address=#{fdm1_detail_address}, fdm1_lot_area=#{fdm1_lot_area}, fdm1_actual_area=#{fdm1_actual_area}, fdm1_idle_area=#{fdm1_idle_area}, fdm1_soil_check=#{fdm1_soil_check} where fdm_num=#{fdm_num}
   </update>
   
-   <update id="FarmDiaryManageUpdate2" parameterType="com.doptori.entity.farmdiary_manage">
+  <update id="FarmDiaryManageUpdate2" parameterType="com.doptori.entity.farmdiary_manage">
       update farmdiary_manage set fdm1_ad_num=#{fdm1_ad_num}, fdm2_item=#{fdm2_item}, fdm2_kind=#{fdm2_kind}, fdm2_culture_area=#{fdm2_culture_area}, fdm2_contract=#{fdm2_contract}, fdm2_target=#{fdm2_target} where fdm_num=#{fdm_num}
+  </update>
+  
+  <update id="FarmDiaryManageUpdate4" parameterType="com.doptori.entity.farmdiary_manage">
+      update farmdiary_manage set fdm4_edu_start=#{fdm4_edu_start}, fdm4_edu_end=#{fdm4_edu_end}, fdm4_edu_name=#{fdm4_edu_name}, fdm4_edu_place=#{fdm4_edu_place}, fdm4_edu_cont=#{fdm4_edu_cont}, fdm4_edu_pic=#{fdm4_edu_pic}, fdm4_edu_file=#{fdm4_edu_file} where fdm_num=#{fdm_num} 
+  </update>
+  
+  <update id="FarmDiaryManageUpdate3" parameterType="com.doptori.entity.farmdiary_manage">
+      update farmdiary_manage set fdm5_man_name=#{fdm5_man_name}, fdm5_man_phone=#{fdm5_man_phone}, fdm5_man_ability=#{fdm5_man_ability}, fdm5_man_cost=#{fdm5_man_cost}, fdm5_man_memo=#{fdm5_man_memo} where fdm_num=#{fdm_num} 
+  </update>
+  
+  <update id="FarmDiaryManageUpdate5" parameterType="com.doptori.entity.farmdiary_manage">
+      update farmdiary_manage set fdm3_fertilizer=#{fdm3_fertilizer}, fdm3_fertilizer_kind=#{fdm3_fertilizer_kind}, fdm3_pesticide=#{fdm3_pesticide}, fdm3_pesticide_kind=#{fdm3_pesticide_kind} where fdm_num=#{fdm_num} 
+  </update>
+  
+  <update id="FarmDiaryManageUpdate6" parameterType="com.doptori.entity.farmdiary_manage">
+      update farmdiary_manage set fdm6_account=#{fdm6_account}, fdm6_represent=#{fdm6_represent}, fdm6_regi_num=#{fdm6_regi_num}, fdm6_phone=#{fdm6_phone}, fdm6_address=#{fdm6_address}, fdm6_sectors=#{fdm6_sectors}, fdm6_business=#{fdm6_business} where fdm_num=#{fdm_num} 
   </update>
 </mapper>

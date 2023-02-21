@@ -50,6 +50,21 @@
 						data-bs-toggle="pill" data-bs-target="#pills-people" type="button"
 						role="tab" aria-controls="pills-people" aria-selected="false">인력관리</button>
 				</li>
+				<li class="nav-item col-auto" role="presentation">
+					<button class="nav-link" id="pills-one-tab"
+						data-bs-toggle="pill" data-bs-target="#pills-one" type="button"
+						role="tab" aria-controls="pills-one" aria-selected="false">비료관리</button>
+				</li>
+				<li class="nav-item col-auto" role="presentation">
+					<button class="nav-link" id="pills-two-tab"
+						data-bs-toggle="pill" data-bs-target="#pills-two" type="button"
+						role="tab" aria-controls="pills-two" aria-selected="false">거래처관리</button>
+				</li>
+				<li class="nav-item col-auto" role="presentation">
+					<button class="nav-link" id="pills-three-tab"
+						data-bs-toggle="pill" data-bs-target="#pills-three" type="button"
+						role="tab" aria-controls="pills-three" aria-selected="false">분석관리</button>
+				</li>
 			</ul>
 			<div class="tab-content text-center container top"
 				id="pills-tabContent">
@@ -105,9 +120,9 @@
 													<th scope="row">필지주소</th>
 													<td><input type="hidden" class="form-control" name="fdm_type" id="fdm_type" value="3">
 													<select id="selectbox" class="area"
-														placeholder="지역" onchange="changeSelect()"></select> <select
+														placeholder="지역" onchange="changeSelect()" required></select> <select
 														id="selectNextbox" name="fdm1_ad_num" class="area2"
-														placeholder="지역"></select></td>
+														placeholder="지역" required></select></td>
 												</tr>
 												<tr class="color">
 													<th scope="row">세부주소</th>
@@ -122,7 +137,7 @@
 												<tr>
 													<th scope="row">필지면적</th>
 													<td><input type="text" class="form-control"
-														name="fdm1_lot_area" id="fdm1_lot_area" placeholder="필지면적">
+														name="fdm1_lot_area" id="fdm1_lot_area" placeholder="필지면적" required>
 													</td>
 												</tr>
 												<tr>
@@ -141,6 +156,7 @@
 													<th scope="row">토양점검 여부</th>
 													<td>
 														<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="1" checked> 예
+														&emsp;&emsp;
 														<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="0" > 아니오
 													</td>
 												</tr>
@@ -185,6 +201,1184 @@
 													<span>${vo.ad_dong}</span>
 													<span>${vo.ad_ri}</span>
 													<span>${vo.fdm1_detail_address}</span>
+												</div>
+												<div class="anw" align="center">
+													<form action="${cpath}/FarmDiaryManageUpdate.do" method="post">
+														<input type="hidden" class="form-control" name="fdm_num" id="fdm_num"  value="${vo.fdm_num}">
+														<table>
+															<tr>
+																<th scope="row" rowspan="2"><P>필지 주소 : </P></th>
+																<td><span>
+																<select id="selectbox" class="area" placeholder="지역">
+																<c:forEach items="${gugunmodelList}" var="vo3">
+																	<option value="${vo3.ad_gugun}" <c:if test ="${vo3.ad_gugun eq vo.ad_gugun}">selected="selected"</c:if>>${vo3.ad_gugun}</option>
+																</c:forEach>
+																</select></span>
+																<span><select id="selectNextbox" name="fdm1_ad_num" class="area2">
+																<c:forEach items="${dongmodelList}" var="vo4">
+																	<option value="${vo4.ad_num}" <c:if test ="${vo4.ad_dong eq vo.ad_dong}">selected="selected"</c:if>>${vo4.ad_dong}</option>
+																</c:forEach>
+																</select></span>
+																</td>
+																<td></td>
+															</tr>
+															<tr>
+																<td><p><input type="text" class="form-control" name="fdm1_detail_address" id="fdm1_detail_address" placeholder="세부 주소" value="${vo.fdm1_detail_address}">
+																</P></td>
+																<td></td>
+															</tr>
+															<tr>
+																<th scope="row"><P>필지 면적 : </P></th>
+																<td><P><input type="text" class="form-control"
+														name="fdm1_lot_area" id="fdm1_lot_area" placeholder="필지 면적" value="${vo.fdm1_lot_area}"></P></td>
+																<td><P>m<sup>2</sup></P></td>
+															</tr>
+															<tr>
+																<th scope="row"><P>실재배 면적 : </P></th>
+																<td><P><input type="text" class="form-control"
+														name="fdm1_actual_area" id="fdm1_actual_area" placeholder="실재배 면적" value="${vo.fdm1_actual_area}"></P></td>
+																<td><P>m<sup>2</sup></P></td>
+															</tr>
+															<tr>
+																<th scope="row"><P>유휴 면적 : </P></th>
+																<td><P><input type="text" class="form-control"
+														name="fdm1_idle_area" id="fdm1_idle_area" placeholder="유휴 면적" value="${vo.fdm1_idle_area}"></P></td>
+																<td><P>m<sup>2</sup></P></td>
+															</tr>
+															<tr>
+																<th scope="row"><P>토양점검 여부 : </P></th>															
+																<c:choose>
+																	<c:when test="${vo.fdm1_soil_check==1}">
+																		<td colspan="2" align="center"><p>
+																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="1" checked> 예
+																			&emsp;&emsp;
+																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="0" > 아니오
+																		</p></td>
+																	</c:when>
+																	<c:otherwise>
+																		<td colspan="2" align="center"><p>
+																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="1" > 예
+																			&emsp;&emsp;
+																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="0" checked> 아니오
+																		</p></td>
+																	</c:otherwise>
+																</c:choose>
+															</tr>				
+														</table>
+														<table>
+														<tr>
+														<td colspan="3">
+														<button class='btn btn-secondary btn-sm' type="submit">수정</button>
+														<button class='btn btn-outline-secondary' onclick="goDel(${vo.fdm_num})">삭제</button>
+														</td>
+														</tr>
+														</table>
+													</form>
+												</div>
+											</c:forEach>
+												
+											</div>
+
+										</div>
+									</div>
+									<!-- end card -->
+								</div>
+								<!-- end col -->
+
+
+								<!-- end col -->
+							</div>
+							<!-- end row -->
+						</div>
+						<!-- end container -->
+					</section>
+					<!-- ========== section end ========== -->
+
+				</div>
+
+				<!-- 품목관리 -->
+				<div class="tab-pane fade" id="pills-profile" role="tabpanel"
+					aria-labelledby="pills-profile-tab">
+					<div class="row bg-light">
+						<form class="row p-3 gx-3 justify-content-center">
+							<div class="col-auto">
+								<select class="form-select" id="autoSizingSelect">
+									<option selected>주소</option>
+									<option value="1">One</option>
+									<option value="2">Two</option>
+									<option value="3">Three</option>
+								</select>
+							</div>
+							<div class="col-5">
+								<input type="text" class="form-control input-group"
+									id="autoSizingInput" placeholder="검색어를 입력하세요">
+							</div>
+							<div class="col-auto">
+								<button type="submit" class="btn btn-primary">검색</button>
+							</div>
+						</form>
+					</div>
+
+					<!-- 모달 -->
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
+						<button class="btn btn-primary" data-bs-toggle="modal"
+							data-bs-target="#품목관리" data-bs-whatever="@management">등록</button>
+					</div>
+					<div class="modal fade modal-lg" id="품목관리" tabindex="-1"
+						aria-labelledby="품목관리" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h1 class="modal-title fs-5">픔목관리</h1>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<form class="form-horizontal"
+									action="${cpath}/FarmDiaryManage2.do" method="post">
+									<input type="hidden" class="form-control" name="fdm_mb_num"
+										id="fdm_mb_num" value="${loginMember.mb_num}">
+									<div class="modal-body">
+										<table class="table table-bordered">
+											<colgroup>
+												<col width="18%">
+												<col>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th scope="row">필지주소</th>
+													<td><input type="hidden" class="form-control" name="fdm_type" id="fdm_type" value="2">
+													<select id="selectbox2" class="form-control"
+														name="fdm1_ad_num" id="fdm1_ad_num" required>
+														<c:forEach items="${list}" var="vo">
+														<c:set var="cnt2" value="${cnt2+1}" />
+															<option value="${vo.fdm1_ad_num}">${cnt2}. ${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri} ${vo.fdm1_detail_address}</option>												
+														</c:forEach>
+														</select></td>
+												</tr>
+												<tr class="color">
+													<th scope="row">품목</th>
+													<td><select id="selectbox3" class="form-control"
+														name="fdm2_item" id="fdm2_item" onchange="changeSelect()" required>
+															<option value="" >품목을 선택하세요.</option>
+															<option value="딸기">딸기</option>
+															<option value="토마토">토마토</option>
+															<option value="수박">수박</option>
+															<option value="참외">참외</option>
+															<option value="멜론">멜론</option>
+															<option value="파인애플">파인애플</option>
+													</select></td>
+												</tr>
+												<tr>
+													<th scope="row">품종</th>
+													<td><select id="selectbox3" class="form-control"
+														name="fdm2_kind" id="fdm2_kind" required>
+															<option value="">품종을 선택하세요.</option>
+															<option value="딸기">딸기</option>
+															<option value="토마토">토마토</option>
+															<option value="수박">수박</option>
+															<option value="참외">참외</option>
+															<option value="멜론">멜론</option>
+															<option value="파인애플">파인애플</option>
+													</select></td>
+												</tr>
+												<tr>
+													<th scope="row">재배면적</th>
+													<td><input type="text" class="form-control"
+														name="fdm2_culture_area" id="fdm2_culture_area"
+														placeholder="재배면적(㎡)" required></td>
+												</tr>
+												<tr>
+													<th scope="row">계약 재배 여부</th>
+													<td><input type="radio" class="form"
+														name="fdm2_contract" id="fdm2_contract" value="1">
+														예 <input type="radio" class="form"
+														name="fdm2_contract" id="fdm2_contract" value="0" checked>
+														아니오</td>
+												</tr>
+												<tr>
+													<th scope="row">목표생산량</th>
+													<td>
+														<div>
+															<input type="text" class="form-control"
+																name="fdm2_target" id="fdm2_target" placeholder="목표생산량(kg)">
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary"
+											data-bs-dismiss="modal">Close</button>
+										<button type="submit" class="btn btn-primary">등록하기</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+					<!-- 확인하기 -->
+					<!-- ========== section start ========== -->
+					<section class="section">
+						<div class="container-fluid">
+							<div class="row ">
+								<div class="col-lg-7 top">
+									<div class="title-wrapper pt-30">
+										<div class="row text-start">
+											<div class="col-md-3">
+												<div class="title mb-30">
+													<h2>품목 목록</h2>
+												</div>
+											</div>
+										</div>
+										<!-- end row -->
+									</div>
+									<div class="card-style settings-card-1 mb-30">
+										<div class="profile-info">
+											<div id="Accordion_wrap">
+											<c:forEach items="${list2}" var="vo2">
+											<c:set var="cnt3" value="${cnt3+1}" />
+												<div class="que" align="left">
+													<span>필지 ${cnt3} : </span>
+													<span>${vo2.ad_sido}</span>
+													<span>${vo2.ad_gugun}</span>
+													<span>${vo2.ad_dong}</span>
+													<span>${vo2.ad_ri}</span>
+													<span>${vo2.fdm1_detail_address}</span>
+													<span>품목 : </span>
+													<span>${vo2.fdm2_item}</span>
+													<span>${vo2.fdm2_kind}</span>		
+												</div>
+												<div class="anw" align="center">
+													<form action="${cpath}/FarmDiaryManageUpdate2.do" method="post">
+														<input type="hidden" class="form-control" name="fdm_num" id="fdm_num"  value="${vo2.fdm_num}">
+														<table>
+															<tr>
+																<th scope="row"><P>필지 주소 : </P></th>
+																<td><p><select id="selectbox2" class="form-control"
+														name="fdm1_ad_num" id="fdm1_ad_num">
+														<c:forEach items="${list}" var="vo">
+														<c:set var="cnt4" value="${cnt4+1}" />
+															<option value="${vo.fdm1_ad_num}" <c:if test ="${vo2.fdm1_ad_num eq vo.fdm1_ad_num}">selected="selected"</c:if>>
+															${cnt4}. ${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri} ${vo.fdm1_detail_address}</option>												
+														</c:forEach>
+														</select></P></td>
+														<td></td>
+															</tr>
+															<tr>
+																<th scope="row"><P>품목 : </P></th>
+																<td><P><select id="selectbox3" class="form-control"
+														name="fdm2_item" id="fdm2_item" onchange="changeSelect()">
+															<option value="">품목을 선택하세요.</option>
+															<option value="딸기" <c:if test ="${vo2.fdm2_item == '딸기'}">selected="selected"</c:if>>딸기</option>
+															<option value="토마토" <c:if test ="${vo2.fdm2_item == '토마토'}">selected="selected"</c:if>>토마토</option>
+															<option value="수박" <c:if test ="${vo2.fdm2_item == '수박'}">selected="selected"</c:if>>수박</option>
+															<option value="참외" <c:if test ="${vo2.fdm2_item == '참외'}">selected="selected"</c:if>>참외</option>
+															<option value="멜론" <c:if test ="${vo2.fdm2_item == '멜론'}">selected="selected"</c:if>>멜론</option>
+															<option value="파인애플" <c:if test ="${vo2.fdm2_item == '파인애플'}">selected="selected"</c:if>>파인애플</option>
+													</select></P></td>
+													<td></td>
+															</tr>
+															<tr>
+																<th scope="row"><P>품종 : </P></th>
+																<td><P><select id="selectbox3" class="form-control"
+														name="fdm2_kind" id="fdm2_kind">
+															<option value="">품종을 선택하세요.</option>
+															<option value="딸기" <c:if test ="${vo2.fdm2_item == '딸기'}">selected="selected"</c:if>>딸기</option>
+															<option value="토마토" <c:if test ="${vo2.fdm2_item == '토마토'}">selected="selected"</c:if>>토마토</option>
+															<option value="수박" <c:if test ="${vo2.fdm2_item == '수박'}">selected="selected"</c:if>>수박</option>
+															<option value="참외" <c:if test ="${vo2.fdm2_item == '참외'}">selected="selected"</c:if>>참외</option>
+															<option value="멜론" <c:if test ="${vo2.fdm2_item == '멜론'}">selected="selected"</c:if>>멜론</option>
+															<option value="파인애플" <c:if test ="${vo2.fdm2_item == '파인애플'}">selected="selected"</c:if>>파인애플</option>
+													</select></P></td>
+													<td></td>
+															</tr>
+															<tr>
+																<th scope="row"><P>재배 면적 : </P></th>
+																<td><P><input type="text" class="form-control" name="fdm2_culture_area" id="fdm2_culture_area" placeholder="재배면적" value="${vo2.fdm2_culture_area}"></P>
+																</td>
+																<td><P>m<sup>2</sup></P></td>
+															</tr>
+															<tr>
+																<th scope="row"><P>계약재배 여부 : </P></th>												
+																<c:choose>
+																	<c:when test="${vo2.fdm2_contract==1}">
+																		<td align="center"><P><input type="radio" class="form" name="fdm2_contract" id="fdm2_contract" value="1" checked> 예
+																		&emsp;&emsp;
+																		<input type="radio" class="form" name="fdm2_contract" id="fdm2_contract" value="0" > 아니오</P></td>
+																		<td></td>
+																	</c:when>
+																	<c:otherwise>
+																		<td align="center"><P><input type="radio" class="form" name="fdm2_contract" id="fdm2_contract" value="1"> 예
+																		&emsp;&emsp;
+																		<input type="radio" class="form" name="fdm2_contract" id="fdm2_contract" value="0" checked> 아니오</P></td>
+																		<td></td>
+																	</c:otherwise>
+																</c:choose>
+															</tr>
+															<tr>
+																<th scope="row"><P>목표 생산량 : </P></th>
+																<td><P><input type="text" class="form-control" name="fdm2_target" id="fdm2_target" placeholder="목표생산량" value="${vo.fdm2_target}">${vo.fdm2_target}</P></td>
+																<td><P>kg</P></td>
+															</tr>
+
+														</table>
+														<table>
+														<tr>
+														<td colspan="3">
+														<button class='btn btn-secondary btn-sm' type="submit">수정</button>
+														<button class='btn btn-outline-secondary' onclick="goDel(${vo2.fdm_num})">삭제</button>
+														</td>
+														</tr>
+														</table>
+													</form>
+												</div>
+											</c:forEach>
+												
+											</div>
+
+										</div>
+									</div>
+									<!-- end card -->
+								</div>
+								<!-- end col -->
+
+
+								<!-- end col -->
+							</div>
+							<!-- end row -->
+						</div>
+						<!-- end container -->
+					</section>
+					<!-- ========== section end ========== -->
+				</div>
+
+
+
+				<!-- 교육관리 -->
+				<div class="tab-pane fade show" id="pills-contact"
+					role="tabpanel" aria-labelledby="pills-contact-tab">
+					<div class="row bg-light">
+						<form class="row p-3 gx-3 justify-content-center">
+							<div class="col-auto">
+								<select class="form-select" id="autoSizingSelect">
+									<option selected>주소</option>
+									<option value="1">One</option>
+									<option value="2">Two</option>
+									<option value="3">Three</option>
+								</select>
+							</div>
+							<div class="col-5">
+								<input type="text" class="form-control input-group"
+									id="autoSizingInput" placeholder="검색어를 입력하세요">
+							</div>
+							<div class="col-auto">
+								<button type="submit" class="btn btn-primary">검색</button>
+							</div>
+						</form>
+					</div>
+
+					<!-- 모달 -->
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
+						<button class="btn btn-primary" data-bs-toggle="modal"
+							data-bs-target="#교육관리" data-bs-whatever="@management">등록</button>
+					</div>
+					<div class="modal fade modal-lg" id="교육관리" tabindex="-1"
+						aria-labelledby="교육관리" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h1 class="modal-title fs-5">교육관리</h1>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<form class="form-horizontal"
+									action="${cpath}/FarmDiaryManage4.do" method="post" enctype="multipart/form-data">
+									<input type="hidden" class="form-control" name="fdm_mb_num" id="fdm_mb_num" value="${loginMember.mb_num}">
+									<input type="hidden" class="form-control" name="fdm_type" id="fdm_type" value="4">
+									<div class="modal-body">
+										<table class="table table-bordered">
+											<colgroup>
+												<col width="18%">
+												<col>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th scope="row">교육 일정</th>
+													<td colspan="2">
+														시작일 : <input type="date" class="form" name="fdm4_edu_start" id="fdm4_edu_start" required>
+													&emsp;
+														종료일 : <input type="date" class="form" name="fdm4_edu_end" id="fdm4_edu_end">
+													</td>
+												</tr>
+												<tr class="color">
+													<th scope="row">교육명</th>
+													<td colspan="2">
+															<input type="text" class="form-control" name="fdm4_edu_name" id="fdm4_edu_name" placeholder="교육명을 입력해주세요." required/>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">교육장소</th>
+													<td colspan="2">
+														<input type="text" class="form-control" name="fdm4_edu_place" id="fdm4_edu_place" placeholder="교육장소를 입력해주세요."/>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">교육내용</th>
+													<td colspan="2">
+													<textarea rows="2" cols="80" name="fdm4_edu_cont" id="fdm4_edu_cont" placeholder="교육내용을 입력해주세요." required></textarea>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">교육사진 첨부</th>
+													<td><input type="file" name="uploadFile"  multiple="multiple" onchange="previewImage(this)"/></td>
+													<td><img id="preview" style="width: 10rem;"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary"
+											data-bs-dismiss="modal">Close</button>
+										<button type="submit" class="btn btn-primary">등록하기</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+					<!-- 확인하기 -->
+					<!-- ========== section start ========== -->
+					<section class="section">
+						<div class="container-fluid">
+							<div class="row ">
+								<div class="col-lg-7 top">
+									<div class="title-wrapper pt-30">
+										<div class="row text-start">
+											<div class="col-md-3">
+												<div class="title mb-30">
+													<h2>교육 목록</h2>
+												</div>
+											</div>
+										</div>
+										<!-- end row -->
+									</div>
+									<div class="card-style settings-card-1 mb-30">
+										<div class="profile-info">
+											<div id="Accordion_wrap">
+											<c:forEach items="${list4}" var="vo4">
+											<c:set var="cnt5" value="${cnt5+1}" />
+												<div class="que" align="left">
+													<span>교육명 ${cnt5} : </span>
+													<span>${vo4.fdm4_edu_name}</span>	
+												</div>
+												<div class="anw" align="center">
+													<form action="${cpath}/FarmDiaryManageUpdate4.do" method="post" enctype="multipart/form-data">
+													<input type="hidden" class="form-control" name="fdm_num" id="fdm_num"  value="${vo4.fdm_num}">
+														<table>
+															<tr>
+																<th scope="row"><P>교육 일정 : </P></th>
+																<td align="center"><p>
+																	시작일 : <input type="date" class="form" name="fdm4_edu_start" id="fdm4_edu_start" value="${vo4.fdm4_edu_start}">
+																&emsp;
+																	종료일 : <input type="date" class="form" name="fdm4_edu_end" id="fdm4_edu_end" value="${vo4.fdm4_edu_end}">
+																</p></td>
+															</tr>
+															<tr>
+																<th scope="row"><P>교육명 : </P></th>
+																<td><P><input type="text" class="form-control"
+														name="fdm4_edu_name" id="fdm4_edu_name" placeholder="교육명" value="${vo4.fdm4_edu_name}"></P></td>
+															</tr>
+															<tr>
+																<th scope="row"><P>교육 장소 : </P></th>
+																<td><P><input type="text" class="form-control"
+														name="fdm4_edu_place" id="fdm4_edu_place" placeholder="교육 장소" value="${vo4.fdm4_edu_place}"></P></td>
+															</tr>
+															<tr>
+																<th scope="row"><P>교육 내용 : </P></th>
+																<td><P><textarea rows="5" cols="70" name="fdm4_edu_cont" id="fdm4_edu_cont" placeholder="교육내용을 입력해주세요.">${vo4.fdm4_edu_cont}</textarea></P></td>
+															</tr>
+															<tr>
+																<th scope="row" rowspan="2"><P>교육 사진 : </P></th>															
+																<td align="center">
+																	<P><img src="${cpath}/resources/images/${vo4.fdm4_edu_pic}" alt="" style="width: 7.5rem;"/></P>
+																</td>
+															</tr>
+																<tr>
+																	<td align="center"><P><input type="file" name="uploadFile"  multiple="multiple"/></P></td>
+																</tr>
+														</table>
+														<table>
+														<tr>
+														<td colspan="2">
+														<button class='btn btn-secondary btn-sm' type="submit">수정</button>
+														<button class='btn btn-outline-secondary' onclick="goDel(${vo4.fdm_num})">삭제</button>
+														</td>
+														</tr>
+														</table>
+													</form>
+												</div>
+											</c:forEach>
+												
+											</div>
+
+										</div>
+									</div>
+									<!-- end card -->
+								</div>
+								<!-- end col -->
+
+
+								<!-- end col -->
+							</div>
+							<!-- end row -->
+						</div>
+						<!-- end container -->
+					</section>
+					<!-- ========== section end ========== -->
+
+				</div>
+
+
+
+				<!-- 인력관리 -->
+				<div class="tab-pane fade" id="pills-people" role="tabpanel"
+					aria-labelledby="pills-people-tab">
+					<div class="row bg-light">
+						<form class="row p-3 gx-3 justify-content-center">
+							<div class="col-5">
+								<input type="text" class="form-control input-group"
+									id="autoSizingInput" placeholder="인력명을 입력하세요">
+							</div>
+							<div class="col-auto">
+								<button type="submit" class="btn btn-primary">검색</button>
+							</div>
+						</form>
+					</div>
+					
+					<!-- 모달 -->
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
+						<button class="btn btn-primary" data-bs-toggle="modal"
+							data-bs-target="#인력관리" data-bs-whatever="@management">등록</button>
+					</div>
+					<div class="modal fade modal-lg" id="인력관리" tabindex="-1"
+						aria-labelledby="인력관리" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h1 class="modal-title fs-5">인력관리</h1>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<form class="form-horizontal"
+									action="${cpath}/FarmDiaryManage3.do" method="post">
+									<input type="hidden" class="form-control" name="fdm_mb_num" id="fdm_mb_num" value="${loginMember.mb_num}">
+									<input type="hidden" class="form-control" name="fdm_type" id="fdm_type" value="3">
+									<div class="modal-body">
+										<table class="table table-bordered">
+											<colgroup>
+												<col width="18%">
+												<col>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th scope="row">인력명</th>
+													<td>
+														<input type="text" class="form-control" name="fdm5_man_name" id="fdm5_man_name" placeholder="인력명을 입력해주세요." required>
+													</td>
+													<td></td>
+												</tr>
+												<tr class="color">
+													<th scope="row">연락처</th>
+													<td>
+														<input type="text" class="form-control" name="fdm5_man_phone" id="fdm5_man_phone" placeholder="연락처를 입력해주세요.">
+													</td>
+													<td></td>
+												</tr>
+												<tr>
+													<th scope="row">작업능력</th>
+													<td>
+													<input type="radio" class="form" name="fdm5_man_ability" id="fdm5_man_ability" value="1">초급
+													&emsp;&emsp;&emsp;&emsp;
+													<input type="radio" class="form" name="fdm5_man_ability" id="fdm5_man_ability" value="2">중급
+													&emsp;&emsp;&emsp;&emsp;
+													<input type="radio" class="form" name="fdm5_man_ability" id="fdm5_man_ability" value="3">고급
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">시간당 인건비</th>
+													<td><input type='number' min='1000' max='1000000' step='1000' class="form-control" name="fdm5_man_cost" id="fdm5_man_cost" placeholder="시간당 인건비 (원)" required></td>
+												</tr>
+												<tr>
+													<th scope="row">메모</th>
+													<td>
+														<textarea rows="4" cols="80" name="fdm5_man_memo" id="fdm5_man_memo"></textarea>
+													</td>
+												</tr>
+												
+											</tbody>
+										</table>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary"
+											data-bs-dismiss="modal">Close</button>
+										<button type="submit" class="btn btn-primary">등록하기</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+					<!-- 확인하기 -->
+					<!-- ========== section start ========== -->
+					<section class="section">
+						<div class="container-fluid">
+							<div class="row ">
+								<div class="col-lg-7 top">
+									<div class="title-wrapper pt-30">
+										<div class="row text-start">
+											<div class="col-md-3">
+												<div class="title mb-30">
+													<h2>인력 목록</h2>
+												</div>
+											</div>
+										</div>
+										<!-- end row -->
+									</div>
+									<div class="card-style settings-card-1 mb-30">
+										<div class="profile-info">
+											<div id="Accordion_wrap">
+											<c:forEach items="${list3}" var="vo3">
+											<c:set var="cnt6" value="${cnt6+1}" />
+												<div class="que" align="left">
+													<span>인력 ${cnt6} : </span>
+													<span>${vo3.fdm5_man_name}</span>
+												</div>
+												<div class="anw" align="center">
+													<form action="${cpath}/FarmDiaryManageUpdate3.do" method="post">
+														<input type="hidden" class="form-control" name="fdm_num" id="fdm_num"  value="${vo3.fdm_num}">
+														<table>
+															<tr>
+																<th scope="row"><P>인력명 : </P></th>
+																<td><P><input type="text" class="form-control" name="fdm5_man_name" id="fdm5_man_name" placeholder="인력명을 입력하세요." value="${vo3.fdm5_man_name}"></P></td>
+															</tr>
+															<tr>
+																<th scope="row"><P>연락처 : </P></th>
+																<td><P><input type="text" class="form-control" name="fdm5_man_phone" id="fdm5_man_phone" placeholder="연락처를 입력하세요." value="${vo3.fdm5_man_phone}"></P></td>
+															</tr>
+															<tr>
+																<th scope="row"><P>작업 능력 : </P></th>
+																<td align="center"><P>
+																	<input type="radio" class="form" name="fdm5_man_ability" id="fdm5_man_ability" value="1" <c:if test ="${vo3.fdm5_man_ability == '1'}">checked="checked"</c:if>>초급
+																	&emsp;&emsp;&emsp;&emsp;
+																	<input type="radio" class="form" name="fdm5_man_ability" id="fdm5_man_ability" value="2" <c:if test ="${vo3.fdm5_man_ability == '2'}">checked="checked"</c:if>>중급
+																	&emsp;&emsp;&emsp;&emsp;
+																	<input type="radio" class="form" name="fdm5_man_ability" id="fdm5_man_ability" value="3" <c:if test ="${vo3.fdm5_man_ability == '3'}">checked="checked"</c:if>>고급
+																</P></td>
+															</tr>
+															<tr>
+																<th scope="row"><P>시간당 인건비 : </P></th>
+																<td><P><input type='number' min='1000' max='1000000' step='1000' class="form-control"
+														name="fdm5_man_cost" id="fdm5_man_cost" placeholder="시간당 인건비(원)를 입력해 주세요." value="${vo3.fdm5_man_cost}"><P></td>
+															</tr>
+															<tr>
+																<th scope="row"><P>메모 : </P></th>														
+																	<td>
+																		<textarea rows="5" cols="60" name="fdm5_man_memo" id="fdm5_man_memo">${vo3.fdm5_man_memo}</textarea>
+																	</td>
+															</tr>				
+														</table>
+														<table>
+														<tr>
+														<td colspan="2">
+														<button class='btn btn-secondary btn-sm' type="submit">수정</button>
+														<button class='btn btn-outline-secondary' onclick="goDel(${vo3.fdm_num})">삭제</button>
+														</td>
+														</tr>
+														</table>
+													</form>
+												</div>
+											</c:forEach>
+												
+											</div>
+
+										</div>
+									</div>
+									<!-- end card -->
+								</div>
+								<!-- end col -->
+
+
+								<!-- end col -->
+							</div>
+							<!-- end row -->
+						</div>
+						<!-- end container -->
+					</section>
+					<!-- ========== section end ========== -->
+
+				</div>
+				
+				<!-- 비료관리 -->
+				<div class="tab-pane fade" id="pills-one"
+					role="tabpanel" aria-labelledby="pills-one-tab">
+					<div class="row bg-light">
+						<form class="row p-3 gx-3 justify-content-center">
+							<div class="col-auto">
+								<select class="form-select" id="autoSizingSelect">
+									<option selected>주소</option>
+									<option value="1">One</option>
+									<option value="2">Two</option>
+									<option value="3">Three</option>
+								</select>
+							</div>
+							<div class="col-5">
+								<input type="text" class="form-control input-group"
+									id="autoSizingInput" placeholder="검색어를 입력하세요">
+							</div>
+							<div class="col-auto">
+								<button type="submit" class="btn btn-primary">검색</button>
+							</div>
+						</form>
+					</div>
+
+					<!-- 모달 -->
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
+						<button class="btn btn-primary" data-bs-toggle="modal"
+							data-bs-target="#비료관리" data-bs-whatever="@management">등록</button>
+					</div>
+					<div class="modal fade modal-lg" id="비료관리" tabindex="-1"
+						aria-labelledby="비료관리" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h1 class="modal-title fs-5">비료관리</h1>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<form class="form-horizontal"
+									action="${cpath}/FarmDiaryManage5.do" method="post">
+									<input type="hidden" class="form-control" name="fdm_mb_num" id="fdm_mb_num" value="${loginMember.mb_num}">
+									<input type="hidden" class="form-control" name="fdm_type" id="fdm_type" value="5">
+									<div class="modal-body">
+										<table class="table table-bordered">
+											<colgroup>
+												<col width="18%">
+												<col>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th scope="row"><P>비료명</P></th>
+													<td>
+														<P><input type="text" class="form-control" name="fdm3_fertilizer" id="fdm3_fertilizer" placeholder="비료명을 입력하세요."></P>
+													</td>
+												</tr>
+												<tr class="color">
+													<th scope="row"><P>비료 종류</P></th>
+													<td>
+														<P><input type="text" class="form-control" name="fdm3_fertilizer_kind" id="fdm3_fertilizer_kind" placeholder="비료종류를 입력하세요."></P>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><P>농약명</P></th>
+													<td>
+														<P><input type="text" class="form-control" name="fdm3_pesticide" id="fdm3_pesticide" placeholder="농약명을 입력하세요."></P>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><P>농약 종류</P></th>
+													<td>
+														<P><input type="text" class="form-control" name="fdm3_pesticide_kind" id="fdm3_pesticide_kind" placeholder="농약종류를 입력하세요."></P>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary"
+											data-bs-dismiss="modal">Close</button>
+										<button type="submit" class="btn btn-primary">등록하기</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+					<!-- 확인하기 -->
+					<!-- ========== section start ========== -->
+					<section class="section">
+						<div class="container-fluid">
+							<div class="row ">
+								<div class="col-lg-7 top">
+									<div class="title-wrapper pt-30">
+										<div class="row text-start">
+											<div class="col-md-3">
+												<div class="title mb-30">
+													<h2>비료/농약 목록</h2>
+												</div>
+											</div>
+										</div>
+										<!-- end row -->
+									</div>
+									<div class="card-style settings-card-1 mb-30">
+										<div class="profile-info">
+											<div id="Accordion_wrap">
+											<c:forEach items="${list5}" var="vo5">
+											<c:set var="cnt7" value="${cnt7+1}" />
+												<div class="que" align="left">
+													<c:choose>
+														<c:when test="${empty vo5.fdm3_fertilizer}">
+															<span>농약 ${cnt7} : </span>
+															<span>${vo5.fdm3_pesticide}</span>	
+														</c:when>
+														<c:when test="${empty vo5.fdm3_pesticide}">
+															<span>비료 ${cnt7} : </span>
+															<span>${vo5.fdm3_fertilizer}</span>
+														</c:when>
+														<c:otherwise>
+															<span>비료 ${cnt7} : </span>	
+															<span>${vo5.fdm3_fertilizer}</span>
+															&emsp;&emsp;
+															<span>농약 ${cnt7} : </span>	
+															<span>${vo5.fdm3_pesticide}</span>
+														</c:otherwise>
+													</c:choose>
+												</div>
+												<div class="anw" align="center">
+													<form action="${cpath}/FarmDiaryManageUpdate5.do" method="post">
+														<input type="hidden" class="form-control" name="fdm_num" id="fdm_num"  value="${vo5.fdm_num}">
+														<table>
+															<tr>
+																<th scope="row"><P>비료명 : </P></th>
+																<td>
+																	<P><input type="text" class="form-control" name="fdm3_fertilizer" id="fdm3_fertilizer" placeholder="비료명을 입력하세요." value="${vo5.fdm3_fertilizer}"></P>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><P>비료 종류 : </P></th>
+																<td>
+																	<P><input type="text" class="form-control" name="fdm3_fertilizer_kind" id="fdm3_fertilizer_kind" placeholder="비료 종류를 입력하세요." value="${vo5.fdm3_fertilizer_kind}"></P>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><P>농약명 : </P></th>
+																<td>
+																	<P><input type="text" class="form-control" name="fdm3_pesticide" id="fdm3_pesticide" placeholder="농약명을 입력하세요." value="${vo5.fdm3_pesticide}"></P>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><P>농약 종류 : </P></th>
+																<td>
+																	<P><input type="text" class="form-control" name="fdm3_pesticide_kind" id="fdm3_pesticide_kind" placeholder="농약 종류를 입력하세요." value="${vo5.fdm3_pesticide_kind}"></P>
+																</td>
+															</tr>
+														</table>
+														<table>
+														<tr>
+														<td colspan="2">
+														<button class='btn btn-secondary btn-sm' type="submit">수정</button>
+														<button class='btn btn-outline-secondary' onclick="goDel(${vo5.fdm_num})">삭제</button>
+														</td>
+														</tr>
+														</table>
+													</form>
+												</div>
+											</c:forEach>
+												
+											</div>
+
+										</div>
+									</div>
+									<!-- end card -->
+								</div>
+								<!-- end col -->
+
+
+								<!-- end col -->
+							</div>
+							<!-- end row -->
+						</div>
+						<!-- end container -->
+					</section>
+					<!-- ========== section end ========== -->
+
+				</div>
+				
+				<!-- 거래처관리 -->
+				<div class="tab-pane fade" id="pills-two"
+					role="tabpanel" aria-labelledby="pills-two-tab">
+					<div class="row bg-light">
+						<form class="row p-3 gx-3 justify-content-center">
+							<div class="col-auto">
+								<select class="form-select" id="autoSizingSelect">
+									<option selected>주소</option>
+									<option value="1">One</option>
+									<option value="2">Two</option>
+									<option value="3">Three</option>
+								</select>
+							</div>
+							<div class="col-5">
+								<input type="text" class="form-control input-group"
+									id="autoSizingInput" placeholder="검색어를 입력하세요">
+							</div>
+							<div class="col-auto">
+								<button type="submit" class="btn btn-primary">검색</button>
+							</div>
+						</form>
+					</div>
+
+					<!-- 모달 -->
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
+						<button class="btn btn-primary" data-bs-toggle="modal"
+							data-bs-target="#거래처관리" data-bs-whatever="@management">등록</button>
+					</div>
+					<div class="modal fade modal-lg" id="거래처관리" tabindex="-1"
+						aria-labelledby="거래처관리" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h1 class="modal-title fs-5">거래처관리</h1>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<form class="form-horizontal"
+									action="${cpath}/FarmDiaryManage.do" method="post">
+									<input type="hidden" class="form-control" name="fdm_mb_num" id="fdm_mb_num" value="${loginMember.mb_num}">
+									<input type="hidden" class="form-control" name="fdm_type" id="fdm_type" value="6">
+									<div class="modal-body">
+										<table class="table table-bordered">
+											<colgroup>
+												<col width="18%">
+												<col>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th scope="row">거래처명</th>
+													<td>
+														<P><input type="text" class="form-control" name="fdm6_account" id="fdm6_account" placeholder="거래처명을 입력하세요." required></P>
+													</td>
+												</tr>
+												<tr class="color">
+													<th scope="row">대표자명</th>
+													<td>
+														<P><input type="text" class="form-control" name="fdm6_represent" id="fdm6_represent" placeholder="대표자명을 입력하세요."></P>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">사업자등록번호</th>
+													<td>
+														<P><input type="text" class="form-control" name="fdm6_regi_num" id="fdm6_regi_num" placeholder="사업자등록번호를 입력하세요."></P>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">전화번호</th>
+													<td>
+														<P><input type="text" class="form-control" name="fdm6_phone" id="fdm6_phone" placeholder="전화번호를 입력하세요."></P>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">주소</th>
+													<td>
+														<P><input type="text" class="form-control" name="fdm6_address" id="fdm6_address" placeholder="주소를 입력하세요."></P>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">업종</th>
+													<td>
+														<P><input type="text" class="form-control" name="fdm6_sectors" id="fdm6_sectors" placeholder="업무종류를 입력하세요."></P>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">업태</th>
+													<td>
+														<P><input type="text" class="form-control" name="fdm6_business" id="fdm6_business" placeholder="업무형태를 입력하세요."></P>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary"
+											data-bs-dismiss="modal">Close</button>
+										<button type="submit" class="btn btn-primary">등록하기</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+					<!-- 확인하기 -->
+					<!-- ========== section start ========== -->
+					<section class="section">
+						<div class="container-fluid">
+							<div class="row ">
+								<div class="col-lg-7 top">
+									<div class="title-wrapper pt-30">
+										<div class="row text-start">
+											<div class="col-md-3">
+												<div class="title mb-30">
+													<h2>거래처 목록</h2>
+												</div>
+											</div>
+										</div>
+										<!-- end row -->
+									</div>
+									<div class="card-style settings-card-1 mb-30">
+										<div class="profile-info">
+											<div id="Accordion_wrap">
+											<c:forEach items="${list6}" var="vo6">
+											<c:set var="cnt8" value="${cnt8+1}" />
+												<div class="que" align="left">
+													<span>거래처 ${cnt8} : </span>
+													<span>${vo6.fdm6_account}</span>
+												</div>
+												<div class="anw" align="center">
+													<form action="${cpath}/FarmDiaryManageUpdate6.do" method="post">
+														<input type="hidden" class="form-control" name="fdm_num" id="fdm_num"  value="${vo6.fdm_num}">
+														<table>
+															<tr>
+													<th scope="row"><P>거래처명 : </P></th>
+													<td>
+														<P><input type="text" class="form-control" name="fdm6_account" id="fdm6_account" placeholder="거래처명을 입력하세요." value="${vo6.fdm6_account}"></P>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><P>대표자명 : </P></th>
+													<td>
+														<P><input type="text" class="form-control" name="fdm6_represent" id="fdm6_represent" placeholder="대표자명을 입력하세요." value="${vo6.fdm6_represent}"></P>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><P>사업자등록번호 : </P></th>
+													<td>
+														<P><input type="text" class="form-control" name="fdm6_regi_num" id="fdm6_regi_num" placeholder="사업자등록번호를 입력하세요." value="${vo6.fdm6_regi_num}"></P>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><P>전화번호 : </P></th>
+													<td>
+														<P><input type="text" class="form-control" name="fdm6_phone" id="fdm6_phone" placeholder="전화번호를 입력하세요." value="${vo6.fdm6_phone}"></P>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><P>주소 : </P></th>
+													<td>
+														<P><input type="text" class="form-control" name="fdm6_address" id="fdm6_address" placeholder="주소를 입력하세요." value="${vo6.fdm6_address}"></P>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><P>업종 : </P></th>
+													<td>
+														<P><input type="text" class="form-control" name="fdm6_sectors" id="fdm6_sectors" placeholder="업무종류를 입력하세요." value="${vo6.fdm6_sectors}"></P>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><P>업태 : </P></th>
+													<td>
+														<P><input type="text" class="form-control" name="fdm6_business" id="fdm6_business" placeholder="업무형태를 입력하세요." value="${vo6.fdm6_business}"></P>
+													</td>
+												</tr>			
+														</table>
+														<table>
+														<tr>
+														<td colspan="3">
+														<button class='btn btn-secondary btn-sm' type="submit">수정</button>
+														<button class='btn btn-outline-secondary' onclick="goDel(${vo6.fdm_num})">삭제</button>
+														</td>
+														</tr>
+														</table>
+													</form>
+												</div>
+											</c:forEach>
+												
+											</div>
+
+										</div>
+									</div>
+									<!-- end card -->
+								</div>
+								<!-- end col -->
+
+
+								<!-- end col -->
+							</div>
+							<!-- end row -->
+						</div>
+						<!-- end container -->
+					</section>
+					<!-- ========== section end ========== -->
+
+				</div>
+				
+				<!-- 분석관리 -->
+				<div class="tab-pane fade" id="pills-three"
+					role="tabpanel" aria-labelledby="pills-three-tab">
+					<div class="row bg-light">
+						<form class="row p-3 gx-3 justify-content-center">
+							<div class="col-auto">
+								<select class="form-select" id="autoSizingSelect">
+									<option selected>주소</option>
+									<option value="1">One</option>
+									<option value="2">Two</option>
+									<option value="3">Three</option>
+								</select>
+							</div>
+							<div class="col-5">
+								<input type="text" class="form-control input-group"
+									id="autoSizingInput" placeholder="검색어를 입력하세요">
+							</div>
+							<div class="col-auto">
+								<button type="submit" class="btn btn-primary">검색</button>
+							</div>
+						</form>
+					</div>
+					
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
+						<button class="btn btn-primary">병해충 분석</button>
+						<button class="btn btn-primary">생육과정 분석</button>
+					</div>
+					<%-- <!-- 확인하기 -->
+					<!-- ========== section start ========== -->
+					<section class="section">
+						<div class="container-fluid">
+							<div class="row ">
+								<div class="col-lg-7 top">
+									<div class="title-wrapper pt-30">
+										<div class="row text-start">
+											<div class="col-md-3">
+												<div class="title mb-30">
+													<h2>분석 목록</h2>
+												</div>
+											</div>
+										</div>
+										<!-- end row -->
+									</div>
+									<div class="card-style settings-card-1 mb-30">
+										<div class="profile-info">
+											<div id="Accordion_wrap">
+											<c:forEach items="${list7}" var="vo7">
+											<c:set var="cnt9" value="${cnt9+1}" />
+												<div class="que" align="left">
+													<c:choose>
+														<c:when test="${empty vo7.}">
+															<span>농약 ${cnt7} : </span>
+															<span>${vo5.fdm3_pesticide}</span>	
+														</c:when>
+														<c:when test="${empty vo5.fdm3_pesticide}">
+															<span>비료 ${cnt7} : </span>
+															<span>${vo5.fdm3_fertilizer}</span>
+														</c:when>
+														<c:otherwise>
+															<span>비료 ${cnt7} : </span>	
+															<span>${vo5.fdm3_fertilizer}</span>
+															&emsp;&emsp;
+															<span>농약 ${cnt7} : </span>	
+															<span>${vo5.fdm3_pesticide}</span>
+														</c:otherwise>
+													</c:choose>
+													
+													<span>분석 ${cnt9} : </span>
+													<span>${vo7.ad_sido}</span>
 												</div>
 												<div class="anw" align="center">
 													<form action="${cpath}/FarmDiaryManageUpdate.do" method="post">
@@ -273,493 +1467,9 @@
 						</div>
 						<!-- end container -->
 					</section>
-					<!-- ========== section end ========== -->
+					<!-- ========== section end ========== --> --%>
 
 				</div>
-
-				<!-- 품목관리 -->
-				<div class="tab-pane fade" id="pills-profile" role="tabpanel"
-					aria-labelledby="pills-profile-tab">
-					<div class="row bg-light">
-						<form class="row p-3 gx-3 justify-content-center">
-							<div class="col-auto">
-								<select class="form-select" id="autoSizingSelect">
-									<option selected>주소</option>
-									<option value="1">One</option>
-									<option value="2">Two</option>
-									<option value="3">Three</option>
-								</select>
-							</div>
-							<div class="col-5">
-								<input type="text" class="form-control input-group"
-									id="autoSizingInput" placeholder="검색어를 입력하세요">
-							</div>
-							<div class="col-auto">
-								<button type="submit" class="btn btn-primary">검색</button>
-							</div>
-						</form>
-					</div>
-
-					<!-- 모달 -->
-					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
-						<button class="btn btn-primary" data-bs-toggle="modal"
-							data-bs-target="#품목관리" data-bs-whatever="@management">등록</button>
-					</div>
-					<div class="modal fade modal-lg" id="품목관리" tabindex="-1"
-						aria-labelledby="품목관리" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h1 class="modal-title fs-5">픔목관리</h1>
-									<button type="button" class="btn-close" data-bs-dismiss="modal"
-										aria-label="Close"></button>
-								</div>
-								<form class="form-horizontal"
-									action="${cpath}/FarmDiaryManage2.do" method="post">
-									<input type="hidden" class="form-control" name="fdm_mb_num"
-										id="fdm_mb_num" value="${loginMember.mb_num}">
-									<div class="modal-body">
-										<table class="table table-bordered">
-											<colgroup>
-												<col width="18%">
-												<col>
-											</colgroup>
-											<tbody>
-												<tr>
-													<th scope="row">필지주소</th>
-													<td><input type="hidden" class="form-control" name="fdm_type" id="fdm_type" value="2">
-													<select id="selectbox2" class="form-control"
-														name="fdm1_ad_num" id="fdm1_ad_num">
-														<c:forEach items="${list}" var="vo">
-														<c:set var="cnt2" value="${cnt2+1}" />
-															<option value="${vo.fdm1_ad_num}">${cnt2}. ${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri} ${vo.fdm1_detail_address}</option>												
-														</c:forEach>
-														</select></td>
-												</tr>
-												<tr class="color">
-													<th scope="row">품목</th>
-													<td><select id="selectbox3" class="form-control"
-														name="fdm2_item" id="fdm2_item" onchange="changeSelect()">
-															<option value="">품목을 선택하세요.</option>
-															<option value="딸기">딸기</option>
-															<option value="토마토">토마토</option>
-															<option value="수박">수박</option>
-															<option value="참외">참외</option>
-															<option value="멜론">멜론</option>
-															<option value="파인애플">파인애플</option>
-													</select></td>
-												</tr>
-												<tr>
-													<th scope="row">품종</th>
-													<td><select id="selectbox3" class="form-control"
-														name="fdm2_kind" id="fdm2_kind">
-															<option value="">품종을 선택하세요.</option>
-															<option value="딸기">딸기</option>
-															<option value="토마토">토마토</option>
-															<option value="수박">수박</option>
-															<option value="참외">참외</option>
-															<option value="멜론">멜론</option>
-															<option value="파인애플">파인애플</option>
-													</select></td>
-												</tr>
-												<tr>
-													<th scope="row">재배면적</th>
-													<td><input type="text" class="form-control"
-														name="fdm2_culture_area" id="fdm2_culture_area"
-														placeholder="재배면적(㎡)"></td>
-												</tr>
-												<tr>
-													<th scope="row">계약 재배 여부</th>
-													<td><input type="radio" class="form"
-														name="fdm2_contract" id="fdm2_contract" value="1">
-														예 <input type="radio" class="form"
-														name="fdm2_contract" id="fdm2_contract" value="0" checked>
-														아니오</td>
-												</tr>
-												<tr>
-													<th scope="row">목표생산량</th>
-													<td>
-														<div>
-															<input type="text" class="form-control"
-																name="fdm2_target" id="fdm2_target" placeholder="목표생산량(kg)">
-														</div>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-bs-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-primary">등록하기</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-
-					<!-- 확인하기 -->
-					<!-- ========== section start ========== -->
-					<section class="section">
-						<div class="container-fluid">
-							<div class="row ">
-								<div class="col-lg-7 top">
-									<div class="title-wrapper pt-30">
-										<div class="row text-start">
-											<div class="col-md-3">
-												<div class="title mb-30">
-													<h2>품목 목록</h2>
-												</div>
-											</div>
-										</div>
-										<!-- end row -->
-									</div>
-									<div class="card-style settings-card-1 mb-30">
-										<div class="profile-info">
-											<div id="Accordion_wrap">
-											<c:forEach items="${list2}" var="vo2">
-											<c:set var="cnt3" value="${cnt3+1}" />
-												<div class="que" align="left">
-													<span>필지 ${cnt3} : </span>
-													<span>${vo2.ad_sido}</span>
-													<span>${vo2.ad_gugun}</span>
-													<span>${vo2.ad_dong}</span>
-													<span>${vo2.ad_ri}</span>
-													<span>${vo2.fdm1_detail_address}</span>
-													<span>품목 : </span>
-													<span>${vo2.fdm2_item}</span>
-													<span>${vo2.fdm2_kind}</span>		
-												</div>
-												<div class="anw" align="center">
-													<form action="${cpath}/FarmDiaryManageUpdate2.do" method="post">
-														<input type="hidden" class="form-control" name="fdm_num" id="fdm_num"  value="${vo2.fdm_num}">
-														<table>
-															<tr>
-																<td><P>필지 주소 : </P></td>
-																<td><p><select id="selectbox2" class="form-control"
-														name="fdm1_ad_num" id="fdm1_ad_num">
-														<c:forEach items="${list}" var="vo">
-														<c:set var="cnt4" value="${cnt4+1}" />
-															<option value="${vo.fdm1_ad_num}" <c:if test ="${vo2.fdm1_ad_num eq vo.fdm1_ad_num}">selected="selected"</c:if>>
-															${cnt4}. ${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri} ${vo.fdm1_detail_address}</option>												
-														</c:forEach>
-														</select></P></td>
-														<td></td>
-															</tr>
-															<tr>
-																<td><P>품목: </P></td>
-																<td><P><select id="selectbox3" class="form-control"
-														name="fdm2_item" id="fdm2_item" onchange="changeSelect()">
-															<option value="">품목을 선택하세요.</option>
-															<option value="딸기" <c:if test ="${vo2.fdm1_ad_num eq vo.fdm1_ad_num}">selected="selected"</c:if>>딸기</option>
-															<option value="토마토" <c:if test ="${vo2.fdm1_ad_num eq vo.fdm1_ad_num}">selected="selected"</c:if>>토마토</option>
-															<option value="수박" <c:if test ="${vo2.fdm1_ad_num eq vo.fdm1_ad_num}">selected="selected"</c:if>>수박</option>
-															<option value="참외" <c:if test ="${vo2.fdm1_ad_num eq vo.fdm1_ad_num}">selected="selected"</c:if>>참외</option>
-															<option value="멜론" <c:if test ="${vo2.fdm1_ad_num eq vo.fdm1_ad_num}">selected="selected"</c:if>>멜론</option>
-															<option value="파인애플" <c:if test ="${vo2.fdm1_ad_num eq vo.fdm1_ad_num}">selected="selected"</c:if>>파인애플</option>
-													</select></P></td>
-													<td></td>
-															</tr>
-															<tr>
-																<td><P>품종 : </P></td>
-																<td><P><select id="selectbox3" class="form-control"
-														name="fdm2_kind" id="fdm2_kind">
-															<option value="">품종을 선택하세요.</option>
-															<option value="딸기">딸기</option>
-															<option value="토마토">토마토</option>
-															<option value="수박">수박</option>
-															<option value="참외">참외</option>
-															<option value="멜론">멜론</option>
-															<option value="파인애플">파인애플</option>
-													</select></P></td>
-													<td></td>
-															</tr>
-															<tr>
-																<td><P>재배 면적 : </P></td>
-																<td><P><input type="text" class="form-control" name="fdm2_culture_area" id="fdm2_culture_area" placeholder="재배면적" value="${vo.fdm2_culture_area}"></P>
-																${vo.fdm2_culture_area}
-																</td>
-																<td><P>m<sup>2</sup></P></td>
-															</tr>
-															<tr>
-																<td><P>계약 재배 여부 : </P></td>													
-																<c:choose>
-																	<c:when test="${vo.fdm2_contract==1}">
-																		<td><P><input type="radio" class="form" name="fdm2_contract" id="fdm2_contract" value="1" checked> 예
-																		<input type="radio" class="form" name="fdm2_contract" id="fdm2_contract" value="0" > 아니오</P></td>
-																		<td></td>
-																	</c:when>
-																	<c:otherwise>
-																		<td><P><input type="radio" class="form" name="fdm2_contract" id="fdm2_contract" value="1"> 예
-																		<input type="radio" class="form" name="fdm2_contract" id="fdm2_contract" value="0" checked> 아니오</P></td>
-																		<td></td>
-																	</c:otherwise>
-																</c:choose>
-															</tr>
-															<tr>
-																<td><P>목표 생산량 : </P></td>
-																<td><P><input type="text" class="form-control" name="fdm2_target" id="fdm2_target" placeholder="목표생산량" value="${vo.fdm2_target}">${vo.fdm2_target}</P></td>
-																<td><P>kg</P></td>
-															</tr>
-
-														</table>
-														<table>
-														<tr>
-														<td colspan="3">
-														<button class='btn btn-secondary btn-sm' type="submit">수정</button>
-														<button class='btn btn-outline-secondary' onclick="goDel(${vo.fdm_num})">삭제</button>
-														</td>
-														</tr>
-														</table>
-													</form>
-												</div>
-											</c:forEach>
-												
-											</div>
-
-										</div>
-									</div>
-									<!-- end card -->
-								</div>
-								<!-- end col -->
-
-
-								<!-- end col -->
-							</div>
-							<!-- end row -->
-						</div>
-						<!-- end container -->
-					</section>
-					<!-- ========== section end ========== -->
-				</div>
-
-
-
-				<!-- 교육관리 -->
-				<div class="tab-pane fade show" id="pills-contact"
-					role="tabpanel" aria-labelledby="pills-contact-tab">
-					<div class="row bg-light">
-						<form class="row p-3 gx-3 justify-content-center">
-							<div class="col-auto">
-								<select class="form-select" id="autoSizingSelect">
-									<option selected>주소</option>
-									<option value="1">One</option>
-									<option value="2">Two</option>
-									<option value="3">Three</option>
-								</select>
-							</div>
-							<div class="col-5">
-								<input type="text" class="form-control input-group"
-									id="autoSizingInput" placeholder="검색어를 입력하세요">
-							</div>
-							<div class="col-auto">
-								<button type="submit" class="btn btn-primary">검색</button>
-							</div>
-						</form>
-					</div>
-
-					<!-- 모달 -->
-					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
-						<button class="btn btn-primary" data-bs-toggle="modal"
-							data-bs-target="#교육관리" data-bs-whatever="@management">등록</button>
-					</div>
-					<div class="modal fade modal-lg" id="교육관리" tabindex="-1"
-						aria-labelledby="교육관리" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h1 class="modal-title fs-5">교육관리</h1>
-									<button type="button" class="btn-close" data-bs-dismiss="modal"
-										aria-label="Close"></button>
-								</div>
-								<form class="form-horizontal"
-									action="${cpath}/FarmDiaryManage4.do" method="post" enctype="multipart/form-data">
-									<input type="hidden" class="form-control" name="fdm_mb_num" id="fdm_mb_num" value="${loginMember.mb_num}">
-									<input type="hidden" class="form-control" name="fdm_type" id="fdm_type" value="4">
-									<div class="modal-body">
-										<table class="table table-bordered">
-											<colgroup>
-												<col width="18%">
-												<col>
-											</colgroup>
-											<tbody>
-												<tr>
-													<th scope="row">교육 일정</th>
-													<td >
-														시작일 : <input type="date" class="form" name="fdm4_edu_start" id="fdm4_edu_start">
-													</td>
-													<td>
-														종료일 : <input type="date" class="form" name="fdm4_edu_end" id="fdm4_edu_end">
-													</td>
-												</tr>
-												<tr class="color">
-													<th scope="row">교육명</th>
-													<td colspan="2">
-															<input type="text" class="form-control" name="fdm4_edu_name" id="fdm4_edu_name" placeholder="교육명을 입력해주세요."/>
-													</td>
-												</tr>
-												<tr>
-													<th scope="row">교육장소</th>
-													<td colspan="2">
-														<input type="text" class="form-control" name="fdm4_edu_place" id="fdm4_edu_place" placeholder="교육장소를 입력해주세요."/>
-													</td>
-												</tr>
-												<tr>
-													<th scope="row">교육내용</th>
-													<td colspan="2">
-													<textarea rows="2" cols="70" name="fdm4_edu_cont" id="fdm4_edu_cont" placeholder="교육내용을 입력해주세요." required></textarea>
-													</td>
-												</tr>
-												<tr>
-													<th scope="row">교육사진 첨부</th>
-													<td><input type="file" name="uploadFile"  multiple="multiple" onchange="previewImage(this)"/></td>
-													<td><img id="preview" style="width: 10rem;"></td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-bs-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-primary">등록하기</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-
-					<!-- 확인하기 -->
-					<!-- ========== section start ========== -->
-					<section class="section">
-						<div class="container-fluid">
-							<div class="row ">
-								<div class="col-lg-7 top">
-									<div class="title-wrapper pt-30">
-										<div class="row text-start">
-											<div class="col-md-3">
-												<div class="title mb-30">
-													<h2>교육 목록</h2>
-												</div>
-											</div>
-										</div>
-										<!-- end row -->
-									</div>
-									<div class="card-style settings-card-1 mb-30">
-										<div class="profile-info">
-											<div id="Accordion_wrap">
-											<c:forEach items="${list4}" var="vo4">
-											<c:set var="cnt5" value="${cnt5+1}" />
-												<div class="que" align="left">
-													<span>교육명 ${cnt5} : </span>
-													<span>${vo4.fdm4_edu_name}</span>	
-												</div>
-												<div class="anw" align="center">
-													<form action="${cpath}/FarmDiaryManageUpdate.do" method="post">
-														<table>
-															<tr>
-																<td><P>필지 주소 : <input type="hidden" class="form-control" name="fdm_num" id="fdm_num" value="${vo.fdm_num}"></P></td>
-																<td colspan="2"><p>
-																<select id="selectbox" class="area" placeholder="지역">
-																<c:forEach items="${gugunmodelList}" var="vo3">
-																	<option value="${vo3.ad_gugun}" <c:if test ="${vo3.ad_gugun eq vo.ad_gugun}">selected="selected"</c:if>>${vo3.ad_gugun}</option>
-																</c:forEach>
-																</select>
-																<select id="selectNextbox" name="fdm1_ad_num" class="area2">
-																<c:forEach items="${dongmodelList}" var="vo4">
-																	<option value="${vo4.ad_num}" <c:if test ="${vo4.ad_dong eq vo.ad_dong}">selected="selected"</c:if>>${vo4.ad_dong}</option>
-																</c:forEach>
-																</select>
-																<input type="text" class="form-control" name="fdm1_detail_address" id="fdm1_detail_address" placeholder="세부 주소" value="${vo.fdm1_detail_address}">
-																</P></td>
-															</tr>
-															<tr>
-																<td><P>필지 면적 : </P></td>
-																<td><P><input type="text" class="form-control"
-														name="fdm1_lot_area" id="fdm1_lot_area" placeholder="필지 면적" value="${vo.fdm1_lot_area}"></P></td>
-																<td><P>m<sup>2</sup></P></td>
-															</tr>
-															<tr>
-																<td><P>실재배 면적 : </P></td>
-																<td><P><input type="text" class="form-control"
-														name="fdm1_actual_area" id="fdm1_actual_area" placeholder="실재배 면적" value="${vo.fdm1_actual_area}"></P></td>
-																<td><P>m<sup>2</sup></P></td>
-															</tr>
-															<tr>
-																<td><P>유휴 면적 : </P></td>
-																<td><P><input type="text" class="form-control"
-														name="fdm1_idle_area" id="fdm1_idle_area" placeholder="유휴 면적" value="${vo.fdm1_idle_area}"></P></td>
-																<td><P>m<sup>2</sup></P></td>
-															</tr>
-															<tr>
-																<td><P>토양점검 여부 : </P></td>															
-																<c:choose>
-																	<c:when test="${vo.fdm1_soil_check==1}">
-																		<td colspan="2" align="center">
-																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="1" checked> 예
-																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="0" > 아니오
-																		</td>
-																	</c:when>
-																	<c:otherwise>
-																		<td colspan="2" align="center">
-																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="1" > 예
-																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="0" checked> 아니오
-																		</td>
-																	</c:otherwise>
-																</c:choose>
-															</tr>				
-														</table>
-														<table>
-														<tr>
-														<td colspan="3">
-														<button class='btn btn-secondary btn-sm' type="submit">수정</button>
-														<button class='btn btn-outline-secondary' onclick="goDel(${vo.fdm_num})">삭제</button>
-														</td>
-														</tr>
-														</table>
-													</form>
-												</div>
-											</c:forEach>
-												
-											</div>
-
-										</div>
-									</div>
-									<!-- end card -->
-								</div>
-								<!-- end col -->
-
-
-								<!-- end col -->
-							</div>
-							<!-- end row -->
-						</div>
-						<!-- end container -->
-					</section>
-					<!-- ========== section end ========== -->
-
-				</div>
-
-
-
-
-				<div class="tab-pane fade" id="pills-people" role="tabpanel"
-					aria-labelledby="pills-people-tab">
-					<div class="row bg-light">
-						<form class="row p-3 gx-3 justify-content-center">
-							<div class="col-5">
-								<input type="text" class="form-control input-group"
-									id="autoSizingInput" placeholder="인력명을 입력하세요">
-							</div>
-							<div class="col-auto">
-								<button type="submit" class="btn btn-primary">검색</button>
-							</div>
-						</form>
-					</div>
-					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
-						<button class="btn login" type="button">등록</button>
-					</div>
-				</div>
-
 
 			</div>
 		</main>
@@ -779,6 +1489,10 @@ $(document).ready(function(){
 			$.each(res, (index, obj)=>{
 				$("#selectbox").append("<option value="+obj.ad_gugun+">"+obj.ad_gugun+"</option>");
 			});
+			$("#selectbox2").html("");
+			$.each(res, (index, obj)=>{
+				$("#selectbox2").append("<option value="+obj.ad_gugun+">"+obj.ad_gugun+"</option>");
+			});
 		},
 		error : function(){
 			alert("Ajax 통신 실패!!");	
@@ -794,6 +1508,10 @@ $(document).ready(function(){
 			$("#selectNextbox").html("");
 			$.each(res, (index, obj)=>{
 				$("#selectNextbox").append("<option value="+obj.ad_dong+">"+obj.ad_dong+"</option>");
+			});
+			$("#selectNextbox2").html("");
+			$.each(res, (index, obj)=>{
+				$("#selectNextbox2").append("<option value="+obj.ad_dong+">"+obj.ad_dong+"</option>");
 			});
 		},
 		error : function(){
@@ -821,6 +1539,12 @@ function changeSelect(){
 				$("#selectNextbox").append("<option value="+obj.ad_num+">"+obj.ad_dong+"</option>");
 				}
 			});
+			$("#selectNextbox2").html("");
+			$.each(res, (index, obj)=>{
+				if (obj.ad_gugun==select2) {
+				$("#selectNextbox2").append("<option value="+obj.ad_num+">"+obj.ad_dong+"</option>");
+				}
+			});
 		},
 		error : function(){
 			alert("Ajax 통신 실패!!");	
@@ -838,7 +1562,7 @@ function goDel(fdm_num){
 		$.ajax({
 			 url : "${cpath}/farmdiarydelete/" + fdm_num,// PathVariable로 넘기기
 	         type : "delete",
-	         success : location.href="${cpath}/farm_management.do",
+	         success : location.href="${cpath}/FarmDiaryManageList2.do",
 	         error : function(){
 	        	 alert("글삭제 실패!!")
 	         }
@@ -852,6 +1576,20 @@ function goDel(fdm_num){
 function previewImage(input) {
     var file = input.files[0];
     var img = document.getElementById("preview");
+    if (file.type.match('image.*')) {
+      var reader = new FileReader();
+      reader.onload = (function(img) {
+        return function(e) {
+          img.src = e.target.result;
+        };
+      })(img);
+      reader.readAsDataURL(file);
+    }
+  }
+  
+function previewImage2(input) {
+    var file = input.files[0];
+    var img = document.getElementById("preview2");
     if (file.type.match('image.*')) {
       var reader = new FileReader();
       reader.onload = (function(img) {
