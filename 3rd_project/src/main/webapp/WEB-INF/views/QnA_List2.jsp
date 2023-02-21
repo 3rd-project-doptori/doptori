@@ -11,22 +11,21 @@
   <title>notice_qa</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="stylesheet" href="${cpath}/resources/css/notice_qa.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <!-- CSS only -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  
   <style>
-      .login{
-      background-color: #FF809F;
-      border: none;
-      color: white;
-      margin-left: 1rem;
-      }
-
-      .login:hover{
-          background-color: #FF4D79;
-          color: white;
-      }
+  
+	  @font-face {
+	    font-family: 'IBMPlexSansKR-Regular';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	body{
+		font-family: 'IBMPlexSansKR-Regular';
+	}
   </style>
   <script type="text/javascript">
 
@@ -52,32 +51,27 @@
     </div>
     <div class="content">
       <div class="content__inner" id="tab-1">
+    <div class="res">
+                      <form class="d-flex col-sm-3 " role="search">
+                          <div class="input-group">
+                              <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="검색어를 입력하세요">
+                              <button class="input-group-text btn btn-sm btn-outline-secondary">🔍</button>
+                          </div>
+                          <button class="btn btn-sm btn-outline-secondary sub" type="submit">글쓰기</button>
+                      </form>
+                  </div>
         <div class="table-responsive">
           <table class="table">
           
-          <caption> <h3 align="right"> <font size="2">
-	    	<div id="left" style="float:left;"> <!-- select 검색 창  -->
-		        <form method="post" action="${cpath}/QnA_List.do" onsubmit="return check(this)">
-		         <select name="searchType" id="searchType">
-		           <option value="0">선 택</option>
-		           <option value="bd_title">제 목</option>
-		           <option value="bd_cont">내 용</option>
-		           <option value="bd_mb_num">작성자</option>
-		         </select>
-		         <input type="text" id="searchText" placeholder="검색어를 입력하세요." autocomplete="off" name="sword" size="20" value="${sword}">
-		         <input type="submit" value="검색">
-		        </form>
-		        
-		    </div>
-		    
-			<div id="right" style="float:right;"><font size="2">	       
+          <caption> <h3 align="right">
+	    	
+			<div id="right" style="float:right;">	       
 	         	<select onchange="move(this)" id="pcnt">
 		         <option value="10"> 10개 </option>
 		         <option value="20"> 20개 </option>
 		         <option value="30"> 30개 </option>
 		         <option value="50"> 50개 </option>
 		       </select>
-		       </font>
 		     </div>
 	     
 	       </h3></caption>
@@ -152,41 +146,35 @@
 			       </td>
 			     </tr>
 
-	    		<tr>
-	    			<td colspan="5"><button onclick="goForm()">글쓰기</button></td>
-	    		</tr>
 	    	</tfoot>
           </table>
         </div>
       </div>
 
       <div class="content__inner" id="tab-2">
+      	<div class="res">
+             <form class="d-flex col-sm-3 " role="search">
+                 <div class="input-group">
+                     <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="검색어를 입력하세요">
+                     <button class="input-group-text btn btn-sm btn-outline-secondary">🔍</button>
+                 </div>
+                 <button class="btn btn-sm btn-outline-secondary sub" type="submit">글쓰기</button>
+             </form>
+         </div>
         <div class="table-responsive">
           <table class="table">
           
-			<caption> <h3 align="right"> <font size="2">
-	    	<div id="left" style="float:left;"> <!-- select 검색 창  -->
-		        <form method="post" action="${cpath}/QnA_List.do" onsubmit="return check(this)">
-		         <select name="searchType" id="searchType">
-		           <option value="0">선 택</option>
-		           <option value="bd_title">제 목</option>
-		           <option value="bd_cont">내 용</option>
-		           <option value="bd_mb_num">작성자</option>
-		         </select>
-		         <input type="text" id="searchText" placeholder="검색어를 입력하세요." autocomplete="off" name="sword" size="20" value="${sword}">
-		         <input type="submit" value="검색">
-		        </form>
-		        
-		    </div>
+			<caption> <h3 align="right">
+	    	
 		    
-			<div id="right" style="float:right;"><font size="2">	       
+			<div id="right" style="float:right;">       
 	         	<select onchange="move(this)" id="pcnt">
 		         <option value="10"> 10개 </option>
 		         <option value="20"> 20개 </option>
 		         <option value="30"> 30개 </option>
 		         <option value="50"> 50개 </option>
 		       </select>
-		       </font>
+		       
 		     </div>
 	     
 	       </h3></caption>          
@@ -260,9 +248,6 @@
 			       </td>
 			     </tr>
 
-	    		<tr>
-	    			<td colspan="5"><button onclick="goForm()">글쓰기</button></td>
-	    		</tr>
 	    	</tfoot>
           </table>
         </div>
