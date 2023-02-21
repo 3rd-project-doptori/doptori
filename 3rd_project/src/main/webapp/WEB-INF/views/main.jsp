@@ -38,22 +38,27 @@
   <div class="container py-4">
     <jsp:include page="/WEB-INF/views/header.jsp"/>
 
-    <div class="p-3 mb-5 bg-light rounded-3">
+    <div class="bg-light rounded-3">
     <div id="MemberListdiv" style="display:none;"></div>
-      <div class="row container-fluid py-3 d-flex">
-          <div class="col-8 fon">
-            <h1>VEF_과채가채고</h1>
-            <p class="p">
-                어려운 과채작물 재배를 쉽고 편리하게 도와드립니다.<br>
-                <strong>생산</strong>부터 <strong>판매</strong> 서비스까지<br>
-                제공하는 데이터 농업 플랫폼 베프를 통해<br> 
-                신선하고 저렴한 과채 농사를 경험하실 수 있습니다.
-            </p>
-          </div>
-          <div class="col-4 d-flex justify-content-center">
-            <img src="${cpath}/resources/images/index_logo.png" class="he">
-          </div>
+ <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+              <h1>VEF_과채가채고</h1>
+              <p class="p">
+                  어려운 과채작물 재배를 쉽고 편리하게 도와드립니다.<br>
+                  <strong>생산</strong>부터 <strong>판매</strong> 서비스까지<br>
+                  제공하는 데이터 농업 플랫폼 베프를 통해<br> 
+                  신선하고 저렴한 과채 농사를 경험하실 수 있습니다.
+              </p>
+            </div>
+            <div class="d-flex col-md-5 justify-content-center">
+              <img src="${cpath}/resources/images/index_logo.png" width="60%" >
+            </div>
         </div>
+
+        <hr class="featurette-divider">
+
     </div>
 
 <div class="row align-items-md-stretch mat">

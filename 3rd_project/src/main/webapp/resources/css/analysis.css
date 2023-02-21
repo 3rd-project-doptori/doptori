@@ -19,10 +19,12 @@ img{
 
 .h2{
     margin-bottom: 3.5rem;
+    font-weight: 600;
 }
 
 .top{
     margin-bottom: 1rem;
+    font-size: 1.26rem;
 }
 
 .form-check-input:checked{

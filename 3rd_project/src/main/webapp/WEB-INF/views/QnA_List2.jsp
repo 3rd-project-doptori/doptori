@@ -9,7 +9,8 @@
 <head>
   <meta charset="UTF-8">
   <title>notice_qa</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="stylesheet" href="${cpath}/resources/css/notice_qa.css">
@@ -92,8 +93,8 @@
                   <tr>
                   <th scope="row">${cnt}</th>
                   <td>${vo.mb_nick}</td>
-                  <td><a href="${contentlink}">${vo.bd_title}</a></td>
-                  <td>${vo.bd_date}</td>
+                  <td><font size="4"><a href="${contentlink}">${vo.bd_title}</a></font></td>
+                  <td style="width: 267px;">${vo.bd_date}</td>
                   </tr>
                   </c:forEach>
               </tbody>
@@ -158,7 +159,8 @@
                      <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="검색어를 입력하세요">
                      <button class="input-group-text btn btn-sm btn-outline-secondary">🔍</button>
                  </div>
-                 <button class="btn btn-sm btn-outline-secondary sub" type="submit">글쓰기</button>
+                 	<button class="btn btn-sm btn-outline-secondary sub" type="submit">글쓰기</button>
+
              </form>
          </div>
         <div class="table-responsive">
@@ -194,8 +196,8 @@
                   <tr>	
                   <th scope="row">${cnt2}</th>
                   <td>${vo2.mb_nick}</td>
-                  <td><a href="${contentlink}">${vo2.bd_title}</a></td>
-                  <td>${vo2.bd_date}</td>
+                  <td><font size="4"><a href="${contentlink}">${vo2.bd_title}</a></font></td>
+                  <td style="width: 267px;">${vo2.bd_date}</td>
                   </tr>
                   </c:forEach>
               </tbody>

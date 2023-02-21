@@ -82,7 +82,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="h-100 p-5 bg-light border rounded-3" id="result">
-                        <h2>결과보기</h2>
+                        <h2 class="h2">결과보기</h2>
                         
                     </div>
                 </div>

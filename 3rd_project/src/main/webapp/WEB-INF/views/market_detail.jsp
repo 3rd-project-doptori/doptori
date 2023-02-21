@@ -82,23 +82,23 @@
         </div>
 
 
-        <div class="row mb-2 justify-content-md-center mar">
+<!--         <div class="row mb-2 justify-content-md-center mar">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <svg class="bd-placeholder-img" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
             </div>
-        </div>
+        </div> -->
 
-        <section class="mb-5">
+        <<!-- section class="mb-5">
             <div class="card bg-light">
                 <div class="card-body">
-                    <!-- Comment form-->
+                    Comment form
                     <form class="d-flex for" role="search">
                         <textarea class="form-control me-2 tex" type="text" ></textarea>
                         <button class="btn login sub" type="button">등록</button>
                     </form>
-                    <!-- Comment with nested comments-->
+                    Comment with nested comments
                     <div class="d-flex mb-4">
-                        <!-- Parent comment-->
+                        Parent comment
                         <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                         <div class="ms-3">
                             <div class="fw-bold">Commenter Name</div>
@@ -106,7 +106,7 @@
 
                         </div>
                     </div>
-                    <!-- Single comment-->
+                    Single comment
                     <div class="d-flex">
                         <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                         <div class="ms-3">
@@ -116,7 +116,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
     </div>
   </body>
 </html>

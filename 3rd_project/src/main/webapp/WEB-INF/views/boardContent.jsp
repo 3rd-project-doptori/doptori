@@ -117,7 +117,7 @@ $('#comment-form').submit(function(event) {
                     <th rowspan='2' align="center"><div><img id="profile_img" class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>${vo.mb_nick}</th>
                     <th>제목</th>
                     <td colspan="3">
-                    	<h3>${vo.bd_title}</h3>
+                    	<h4>${vo.bd_title}</h4>
                     </td>
                 </tr>
                 <tr>
@@ -129,11 +129,15 @@ $('#comment-form').submit(function(event) {
                 <tr>
                 	<% pageContext.setAttribute("newline", "\n"); %>
                     <td colspan="5">
+                    <font size="5">
                     <c:if test="${not empty vo.bd_pic}">
 					  <img src="${bd_pic}" alt="게시글 이미지" width="300" height="300">
 					</c:if>
 					<br>
-				    ${fn:replace(vo.bd_cont, newline, "<br>")}</td>
+				    ${fn:replace(vo.bd_cont, newline, "<br>")}
+				     </font>
+				    </td>
+				   
                 </tr>
                 <tr>
 				 	<th>첨부파일</th>
