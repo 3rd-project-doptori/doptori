@@ -9,8 +9,7 @@
 <head>
   <meta charset="UTF-8">
   <title>notice_qa</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="stylesheet" href="${cpath}/resources/css/notice_qa.css">
@@ -99,29 +98,16 @@
                   </tr>
               </thead>
               <tbody class="table-group-divider">
-<<<<<<< HEAD
-                  <c:forEach items="${qnalist}" var="vo">
-                  <c:set var="cnt" value="${cnt+1}" />
-                  <c:url var="contentlink" value="/boardContent.do/${vo.bd_num}" />
-                  <tr>
-                  <th scope="row">${cnt}</th>
-                  <td>${vo.mb_nick}</td>
-                  <td><font size="4"><a href="${contentlink}">${vo.bd_title}</a></font></td>
-                  <td style="width: 267px;">${vo.bd_date}</td>
-                  </tr>
-                  </c:forEach>
-=======
-                  <c:forEach items="${noticelist}" var="vo2" varStatus="status">
-				        <c:url var="contentlink" value="/boardContent.do/${vo2.bd_num}" />
-				        <c:set var="vo2_indexed" value="${noticelist[noticelist.size() - status.count]}" />
-				        <tr>   
-				            <th scope="row">${noticelist.size() - status.count + 1}</th>
-				            <td>${vo2_indexed.mb_nick}</td>
-				            <td><a href="${contentlink}">${vo2_indexed.bd_title}</a></td>
-				            <td>${vo2_indexed.bd_date}</td>
-				        </tr>
-				    </c:forEach>
->>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
+                  <c:forEach items="${noticelist}" var="vo" varStatus="status">
+					    <c:set var="vo_indexed" value="${noticelist[noticelist.size() - status.count]}" />
+					    <tr>   
+					        <th scope="row">${noticelist.size() - status.count + 1}</th>
+					        <td>${vo_indexed.mb_nick}</td>
+					        <c:url var="contentlink" value="/boardContent.do/${vo_indexed.bd_num}" />
+					        <td><a href="${contentlink}">${vo_indexed.bd_title}</a></td>
+					        <td>${vo_indexed.bd_date}</td>
+					    </tr>
+					</c:forEach>
               </tbody>
               <tfoot>
              <!-- 페이징 -->
@@ -190,8 +176,7 @@
                      <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="검색어를 입력하세요">
                      <button class="input-group-text btn btn-sm btn-outline-secondary">🔍</button>
                  </div>
-                 	<button class="btn btn-sm btn-outline-secondary sub" type="submit">글쓰기</button>
-
+                 <button class="btn btn-sm btn-outline-secondary sub" type="submit">글쓰기</button>
              </form>
          </div>
         <div class="table-responsive">
@@ -234,29 +219,16 @@
                   </tr>
               </thead>
               <tbody class="table-group-divider">
-<<<<<<< HEAD
-                  <c:forEach items="${noticelist}" var="vo2">
-                  <c:set var="cnt2" value="${cnt2+1}" />
-                  <c:url var="contentlink" value="/boardContent.do/${vo2.bd_num}" />
-                  <tr>	
-                  <th scope="row">${cnt2}</th>
-                  <td>${vo2.mb_nick}</td>
-                  <td><font size="4"><a href="${contentlink}">${vo2.bd_title}</a></font></td>
-                  <td style="width: 267px;">${vo2.bd_date}</td>
-                  </tr>
-                  </c:forEach>
-=======
                   <c:forEach items="${qnalist}" var="vo" varStatus="status">
-				        <c:url var="contentlink" value="/boardContent.do/${vo.bd_num}" />
-				        <c:set var="vo_indexed" value="${qnalist[qnalist.size() - status.count]}" />
-				        <tr>   
-				            <th scope="row">${qnalist.size() - status.count + 1}</th>
-				            <td>${vo_indexed.mb_nick}</td>
-				            <td><a href="${contentlink}">${vo_indexed.bd_title}</a></td>
-				            <td>${vo_indexed.bd_date}</td>
-				        </tr>
-				    </c:forEach>
->>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
+					    <c:set var="vo_indexed" value="${qnalist[qnalist.size() - status.count]}" />
+					    <tr>   
+					        <th scope="row">${qnalist.size() - status.count + 1}</th>
+					        <td>${vo_indexed.mb_nick}</td>
+					        <c:url var="contentlink" value="/boardContent.do/${vo_indexed.bd_num}" />
+					        <td><a href="${contentlink}">${vo_indexed.bd_title}</a></td>
+					        <td>${vo_indexed.bd_date}</td>
+					    </tr>
+					</c:forEach>
               </tbody>
               <tfoot>
              <!-- 페이징 -->
