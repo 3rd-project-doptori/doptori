@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.ttf">
     <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.woff">
     <link rel="stylesheet" href="${cpath}/resources/header/LineIcons.woff2">
+    
+    <link rel="stylesheet" href="${cpath}/resources/css/chatting_di.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
         <!-- Favicons -->
 <!--     <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -150,3 +154,116 @@
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     </header>
+    
+    
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js" integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+	    var socket = io.connect('http://localhost:5000',{
+	        cors: { origin: '*' }
+	    });
+	    
+	    var my_num = Number('${loginMember.getMb_num()}');
+	    
+	    //본인 회원번호 소켓에 저장
+	    socket.emit("REGIST",my_num);
+	    
+		socket.on('INVITE',function(who){
+			$('#chat_btn').append("<button class='chat-open-dialog' onclick='go_chat()'> <span class='fa fa-question'></span></button><button class='chat-button-destroy' onclick='exit_chat()'><span class='fa fa-close'></span> </button>");
+			socket.emit("JOIN_ROOM",who);
+			socket.emit('READY');
+		});
+	    
+	    socket.on('RECEIVE',function(data){
+	        if(data.mb_num!=my_num){
+	            console.log(data.message)
+	            var text = "<div class='bubble friend-bubble'>"+data.message+"</div>"
+	            $("#chat-box").append(text);
+	        }
+	    });
+
+		socket.on('CHAT_LOG',function(data_list){
+		        var text = "";
+		        for(var i=0; i<data_list.length;i++){
+		            if(data_list[i].ch_mb_num==my_num){
+		            	text += "<div class='bubble my-bubble'>"+data_list[i].ch_cont+"</div>";
+		            }else{
+		            	text += "<div class='bubble friend-bubble'>"+data_list[i].ch_cont+"</div>";
+		            }            
+		        }
+		        $("#chat-box").append(text);
+		
+		});
+		
+		function go_chat(){
+			$(".chat-open-dialog").toggleClass("active");
+			$('.chat-popup').toggleClass("active");
+			$('.chat-button-destroy').toggleClass("active");
+		}
+		
+		function exit_chat(){
+			$('.chat-button-destroy').removeClass("active")
+			$('.chat-popup').removeClass("active");
+			$('.chat-open-dialog').removeClass("active");
+		}
+				
+    	function send_message(){
+	        var my_message = $(".message").val();
+	        if (my_message!='') {
+	            var text = "<div class='bubble my-bubble'>"+my_message+"</div>"
+	            $("#chat-box").append(text);
+	            $(".message").val('');
+	            var data = new Object();
+	            data.message = my_message;
+	            socket.emit('SEND',data)
+	        } else {
+	            alert('메시지를 입력하세요...');
+	        }
+	    }
+		
+		function close_chat(){
+			$('.chat-popup').removeClass("active");
+		}
+		
+		socket.on('ACCEPTED',function(){
+			$('.chat-popup').toggleClass("active");
+            if(try_num==0){
+            	$(".footer").append("<button id='reserve_btn' onclick='set_reserve()'>예약</button>");
+            	try_num =1;
+            }
+            socket.emit('READY');
+		});
+		
+		socket.on('REFUSED',function(){
+			alert('상대가 이미 다른 대화에 참여중입니다');		
+		});
+
+
+    </script>
+
+    <div id='chat_btn'></div>
+    <div class="chat-popup">
+        <div class="chat-windows">
+          <div class="chat-window-one">
+              <div class="chat_container">
+                  <div class="header">
+                    <button class="back-btn" onclick="close_chat()">
+                      <img src="${cpath}/resources/images/left-arrow.png" width="30" height="30">  
+                    </button>
+                    
+                  </div>
+              
+                  <div id="chat-box">
+              
+                  </div>
+              
+                  <div class="footer">
+                    <textarea id="input" class="message"  placeholder="메시지를 입력하세요..."  autofocus="true"></textarea>
+                    <button id="send" onclick="send_message()">
+                      <img src="${cpath}/resources/images/send.png" width="24" height="24">  
+                    </button>
+                  </div>
+                </div>
+          </div>
+        </div>
+    </div>
