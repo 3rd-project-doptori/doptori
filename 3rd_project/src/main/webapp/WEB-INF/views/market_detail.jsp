@@ -68,11 +68,11 @@
                             </tr>
                             <tr>
                                 <th class="text-center" scope="row">가격</th>
-                                <td>\ 가격을 입력해주세요</td>
+                                <td>₩ 가격</td>
                             </tr>
                             <tr>
                                 <th class="text-center" scope="row">상세정보</th>
-                                <td>1</td>
+                                <td>상세정보</td>
                             </tr>
                             </tbody>
                         </table>
