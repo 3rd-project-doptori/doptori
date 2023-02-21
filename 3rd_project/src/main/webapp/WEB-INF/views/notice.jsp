@@ -75,7 +75,7 @@
 	  	
 	 	function move(my)
 	    {
-	 	   location="notice.do?pcnt="+my.value;
+	 	   location="${cpath}/notice.do?pcnt="+my.value;
 	    }
 	    window.onload=function()
 	    {

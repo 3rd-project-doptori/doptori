@@ -10,16 +10,15 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.doptori.entity.Member;
 import com.doptori.mapper.MemberMapper;
-import com.doptori.utils.UploadFileUtils;
 
 @Controller
 public class MemberController {
@@ -122,36 +121,79 @@ public class MemberController {
 	public String memberDeleteView() {
 		return "memberDeleteView";
 	}
-	// 회원탈퇴 시 로그인 한 회원의 비밀번호 일치 하는지
+//	// 회원탈퇴 시 로그인 한 회원의 비밀번호 일치 하는지
+//	@ResponseBody
+//	@RequestMapping("/passChk")
+//	public int passChk(Member vo) {
+//		int result = mapper.passChk(vo);
+//		return result;
+//	}
+//	// 회원 탈퇴 해버리기 (Delete 이벤트)
+//	@RequestMapping("/memberDelete.do")
+//	public String userDelete(Member mvo, RedirectAttributes rttr, HttpSession session) {
+//		
+//		// 세션에 있는 member를 가져와 member변수에 넣어줌
+//	    Member member = (Member) session.getAttribute("member");
+//	    if (member == null) {
+//	        // member가 null인 경우 예외 처리
+//	        rttr.addFlashAttribute("msg", "세션에 저장된 회원 정보가 없습니다.");
+//	        return "redirect:/memberDeleteView";
+//	    }
+//	    // 세션에 있는 비밀번호
+//	    String sessionPass = member.getMb_pw();
+//	    // vo로 들어오는 비밀번호
+//	    String voPass = mvo.getMb_pw();
+//	    
+//	    if (!(sessionPass.equals(voPass))) {
+//	        rttr.addFlashAttribute("msg", "비밀번호가 일치하지 않습니다.");
+//	        return "redirect:/memberDeleteView";
+//	    }
+//	    mapper.userDelete(mvo);
+//	    session.invalidate();
+//
+//	    return "redirect:/Main.do";
+//	}
+//	
+//	
+
 	@ResponseBody
 	@RequestMapping("/passChk")
-	public int passChk(Member vo) {
-		int result = mapper.passChk(vo);
-		return result;
-	}
-	// 회원 탈퇴 해버리기 (Delete 이벤트)
-	@RequestMapping("/userDelete.do")
-	public String userDelete(Member mvo, RedirectAttributes rttr, HttpSession session) {
-		
-		// 세션에 있는 member를 가져와 member변수에 넣어줌
-		Member member = (Member) session.getAttribute("member");
-		// 세션에있는 비밀번호
-		String sessionPass = member.getMb_pw();
-		// vo로 들어오는 비밀번호
-		String voPass = mvo.getMb_pw();
-		
-		if(!(sessionPass.equals(voPass))) {
-			
-			rttr.addFlashAttribute("msg", false);
-			return "redirect:/memberDeleteView";
-		}
-		mapper.userDelete(mvo);
-		session.invalidate();
-		
-		return "redirect:/Main.do";
+	public String passChk(@RequestParam("mb_pw") String userPass, HttpSession session) {
+	    Member member = (Member) session.getAttribute("member");
+	    if (member == null) {
+	        return "세션에 저장된 회원 정보가 없습니다."; 
+	    }
+	    String sessionPass = member.getMb_pw();
+	    if (!sessionPass.equals(userPass)) {
+	        return "비밀번호가 일치하지 않습니다."; 
+	    }
+	    return "비밀번호가 일치합니다."; 
 	}
 	
-//	
+	@RequestMapping("/memberDelete.do")
+	public String userDelete(@RequestParam("mb_pw") String mb_pw, RedirectAttributes rttr, HttpSession session) {
+	    // 세션에 있는 member를 가져와 member변수에 넣어줌
+	    Member member = (Member) session.getAttribute("member");
+	    if (member == null) {
+	        // member가 null인 경우 예외 처리
+	        rttr.addFlashAttribute("msg", "세션에 저장된 회원 정보가 없습니다.");
+	        return "redirect:/memberDeleteView";
+	    }
+	    // 세션에 있는 비밀번호
+	    String sessionPass = member.getMb_pw();
+	    if (!sessionPass.equals(mb_pw)) {
+	        rttr.addFlashAttribute("msg", true);
+	        return "redirect:/memberDeleteView";
+	    }
+	    Member mvo = new Member();
+	    mvo.setMb_id(member.getMb_id()); // mb_id를 세션에서 가져온 값으로 설정
+	    mvo.setMb_pw(mb_pw); // mb_pw를 전달받은 값으로 설정
+	    mapper.userDelete(mvo);
+	    session.invalidate();
+
+	    return "redirect:/Main.do";
+	}
+
 	
 	//@GetMapping("/Mypage.do")
 	//public String Mypage() {

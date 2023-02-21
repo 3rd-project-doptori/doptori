@@ -24,9 +24,9 @@
       select #{bd_type}, #{bd_mb_num}, #{bd_title}, #{bd_cont}, #{bd_pic} ,IFNULL(max(bd_group)+1, 0), 0, 0 from Board
   </insert>
   <!-- 게시글 상세보기 -->
-  <select id="boardContent" parameterType="int" resultType="com.doptori.entity.Board">
       <!-- select * from Board where bd_num=#{bd_num} -->
-      SELECT b.*, m.mb_nick FROM Board b JOIN Member m ON b.bd_mb_num = m.mb_num WHERE b.bd_num=#{bd_num}
+  <select id="boardContent" parameterType="int" resultType="com.doptori.entity.Board">
+      SELECT b.*, m.mb_nick, m.mb_pic FROM Board b JOIN Member m ON b.bd_mb_num = m.mb_num WHERE b.bd_num=#{bd_num}
   </select>
   <!-- 게시글 작성자를 회원번호가 아닌 이름으로 가져오기 위한 쿼리 -->
   <select id="getMember" parameterType="int" resultType="com.doptori.entity.Member">
@@ -104,7 +104,7 @@
     </select>
 
      <select id="qnalist" parameterType="int" resultType="com.doptori.entity.Board">
-    select Member.*, Board.* from Member INNER JOIN Board ON Member.mb_num = Board.bd_mb_num where bd_mb_num=#{bd_mb_num} and bd_type=2
+    select Member.*, Board.* from Member INNER JOIN Board ON Member.mb_num = Board.bd_mb_num where bd_type=2
   	</select>
   
       <select id="noticelist" parameterType="int" resultType="com.doptori.entity.Board">

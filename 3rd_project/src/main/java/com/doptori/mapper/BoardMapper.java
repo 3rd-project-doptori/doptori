@@ -87,7 +87,7 @@ public interface BoardMapper {
 	
 	public List<Board> getFileList(int bd_num);
 	
-	public List<Board> qnalist(int bd_mb_num);
+	public List<Board> qnalist();
 	
 	public List<Board> noticelist();
 	

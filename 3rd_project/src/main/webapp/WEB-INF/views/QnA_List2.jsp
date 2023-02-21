@@ -31,12 +31,12 @@
   <script type="text/javascript">
 
   function signin(){
-		location.href = "${cpath}/signin.do"
-	}
+      location.href = "${cpath}/signin.do"
+   }
   
-	function goForm() {
-		location.href="${cpath}/boardInsertForm.do"
-	}
+   function goForm() {
+      location.href="${cpath}/boardInsertForm.do"
+   }
   </script>
 </head>
 <body>
@@ -44,10 +44,10 @@
     <jsp:include page="/WEB-INF/views/header.jsp"/>
     <div class="tabs">
       <button class="tab active" onclick="openTab(event, 'tab-1')">
-        <div><span>Q&A</span></div>
+        <div><span>공지사항</span></div>
       </button>
       <button class="tab" onclick="openTab(event, 'tab-2')">
-        <div><span>공지사항</span></div>
+        <div><span>Q&A</span></div>
       </button>
     </div>
     <div class="content">
@@ -64,29 +64,42 @@
         <div class="table-responsive">
           <table class="table">
           
-          <caption> <h3 align="right">
-	    	
-			<div id="right" style="float:right;">	       
-	         	<select onchange="move(this)" id="pcnt">
-		         <option value="10"> 10개 </option>
-		         <option value="20"> 20개 </option>
-		         <option value="30"> 30개 </option>
-		         <option value="50"> 50개 </option>
-		       </select>
-		     </div>
-	     
-	       </h3></caption>
-	       
-              <thead>
+          <caption> <h3 align="right"> <font size="2">
+          <div id="left" style="float:left;"> <!-- select 검색 창  -->
+              <form method="post" action="${cpath}/QnA_List.do" onsubmit="return check(this)">
+               <select name="searchType" id="searchType">
+                 <option value="0">선 택</option>
+                 <option value="bd_title">제 목</option>
+                 <option value="bd_cont">내 용</option>
+                 <option value="bd_mb_num">작성자</option>
+               </select>
+               <input type="text" id="searchText" placeholder="검색어를 입력하세요." autocomplete="off" name="sword" size="20" value="${sword}">
+               <input type="submit" value="검색">
+              </form>
+              
+          </div>
+          
+         <div id="right" style="float:right;"><font size="2">          
+               <select onchange="move(this)" id="pcnt">
+               <option value="10"> 10개 </option>
+               <option value="20"> 20개 </option>
+               <option value="30"> 30개 </option>
+               <option value="50"> 50개 </option>
+             </select>
+             </font>
+          </div>
+        
+          </h3></caption>
+            <thead>
                   <tr>
                   <th scope="col">번호</th>
                   <th scope="col">작성자</th>
                   <th scope="col">제목</th>
                   <th scope="col">작성일</th>
-
                   </tr>
               </thead>
               <tbody class="table-group-divider">
+<<<<<<< HEAD
                   <c:forEach items="${qnalist}" var="vo">
                   <c:set var="cnt" value="${cnt+1}" />
                   <c:url var="contentlink" value="/boardContent.do/${vo.bd_num}" />
@@ -97,57 +110,75 @@
                   <td style="width: 267px;">${vo.bd_date}</td>
                   </tr>
                   </c:forEach>
+=======
+                  <c:forEach items="${noticelist}" var="vo2" varStatus="status">
+				        <c:url var="contentlink" value="/boardContent.do/${vo2.bd_num}" />
+				        <c:set var="vo2_indexed" value="${noticelist[noticelist.size() - status.count]}" />
+				        <tr>   
+				            <th scope="row">${noticelist.size() - status.count + 1}</th>
+				            <td>${vo2_indexed.mb_nick}</td>
+				            <td><a href="${contentlink}">${vo2_indexed.bd_title}</a></td>
+				            <td>${vo2_indexed.bd_date}</td>
+				        </tr>
+				    </c:forEach>
+>>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
               </tbody>
               <tfoot>
-	    		<!-- 페이징 -->
-	    		<tr>
-			       <td colspan="5" align="center">
-			        <!-- 10페이지 단위로 이전 이동하기  :  -->
-			       <c:if test="${pstart != 1}"> <!-- 첫번재 그룹이 아닐때는  -->
-			        	<a href="QnA_List.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> << </a>
-			       </c:if>
-			       <c:if test="${pstart == 1}"> <!-- 첫번째 그룹일때(1~10)는 이전 10페이지 이동 X -->
-			       《<!-- 넘어가는 꺽세 -->
-			       </c:if>
-			       
-			        <!-- 1페이지 단위로 이전으로 가기 => 현재페이지에서 1을 뺀 페이지로 이동 --> 
-			       <c:if test="${page != 1}"> <!-- 현재 페이지가 1이 아닌경우 -->
-			        	<a href="QnA_List.do?page=${page-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ◀  </a>
-			       </c:if>
-			       <c:if test="${page == 1}"> <!-- 현재페이지가 1인경우 -->
-			                     ◀
-			       </c:if>
-			       
-			         <c:forEach begin="${pstart}" end="${pend}" var="i">  <!-- 페이지 출력하기 -->
-			           <!-- 현재 페이지의 색을 빨강 -->
-			            <c:if test="${page == i}"> <!-- 출력되는 페이지가 현재페이지와 같다면 -->
-			               <c:set var="st" value="style='color:darkblue;'"/>
-			            </c:if>
-			            <c:if test="${page != i}"> <!-- 출력되는 페이지가 현재페이지와 다르다면 -->
-			               <c:set var="st" value=""/>
-			            </c:if>
-			            <a href="QnA_List.do?page=${i}&pcnt=${pcnt}&sel=${sel}&sword=${sword}" ${st}> ${i} </a>
-			         </c:forEach>
-			         
-			       <!-- 1페이지 단위로 다음 이동하기 -->
-			       <c:if test="${page != chong}"> <!-- 현재 페이지가 마지막 페이지가 아니라면 -->
-			        	<a href="QnA_List.do?page=${page+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ▶  </a>
-			       </c:if>
-			       <c:if test="${page == chong}"> <!-- 현재 페이지가 마지막 페이지라면 -->
-			                     ▶
-			       </c:if>
-			        
-			       <!-- 10페이지 단위로 다음 이동하기 -->
-			       <c:if test="${chong != pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막이 아닐겨우 -->
-			         	<a href="QnA_List.do?page=${pend+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> >> </a>
-			       </c:if>
-			       <c:if test="${chong == pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막일 경우 -->
-			    	   》 <!-- 넘어가는 꺽세 -->
-			       </c:if>
-			       </td>
-			     </tr>
+             <!-- 페이징 -->
+             <tr>
+                <td colspan="5" align="center">
+                 <!-- 10페이지 단위로 이전 이동하기  :  -->
+                <c:if test="${pstart != 1}"> <!-- 첫번재 그룹이 아닐때는  -->
+                    <a href="QnA_List.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> << </a>
+                </c:if>
+                <c:if test="${pstart == 1}"> <!-- 첫번째 그룹일때(1~10)는 이전 10페이지 이동 X -->
+                《<!-- 넘어가는 꺽세 -->
+                </c:if>
+                
+                 <!-- 1페이지 단위로 이전으로 가기 => 현재페이지에서 1을 뺀 페이지로 이동 --> 
+                <c:if test="${page != 1}"> <!-- 현재 페이지가 1이 아닌경우 -->
+                    <a href="QnA_List.do?page=${page-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ◀  </a>
+                </c:if>
+                <c:if test="${page == 1}"> <!-- 현재페이지가 1인경우 -->
+                              ◀
+                </c:if>
+                
+                  <c:forEach begin="${pstart}" end="${pend}" var="i">  <!-- 페이지 출력하기 -->
+                    <!-- 현재 페이지의 색을 빨강 -->
+                     <c:if test="${page == i}"> <!-- 출력되는 페이지가 현재페이지와 같다면 -->
+                        <c:set var="st" value="style='color:darkblue;'"/>
+                     </c:if>
+                     <c:if test="${page != i}"> <!-- 출력되는 페이지가 현재페이지와 다르다면 -->
+                        <c:set var="st" value=""/>
+                     </c:if>
+                     <a href="QnA_List.do?page=${i}&pcnt=${pcnt}&sel=${sel}&sword=${sword}" ${st}> ${i} </a>
+                  </c:forEach>
+                  
+                <!-- 1페이지 단위로 다음 이동하기 -->
+                <c:if test="${page != chong}"> <!-- 현재 페이지가 마지막 페이지가 아니라면 -->
+                    <a href="QnA_List.do?page=${page+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ▶  </a>
+                </c:if>
+                <c:if test="${page == chong}"> <!-- 현재 페이지가 마지막 페이지라면 -->
+                              ▶
+                </c:if>
+                 
+                <!-- 10페이지 단위로 다음 이동하기 -->
+                <c:if test="${chong != pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막이 아닐겨우 -->
+                     <a href="QnA_List.do?page=${pend+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> >> </a>
+                </c:if>
+                <c:if test="${chong == pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막일 경우 -->
+                   》 <!-- 넘어가는 꺽세 -->
+                </c:if>
+                </td>
+              </tr>
 
-	    	</tfoot>
+			    <c:if test="${loginMember.mb_id=='admin'}">
+	    		<tr>
+	    			<td colspan="5"><button onclick="goForm()">글쓰기</button></td>
+	    		</tr>
+	    		</c:if>
+          </tfoot>
+          
           </table>
         </div>
       </div>
@@ -166,20 +197,32 @@
         <div class="table-responsive">
           <table class="table">
           
-			<caption> <h3 align="right">
-	    	
-		    
-			<div id="right" style="float:right;">       
-	         	<select onchange="move(this)" id="pcnt">
-		         <option value="10"> 10개 </option>
-		         <option value="20"> 20개 </option>
-		         <option value="30"> 30개 </option>
-		         <option value="50"> 50개 </option>
-		       </select>
-		       
-		     </div>
-	     
-	       </h3></caption>          
+         <caption> <h3 align="right"> <font size="2">
+          <div id="left" style="float:left;"> <!-- select 검색 창  -->
+              <form method="post" action="${cpath}/QnA_List.do" onsubmit="return check(this)">
+               <select name="searchType" id="searchType">
+                 <option value="0">선 택</option>
+                 <option value="bd_title">제 목</option>
+                 <option value="bd_cont">내 용</option>
+                 <option value="bd_mb_num">작성자</option>
+               </select>
+               <input type="text" id="searchText" placeholder="검색어를 입력하세요." autocomplete="off" name="sword" size="20" value="${sword}">
+               <input type="submit" value="검색">
+              </form>
+              
+          </div>
+          
+         <div id="right" style="float:right;"><font size="2">          
+               <select onchange="move(this)" id="pcnt">
+               <option value="10"> 10개 </option>
+               <option value="20"> 20개 </option>
+               <option value="30"> 30개 </option>
+               <option value="50"> 50개 </option>
+             </select>
+             </font>
+           </div>
+        
+          </h3></caption>       
           
               <thead>
                   <tr>
@@ -187,9 +230,11 @@
                   <th scope="col">작성자</th>
                   <th scope="col">제목</th>
                   <th scope="col">작성일</th>
+
                   </tr>
               </thead>
               <tbody class="table-group-divider">
+<<<<<<< HEAD
                   <c:forEach items="${noticelist}" var="vo2">
                   <c:set var="cnt2" value="${cnt2+1}" />
                   <c:url var="contentlink" value="/boardContent.do/${vo2.bd_num}" />
@@ -200,57 +245,74 @@
                   <td style="width: 267px;">${vo2.bd_date}</td>
                   </tr>
                   </c:forEach>
+=======
+                  <c:forEach items="${qnalist}" var="vo" varStatus="status">
+				        <c:url var="contentlink" value="/boardContent.do/${vo.bd_num}" />
+				        <c:set var="vo_indexed" value="${qnalist[qnalist.size() - status.count]}" />
+				        <tr>   
+				            <th scope="row">${qnalist.size() - status.count + 1}</th>
+				            <td>${vo_indexed.mb_nick}</td>
+				            <td><a href="${contentlink}">${vo_indexed.bd_title}</a></td>
+				            <td>${vo_indexed.bd_date}</td>
+				        </tr>
+				    </c:forEach>
+>>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
               </tbody>
               <tfoot>
-	    		<!-- 페이징 -->
-	    		<tr>
-			       <td colspan="5" align="center">
-			        <!-- 10페이지 단위로 이전 이동하기  :  -->
-			       <c:if test="${pstart != 1}"> <!-- 첫번재 그룹이 아닐때는  -->
-			        	<a href="QnA_List.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> << </a>
-			       </c:if>
-			       <c:if test="${pstart == 1}"> <!-- 첫번째 그룹일때(1~10)는 이전 10페이지 이동 X -->
-			       《<!-- 넘어가는 꺽세 -->
-			       </c:if>
-			       
-			        <!-- 1페이지 단위로 이전으로 가기 => 현재페이지에서 1을 뺀 페이지로 이동 --> 
-			       <c:if test="${page != 1}"> <!-- 현재 페이지가 1이 아닌경우 -->
-			        	<a href="QnA_List.do?page=${page-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ◀  </a>
-			       </c:if>
-			       <c:if test="${page == 1}"> <!-- 현재페이지가 1인경우 -->
-			                     ◀
-			       </c:if>
-			       
-			         <c:forEach begin="${pstart}" end="${pend}" var="i">  <!-- 페이지 출력하기 -->
-			           <!-- 현재 페이지의 색을 빨강 -->
-			            <c:if test="${page == i}"> <!-- 출력되는 페이지가 현재페이지와 같다면 -->
-			               <c:set var="st" value="style='color:darkblue;'"/>
-			            </c:if>
-			            <c:if test="${page != i}"> <!-- 출력되는 페이지가 현재페이지와 다르다면 -->
-			               <c:set var="st" value=""/>
-			            </c:if>
-			            <a href="QnA_List.do?page=${i}&pcnt=${pcnt}&sel=${sel}&sword=${sword}" ${st}> ${i} </a>
-			         </c:forEach>
-			         
-			       <!-- 1페이지 단위로 다음 이동하기 -->
-			       <c:if test="${page != chong}"> <!-- 현재 페이지가 마지막 페이지가 아니라면 -->
-			        	<a href="QnA_List.do?page=${page+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ▶  </a>
-			       </c:if>
-			       <c:if test="${page == chong}"> <!-- 현재 페이지가 마지막 페이지라면 -->
-			                     ▶
-			       </c:if>
-			        
-			       <!-- 10페이지 단위로 다음 이동하기 -->
-			       <c:if test="${chong != pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막이 아닐겨우 -->
-			         	<a href="QnA_List.do?page=${pend+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> >> </a>
-			       </c:if>
-			       <c:if test="${chong == pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막일 경우 -->
-			    	   》 <!-- 넘어가는 꺽세 -->
-			       </c:if>
-			       </td>
-			     </tr>
+             <!-- 페이징 -->
+             <tr>
+                <td colspan="5" align="center">
+                 <!-- 10페이지 단위로 이전 이동하기  :  -->
+                <c:if test="${pstart != 1}"> <!-- 첫번재 그룹이 아닐때는  -->
+                    <a href="QnA_List.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> << </a>
+                </c:if>
+                <c:if test="${pstart == 1}"> <!-- 첫번째 그룹일때(1~10)는 이전 10페이지 이동 X -->
+                《<!-- 넘어가는 꺽세 -->
+                </c:if>
+                
+                 <!-- 1페이지 단위로 이전으로 가기 => 현재페이지에서 1을 뺀 페이지로 이동 --> 
+                <c:if test="${page != 1}"> <!-- 현재 페이지가 1이 아닌경우 -->
+                    <a href="QnA_List.do?page=${page-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ◀  </a>
+                </c:if>
+                <c:if test="${page == 1}"> <!-- 현재페이지가 1인경우 -->
+                              ◀
+                </c:if>
+                
+                  <c:forEach begin="${pstart}" end="${pend}" var="i">  <!-- 페이지 출력하기 -->
+                    <!-- 현재 페이지의 색을 빨강 -->
+                     <c:if test="${page == i}"> <!-- 출력되는 페이지가 현재페이지와 같다면 -->
+                        <c:set var="st" value="style='color:darkblue;'"/>
+                     </c:if>
+                     <c:if test="${page != i}"> <!-- 출력되는 페이지가 현재페이지와 다르다면 -->
+                        <c:set var="st" value=""/>
+                     </c:if>
+                     <a href="QnA_List.do?page=${i}&pcnt=${pcnt}&sel=${sel}&sword=${sword}" ${st}> ${i} </a>
+                  </c:forEach>
+                  
+                <!-- 1페이지 단위로 다음 이동하기 -->
+                <c:if test="${page != chong}"> <!-- 현재 페이지가 마지막 페이지가 아니라면 -->
+                    <a href="QnA_List.do?page=${page+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> ▶  </a>
+                </c:if>
+                <c:if test="${page == chong}"> <!-- 현재 페이지가 마지막 페이지라면 -->
+                              ▶
+                </c:if>
+                 
+                <!-- 10페이지 단위로 다음 이동하기 -->
+                <c:if test="${chong != pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막이 아닐겨우 -->
+                     <a href="QnA_List.do?page=${pend+1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> >> </a>
+                </c:if>
+                <c:if test="${chong == pend}"> <!-- 현재 출력되는 페이지 그룹이 마지막일 경우 -->
+                   》 <!-- 넘어가는 꺽세 -->
+                </c:if>
+                </td>
+              </tr>
 
-	    	</tfoot>
+             <tr>
+                <td colspan="5"><button onclick="goForm()">글쓰기</button></td>
+             </tr>
+          </tfoot>
+          
+            
           </table>
         </div>
       </div>

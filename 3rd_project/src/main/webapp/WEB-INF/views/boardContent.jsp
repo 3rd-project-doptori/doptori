@@ -114,7 +114,7 @@ $('#comment-form').submit(function(event) {
                 </colgroup>
             <tbody>
                 <tr>
-                    <th rowspan='2' align="center"><div><img id="profile_img" class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>${vo.mb_nick}</th>
+                    <th rowspan='2' align="center"><div><img src="${cpath}/resources/images/${vo.mb_pic}" alt="" style="width: 3rem;"/></div>${vo.mb_nick}</th>
                     <th>제목</th>
                     <td colspan="3">
                     	<h4>${vo.bd_title}</h4>

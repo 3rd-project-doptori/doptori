@@ -132,13 +132,13 @@ public class BoardController {
 		HttpSession session = request.getSession();
 		Member loginMember = (Member) session.getAttribute("loginMember");
 		
-		List<Board> qnalist = mapper.qnalist(loginMember.getMb_num());
+		List<Board> qnalist = mapper.qnalist();
 		List<Board> noticelist = mapper.noticelist();
 		model.addAttribute("qnalist", qnalist);
 		model.addAttribute("noticelist", noticelist);
 		return "QnA_List2";
-	}	
-	
+	}
+
 	@RequestMapping("/QnA_List.do")
 	public String QnA_List(Model model, HttpServletRequest request) {
 
@@ -374,7 +374,7 @@ public class BoardController {
 		
 		mapper.boardInsert(vo);
 
-		return "redirect:/QnA_List.do";
+		return "redirect:/QnA_List2.do";
 	}
 	
 	@RequestMapping("/boardInsertForm2.do")
@@ -515,16 +515,22 @@ public class BoardController {
 	            model.addAttribute("co_bd_num", co_bd_num);
 	        }
 	        
-	        // Board 작성자의 mb_nick 추가
+	        // Board 작성자의 mb_nick(닉네임) 추가
 	        Member writer = mapper.getMember(vo.getBd_mb_num());
 	        if (writer != null) {
 	            vo.setMb_nick(writer.getMb_nick());
 	        }
-	        	        
+	        	 
+	        // Board 작성자의 mb_pic(프롶릴 사진) 추가
+	        Member mb_pic = mapper.getMember(vo.getBd_mb_num());
+	        if (mb_pic != null) {
+	            vo.setMb_pic(mb_pic.getMb_pic());
+	        }
+	        
 	        model.addAttribute("vo", vo);
 	        model.addAttribute("list", list);
 	       
-	     // 파일 이미지 출력을 위한 코드
+	        // 파일 이미지 출력을 위한 코드
 	        if (vo.getBd_pic() != null) {
 	            String bd_pic = vo.getBd_pic();
 	            String ext = FilenameUtils.getExtension(bd_pic);
@@ -561,7 +567,7 @@ public class BoardController {
 
 		mapper.boardUpdate(vo);
 
-		return "redirect:QnA_List.do";
+		return "redirect:QnA_List2.do";
 	}
 	@PostMapping("/noticeUpdate.do")
 	public String noticeUpdate(Board vo) {
@@ -584,7 +590,7 @@ public class BoardController {
 
 		mapper.boardDelete(bd_num);
 
-		return "redirect:/QnA_List.do";
+		return "redirect:/QnA_List2.do";
 	}
 	
 	@RequestMapping("/noticeDelete.do/{bd_num}")
@@ -690,7 +696,7 @@ public class BoardController {
 	        return "redirect:/boardContent.do/" + cvo.getCo_bd_num(); // 댓글이 등록된 게시물 페이지로 이동
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	        return "redirect:/QnA_List.do";
+	        return "redirect:/QnA_List2.do";
 	    }
 	}
 	

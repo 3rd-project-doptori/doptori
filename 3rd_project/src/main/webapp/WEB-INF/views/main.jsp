@@ -157,7 +157,7 @@
                 		<h3><a href="#" onClick="alert('로그인을 해주세요.')"> 공지사항</a></h3>
 					</c:if>
 					<c:if test="${loginMember != null}">
-						<h3><a href="${cpath}/notice.do"> 공지사항</a></h3>
+						<h3><a href="${cpath}/QnA_List2.do"> 공지사항</a></h3>
 					</c:if>
         <table class="table table-sm text-start align-middle">
 	    	<thead align="center">

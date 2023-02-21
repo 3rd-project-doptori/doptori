@@ -21,6 +21,7 @@ public class Board {
 	private	int bd_level; // 게시글 글의 깊이
 	
 	private	String mb_nick;
+	private	String mb_pic;
 	
 	/*
 	 * private int bd_delete; // 삭제유무
@@ -169,7 +170,15 @@ public class Board {
 		this.mb_nick = mb_nick;
 		
 	}
+	
+	public String getMb_pic() {
+		return mb_pic;
+	}
 
+	public void setMb_pic(String mb_pic) {
+		this.mb_pic = mb_pic;
+		
+	}
 
 
 

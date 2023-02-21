@@ -15,48 +15,45 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 
-		$(document).ready(function(){
-			// 취소
-			$(".cencle").on("click", function(){
-				
-				location.href = "${cpath}/Main.do";
-						    
-			})
-			
-			$("#submit").on("click", function(){
-				if($("#mb_pw").val()==""){
-					alert("비밀번호를 입력해주세요.");
-					$("#mb_pw").focus();
-					return false;
-				}
-				
-				$.ajax({
-					url : "${cpath}/passChk",
-					type : "POST",
-					dataType : "json",
-					data : $("#delForm").serializeArray(),
-					success: function(data){
-						
-						if(data==0){
-							alert("패스워드가 틀렸습니다.");
-							return;
-						}else{
-							if(confirm("회원탈퇴하시겠습니까?")){
-								$("#delForm").submit();
-							}
-							
-						}
-					}
-				})
-			});
-			
-				
-			
-		})
+$(document).ready(function(){
+    // 취소
+    $(".cencle").on("click", function(){
+        location.href = "${cpath}/Main.do";
+    })
+
+    $("#submit").on("click", function(){
+        if($("#mb_pw").val()==""){
+            alert("비밀번호를 입력해주세요.");
+            $("#mb_pw").focus();
+            return false;
+        }
+
+        $.ajax({
+            url : "${cpath}/passChk",
+            type : "POST",
+            dataType : "json",
+            data : {
+                 "mb_pw" : $("#mb_pw").val()
+            },
+            success: function(data){
+                if(data){
+                    if(confirm("회원탈퇴하시겠습니까?")){
+                        $("#delForm").attr("action", "${cpath}/memberDelete.do");
+                        $("#delForm").submit();
+                    }
+                } else {
+                    alert("비밀번호가 일치하지 않습니다.");
+                }
+            }
+        });
+    });
+  });
+  
 	</script>
 </head>
 <body>
 	<section id="container">
+		<c:if test="${not empty loginMember}">
 			<form action="${cpath}/memberDelete.do" method="post" id="delForm">
 				<div class="form-group has-feedback">
 					<label class="control-label" for="mb_id">아이디</label>
@@ -64,7 +61,7 @@
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userPass">비밀번호</label>
-					<input class="form-control" type="password" id="mb_pw" name="mb_pw" placeholder="비밀번호를 입력하세요."/>
+					<input class="form-control" type="password" id="mb_pw" name="mb_pw" placeholder="비밀번호를 입력하세요." required="required"/>
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userName">닉네임</label>
@@ -75,9 +72,10 @@
 					<button class="cencle btn btn-danger" type="button">취소</button>
 				</div>
 			</form>
+			</c:if>
 			<div>
-				<c:if test="${msg == false}">
-					비밀번호가 맞지 않습니다.
+				<c:if test="${not empty msg}">
+				    <span style="color:red">${msg}</span>
 				</c:if>
 			</div>
 		</section>

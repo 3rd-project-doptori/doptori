@@ -81,7 +81,7 @@
 	  	
 	 	function move(my)
 	    {
-	 	   location="QnA_List.do?pcnt="+my.value;
+	 	   location="${cpath}/QnA_List.do?pcnt="+my.value;
 	    }
 	    window.onload=function()
 	    {
@@ -200,7 +200,7 @@
 						</td>
 						<td align="center" >${memberNames[status.index]}</td>     			
 						<td align="center" >${vo.bd_date}</td>  			
-						<%-- <td>${vo.bd_cnt}</td>    --%>  			
+						<td>${vo.bd_cnt}</td>  			
 	    			</tr>
 	    			</c:if>
 	    		</c:forEach>
