@@ -107,12 +107,12 @@
               <svg class="bd-placeholder-img" width="125" height="175" xmlns="http://www.w3.org/2000/svg" href="planner.png" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <c:if test="${loginMember == null}">
 						<a href="#" onClick="alert('로그인을 해주세요.')">
-                			<image href="${cpath}/resources/images/plant.png" width="100%" height="100%"></image>
+                			<image href="${cpath}/resources/images/plant.png" width="90%" height="90%"></image>
                 		</a>
 					</c:if>
 					<c:if test="${loginMember != null}">
 						<a href="<c:url value='/analysis.do'/>">
-	                		<image href="${cpath}/resources/images/plant.png" width="100%" height="100%"></image>
+	                		<image href="${cpath}/resources/images/plant.png" width="90%" height="90%"></image>
 	                	</a>
 					</c:if>
                 <p>생육과정관리</p>
@@ -122,12 +122,12 @@
               <svg class="bd-placeholder-img" width="125" height="175" xmlns="http://www.w3.org/2000/svg" href="planner.png" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <c:if test="${loginMember == null}">
 						<a href="#" onClick="alert('로그인을 해주세요.')">
-                			<image href="${cpath}/resources/images/pests.png" width="100%" height="100%"></image>
+                			<image href="${cpath}/resources/images/pests.png" width="90%" height="90%"></image>
                 		</a>
 					</c:if>
 					<c:if test="${loginMember != null}">
 						<a href="<c:url value='/analysis2.do'/>">
-	                		<image href="${cpath}/resources/images/pests.png" width="100%" height="100%"></image>
+	                		<image href="${cpath}/resources/images/pests.png" width="90%" height="90%"></image>
 	                	</a>
 					</c:if>
                 <p>병해충관리</p>
@@ -137,12 +137,12 @@
               <svg class="bd-placeholder-img" width="125" height="175" xmlns="http://www.w3.org/2000/svg" href="planner.png" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <c:if test="${loginMember == null}">
 						<a href="#" onClick="alert('로그인을 해주세요.')">
-                			<image href="${cpath}/resources/images/planner.png" width="100%" height="100%"></image>
+                			<image href="${cpath}/resources/images/planner.png" width="90%" height="90%"></image>
                 		</a>
 					</c:if>
 					<c:if test="${loginMember != null}">
 						<a href="<c:url value='/FarmDiaryManageList2.do'/>">
-	                		<image href="${cpath}/resources/images/planner.png" width="100%" height="100%"></image>
+	                		<image href="${cpath}/resources/images/planner.png" width="90%" height="90%"></image>
 	                	</a>
 					</c:if>
                 <p>영농일지</p>
