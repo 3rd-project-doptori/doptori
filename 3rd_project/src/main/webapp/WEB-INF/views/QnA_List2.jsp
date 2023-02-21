@@ -51,11 +51,32 @@
     </div>
     <div class="content">
       <div class="content__inner" id="tab-1">
-      
-    		
-                  
+    <div class="res">
+                      <form class="d-flex col-sm-3 " role="search">
+                          <div class="input-group">
+                              <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="검색어를 입력하세요">
+                              <button class="input-group-text btn btn-sm btn-outline-secondary">🔍</button>
+                          </div>
+                          <button class="btn btn-sm btn-outline-secondary sub" type="submit">글쓰기</button>
+                      </form>
+                  </div>
         <div class="table-responsive">
           <table class="table">
+          
+          <caption> <h3 align="right"> <font size="2">
+          <div id="left" style="float:left;"> <!-- select 검색 창  -->
+              <form method="post" action="${cpath}/QnA_List.do" onsubmit="return check(this)">
+               <select name="searchType" id="searchType">
+                 <option value="0">선 택</option>
+                 <option value="bd_title">제 목</option>
+                 <option value="bd_cont">내 용</option>
+                 <option value="bd_mb_num">작성자</option>
+               </select>
+               <input type="text" id="searchText" placeholder="검색어를 입력하세요." autocomplete="off" name="sword" size="20" value="${sword}">
+               <input type="submit" value="검색">
+              </form>
+              
+          </div>
           
          <div id="right" style="float:right;"><font size="2">          
                <select onchange="move(this)" id="pcnt">
@@ -66,7 +87,8 @@
              </select>
              </font>
           </div>
-          
+        
+          </h3></caption>
             <thead>
                   <tr>
                   <th scope="col">번호</th>
@@ -138,29 +160,12 @@
 
 			    <c:if test="${loginMember.mb_id=='admin'}">
 	    		<tr>
-	    			<td colspan="5"><button class="btn btn-sm btn-outline-secondary sub" onclick="goForm()">글쓰기</button></td>
+	    			<td colspan="5"><button onclick="goForm()">글쓰기</button></td>
 	    		</tr>
 	    		</c:if>
           </tfoot>
           
           </table>
-          
-          <div class="res">
-	    		
-                      <form method="post" action="${cpath}/QnA_List2.do" onsubmit="return check(this)" class="d-flex col-sm-3 " role="search">
-                          <div class="input-group">
-	                          <select name="searchType" id="searchType">
-				                 <option value="0">선 택</option>
-				                 <option value="bd_title">제 목</option>
-				                 <option value="bd_cont">내 용</option>
-				                 <option value="bd_mb_num">작성자</option>
-				               </select>
-                              <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="검색어를 입력하세요" autocomplete="off" name="sword" size="20" value="${sword}">
-                              <input type="submit" class="input-group-text btn btn-sm btn-outline-secondary" value="🔍">
-                          </div>
-                      </form>
-           	</div>
-           	
         </div>
       </div>
 
@@ -171,6 +176,7 @@
                      <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="검색어를 입력하세요">
                      <button class="input-group-text btn btn-sm btn-outline-secondary">🔍</button>
                  </div>
+                 <button class="btn btn-sm btn-outline-secondary sub" type="submit">글쓰기</button>
              </form>
          </div>
         <div class="table-responsive">
@@ -274,8 +280,7 @@
               </tr>
 
              <tr>
-             
-                <td colspan="5"><button class="btn btn-sm btn-outline-secondary sub" onclick="goForm()">글쓰기</button></td>
+                <td colspan="5"><button onclick="goForm()">글쓰기</button></td>
              </tr>
           </tfoot>
           
