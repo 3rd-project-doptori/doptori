@@ -139,11 +139,30 @@ p {
 }
 
 .sub{
-  width: 4rem;
+  width: 5rem;
   margin-left: 1rem;
   border: 1px solid #ced4da;
 }
 
 .aa{
   border: 1px solid #ced4da;
+}
+
+
+.res{
+    display: flex;
+    justify-content: end;
+    padding: 0.5rem 0;
+}
+
+select{
+	font-size:1rem;
+}
+
+a{
+	color: #495057;
+}
+
+a:hover{
+	color:black;
 }

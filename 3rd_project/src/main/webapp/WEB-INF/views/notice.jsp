@@ -133,6 +133,15 @@
         <div><span>Q&A</span></div>
       </button>
     </div> -->
+    <div class="res">
+                      <form class="d-flex col-sm-3 " role="search">
+                          <div class="input-group">
+                              <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="검색어를 입력하세요">
+                              <button class="input-group-text btn btn-sm btn-outline-secondary">🔍</button>
+                          </div>
+                          <button class="btn btn-sm btn-outline-secondary sub" type="submit">등록</button>
+                      </form>
+                  </div>
     <h3>공지사항</h3>
     <div class="content">
       <div class="content__inner current" id="tab-1">
