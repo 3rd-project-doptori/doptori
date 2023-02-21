@@ -125,19 +125,19 @@
                             </tr>
                             <tr>
                                 <th class="text-center" scope="row">가격</th>
-<<<<<<< HEAD
-                                <td>₩ 가격</td>
-=======
-                                <td id ="re_price">20000원</td>
->>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
+
+                                <td>₩</td>
+
+                                <td id ="re_price">20,000원</td>
+
                             </tr>
                             <tr>
                                 <th class="text-center" scope="row">상세정보</th>
-<<<<<<< HEAD
+
                                 <td>상세정보</td>
-=======
+
                                 <td id = "re_memo">당도가 높음</td>
->>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
+
                             </tr>
                             </tbody>
                         </table>
