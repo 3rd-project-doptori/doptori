@@ -15,38 +15,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class FileDownController {
 	
-	@RequestMapping("/fileDownload.do")
-    public void fileDownload(HttpServletRequest request,HttpServletResponse response) throws Exception {
-        //String path =  request.getSession().getServletContext().getRealPath("저장경로");
+	 @RequestMapping("/fileDownload.do")
+	    public void fileDownload(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	        String bd_pic = request.getParameter("bd_pic");
+	        String realBd_pic = "C:\\Users\\user\\git\\doptori\\3rd_project\\src\\main\\webapp\\resources\\images\\" + bd_pic;
+
+	        File file1 = new File(realBd_pic);
+	        if (!file1.exists()) {
+	            return;
+	        }
+
+	        // 파일 다운로드를 위한 설정
+	        response.setContentType("application/octet-stream");
+	        response.setHeader("Content-Transfer-Encoding", "binary");
+
+	        // 파일 이름 추출
+	        String fileName = file1.getName();
+	        String originalFileName = fileName.substring(0, fileName.lastIndexOf('.'));
+	        String extension = fileName.substring(fileName.lastIndexOf('.') + 1);
+
+	        // 파일 이름 UTF-8로 인코딩
+	        String encodedFileName = URLEncoder.encode(originalFileName, "UTF-8").replaceAll("\\+", "%20");
+	        String encodedExtension = URLEncoder.encode(extension, "UTF-8").replaceAll("\\+", "%20");
+
+        // Content-Disposition 헤더에 원래 파일 이름과 확장자 지정
+        response.setHeader("Content-Disposition", "attachment; filename=\"" + encodedFileName + "." + encodedExtension + "\"");
         
-        String bd_pic = request.getParameter("bd_pic");
-        String realBd_pic = "";
-        System.out.println(bd_pic);
-         
-        try {
-            String browser = request.getHeader("User-Agent"); 
-            //파일 인코딩 
-            if (browser.contains("MSIE") || browser.contains("Trident")
-                    || browser.contains("Chrome")) {
-            	bd_pic = URLEncoder.encode(bd_pic, "UTF-8").replaceAll("\\+",
-                        "%20");
-            } else {
-            	bd_pic = new String(bd_pic.getBytes("UTF-8"), "ISO-8859-1");
-            }
-        } catch (UnsupportedEncodingException ex) {
-            System.out.println("UnsupportedEncodingException");
-        }
-        realBd_pic = "C:\\Users\\user\\git\\doptori\\3rd_project\\src\\main\\webapp\\resources\\images\\" + bd_pic;
-        System.out.println(realBd_pic);
-        File file1 = new File(realBd_pic);
-        if (!file1.exists()) {
-            return ;
-        }
-         
-        // 파일명 지정        
-        response.setContentType("application/octer-stream");
-        response.setHeader("Content-Transfer-Encoding", "binary;");
-        response.setHeader("Content-Disposition", "attachment; bd_pic=\"" + bd_pic + "\"");
         try {
             OutputStream os = response.getOutputStream();
             FileInputStream fis = new FileInputStream(realBd_pic);

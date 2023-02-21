@@ -136,10 +136,10 @@ $('#comment-form').submit(function(event) {
 				    ${fn:replace(vo.bd_cont, newline, "<br>")}</td>
                 </tr>
                 <tr>
-				 	<th>첨부파일</th>
-				 	<c:if test="${vo.bd_pic ne null}">
-						<td colspan="5" align="left"><a href="${cpath}/fileDownload.do?bd_pic=${vo.bd_pic}">${vo.bd_pic}</a></td>
-				 	</c:if>
+				    <th>첨부파일</th>
+				    <c:if test="${vo.bd_pic ne null}">
+				        <td colspan="5" align="left"><a href="${cpath}/fileDownload.do?bd_pic=${vo.bd_pic}">${fn:escapeXml(vo.bd_pic)}</a></td>
+				    </c:if>
 				</tr>
 				<tr>
 				 	<td colspan="5" align="right">
