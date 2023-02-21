@@ -139,13 +139,13 @@
         </div>
 
 
-<!--         <div class="row mb-2 justify-content-md-center mar">
+         <div class="row mb-2 justify-content-md-center mar">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <svg class="bd-placeholder-img" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
             </div>
-        </div> -->
+        </div>
 
-        <<!-- section class="mb-5">
+        <section class="mb-5">
             <div class="card bg-light">
                 <div class="card-body">
                     Comment form
@@ -173,7 +173,7 @@
                     </div>
                 </div>
             </div>
-        </section> -->
+        </section>
     </div>
       
   </body>
