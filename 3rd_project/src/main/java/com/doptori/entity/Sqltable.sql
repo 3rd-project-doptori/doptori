@@ -13,7 +13,7 @@ CREATE TABLE Member (
   UNIQUE KEY(mb_nick)
 );
 
-ALTER TABLE farmdiary_manage ADD  fdm4_edu_file VARCHAR(3000) AFTER fdm4_edu_pic;
+ALTER TABLE Analysis ADD an_date DATETIME not null DEFAULT NOW();
 ALTER TABLE Analysis ADD  an_file_grow VARCHAR(3000) AFTER an_pic_grow;
 alter table Member drop column mb_fm_name;
 
@@ -193,6 +193,7 @@ create table farmdiary_manage(
 	fdm4_edu_place varchar(1000),
 	fdm4_edu_cont TEXT,
 	fdm4_edu_pic varchar(3000),
+	fdm4_edu_file varchar(3000),
 	fdm5_man_name varchar(100),
 	fdm5_man_phone varchar(100),
 	fdm5_man_ability int(2),
@@ -247,7 +248,7 @@ ALTER TABLE farmdiary_manage ADD fdm2_cp_num int(4) after fdm1_soil_check;
 ALTER TABLE farmdiary ADD fd_picture VARCHAR(3000) after fd_humid;
 ALTER TABLE farmdiary_manage ADD fdm7_analysislist TEXT;
 ALTER TABLE farmdiary_manage ADD fdm7_grow_pic VARCHAR(3000);
-ALTER TABLE farmdiary_manage ADD fdm7_grow_result TEXT;
+ALTER TABLE farmdiary_manage ADD fdm7_an_num int(4);
 
 alter table Comment add FOREIGN KEY (co_bd_num) REFERENCES Board (bd_num);
 alter table farmdiary_manage add FOREIGN KEY (fdm2_cp_num) REFERENCES Crop (cp_num);
@@ -256,8 +257,8 @@ alter table farmdiary_manage drop foreign key fdm1_ad_num;
 alter table farmdiary_manage drop foreign key fdm2_cp_num;
 alter table farmdiary_manage drop foreign key fdm_mb_num;
 
-ALTER TABLE farmdiary_manage DROP fdm7_pest_pic;
-ALTER TABLE farmdiary_manage DROP fdm7_pest_result;
+ALTER TABLE farmdiary_manage DROP fdm7_date;
+ALTER TABLE farmdiary_manage DROP fdm7_analysislist;
 ALTER TABLE farmdiary_manage DROP fdm7_grow_pic;
 ALTER TABLE farmdiary_manage DROP fdm7_grow_result;
 

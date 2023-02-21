@@ -88,6 +88,69 @@
     
     
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript">
+//1. 댓글 목록을 가져오는 API 호출하는 함수
+function loadComments(postId) {
+  $.post('/comments', { postId: postId }, function(data) {
+    // 댓글 목록을 가져와서 화면에 표시
+    $('#comment-list').html(data);
+  });
+}
+
+// 2. 게시글 상세 정보 페이지를 로드할 때, 댓글 목록을 가져오는 API 호출
+$(document).ready(function() {
+  // URL에서 게시글 ID를 추출
+  var postId = window.location.pathname.split('/').pop();
+
+  // 댓글 목록을 가져오는 API 호출
+  loadComments(postId);
+});
+
+// 3. 댓글을 추가할 때마다 새로운 API 호출을 수행하고 댓글 목록을 다시 로드
+$('#comment-form').submit(function(event) {
+  event.preventDefault();
+  
+  // 새로운 댓글을 추가하는 API 호출
+  $.post('/comments/add', $(this).serialize(), function() {
+    // 댓글을 추가한 후, 댓글 목록을 다시 로드
+    var postId = window.location.pathname.split('/').pop();
+    loadComments(postId);
+    
+    // 입력 필드를 초기화
+    $('#comment-form')[0].reset();
+  });
+});
+</script>
+<body>
+ <script type="text/javascript">
+ 	function goUpdate() {
+		location.href="${cpath}/boardUpdateForm.do?bd_num=${vo.bd_num}";
+	}
+ 	
+ 	function goReply() {
+		location.href="${cpath}/boardReplyForm.do";
+	}
+ 	function deleteComment(co_num, bd_num) {
+		  if (confirm("정말 삭제하시겠습니까?")) {
+		    $.ajax({
+		      url: "${cpath}/commentDelete",
+		      type: "POST",
+		      data: {
+		        co_num: co_num,
+		        bd_num: bd_num
+		      },
+		      success: function() {
+		        location.reload();
+		      },
+		      error: function() {
+		        alert("댓글 삭제에 실패하였습니다.");
+		      }
+		    });
+		  }
+		}
+	
+ </script>
   <body>
     <div class="container py-4">
         <jsp:include page="/WEB-INF/views/header.jsp"/>
@@ -125,11 +188,19 @@
                             </tr>
                             <tr>
                                 <th class="text-center" scope="row">가격</th>
-                                <td id ="re_price">20000원</td>
+
+                                <td>₩</td>
+
+                                <td id ="re_price">20,000원</td>
+
                             </tr>
                             <tr>
                                 <th class="text-center" scope="row">상세정보</th>
+
+                                <td>상세정보</td>
+
                                 <td id = "re_memo">당도가 높음</td>
+
                             </tr>
                             </tbody>
                         </table>
@@ -139,13 +210,13 @@
         </div>
 
 
-<!--         <div class="row mb-2 justify-content-md-center mar">
+         <div class="row mb-2 justify-content-md-center mar">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <svg class="bd-placeholder-img" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
             </div>
-        </div> -->
+        </div>
 
-        <<!-- section class="mb-5">
+        <section class="mb-5">
             <div class="card bg-light">
                 <div class="card-body">
                     Comment form
@@ -173,7 +244,7 @@
                     </div>
                 </div>
             </div>
-        </section> -->
+        </section>
     </div>
       
   </body>
