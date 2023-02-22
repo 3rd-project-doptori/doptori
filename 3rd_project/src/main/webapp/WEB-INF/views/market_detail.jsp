@@ -36,7 +36,7 @@
        
       function start_chat(){
           if(start_num==0){
-            var your_num = 1; //상대방의 회원번호. 여기에서는 임의로 넣음
+            var your_num = Number('${vo.bd_mb_num}'); //상대방의 회원번호.
             if(my_num==your_num){
                alert("자기 자신과는 채팅할 수 없습니다!");      
             }else{
@@ -67,9 +67,9 @@
          
          //re_cp_name이 딸기면 re_cp_num이 1 아니면 토마토인데 토마토의 경우 2
          var re_cp_name = document.getElementById('re_cp_name').innerHTML;
-         info.re_cp_num = 1;
-         if(re_cp_name!="딸기"){
-            info.re_cp_num = 2;
+         info.re_cp_num = 2;
+         if(re_cp_name!="토마토"){
+            info.re_cp_num = 1;
          }
          
          //td 안에 있는 값 가져와서 숫자만 추출하기

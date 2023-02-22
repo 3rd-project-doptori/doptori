@@ -141,7 +141,13 @@
 	                     <br>
 	                     판매 장소 : ${vo.re_place}
 	                     <br>
-	                     품목 번호 : ${vo.re_cp_num}
+	                     <c:if test='${vo.re_cp_num eq 1}'>
+	                     품목 : 딸기
+	                     </c:if>
+	                     <c:if test='${vo.re_cp_num eq 2}'>
+	                     품목 : 토마토
+	                     </c:if>
+	                     
 	                     <br>
 	                     가격 : ${vo.re_price}
 	                     <br>

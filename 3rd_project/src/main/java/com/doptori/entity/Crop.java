@@ -3,6 +3,7 @@ package com.doptori.entity;
 public class Crop {
 	
 	private	int cp_num;
+	private String cp_info_num;
 	private String cp_item;
 	private String cp_kind;
 	private	int cp_type;
@@ -10,6 +11,12 @@ public class Crop {
 	private	String cp_cont;
 	
 	
+	public String getCp_info_num() {
+		return cp_info_num;
+	}
+	public void setCp_info_num(String cp_info_num) {
+		this.cp_info_num = cp_info_num;
+	}
 	// getter, setter 만들기
 	public int getCp_num() {
 		return cp_num;
