@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.doptori.mapper.ReserveMapper">
+      <!-- 예약 목록보기 -->
+  <select id="ReserveList" parameterType="int" resultType="com.doptori.entity.Reserve">
+    select * from Reserve where re_mb_nums=#{re_mb_nums}
+  </select>
+  
+  <!-- 예약 승인하기 : 원글 컬럼 변경 -->
+  <update id="ConfirmReservation" parameterType="com.doptori.entity.Board">
+      update Board set bd_re_num=#{bd_re_num}
+      where bd_num=#{bd_num}
+  </update>
+  
+  <!--예약번호에 해당하는 원글 조회 -->
+  <select id="ReservedBoard" parameterType="int" resultType="com.doptori.entity.Board">
+    select * from Board where bd_re_num=#{bd_re_num}
+  </select>
+  
+  <!-- 예약번호로 예약 조회 -->
+  <select id="selectReserve" parameterType="int" resultType="com.doptori.entity.Reserve">
+    select * from Reserve where re_num=#{re_num}
+  </select>
+    
+</mapper>

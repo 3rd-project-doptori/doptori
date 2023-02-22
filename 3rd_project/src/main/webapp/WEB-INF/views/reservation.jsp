@@ -125,21 +125,40 @@
               <div class="card-style settings-card-1 mb-30">
                 <div class="profile-info">
                   <div id="Accordion_wrap">
+                  <c:forEach items="${list}" var="vo" varStatus="status">
                     <div class="que">
-                     <span>This is first question.</span>
-                      <div class="arrow-wrap">
-                       <span class="arrow-top">↑</span>
-                       <span class="arrow-bottom">↓</span>
-                      </div>
-                     
-                    </div>
-                    <div class="anw">
-                     <span>This is first answer.</span>
-                    </div>
+	                     <span>${vo.re_date}에 신청된 예약</span>
+	                      <div class="arrow-wrap">
+	                       <span class="arrow-top">↑</span>
+	                       <span class="arrow-bottom">↓</span>
+	                      </div>
+	                    </div>
+	                    <div class="anw">
+	                    <br>
+	                     구매자 : ${memberNames[status.index]}
+	                     <br>
+	                     판매 시간 : ${vo.re_selldate}
+	                     <br>
+	                     판매 장소 : ${vo.re_place}
+	                     <br>
+	                     품목 번호 : ${vo.re_cp_num}
+	                     <br>
+	                     가격 : ${vo.re_price}
+	                     <br>
+	                     무게 : ${vo.re_weight}
+	                     <br>
+	                     <a href="${cpath}/market_detail.do/${vo.re_bd_num}">판매글</a> 
+	                     <br>
+	                	<button type="button" onclick="re_confirm('${vo.re_num}')">승인하기</button>                
+	                    </div>
+                    </c:forEach>
+
+                    
+<!--
                     <div class="que">
                      <span>This is second question.</span>
                     </div>
-                    <div class="anw">
+                     <div class="anw">
                      <span>This is second answer.</span>
                     </div>
                     <div class="que">
@@ -147,7 +166,8 @@
                     </div>
                     <div class="anw">
                      <span>This is third answer.</span>
-                    </div>
+                    </div> -->
+                    
                   </div>
                
                 </div>
@@ -170,6 +190,30 @@
     <!-- ========= All Javascript files linkup ======== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="${cpath}/resources/js/main1.js"></script>
+    <script src="${cpath}/resources/js/main1.js"></script>    
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+    	function re_confirm(re_num){
+    		
+    		$.ajax({
+    			url: '${cpath}/ConfirmReservation/'+re_num, 
+    			type: 'get',
+    			success : function(data) {
+    				if(data=="confirm"){
+    					alert('승인되었습니다');
+    				}else{
+    					alert('이미 승인한 판매글입니다')
+    				}
+    			},
+    			error : function(){
+    				alert('승인 요청 실패!');
+    			}
+    		});
+
+    	}
+    
+    </script>
+    
+    
   </body>
 </html>
