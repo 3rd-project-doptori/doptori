@@ -76,12 +76,29 @@
                   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                       <div class="col">
                           <div class="card shadow-sm">
-                          
                               <img src="https://images.unsplash.com/photo-1563725911583-7d108f720483" class="card-img-top" 
                               		alt="...">
-                              		
-							<a href = ""></a>
+							  
+							  <a href="#"></a>
                               <div class="card-body">
+						      <h4 class="card-title">설향</h4>
+                              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                              <a href="#" class="primary stretched-link"></a>
+          					  <!-- stretched-link : 사진전체클릭 -->
+                              <div class="d-flex justify-content-end align-items-center">
+                              <div class="btn-group">
+                              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="goForm()">View</button>
+                              </div>
+                          </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col">
+                          <div class="card shadow-sm">
+                              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                              
+                              <div class="card-body">
+						      <h4 class="card-title">금실</h4>
                               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                               <div class="d-flex justify-content-end align-items-center">
                               <div class="btn-group">
@@ -94,22 +111,9 @@
                       <div class="col">
                           <div class="card shadow-sm">
                               <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
+                              
                               <div class="card-body">
-                              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                              <div class="d-flex justify-content-end align-items-center">
-                              <div class="btn-group">
-                              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="goForm()">View</button>
-                              </div>
-                          </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col">
-                          <div class="card shadow-sm">
-                              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-                              <div class="card-body">
+							  <h4 class="card-title">토마토</h4>
                               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                               <div class="d-flex justify-content-end align-items-center">
                               <div class="btn-group">
@@ -125,6 +129,7 @@
                           <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
                           <div class="card-body">
+                          <h4 class="card-title">설향</h4>
                           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                           <div class="d-flex justify-content-end align-items-center">
                               <div class="btn-group">
@@ -139,6 +144,7 @@
                           <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
                           <div class="card-body">
+                          <h4 class="card-title">금실</h4>
                           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                           <div class="d-flex justify-content-end align-items-center">
                               <div class="btn-group">
@@ -153,6 +159,7 @@
                           <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
                           <div class="card-body">
+                          <h4 class="card-title">토마토</h4>
                           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                           <div class="d-flex justify-content-end align-items-center">
                               <div class="btn-group">
@@ -168,6 +175,7 @@
                           <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
                           <div class="card-body">
+                          <h4 class="card-title">제목1</h4>
                           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                           <div class="d-flex justify-content-between align-items-center">
                               <div class="btn-group">
@@ -184,6 +192,7 @@
                           <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
                           <div class="card-body">
+                          <h4 class="card-title">제목2</h4>
                           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                           <div class="d-flex justify-content-between align-items-center">
                               <div class="btn-group">
@@ -200,6 +209,7 @@
                           <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
                           <div class="card-body">
+                          <h4 class="card-title">제목3</h4>
                               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                               <div class="d-flex justify-content-between align-items-center">
                                   <div class="btn-group">
