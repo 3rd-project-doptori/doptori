@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.doptori.entity.Address;
-import com.doptori.entity.farmdiary_manage;
 
 @Mapper
 public interface AddressMapper {

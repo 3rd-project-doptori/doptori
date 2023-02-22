@@ -17,7 +17,8 @@ public interface MemberMapper {
 	public void PhotoUpdate(Member vo);
 	// 로그인
 	public Member MemberLogin(Member mvo);
-
+	
+	public Member selectMember(int mb_num);
 	
 	//public void updateMember(Member mvo);
 	

@@ -14,6 +14,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="${cpath}/resources/css/lineicons.css" />
     <link rel="stylesheet" href="${cpath}/resources/css/main.css" />
+    
+    
+    <link rel="stylesheet" href="${cpath}/resources/css/chatting_di.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    
   </head>
   <body>
     <!-- ======== sidebar-nav start =========== -->
@@ -126,18 +132,12 @@
               <div class="card-style settings-card-1 mb-30">
                 <div class="profile-info">
                   <div id="Accordion_wrap">
+
+                  <c:forEach items="${list}" var="vo" varStatus="status">
                     <div class="que">
-                     <span>This is first question.</span>
-                      <div class="arrow-wrap">
-                       <span class="arrow-top">↑</span>
-                       <span class="arrow-bottom">↓</span>
-                      </div>
-                     
-                    </div>
-                    <div class="anw">
-                     <span>This is first answer.</span>
-                    </div>
-                   
+                     <span onclick="start_chat('${vo.mb_num}')">${vo.mb_nick}</span>
+                     </div>
+                    </c:forEach>
                   </div>
                
                 </div>
@@ -157,9 +157,142 @@
 
 
     </main>
+    <div id='chat_btn'></div>
+    <div class="chat-popup">
+        <div class="chat-windows">
+          <div class="chat-window-one">
+              <div class="chat_container">
+                  <div class="header">
+                    <button class="back-btn" onclick="close_chat()">
+                      <img src="${cpath}/resources/images/left-arrow.png" width="30" height="30">  
+                    </button>
+                    
+                  </div>
+              
+                  <div id="chat-box">
+              
+                  </div>
+              
+                  <div class="footer">
+                    <textarea id="input" class="message"  placeholder="메시지를 입력하세요..."  autofocus="true"></textarea>
+                    <button id="send" onclick="send_message()">
+                      <img src="${cpath}/resources/images/send.png" width="24" height="24">  
+                    </button>
+                  </div>
+                </div>
+          </div>
+        </div>
+    </div>
+    
     <!-- ========= All Javascript files linkup ======== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="${cpath}/resources/js/main1.js"></script>
-  </body>
+  
+  
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js" integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+	    var socket = io.connect('http://localhost:5000',{
+	        cors: { origin: '*' }
+	    });
+	    
+	    var my_num = Number('${loginMember.getMb_num()}');
+	    
+	    //본인 회원번호 소켓에 저장
+	    socket.emit("REGIST",my_num);
+	    
+	    
+	    
+		socket.on('INVITE',function(who){
+			$('#chat_btn').append("<button class='chat-open-dialog' onclick='go_chat()'> <span class='fa fa-question'></span></button><button class='chat-button-destroy' onclick='exit_chat()'><span class='fa fa-close'></span> </button>");
+			socket.emit("JOIN_ROOM",who);
+			socket.emit('READY');
+		});
+	    
+	    socket.on('RECEIVE',function(data){
+	        if(data.mb_num!=my_num){
+	            console.log(data.message)
+	            var text = "<div class='bubble friend-bubble'>"+data.message+"</div>"
+	            $("#chat-box").append(text);
+	        }
+	    });
+
+		socket.on('CHAT_LOG',function(data_list){
+		        var text = "";
+		        for(var i=0; i<data_list.length;i++){
+		            if(data_list[i].ch_mb_num==my_num){
+		            	text += "<div class='bubble my-bubble'>"+data_list[i].ch_cont+"</div>";
+		            }else{
+		            	text += "<div class='bubble friend-bubble'>"+data_list[i].ch_cont+"</div>";
+		            }            
+		        }
+		        $("#chat-box").append(text);
+		
+		});
+		
+		function go_chat(){
+			$(".chat-open-dialog").toggleClass("active");
+			$('.chat-popup').toggleClass("active");
+			$('.chat-button-destroy').toggleClass("active");
+		}
+		
+		function exit_chat(){
+			$('.chat-button-destroy').removeClass("active")
+			$('.chat-popup').removeClass("active");
+			$('.chat-open-dialog').removeClass("active");
+		}
+				
+    	function send_message(){
+	        var my_message = $(".message").val();
+	        if (my_message!='') {
+	            var text = "<div class='bubble my-bubble'>"+my_message+"</div>"
+	            $("#chat-box").append(text);
+	            $(".message").val('');
+	            var data = new Object();
+	            data.message = my_message;
+	            socket.emit('SEND',data)
+	        } else {
+	            alert('메시지를 입력하세요...');
+	        }
+	    }
+		
+		function close_chat(){
+			$('.chat-popup').removeClass("active");
+		}
+		
+		socket.on('ACCEPTED',function(){
+			$('.chat-popup').toggleClass("active");
+            socket.emit('READY');
+		});
+		
+		socket.on('REFUSED',function(){
+			alert('상대가 이미 다른 대화에 참여중입니다. 메세지 기록만 남습니다.');
+			$('.chat-popup').toggleClass("active");
+            socket.emit('READY');
+		});
+		
+	       var my_num = Number('${loginMember.getMb_num()}');
+	       var start_num = 0
+	       
+	      function start_chat(you){
+
+	          if(start_num==0){
+	            var your_num = you;
+	            if(my_num==your_num){
+	               alert("자기 자신과는 채팅할 수 없습니다!");      
+	            }else{
+	               var who = new Object();
+	                  who.my_num = my_num;
+	                  who.your_num = your_num;
+	                  socket.emit('START',who);
+	            }
+	            start_num = 1;
+	          }else{
+	             $('.chat-popup').toggleClass("active");
+	          }
+	      }
+
+    </script>
+    </body>
 </html>

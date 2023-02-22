@@ -8,13 +8,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.doptori.entity.Address;
+import com.doptori.entity.Step;
 import com.doptori.mapper.AddressMapper;
+import com.doptori.mapper.StepMapper;
 
 @RestController
 public class AddressRestController {
 
 	@Autowired
 	private AddressMapper mapper;
+	@Autowired
+	private StepMapper mapper2;
 	
 	@GetMapping("/ad_gugun.do")
 	public List<Address> gugunList() {
@@ -36,6 +40,12 @@ public class AddressRestController {
 		return list;
 	}
 	
+	@GetMapping("/step.do")
+	public List<Step> stepList() {
+		List<Step> list = mapper2.stepList();
+		
+		return list;
+	}
 	
 	
 }

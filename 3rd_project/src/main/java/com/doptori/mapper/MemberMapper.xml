@@ -10,6 +10,12 @@
   <select id="MemberList" resultType="com.doptori.entity.Member">
   	select * from Member
   </select>
+  
+  <!-- 회원번호로 회원목록 조회 -->
+  <select id="selectMember" parameterType="int" resultType="com.doptori.entity.Member">
+  	select * from Member where mb_num=#{mb_num}    
+  </select>
+  
   <!-- 관리자의 회원 삭제 -->
   <delete id="MemberDelete"  parameterType="int" >
 	delete from Member where mb_num=#{mb_num}

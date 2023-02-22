@@ -50,10 +50,6 @@ public class DoptoriController {
 	public String FarmDiaryManage() {
 		return "FarmDiaryManage";
 	}
-	@GetMapping("/FarmDiaryList.do")
-	public String farm_list() {
-		return "farm_list";
-	}
 	@GetMapping("/farm_management.do")
 	public String farm_management() {
 		return "farm_management";
@@ -80,14 +76,7 @@ public class DoptoriController {
 	public String market_detail() {	
 		return "market_detail";
 	}
-	@GetMapping("/reservation.do")
-	public String reservation() {
-		return "reservation";
-	}
-	@GetMapping("/chatting_list.do")
-	public String chatting_list() {
-		return "chatting_list";
-	}
-	
+
+
 	
 }

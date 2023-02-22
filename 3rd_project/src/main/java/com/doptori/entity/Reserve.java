@@ -11,8 +11,15 @@ public class Reserve {
 	private	int re_cp_num;
 	private	double re_weight;
 	private	int re_price;
+	private	int re_bd_num;
 	private	String re_memo;
 	
+	public int getRe_bd_num() {
+		return re_bd_num;
+	}
+	public void setRe_bd_num(int re_bd_num) {
+		this.re_bd_num = re_bd_num;
+	}
 	// getter, setter 만들기
 	public int getRe_num() {
 		return re_num;
