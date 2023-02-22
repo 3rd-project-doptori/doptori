@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ page import="com.doptori.entity.Board"%>
 <%@ page import="com.doptori.entity.Comment"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -16,9 +16,9 @@
     <title>직거래_상세보기</title>
 
     <!-- CSS only -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     
-   	<!-- Favicons -->
+      <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
@@ -29,132 +29,75 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap">
     <script>
-    	var my_num = Number('${loginMember.getMb_num()}');
-	    var try_num = 0;
-	    
-		function start_chat(){
-			var your_num = 1; //상대방의 회원번호. 여기에서는 임의로 넣음
-			if(my_num==your_num){
-				alert("자기 자신과는 채팅할 수 없습니다!");		
-			}else{
-				var who = new Object();
-	            who.my_num = my_num;
-	            who.your_num = your_num;
-	            socket.emit('START',who);
-			}
-		}
+       var my_num = Number('${loginMember.getMb_num()}');
+       var try_num = 0;
+       var start_num = 0
        
-		
-		function set_reserve(){
-			var text = "<div class='bubble my-bubble'>예약 장소 : <input type='text' id='re_place'><br>";
-			text +="예약 시간 : <input type='date' id='re_selldate'><br>";
-			text += "<button onclick='reserve()'>예약 신청</button></div>"
-			$("#chat-box").append(text);
-		}
-		
-		function reserve(){
-			
-			var info = new Object();
-			//게시판 번호
-			info.re_bd_num = 44;
-			
-			//re_cp_name이 딸기면 re_cp_num이 1 아니면 토마토인데 토마토의 경우 2
-			var re_cp_name = document.getElementById('re_cp_name').innerHTML;
-			info.re_cp_num = 1;
-			if(re_cp_name!="딸기"){
-				info.re_cp_num = 2;
-			}
-			
-			//td 안에 있는 값 가져와서 숫자만 추출하기
-			const regex = /[^0-9]/g;
-			info.re_weight = Number(document.getElementById('re_weight').innerHTML.replace(regex, ""));
-			info.re_price = Number(document.getElementById('re_price').innerHTML.replace(regex, ""));
-			
-			info.re_memo = document.getElementById('re_memo').innerHTML;
-			info.re_place = $("#re_place").val();
-			info.re_selldate = $("#re_selldate").val();
-			socket.emit('RESERVE',info);
-			
+      function start_chat(){
+          if(start_num==0){
+            var your_num = 1; //상대방의 회원번호. 여기에서는 임의로 넣음
+            if(my_num==your_num){
+               alert("자기 자신과는 채팅할 수 없습니다!");      
+            }else{
+               var who = new Object();
+                  who.my_num = my_num;
+                  who.your_num = your_num;
+                  socket.emit('START',who);
+            }
+            start_num = 1;
+          }else{
+             $('.chat-popup').toggleClass("active");
+          }
+      }
+       
+      
+      function set_reserve(){
+         var text = "<div class='bubble my-bubble'>예약 장소 : <input type='text' id='re_place'><br>";
+         text +="예약 시간 : <input type='date' id='re_selldate'><br>";
+         text += "<button onclick='reserve()'>예약 신청</button></div>"
+         $("#chat-box").append(text);
+      }
+      
+      function reserve(){
+         
+         var info = new Object();
+         //게시판 번호
+         info.re_bd_num = 44;
+         
+         //re_cp_name이 딸기면 re_cp_num이 1 아니면 토마토인데 토마토의 경우 2
+         var re_cp_name = document.getElementById('re_cp_name').innerHTML;
+         info.re_cp_num = 1;
+         if(re_cp_name!="딸기"){
+            info.re_cp_num = 2;
+         }
+         
+         //td 안에 있는 값 가져와서 숫자만 추출하기
+         const regex = /[^0-9]/g;
+         info.re_weight = Number(document.getElementById('re_weight').innerHTML.replace(regex, ""));
+         info.re_price = Number(document.getElementById('re_price').innerHTML.replace(regex, ""));
+         
+         info.re_memo = document.getElementById('re_memo').innerHTML;
+         info.re_place = $("#re_place").val();
+         info.re_selldate = $("#re_selldate").val();
+         socket.emit('RESERVE',info);
+         
             var text = "<div class='bubble my-bubble'>"+"예약 신청을 보냈습니다."+"</div>"
             $("#chat-box").append(text);
             
             var data = new Object();
             data.message = "예약 신청을 보냈습니다.";
             socket.emit('SEND',data)
-		}
-		
-		
+      }
+      
+      
     </script>
     
     
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script type="text/javascript">
-//1. 댓글 목록을 가져오는 API 호출하는 함수
-function loadComments(postId) {
-  $.post('/comments', { postId: postId }, function(data) {
-    // 댓글 목록을 가져와서 화면에 표시
-    $('#comment-list').html(data);
-  });
-}
-
-// 2. 게시글 상세 정보 페이지를 로드할 때, 댓글 목록을 가져오는 API 호출
-$(document).ready(function() {
-  // URL에서 게시글 ID를 추출
-  var postId = window.location.pathname.split('/').pop();
-
-  // 댓글 목록을 가져오는 API 호출
-  loadComments(postId);
-});
-
-// 3. 댓글을 추가할 때마다 새로운 API 호출을 수행하고 댓글 목록을 다시 로드
-$('#comment-form').submit(function(event) {
-  event.preventDefault();
-  
-  // 새로운 댓글을 추가하는 API 호출
-  $.post('/comments/add', $(this).serialize(), function() {
-    // 댓글을 추가한 후, 댓글 목록을 다시 로드
-    var postId = window.location.pathname.split('/').pop();
-    loadComments(postId);
-    
-    // 입력 필드를 초기화
-    $('#comment-form')[0].reset();
-  });
-});
-</script>
-<body>
- <script type="text/javascript">
- 	function goUpdate() {
-		location.href="${cpath}/boardUpdateForm.do?bd_num=${vo.bd_num}";
-	}
- 	
- 	function goReply() {
-		location.href="${cpath}/boardReplyForm.do";
-	}
- 	function deleteComment(co_num, bd_num) {
-		  if (confirm("정말 삭제하시겠습니까?")) {
-		    $.ajax({
-		      url: "${cpath}/commentDelete",
-		      type: "POST",
-		      data: {
-		        co_num: co_num,
-		        bd_num: bd_num
-		      },
-		      success: function() {
-		        location.reload();
-		      },
-		      error: function() {
-		        alert("댓글 삭제에 실패하였습니다.");
-		      }
-		    });
-		  }
-		}
-	
- </script>
   <body>
     <div class="container py-4">
         <jsp:include page="/WEB-INF/views/header.jsp"/>
-    	<!-- <h2 class="display-7 fw-bold">직거래 상세보기</h2> -->
+       <!-- <h2 class="display-7 fw-bold">직거래 상세보기</h2> -->
         <div class="row mb-2 justify-content-md-center main">
             <div class="col-md-5 hei">
                 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
