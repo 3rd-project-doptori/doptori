@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.net.URLEncoder" %>
 <%@ page import="java.util.List"%>
 <%@ page import="com.doptori.entity.Member"%>
 <%@ page import="com.doptori.entity.Board"%>
@@ -141,16 +142,18 @@ $('#comment-form').submit(function(event) {
                 </tr>
                 <tr>
 				    <th>첨부파일</th>
-				    <c:if test="${vo.bd_pic ne null}">
-				        <td colspan="5" align="left"><a href="${cpath}/fileDownload.do?bd_pic=${vo.bd_pic}">${fn:escapeXml(vo.bd_pic)}</a></td>
-				    </c:if>
+				    <c:if test="${not empty vo.bd_pic}">
+        <td colspan="5" align="left"><a href="${cpath}/fileDownload.do?bd_pic=${fn:escapeXml(vo.bd_pic)}">${fn:escapeXml(vo.bd_pic)}</a></td>
+
+			</c:if>
+
 				</tr>
 				<tr>
 				 	<td colspan="5" align="right">
 				 		<c:if test="${vo.bd_mb_num eq loginMember.mb_num}">	
 				 		<button class="btn btn-sm btn-success" onclick="goUpdate()">수정</button>
 				 		</c:if>
-				 		<c:if test="${vo.bd_mb_num eq loginMember.mb_num || loginMember.mb_id=='admin'}">	
+				 		<c:if test="	${vo.bd_mb_num eq loginMember.mb_num || loginMember.mb_id=='admin'}">	
 				 		<a class="btn btn-sm btn-warning" href="<c:url value='/boardDelete.do/${vo.bd_num}' />">삭제</a>
 				 		</c:if>
 				 		<a class="btn btn-sm btn-default" href="javascript:history.go(-1)">뒤로가기</a>
