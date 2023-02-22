@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="${cpath}/resources/css/market_detail.css">
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script>
        var my_num = Number('${loginMember.getMb_num()}');
        var try_num = 0;
@@ -90,6 +91,22 @@
       }
       
       
+	$(window).load(function(){
+    	 var content = '${vo.bd_cont}';
+         var cont_info = content.split('|');
+         document.getElementById('re_cp_name').innerHTML = cont_info[0];
+         document.getElementById('re_weight').innerHTML = cont_info[1];
+         document.getElementById('re_price').innerHTML = cont_info[2];
+         document.getElementById('re_memo').innerHTML = cont_info[3];
+         document.getElementById('bd_cont').innerHTML = cont_info[4];
+         
+         var image_path = "C:\\Users\\user\\git\\doptori\\3rd_project\\src\\main\\webapp\\resources\\images\\" + "${vo.bd_pic}";
+		$("#show_image").append("<img src='"+image_path+"'>")
+		$("#show_sample_image").append("<img src='"+image_path+"' style='transform:scale(3);opacity:0.5'>")
+	}); 
+
+      
+      
     </script>
     
     
@@ -101,7 +118,9 @@
         <div class="row mb-2 justify-content-md-center main">
             <div class="col-md-5 hei">
                 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <svg class="bd-placeholder-img" height="350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                    <c:if test="${empty vo.bd_pic}">
+                    	<img src="https://health.chosun.com/site/data/img_dir/2022/01/11/2022011100746_0.jpg">
+                    <!-- <svg class="bd-placeholder-img" height="350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
                     <!-- <div class="col p-4 d-flex flex-column position-static">
                         <strong class="d-inline-block mb-2 text-primary">World</strong>
                         <h3 class="mb-0">Featured post</h3>
@@ -109,6 +128,10 @@
                         <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                         <a href="#" class="stretched-link">Continue reading</a>
                     </div> -->
+                    </c:if>
+                    <c:if test="${not empty vo.bd_pic }">
+                    	<div id="show_image"></div>
+                    </c:if>
                 </div>
                 <div class="d-md-flex justify-content-md-center">
                     <button class="btn btn-sm btn-outline-secondary me-md-2" type="button">판매중</button>
@@ -120,30 +143,29 @@
                     <div class="col p-4 d-flex flex-column position-static">
                         <table class="table" id="info">
                             <tr>
+                                <th class="text-center" scope="col" width="25%">판매자</th>
+                                <td scope="col">${vo.mb_nick}</td>
+                            </tr>
+                            <tr>
                                 <th class="text-center" scope="col" width="25%">상품명</th>
-                                <td scope="col" id="re_cp_name">딸기</td>
-
-                            </thead>
+                                <td scope="col" id="re_cp_name"></td>
+                            </tr>
                             <tbody class="text-start">
                             <tr>
                                 <th class="text-center" scope="row">중량</th>
-                                <td id="re_weight">2kg</td>
+                                <td id="re_weight"></td>
                             </tr>
                             <tr>
                                 <th class="text-center" scope="row">가격</th>
-
-                                <td>₩</td>
-
-                                <td id ="re_price">20,000원</td>
-
+                                <td id ="re_price"></td>
                             </tr>
                             <tr>
                                 <th class="text-center" scope="row">상세정보</th>
-
-                                <td>상세정보</td>
-
-                                <td id = "re_memo">당도가 높음</td>
-
+                                <td id = "re_memo"></td>
+                            </tr>
+							<tr>
+                                <th class="text-center" scope="row">글 내용</th>
+                                <td id = "bd_cont"></td>
                             </tr>
                             </tbody>
                         </table>
@@ -155,11 +177,20 @@
 
          <div class="row mb-2 justify-content-md-center mar">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <svg class="bd-placeholder-img" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                 <c:if test="${empty vo.bd_pic}">
+                 	<div style="width:100%;height:100px;overflow:hidden">
+                    	<img src="https://health.chosun.com/site/data/img_dir/2022/01/11/2022011100746_0.jpg" style="transform:scale(3);opacity:0.5">
+                    </div>
+                 </c:if>
+                 <c:if test="${not empty vo.bd_pic}">
+                 	<div id="show_sample_image" style="width:100%;height:100px;overflow:hidden">
+                    </div>
+                 </c:if>
+                <!-- <svg class="bd-placeholder-img" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
             </div>
         </div>
 
-        <section class="mb-5">
+<!--         <section class="mb-5">
             <div class="card bg-light">
                 <div class="card-body">
                     Comment form
@@ -187,7 +218,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
     </div>
       
   </body>
