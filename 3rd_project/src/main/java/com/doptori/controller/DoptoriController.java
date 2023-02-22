@@ -81,10 +81,6 @@ public class DoptoriController {
 		return "market_detail";
 	}
 
-	@GetMapping("/chatting_list.do")
-	public String chatting_list() {
-		return "chatting_list";
-	}
-	
+
 	
 }
