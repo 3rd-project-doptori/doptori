@@ -266,7 +266,7 @@
 		               <input type="text" id="autoSizingInputGroup" class="form-control"  placeholder="검색어를 입력하세요." autocomplete="off" name="sword" size="20" value="${sword}">
 		               <input  class="input-group-text btn btn-sm btn-outline-secondary" type="button" value="🔍">
 		              </div>
-		         </form>
+		    1     </form>
         </div>
       </div>
     </div>

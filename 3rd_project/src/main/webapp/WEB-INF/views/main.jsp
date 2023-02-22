@@ -206,62 +206,82 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript">
   
-  function removeMember(index){
-	 // alert('클릭 감지');
-		var mb_num = $('.id'+index).text();
-		$.ajax({
-			url : '${cpath}/MemberDelete.do',
-			type : 'POST',
-			data : {'mb_num' : mb_num},
-			dataType : 'JSON',
-			success : resultJSON,
-			error : function(){
-				alert('error');
-			}
-		});
+  function resultJSON(data){
+	    var html = '<table class="table table-hover table-bordered" align="center">';
+	    html += '<tr align="center" style="font-weight: 800;">';
+	    html += '<td>아이디</td>';
+	    html += '<td>비밀번호</td>';
+	    html += '<td>닉네임</td>';
+	    html += '<td>회원유형</td>';
+	    html += '<td>삭제</td>';
+	    html += '</tr>';
+	    $.each(data, function(index, obj){
+	      html += '<tr align="center" style="font-weight: 500;">';
+	      html += '<td style="font-weight: 600;" class="id'+index+'">' + obj.mb_id + '</td>'; // mb_id -> mb_num으로 수정
+	      html += '<td>' + obj.mb_pw + '</td>';
+	      html += '<td>' + obj.mb_nick + '</td>';
+	      html += '<td>' + obj.mb_type + '</td>';
+	      html += '<td><button onclick="confirmDelete('+obj.mb_num+')" class="btn btn-primary btn-sm">삭제</button></td>'; // index -> obj.mb_num으로 수정
+	      html += '</tr>';
+	    });
+	    html += '</table>';
+	    $('#MemberListdiv').html(html);
+
+	    if($('#MemberListdiv').css('display') == 'block'){ //눈에 보이는 것
+	      $('#MemberListdiv').slideUp();
+	    }else{
+	      $('#MemberListdiv').slideDown();
+	    }
 	}
-	
+
+	function confirmDelete(mb_num) {
+	    var r = confirm("정말로 삭제하시겠습니까?");
+	    if (r == true) {
+	        removeMember(mb_num);
+	    }
+	}
+
+	function removeMember(mb_num){
+	    $.ajax({
+	        url: '${cpath}/MemberDelete.do',
+	        type: 'POST',
+	        data: {'mb_num': mb_num},
+	        dataType: 'text', // 반환값이 문자열이므로 dataType을 text로 설정합니다.
+	        cache: false,
+	        success: function(data) {
+	            if(data.trim() === 'success') { // 반환값이 "success"인지 확인합니다.
+	                $.ajax({
+	                    url : '${cpath}/MemberList.do',
+	                    type : 'GET',
+	                    dataType : 'JSON',
+	                    success : resultJSON,
+	                    error : function(){
+	                        alert('error');
+	                    }
+	                });
+	            } else {
+	                alert('회원 삭제에 실패했습니다.');
+	            }
+	        },
+	        error: function() {
+	            alert('error');
+	        }
+	    });
+	}
+
 	$(function(){
-		$('#MemberList').click(
-		function(){
-			$.ajax({
-				url : '${cpath}/MemberList.do',
-				type : 'GET',
-				dataType : 'JSON',
-				success : resultJSON,
-				error : function(){
-					alert('error');
-				}
-			});
-		});
-		
-		function resultJSON(data){
-			var html = '<table class="table table-hover table-bordered" align="center">';
-			html += '<tr align="center" style="font-weight: 800;">';
-			html += '<td>아이디</td>';
-			html += '<td>비밀번호</td>';
-			html += '<td>닉네임</td>';
-			html += '<td>회원유형</td>';
-			html += '<td>삭제</td>';
-			html += '</tr>';
-			$.each(data, function(index, obj){
-				html += '<tr align="center" style="font-weight: 500;">';
-				html += '<td style="font-weight: 600;" class="id'+index+'">' + obj.mb_id + '</td>';
-				html += '<td>' + obj.mb_pw + '</td>';
-				html += '<td>' + obj.mb_nick + '</td>';
-				html += '<td>' + obj.mb_type + '</td>';
-				html += '<td><button onclick="removeMember('+index+')" class="btn btn-primary btn-sm">삭제</button></td>';
-				html += '</tr>';
-			});
-			html += '</table>';
-			$('#MemberListdiv').html(html);
-			
-			if($('#MemberListdiv').css('display') == 'block'){ //눈에 보이는 것
-				$('#MemberListdiv').slideUp();
-			}else{
-				$('#MemberListdiv').slideDown();
-			}
-		}
+	    $('#MemberList').click(
+	        function(){
+	            $.ajax({
+	                url : '${cpath}/MemberList.do',
+	                type : 'GET',
+	                dataType : 'JSON',
+	                success : resultJSON,
+	                error : function(){
+	                    alert('error');
+	                }
+	            });
+	        });
 	});
   </script>
 

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -60,10 +61,14 @@ public class MemberRestController {
 	}
 	// 관리자 - 회원 삭제
 	@RequestMapping("/MemberDelete.do")
-	public List<Member> MemberDelete(int mb_num) {
-		mapper.MemberDelete(mb_num);
-		List<Member> list = mapper.MemberList();
-		return list;
+	public @ResponseBody String MemberDelete(@RequestParam("mb_num") int mb_num) {
+	    try {
+	        mapper.MemberDelete(mb_num);
+	        return "success";
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return "fail";
+	    }
 	}
 	
 }
