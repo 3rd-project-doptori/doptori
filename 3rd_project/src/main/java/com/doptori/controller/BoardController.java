@@ -325,8 +325,21 @@ public class BoardController {
 		return "MyboardList";
 	}
 	
-	@RequestMapping("/market_detail.do")
-	public String getmarket_detail() {
+	@RequestMapping("/market_detail.do/{bd_num}")
+	public String getmarket_detail(@PathVariable("bd_num") int bd_num, Model model, HttpServletRequest request) {
+		Board vo;
+		vo = mapper.boardContent(bd_num);
+		Member writer = mapper.getMember(vo.getBd_mb_num());
+		if (writer != null) {
+			vo.setMb_nick(writer.getMb_nick());
+		}
+		
+		List<Comment> list = mapper.commentSelect(bd_num);
+		
+		model.addAttribute("vo", vo);
+		model.addAttribute("list", list);
+		
+		
 		return "market_detail";
 	}
 	
@@ -375,6 +388,10 @@ public class BoardController {
 		 */
 		
 		mapper.boardInsert(vo);
+		
+		if(vo.getBd_type()==3) {
+			return "redirect:/market.do";
+		}
 
 		return "redirect:/QnA_List2.do";
 	}
