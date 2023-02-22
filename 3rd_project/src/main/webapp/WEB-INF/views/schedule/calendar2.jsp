@@ -59,7 +59,7 @@
 <body>
 	<div class="container py-4">
 	<jsp:include page="/WEB-INF/views/header.jsp"/>
-		<form name="calendarFrm" id="calendarFrm" action="" method="GET">
+		<form name="calendarFrm" id="calendarFrm" action="" method="GET" enctype="multipart/form-data">
 			<input type="hidden" name="year" value="${today_info.search_year}" />
 			<input type="hidden" name="month"
 				value="${today_info.search_month-1}" />
@@ -148,7 +148,7 @@
 									varStatus="schedule_data_arr_status">
 
 									<a href="${cpath}/schedule_show?fd_num=${scheduleList.fd_num}"
-										onclick="window.open(this.href, '_blank', 'width=550,height=600,left=680%, top=200%, toolbars=no,scrollbars=no'); return false;"
+										onclick="window.open(this.href, '_blank', 'width=700,height=800,left=400%, top=200%, toolbars=no,scrollbars=no'); return false;"
 										class="date_subject ">${scheduleList.fd_step}</a>
 									<br>
 
@@ -162,6 +162,28 @@
 		</form>
 
 		<script>
+		
+			$(document).ready(function(){
+			        	
+	        	$.ajax({
+	        		url : "${cpath}/step.do",
+	        		type : "get",
+	        		dataType : "json",
+	        		success : function(res){
+	        			//console.log(res);
+	        			$("#fd_step").html("");
+	        			$.each(res, (index, obj)=>{
+	        				$("#fd_step").append("<option value='"+obj.step_name+"'>"+ obj.step_num + ". " +obj.step_name+"</option>");
+	        			});
+	        			
+	        		},
+	        		error : function(){
+	        			alert("Ajax 통신 실패!!");	
+	        		}
+	        	});
+	        	
+	        }); // ready 끝
+        
 			function modalClick() {
 				var con = $("#addModal");
 				con[0].style.display = 'block';
@@ -187,6 +209,20 @@
 				}
 				schedule_add_form.submit();
 			}
+			
+			function previewImage(input) {
+			    var file = input.files[0];
+			    var img = document.getElementById("preview");
+			    if (file.type.match('image.*')) {
+			      var reader = new FileReader();
+			      reader.onload = (function(img) {
+			        return function(e) {
+			          img.src = e.target.result;
+			        };
+			      })(img);
+			      reader.readAsDataURL(file);
+			    }
+			  }
 		</script>
 		<script src="${cpath}/resources/assets/js/bootstrap.min.js"></script>
 		<script src="${cpath}/resources/assets/js/popper.min.js"></script>
@@ -205,8 +241,7 @@
 						<button type="button" class="btn-close" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
-					<form name="schedule_add"
-						action="${cpath}/schedule_add.do/${loginMember.getMb_num()}">
+					<form name="schedule_add" action="${cpath}/schedule_add.do/${loginMember.getMb_num()}" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="year" value="${today_info.search_year}" />
 						<input type="hidden" name="month"
 							value="${today_info.search_month-1}" />
@@ -229,20 +264,41 @@
 								<tbody>
 									<tr>
 										<th scope="row">품목</th>
-										<td colspan="3"><select class="form" id="item" name="fd_item"></select>
+										<td colspan="3"><select class="form-control"
+														name="fd_item" id="fd_item" required>
+															<option selected disabled>품목을 선택하세요.</option>
+														<c:forEach items="${list2}" var="vo2">
+														<c:set var="cnt2" value="${cnt2+1}" />
+															<option value="${vo2.fdm2_item}">${cnt2}. ${vo2.fdm2_item}</option>												
+														</c:forEach>
+														</select>
 										</td>
 									</tr>
 									<tr>
 										<th scope="row">필지</th>
-										<td colspan="3"><select class="form" id="address" name="fd_address"></select>
+										<td colspan="3"><select class="form-control"
+														name="fd_address" id="fd_address" required>
+															<option selected disabled>필지를 선택하세요.</option>
+														<c:forEach items="${list}" var="vo">
+														<c:set var="cnt" value="${cnt+1}" />
+															<option value="${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri} ${vo.fdm1_detail_address}">${cnt}. ${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri} ${vo.fdm1_detail_address}</option>												
+														</c:forEach>
+														</select>
 										</td>
 									</tr>
 									<tr>
 										<th scope="row">품종</th>
-										<td><select class="form" id="kind" name="fd_kind"></select>
+										<td><select class="form-control"
+														name="fd_kind" id="fd_kind" required>
+															<option selected disabled>품종을 선택하세요.</option>
+														<c:forEach items="${list2}" var="vo2">
+														<c:set var="cnt3" value="${cnt3+1}" />
+															<option value="${vo2.fdm2_kind}">${cnt3}. ${vo2.fdm2_kind}</option>												
+														</c:forEach>
+														</select>
 										</td>
 										<th class="color">작업단계</th>
-										<td><select class="form" id="step" name="fd_step"></select>
+										<td><select  id="fd_step" class="form-control" name="fd_step"  required></select>
 										</td>
 									</tr>
 									<tr class="color">
@@ -260,26 +316,43 @@
 										<th scope="row">활동유형</th>
 										<td>
 											<div>
-												<input type="text" id="inlineCheckbox1" name="fd_pesticide"
-													value="option1" placeholder="농약명"> <input
-													type="text" id="inlineCheckbox1" name="fd_pesticide_amount"
-													value="1.2" placeholder="살포량">
+												<select class="form-control" name="fd_fertilizer" id="fd_fertilizer" required>
+														<option selected disabled>비료를 선택하세요.</option>
+														<c:forEach items="${list5}" var="vo5">
+															<c:set var="cnt4" value="${cnt4+1}" />
+															<c:if test="${!empty vo5.fdm3_fertilizer}">
+																<option value="${vo5.fdm3_fertilizer}">${cnt4}. ${vo5.fdm3_fertilizer}</option>		
+															</c:if>										
+														</c:forEach>
+												</select> 
+												<input type="text" id="inlineCheckbox1" name="fd_fertilizer_amount" placeholder="사용량(kg)">
 											</div>
 										</td>
 										<td>
 											<div>
-												<input type="text" id="inlineCheckbox1" name="fd_fertilizer"
-													value="option2" placeholder="비료명"> <input
-													type="text" id="inlineCheckbox1"
-													name="fd_fertilizer_amount" value="1.4" placeholder="사용량">
+												<select class="form-control" name="fd_pesticide" id="fd_pesticide" required>
+														<option selected disabled>농약을 선택하세요.</option>
+														<c:forEach items="${list5}" var="vo5">
+															<c:set var="cnt5" value="${cnt5+1}" />
+															<c:if test="${!empty vo5.fdm3_pesticide}">
+																<option value="${vo5.fdm3_pesticide}">${cnt5}. ${vo5.fdm3_pesticide}</option>		
+															</c:if>										
+														</c:forEach>
+												</select>  
+													
+													<input type="text" id="inlineCheckbox1" name="fd_pesticide_amount" placeholder="살포량(kg)">
 											</div>
 										</td>
 										<td>
 											<div>
-												<input type="text" id="inlineCheckbox1" name="fd_man_name"
-													value="option3" placeholder="인력명"> <input
-													type="text" id="inlineCheckbox1" name="fd_worktime"
-													value="1.5" placeholder="투입시간">
+												<select class="form-control" name="fd_man_name" id="fd_man_name" required>
+														<option selected disabled>인력을 선택하세요.</option>
+														<c:forEach items="${list3}" var="vo3">
+															<c:set var="cnt6" value="${cnt6+1}" />
+															<option value="${vo3.fdm5_man_name}">${cnt6}. ${vo3.fdm5_man_name}</option>		
+														</c:forEach>
+												</select>   
+												<input type="text" id="inlineCheckbox1" name="fd_worktime" placeholder="투입시간">
 											</div>
 										</td>
 									</tr>
@@ -337,13 +410,14 @@
 									</tr>
 									<tr>
 										<th scope="row">사진첨부</th>
-										<td colspan="3">
+										<td colspan="2">
 											<div class="mb-3">
 												<label for="formFileMultiple" class="form-label">총
 													10장만 등록 가능합니다</label> <input class="form-control" type="file"
-													id="formFileMultiple" name="fd_picture" multiple>
+													id="formFileMultiple" name="uploadFile" multiple="multiple" onchange="previewImage(this)">
 											</div>
 										</td>
+										<td><img id="preview" style="width: 10rem;"></td>
 									</tr>
 									<tr>
 										<th scope="row">영농일지 공개 여부</th>
@@ -366,8 +440,7 @@
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
 								data-bs-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary"
-								onclick="scheduleAdd();">Send message</button>
+							<button type="submit" class="btn btn-primary">Send message</button>
 						</div>
 					</form>
 				</div>

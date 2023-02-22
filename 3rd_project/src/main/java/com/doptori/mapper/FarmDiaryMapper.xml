@@ -5,13 +5,13 @@
 <mapper namespace="com.doptori.mapper.FarmDiaryMapper">
 	
 	<insert id="schedule_add">
-		insert into farmdiary(fd_mb_num, fd_start, fd_end, fd_address, fd_item, fd_kind, fd_step, fd_cont, fd_pesticide, fd_pesticide_amount, fd_fertilizer, fd_fertilizer_amount, fd_man_name, fd_worktime, fd_weather, fd_low_temp, fd_high_temp, fd_precipitation, fd_humid, fd_picture, fd_open)
-		values (#{fd_mb_num}, #{fd_start}, #{fd_end}, #{fd_address}, #{fd_item}, #{fd_kind}, #{fd_step}, #{fd_cont}, #{fd_pesticide}, #{fd_pesticide_amount}, #{fd_fertilizer}, #{fd_fertilizer_amount}, #{fd_man_name}, #{fd_worktime}, #{fd_weather}, #{fd_low_temp}, #{fd_high_temp}, #{fd_precipitation}, #{fd_humid}, #{fd_picture}, #{fd_open})
+		insert into farmdiary(fd_mb_num, fd_start, fd_end, fd_address, fd_item, fd_kind, fd_step, fd_cont, fd_pesticide, fd_pesticide_amount, fd_fertilizer, fd_fertilizer_amount, fd_man_name, fd_worktime, fd_weather, fd_low_temp, fd_high_temp, fd_precipitation, fd_humid, fd_picture, fd_file, fd_open)
+		values (#{fd_mb_num}, #{fd_start}, #{fd_end}, #{fd_address}, #{fd_item}, #{fd_kind}, #{fd_step}, #{fd_cont}, #{fd_pesticide}, #{fd_pesticide_amount}, #{fd_fertilizer}, #{fd_fertilizer_amount}, #{fd_man_name}, #{fd_worktime}, #{fd_weather}, #{fd_low_temp}, #{fd_high_temp}, #{fd_precipitation}, #{fd_humid}, #{fd_picture}, #{fd_file}, #{fd_open})
 	</insert>
 
 	<insert id="farmdiaryInsert" parameterType="com.doptori.entity.farmdiary">
-		insert into farmdiary(fd_mb_num, fd_start, fd_end, fd_address, fd_item, fd_kind, fd_step, fd_cont, fd_pesticide, fd_pesticide_amount, fd_fertilizer, fd_fertilizer_amount, fd_man_name, fd_worktime, fd_weather, fd_low_temp, fd_high_temp, fd_precipitation, fd_humid, fd_picture, fd_open)
-		values (#{fd_mb_num}, #{fd_start}, #{fd_end}, #{fd_address}, #{fd_item}, #{fd_kind}, #{fd_step}, #{fd_cont}, #{fd_pesticide}, #{fd_pesticide_amount}, #{fd_fertilizer}, #{fd_fertilizer_amount}, #{fd_man_name}, #{fd_worktime}, #{fd_weather}, #{fd_low_temp}, #{fd_high_temp}, #{fd_precipitation}, #{fd_humid}, #{fd_picture}, #{fd_open})
+		insert into farmdiary(fd_mb_num, fd_start, fd_end, fd_address, fd_item, fd_kind, fd_step, fd_cont, fd_pesticide, fd_pesticide_amount, fd_fertilizer, fd_fertilizer_amount, fd_man_name, fd_worktime, fd_weather, fd_low_temp, fd_high_temp, fd_precipitation, fd_humid, fd_picture, fd_file, fd_open)
+		values (#{fd_mb_num}, #{fd_start}, #{fd_end}, #{fd_address}, #{fd_item}, #{fd_kind}, #{fd_step}, #{fd_cont}, #{fd_pesticide}, #{fd_pesticide_amount}, #{fd_fertilizer}, #{fd_fertilizer_amount}, #{fd_man_name}, #{fd_worktime}, #{fd_weather}, #{fd_low_temp}, #{fd_high_temp}, #{fd_precipitation}, #{fd_humid}, #{fd_picture}, #{fd_file}, #{fd_open})
 	</insert>
 	
 	
@@ -43,6 +43,33 @@
 	</select>
 	
 	<!-- 수정하기 -->
+	<update id="FarmDiaryUpdate" parameterType="com.doptori.entity.farmdiary">
+	update farmdiary
+	set fd_start = #{fd_start},
+	fd_end = #{fd_end},
+	fd_address = #{fd_address},
+	fd_item=#{fd_item},
+	fd_kind =#{fd_kind},
+	fd_step=#{fd_step},
+	fd_cont=#{fd_cont},
+	fd_pesticide=#{fd_pesticide},
+	fd_pesticide_amount=#{fd_pesticide_amount},
+	fd_fertilizer=#{fd_fertilizer},
+	fd_fertilizer_amount=#{fd_fertilizer_amount},
+	fd_man_name=#{fd_man_name},
+	fd_worktime=#{fd_worktime},
+	fd_weather=#{fd_weather},
+	fd_low_temp=#{fd_low_temp},
+	fd_high_temp=#{fd_high_temp},
+	fd_precipitation=#{fd_precipitation},
+	fd_humid=#{fd_humid},
+	fd_picture=#{fd_picture},
+	fd_file=#{fd_file},
+	fd_open=#{fd_open}
+	where fd_num=#{fd_num}
+	
+	</update>
+	
 	<update id="update">
 	update farmdiary
 	set fd_start = #{fd_start},
@@ -64,6 +91,7 @@
 	fd_precipitation=#{fd_precipitation},
 	fd_humid=#{fd_humid},
 	fd_picture=#{fd_picture},
+	fd_file=#{fd_file},
 	fd_open=#{fd_open}
 	where fd_num=#{fd_num}
 	
@@ -72,4 +100,11 @@
 	<delete id="delete">
 	delete from farmdiary where fd_num=#{fd_num}
 	</delete>
+	
+	<select id="FarmDiaryList" parameterType="int" resultType="com.doptori.entity.farmdiary">
+  	select fd_num, fd_mb_num, DATE_FORMAT(fd_start,'%Y-%m-%d')as fd_start, DATE_FORMAT(fd_end,'%Y-%m-%d')as fd_end, fd_address, fd_item, fd_kind, fd_step, fd_cont, fd_pesticide, fd_pesticide_amount, fd_fertilizer, fd_fertilizer_amount, fd_man_name, fd_worktime, fd_weather, fd_low_temp, fd_high_temp, fd_precipitation, fd_humid, fd_picture, fd_file, fd_open from farmdiary where fd_mb_num=#{mb_num}
+  </select>
+  
+	
+	
 </mapper>

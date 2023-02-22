@@ -1,12 +1,16 @@
 package com.doptori.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,15 +19,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.doptori.entity.DateData2;
 import com.doptori.entity.Farm;
+import com.doptori.entity.Member;
+import com.doptori.entity.Step;
 import com.doptori.entity.farmdiary;
+import com.doptori.entity.farmdiary_manage;
+import com.doptori.mapper.AddressMapper;
+import com.doptori.mapper.FarmDiaryManageMapper;
 import com.doptori.mapper.FarmDiaryMapper;
+import com.doptori.mapper.StepMapper;
 
 import lombok.extern.log4j.Log4j;
 
@@ -36,12 +48,33 @@ public class FarmDiaryController {
 
 	@Autowired
 	public FarmDiaryMapper mapper;
+	@Autowired
+	private FarmDiaryManageMapper mapper5;
+	@Autowired
+	private FarmDiaryMapper mapper3;
+	@Autowired
+	private StepMapper mapper4;
 
 	private static final Logger logger = LoggerFactory.getLogger(FarmDiaryController.class);
 	
 	@RequestMapping(value = "calendar2.do/{mb_num}", method = RequestMethod.GET)
 	public String calendar(Model model, HttpServletRequest request, DateData2 dateData, @PathVariable("mb_num")int mb_num) {
-
+		
+		HttpSession session = request.getSession();
+		Member loginMember = (Member) session.getAttribute("loginMember");
+		List<farmdiary_manage> list = mapper5.FarmDiaryManageList(loginMember.getMb_num());
+		List<farmdiary_manage> list2 = mapper5.FarmDiaryManageList2(loginMember.getMb_num());
+		List<farmdiary_manage> list5 = mapper5.FarmDiaryManageList5(loginMember.getMb_num());
+		List<farmdiary_manage> list3 = mapper5.FarmDiaryManageList3(loginMember.getMb_num());
+		List<farmdiary> list4 = mapper3.FarmDiaryList(loginMember.getMb_num());
+		List<Step> list6 = mapper4.stepList();
+		model.addAttribute("list", list);
+		model.addAttribute("list2", list2);
+		model.addAttribute("list5", list5);
+		model.addAttribute("list3", list3);
+		model.addAttribute("list4", list4);
+		model.addAttribute("list6", list6);
+		
 		Calendar cal = Calendar.getInstance();
 		DateData2 calendarData;
 		// 검색 날짜
@@ -133,12 +166,91 @@ public class FarmDiaryController {
 		return "/schedule/calendar2";
 	}
 
-	@RequestMapping(value = "schedule_add.do/{mb_num}", method = RequestMethod.GET)
-	public String schedule_add(HttpServletRequest request, farmdiary farmdiary, RedirectAttributes rttr, @PathVariable("mb_num")int mb_num) {
+	@RequestMapping("/schedule_add.do/{mb_num}")
+	public String schedule_add(HttpServletRequest request, farmdiary farmdiary, RedirectAttributes rttr, @PathVariable("mb_num")int mb_num)throws Exception {
 		farmdiary.setFd_mb_num(mb_num);
 		int count = mapper.before_schedule_add_search(farmdiary);
+		
+		// 파일 업로드 처리
+		  String mb_pic = null;
+		  String mb_file = null;
+		  MultipartFile uploadFile = farmdiary.getUploadFile(); 
+		  if (!uploadFile.isEmpty()) { 
+			  String originalFileName = uploadFile.getOriginalFilename(); 
+			  String ext = FilenameUtils.getExtension(originalFileName); //확장자 구하기
+			  UUID uuid = UUID.randomUUID(); //UUID 구하기
+			  String[] uuids = uuid.toString().split("-");
+
+			  String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."),originalFileName.length());
+			  String uniqueName = uuids[0];
+			  System.out.println("생성된 고유문자열" + uniqueName);
+			  System.out.println("확장자명" + fileExtension);
+
+			  String uploadFolder = "C:\\Users\\user\\git\\doptori\\3rd_project\\src\\main\\webapp\\resources\\images";
+
+			  
+			  mb_pic = uniqueName + fileExtension;
+			  mb_file = uploadFolder+"\\"+ uniqueName + fileExtension;
+
+				File saveFile = new File(mb_file); 
+
+				uploadFile.transferTo(saveFile);
+
+		  }
+		  farmdiary.setFd_picture(mb_pic);
+		  farmdiary.setFd_file(mb_file);
+		
 		String message = "";
 		String url = "redirect:/calendar2.do/" + farmdiary.getFd_mb_num();
+
+		if (count >= 4) {
+			message = "스케쥴은 최대 4개만 등록 가능합니다.";
+		} else {
+			mapper.schedule_add(farmdiary);
+			message = "스케쥴이 등록되었습니다";
+		}
+
+		rttr.addFlashAttribute("message", message);
+		return url;
+	}
+	
+	@RequestMapping("/schedule_add2.do/{mb_num}")
+	public String schedule_add2(HttpServletRequest request, farmdiary farmdiary, RedirectAttributes rttr, @PathVariable("mb_num")int mb_num)throws Exception {
+		
+		farmdiary.setFd_mb_num(mb_num);
+		int count = mapper.before_schedule_add_search(farmdiary);
+		
+		// 파일 업로드 처리
+		  String mb_pic = null;
+		  String mb_file = null;
+		  MultipartFile uploadFile = farmdiary.getUploadFile(); 
+		  if (!uploadFile.isEmpty()) { 
+			  String originalFileName = uploadFile.getOriginalFilename(); 
+			  String ext = FilenameUtils.getExtension(originalFileName); //확장자 구하기
+			  UUID uuid = UUID.randomUUID(); //UUID 구하기
+			  String[] uuids = uuid.toString().split("-");
+
+			  String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."),originalFileName.length());
+			  String uniqueName = uuids[0];
+			  System.out.println("생성된 고유문자열" + uniqueName);
+			  System.out.println("확장자명" + fileExtension);
+
+			  String uploadFolder = "C:\\Users\\user\\git\\doptori\\3rd_project\\src\\main\\webapp\\resources\\images";
+
+			  
+			  mb_pic = uniqueName + fileExtension;
+			  mb_file = uploadFolder+"\\"+ uniqueName + fileExtension;
+
+				File saveFile = new File(mb_file); 
+
+				uploadFile.transferTo(saveFile);
+
+		  }
+		  farmdiary.setFd_picture(mb_pic);
+		  farmdiary.setFd_file(mb_file);
+		
+		String message = "";
+		String url = "redirect:/FarmDiaryList.do";
 
 		if (count >= 4) {
 			message = "스케쥴은 최대 4개만 등록 가능합니다.";
@@ -154,13 +266,58 @@ public class FarmDiaryController {
 		
 	@RequestMapping(value = "/schedule_show", method = RequestMethod.GET)
 	public String schedule_show(Model model,HttpServletRequest request, @RequestParam("fd_num") int idx, RedirectAttributes rttr) {
+		
+		HttpSession session = request.getSession();
+		Member loginMember = (Member) session.getAttribute("loginMember");
+		List<farmdiary_manage> list = mapper5.FarmDiaryManageList(loginMember.getMb_num());
+		List<farmdiary_manage> list2 = mapper5.FarmDiaryManageList2(loginMember.getMb_num());
+		List<farmdiary_manage> list5 = mapper5.FarmDiaryManageList5(loginMember.getMb_num());
+		List<farmdiary_manage> list3 = mapper5.FarmDiaryManageList3(loginMember.getMb_num());
+		List<farmdiary> list4 = mapper3.FarmDiaryList(loginMember.getMb_num());
+		List<Step> list6 = mapper4.stepList();
+		model.addAttribute("list", list);
+		model.addAttribute("list2", list2);
+		model.addAttribute("list5", list5);
+		model.addAttribute("list3", list3);
+		model.addAttribute("list4", list4);
+		model.addAttribute("list6", list6);
+		
+		
 		model.addAttribute("schedule_show",mapper.get(idx));
+		
 		return "/schedule/schedule_show";
 	}
 	
-	@RequestMapping(value = "/modify.do", method = RequestMethod.GET)
-	public String schedule_modify(Model model,HttpServletRequest request, farmdiary farmdiary, RedirectAttributes rttr) {
+	@PostMapping("/FarmDiaryUpdate2.do")
+	public String schedule_modify(Model model,HttpServletRequest request, farmdiary farmdiary, RedirectAttributes rttr)throws Exception {
+		String fdm4_edu_pic = null;
+		String fdm4_edu_file = null;
+		MultipartFile uploadFile = farmdiary.getUploadFile();
+		if (!uploadFile.isEmpty()) {
+			String originalFileName = uploadFile.getOriginalFilename();
+			String ext = FilenameUtils.getExtension(originalFileName); // 확장자 구하기
+			UUID uuid = UUID.randomUUID(); // UUID 구하기
+			String[] uuids = uuid.toString().split("-");
 
+			String fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."),
+					originalFileName.length());
+			String uniqueName = uuids[0];
+			System.out.println("생성된 고유문자열" + uniqueName);
+			System.out.println("확장자명" + fileExtension);
+
+			String uploadFolder = "C:\\Users\\user\\git\\doptori\\3rd_project\\src\\main\\webapp\\resources\\images";
+
+			fdm4_edu_pic = uniqueName + fileExtension;
+			fdm4_edu_file = uploadFolder + "\\" + uniqueName + fileExtension;
+
+			File saveFile = new File(fdm4_edu_file);
+
+			uploadFile.transferTo(saveFile);
+
+		}
+		farmdiary.setFd_picture(fdm4_edu_pic);
+		farmdiary.setFd_file(fdm4_edu_file);
+		
 		mapper.update(farmdiary);
 		model.addAttribute("schedule_modify",mapper.update(farmdiary));
 		return "/schedule/modify";
