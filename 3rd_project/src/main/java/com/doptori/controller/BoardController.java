@@ -349,7 +349,7 @@ public class BoardController {
 
 	@RequestMapping("/boardInsert.do")
 	public String boardInsert(Board vo//, @RequestParam("bd_pic") MultipartFile file
-			) throws IOException  {
+			) throws IOException  {	
 		
 		// 파일 업로드 처리
 		  String bd_pic = null; 
