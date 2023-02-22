@@ -84,4 +84,10 @@ public class DoptoriController {
 	public String reservation() {
 		return "reservation";
 	}
+	@GetMapping("/chatting_list.do")
+	public String chatting_list() {
+		return "chatting_list";
+	}
+	
+	
 }
