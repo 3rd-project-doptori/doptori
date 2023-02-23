@@ -115,7 +115,19 @@ $('#comment-form').submit(function(event) {
                 </colgroup>
             <tbody>
                 <tr>
-                    <th rowspan='2' align="center"><div><img src="${cpath}/resources/images/${vo.mb_pic}" alt="" style="width: 3rem;"/></div>${vo.mb_nick}</th>
+                    <th rowspan='2' align="center">
+	                    <div>
+	                    	<c:choose>
+					                <c:when test="${empty vo.mb_pic}">
+							            <img src="${cpath}/resources/images/default2.png" alt="" style="width: 3rem;"/>
+					                </c:when>
+						            <c:otherwise>
+						                <img src="${cpath}/resources/images/${vo.mb_pic}" alt="" style="width: 3rem;"/>
+						            </c:otherwise>
+					            </c:choose>
+	                    </div>
+	                    ${vo.mb_nick}
+                    </th>
                     <th>제목</th>
                     <td colspan="3">
                     	<h4>${vo.bd_title}</h4>
@@ -196,7 +208,16 @@ $('#comment-form').submit(function(event) {
 			          <ol>	
 			      <c:forEach var="cvo" items="${list}" >
 			          	<li>
-			          	<div class="fw-bold"><img src="${cpath}/resources/images/${cvo.mb_pic}" alt="..." style="width: 3rem;"/>${cvo.mb_nick}</div>
+			          	<div class="fw-bold">
+				          	<c:choose>
+				                <c:when test="${empty cvo.mb_pic}">
+						            <img src="${cpath}/resources/images/default2.png" alt="..." style="width: 3rem;"/>
+				                </c:when>
+					            <c:otherwise>
+					                <img src="${cpath}/resources/images/${cvo.mb_pic}" alt="..." style="width: 3rem;"/>
+					            </c:otherwise>
+				            </c:choose>
+			          				${cvo.mb_nick}</div>
 			          				${cvo.co_cont}<span>ㅤㅤㅤㅤㅤㅤ</span>
 			           				${cvo.co_date}
 			          <c:if test="${cvo.co_mb_num eq loginMember.mb_num || loginMember.mb_id=='admin'}">
