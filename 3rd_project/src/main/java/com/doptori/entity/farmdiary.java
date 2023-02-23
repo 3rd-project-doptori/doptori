@@ -32,6 +32,7 @@ public class farmdiary {
 	private double fd_precipitation;
 	private double fd_humid;
 	private String fd_picture;
+	private String fd_file;	
 	private int fd_open;
 	
 	private MultipartFile uploadFile; // 파일 업로드
@@ -167,6 +168,12 @@ public class farmdiary {
 	public void setFd_picture(String fd_picture) {
 		this.fd_picture = fd_picture;
 	}
+	public String getFd_file() {
+		return fd_file;
+	}
+	public void setFd_file(String fd_file) {
+		this.fd_file = fd_file;
+	}
 	public int getFd_open() {
 		return fd_open;
 	}
@@ -204,15 +211,9 @@ public class farmdiary {
 				+ fd_fertilizer_amount + ", fd_man_name=" + fd_man_name + ", fd_worktime=" + fd_worktime
 				+ ", fd_weather=" + fd_weather + ", fd_low_temp=" + fd_low_temp + ", fd_high_temp=" + fd_high_temp
 				+ ", fd_precipitation=" + fd_precipitation + ", fd_humid=" + fd_humid + ", fd_picture=" + fd_picture
-				+ ", fd_open=" + fd_open + ", uploadFile=" + uploadFile + ", realName=" + realName + ", size=" + size
-				+ "]";
+				+ ", fd_file=" + fd_file + ", fd_open=" + fd_open + ", uploadFile=" + uploadFile + ", realName="
+				+ realName + ", size=" + size + "]";
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 }

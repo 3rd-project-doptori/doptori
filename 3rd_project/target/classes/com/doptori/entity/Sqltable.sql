@@ -14,7 +14,7 @@ CREATE TABLE Member (
 );
 
 ALTER TABLE Analysis ADD an_date DATETIME not null DEFAULT NOW();
-ALTER TABLE Analysis ADD  an_file_grow VARCHAR(3000) AFTER an_pic_grow;
+ALTER TABLE farmdiary ADD  fd_file VARCHAR(3000) AFTER fd_picture;
 alter table Member drop column mb_fm_name;
 
 CREATE TABLE Address (

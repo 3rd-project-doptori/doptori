@@ -94,7 +94,7 @@
                 <td colspan="5" align="center">
                  <!-- 10페이지 단위로 이전 이동하기  :  -->
                 <c:if test="${pstart != 1}"> <!-- 첫번재 그룹이 아닐때는  -->
-                    <a href="QnA_List.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> << </a>
+                    <a href="QnA_List.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> 《 </a>
                 </c:if>
                 <c:if test="${pstart == 1}"> <!-- 첫번째 그룹일때(1~10)는 이전 10페이지 이동 X -->
                 《<!-- 넘어가는 꺽세 -->
@@ -204,7 +204,7 @@
                 <td colspan="5" align="center">
                  <!-- 10페이지 단위로 이전 이동하기  :  -->
                 <c:if test="${pstart != 1}"> <!-- 첫번재 그룹이 아닐때는  -->
-                    <a href="QnA_List.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> << </a>
+                    <a href="QnA_List.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> 《 </a>
                 </c:if>
                 <c:if test="${pstart == 1}"> <!-- 첫번째 그룹일때(1~10)는 이전 10페이지 이동 X -->
                 《<!-- 넘어가는 꺽세 -->

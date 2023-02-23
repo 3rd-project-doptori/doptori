@@ -23,7 +23,7 @@
     <!-- Responsive Style -->
     <%-- <link rel="stylesheet" type="text/css" href="${cpath}/resources/css/calendar.css"> --%>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="${cpath}/resources/css/schedule_show.css">
+    <%-- <link rel="stylesheet" type="text/css" href="${cpath}/resources/css/schedule_show.css"> --%>
 </head>
 <body>
 		<div class="normal_manage_board_modal">
@@ -37,186 +37,215 @@
             	   document.getElementById("second_radio").checked = true;
                  
      </script> -->
-			<div class="top">
-				<!-- <div class="close">x</div> -->
-				
-				
-				<div class="subject">Schedule</div>
-			</div>
-
-			<div class="bottom">
-				<div class="info">* 변경 혹은 삭제된 일정은 복구할 수 없습니다.)</div>
-				
-				<form role="form" name="schedule_modify">
+				<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="exampleModalLabel">영농일지</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+				<form action="${cpath}/FarmDiaryUpdate2.do" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="year" value="${today_info.search_year}" />
 				<input type="hidden" name="month"
 					value="${today_info.search_month-1}" />
 						<input type="hidden" name= "fd_num" class="text_type1" value=${schedule_show.fd_num }></input>
 						<div class="modal-body">
-                        <table class="table table-bordered">
-                            <colgroup>
-                                <col width="13%">
-                                <col>
-                            </colgroup>
-                            <thead>
-                            <tr>
-                                <th scope="col">시작일</th>
-                                <th>
-                                    <input type="date" id="date" name="fd_start" value=${schedule_show.fd_start }>
-                                </th>
-                                <th class="color">종료일</th>
-                                <th>
-                                    <input type="date" id="date" name="fd_end" value=${schedule_show.fd_end }>
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">품목</th>
-                                <td colspan="3">
-                                    <select class="form" id="item" name="fd_item" value=${schedule_show.fd_item }>
-                                        <option selected>품목</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
+							<table class="table table-bordered">
+								<colgroup>
+									<col width="13%">
+									<col>
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col">시작일</th>
+										<th><input type="date" id="fd_start" name="fd_start" value="${schedule_show.fd_start}">
+										</th>
+										<th class="color">종료일</th>
+										<th><input type="date" id="fd_end" name="fd_end" value="${schedule_show.fd_end}">
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row">품목</th>
+										<td colspan="3"><select class="form-control" name="fd_item" id="fd_item" required>
+									<c:forEach items="${list2}" var="vo2">
+										<option value="${vo2.fdm2_item}" <c:if test ="${schedule_show.fd_item eq vo2.fdm2_item}">selected="selected"</c:if>>${vo2.fdm2_item}</option>												
+									</c:forEach>
+								  </select>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">필지</th>
+										<td colspan="3"><select class="form-control" name="fd_address" id="fd_address">
+                                			<option value="${schedule_show.fd_address}" selected disabled>${schedule_show.fd_address}</option>
+										<c:forEach items="${list}" var="vo">
+											<option value="${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri} ${vo.fdm1_detail_address}">${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri} ${vo.fdm1_detail_address}</option>												
+										</c:forEach>
+									</select>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">품종</th>
+										<td><select class="form-control" name="fd_kind" id="fd_kind" required>
+										<c:forEach items="${list2}" var="vo2">
+											<option value="${vo2.fdm2_kind}" <c:if test ="${schedule_show.fd_kind eq vo2.fdm2_kind}">selected="selected"</c:if>>${vo2.fdm2_kind}</option>												
+										</c:forEach>
+								  	</select>
+										</td>
+										<th class="color">작업단계</th>
+										<td><select id="fd_step" class="form-control" name="fd_step" required>
+										<option value="${schedule_show.fd_step}" selected disabled>${schedule_show.fd_step}</option>
+										<c:forEach items="${list6}" var="vo6">
+										<option value="${vo6.step_name}" <c:if test ="${schedule_show.fd_step eq vo6.step_name}">selected="selected"</c:if>>${vo6.step_name}</option>												
+										</c:forEach>
+									</select>
+										</td>
+									</tr>
+									<tr class="color">
+										<th scope="row">작업내용</th>
+										<td>
+                                	<input type="text" class="form-control" id="inlineCheckbox1" name="fd_cont" placeholder="작업내용" value="${schedule_show.fd_cont}">
                                 </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">필지</th>
-                                <td colspan="3">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="fd_address" value=${schedule_show.fd_address }>
-                                        <label class="form-check-label" for="inlineCheckbox1">전라남도 순천시 OOO 111</label>
-                                    </div>
+                                <th scope="row">인력명<br><br><br>투입시간</th>
+                                <td>
+                                	<select class="form-control" name="fd_man_name" id="fd_man_name" required>
+										<c:forEach items="${list3}" var="vo3">
+											<option value="${vo3.fdm5_man_name}" <c:if test ="${schedule_show.fd_man_name eq vo3.fdm5_man_name}">selected="selected"</c:if>>${vo3.fdm5_man_name}</option>		
+										</c:forEach>
+									</select>
+									<br>
+									<input type="text" class="form-control" id="inlineCheckbox1" name="fd_worktime" placeholder="투입시간" value="${schedule_show.fd_worktime}">
                                 </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">품종</th>
-                                    <td>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="fd_kind" value=${schedule_show.fd_kind }>
-                                            <label class="form-check-label" for="inlineCheckbox1">딸기 토마토</label>
-                                        </div>
-                                    </td>
-                                    <th class="color">작업단계</th>
-                                    <td>
-                                    	<div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="fd_step" value=${schedule_show.fd_step }>
-                                            <label class="form-check-label" for="inlineCheckbox1">작업단계</label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="color">
-                                <th scope="row">작업내용</th>
-                                <td colspan="3">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="fd_cont" style="height: 100px">${schedule_show.fd_cont}</textarea>
-                                        <label for="floatingTextarea2">Comments</label>
-                                    </div>
+									</tr>
+									<tr>
+										<th scope="row">농약명<br><br><br>살포량</th>
+                                <td>
+                                	<select class="form-control" name="fd_pesticide" id="fd_pesticide" required>
+										<c:forEach items="${list5}" var="vo5">
+											<c:if test="${!empty vo5.fdm3_pesticide}">
+												<option value="${vo5.fdm3_pesticide}" <c:if test ="${schedule_show.fd_pesticide eq vo5.fdm3_pesticide}">selected="selected"</c:if>>${vo5.fdm3_pesticide}</option>		
+											</c:if>										
+										</c:forEach>
+									</select>
+									<br>
+								  	<input type="text" class="form-control" id="inlineCheckbox1" name="fd_pesticide_amount" placeholder="살포량(kg)" value="${schedule_show.fd_pesticide_amount}">
                                 </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">활동유형</th>
-                                    <td>
-                                    	<div>
-                                            <input type="text" id="inlineCheckbox1" name="fd_pesticide" value="option1" placeholder="농약명" value=${schedule_show.fd_pesticide }>
-                                            <input type="text" id="inlineCheckbox1" name="fd_pesticide_amount" value="1.2" placeholder="살포량" value=${schedule_show.fd_pesticide_amount }>
-                                        </div>
-                                    </td>
-                                    <td>
-                                    	<div>
-                                            <input type="text" id="inlineCheckbox1" name="fd_fertilizer" value="option2" placeholder="비료명" value=${schedule_show.fd_fertilizer }>
-                                            <input type="text" id="inlineCheckbox1" name="fd_fertilizer_amount" value="1.4" placeholder="사용량" value=${schedule_show.fd_fertilizer_amount }>
-                                        </div>
-                                    </td>
-                                    <td>
-                                    	<div>
-                                            <input type="text" id="inlineCheckbox1" name="fd_man_name" value="option3" placeholder="인력명" value=${schedule_show.fd_man_name }>
-                                            <input type="text" id="inlineCheckbox1" name="fd_worktime" value="1.5" placeholder="투입시간" value=${schedule_show.fd_worktime }>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">날씨정보</th>
-                                    <td colspan="3">
-                                        <div class="cont">
-                                            <div>
-                                                <ul class="ul">
-                                                    <li class="li">
-                                                        <span class="stitle,weather">날씨</span>
-                                                        <select id="wfKor" name="fd_weather" title="날씨 선택" value=${schedule_show.fd_weather }>
-                                                            <option value="1" selected>맑음</option>
-                                                            <option value="2">구름 조금</option>
-                                                            <option value="3">구름 많음</option>
-                                                            <option value="4">흐림</option>
-                                                            <option value="5">비</option>
-                                                            <option value="6">눈/비</option>
-                                                            <option value="7">눈</option>
-                                                        </select>
-                                                    </li>
-                                                    <li class="li">
-                                                        <div>
-                                                            <span class="stitle">최저기온</span>
-                                                            <input type="text" value=${schedule_show.fd_low_temp } name="fd_low_temp" id="low_temp" class="alR" onkeyup="numberChk('low_temp');"> ℃
-                                                        </div>
-                                                    </li>
-                                                    <li class="li">
-                                                        <div>
-                                                            <span class="stitle">최고기온</span>
-                                                            <input type="text" value=${schedule_show.fd_high_temp } name="fd_high_temp" id="high_temp" class="alR" onkeyup="numberChk('high_temp');"> ℃
-                                                        </div>
-                                                    </li>
-                                                    <li class="li">
-                                                        <div>
-                                                            <span class="stitle">강수량</span>
-                                                            <input type="text" value=${schedule_show.fd_precipitation } name="fd_precipitation" id="r12" class="alR" onkeyup="numberChk('r12');"> mm
-                                                        </div>
-                                                    </li>
-                                                    <li class="li">
-                                                        <div>
-                                                            <span class="stitle">습도</span>
-                                                            <input type="text" value=${schedule_show.fd_humid } name="fd_humid" id="reh" class="alR" onkeyup="numberChk('reh');"> %
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                
-                                                <!-- <p><span>*강수량 및 습도는 전날 평균량 기준으로 조회됩니다.</span></p> -->
-                                                
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">사진첨부</th>
-                                    <td colspan="3">
-                                        <div class="mb-3">
-                                            <label for="formFileMultiple" class="form-label">총 10장만 등록 가능합니다</label>
-                                            <input class="form-control" type="file" id="formFileMultiple" name="fd_picture" value=${schedule_show.fd_picture } multiple>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">영농일지 공개 여부</th>
-                                    <td colspan="3">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" id="first_radio" name="fd_open" value="1" checked="checked">
-                                            <label class="form-check-label" for="first_radio">공개</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" id="second_radio" name="fd_open" value="0">
-                                            <label class="form-check-label" for="second_radio">비공개</label>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        </div>
-                    <div class="modal-footer">
-                        <button type="submit" data-oper='modify' class="btn btn-secondary" >Modify</button>
-                        <button type="submit" data-oper='delete' class="btn btn-primary" >delete</button>
-                    </div>
-                    </form>
+                                <th scope="row">비료명<br><br><br>사용량</th>
+                                <td>
+                                	<select class="form-control" name="fd_fertilizer" id="fd_fertilizer" required>
+										<c:forEach items="${list5}" var="vo5">
+											<c:if test="${!empty vo5.fdm3_fertilizer}">
+												<option value="${vo5.fdm3_fertilizer}" <c:if test ="${schedule_show.fd_fertilizer eq vo5.fdm3_fertilizer}">selected="selected"</c:if>>${vo5.fdm3_fertilizer}</option>		
+											</c:if>										
+										</c:forEach>
+									</select> 
+								  	<br>
+								  	<input type="text" class="form-control" id="inlineCheckbox1" name="fd_fertilizer_amount" placeholder="사용량(kg)" value="${schedule_show.fd_fertilizer_amount}">
+                                </td>
+									</tr>
+									<tr>
+										<th scope="row">날씨 정보</th>
+                                <td colspan="3">
+											<div class="cont">
+												<div>
+													<ul class="ul">
+														<li class="li"><span class="stitle,weather">날씨</span>
+															<select id="wfKor" name="fd_weather" class="form-control" title="날씨 선택">
+																<option selected disabled>${schedule_show.fd_weather}</option>
+																<option value="맑음">맑음</option>
+																<option value="구름 조금">구름 조금</option>
+																<option value="구름 많음">구름 많음</option>
+																<option value="흐림">흐림</option>
+																<option value="비">비</option>
+																<option value="눈/비">눈/비</option>
+																<option value="눈">눈</option>
+														</select></li>
+														<li class="li">
+															<div>
+																<span class="stitle">최저기온(℃)</span> <input type="text"
+																	value="${schedule_show.fd_low_temp}" name="fd_low_temp" id="low_temp" class="form-control"
+																	onkeyup="numberChk('low_temp');">
+															</div>
+														</li>
+														<li class="li">
+															<div>
+																<span class="stitle">최고기온(℃)</span> <input type="text"
+																	name="fd_high_temp" id="high_temp" class="form-control"
+																	onkeyup="numberChk('high_temp');" value="${schedule_show.fd_high_temp}">
+															</div>
+														</li>
+														<li class="li">
+															<div>
+																<span class="stitle">강수량(mm)</span> <input type="text"
+																	name="fd_precipitation" id="r12" class="form-control"
+																	onkeyup="numberChk('r12');" value="${schedule_show.fd_precipitation}">
+															</div>
+														</li>
+														<li class="li">
+															<div>
+																<span class="stitle">습도(%)</span> <input type="text"
+																	value="${schedule_show.fd_humid}" name="fd_humid" id="reh" class="form-control"
+																	onkeyup="numberChk('reh');">
+															</div>
+														</li>
+													</ul>
+
+													<!-- <p><span>*강수량 및 습도는 전날 평균량 기준으로 조회됩니다.</span></p> -->
+
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">사진첨부</th>
+										<td colspan="2">
+											<div class="mb-3">
+												 <input class="form-control" type="file"
+													id="formFileMultiple" name="uploadFile" multiple="multiple" onchange="previewImage(this)">
+											</div>
+										</td>
+										<td><img id="preview" style="width: 10rem;"></td>
+									</tr>
+									<tr>
+										<th scope="row">영농일지 공개 여부</th>
+										<td colspan="3">
+                                <c:choose>
+									<c:when test="${schedule_show.fd_open==1}">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio"
+												id="first_radio" name="fd_open" value="1" checked>
+											<label class="form-check-label" for="first_radio">공개</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio"
+												id="second_radio" name="fd_open" value="0"> 
+											<label class="form-check-label" for="second_radio">비공개</label>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio"
+												id="first_radio" name="fd_open" value="1" >
+											<label class="form-check-label" for="first_radio">공개</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio"
+												id="second_radio" name="fd_open" value="0" checked> 
+											<label class="form-check-label" for="second_radio">비공개</label>
+										</div>
+									</c:otherwise>
+								</c:choose>
+                                </td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-secondary btn-sm">수정</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
+						</div>
+					</form>
                     </div>			
 				</div>
 	
@@ -239,7 +268,21 @@ $(document).ready(function(){
 		 }
 		 formObj.submit();
 	 });
-});
+
+
+function previewImage(input) {
+    var file = input.files[0];
+    var img = document.getElementById("preview");
+    if (file.type.match('image.*')) {
+      var reader = new FileReader();
+      reader.onload = (function(img) {
+        return function(e) {
+          img.src = e.target.result;
+        };
+      })(img);
+      reader.readAsDataURL(file);
+    }
+  }
 </script>
 	
 	

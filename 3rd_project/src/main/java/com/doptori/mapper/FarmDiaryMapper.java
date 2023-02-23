@@ -30,6 +30,9 @@ public interface FarmDiaryMapper {
 	
 	public ArrayList<farmdiary> schedule_list2(DateData2 dateData);
 	
+	public List<farmdiary> FarmDiaryList(int mb_num);
+	
+	public void FarmDiaryUpdate(farmdiary vo);
 	
 	
 }
