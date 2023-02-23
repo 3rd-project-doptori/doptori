@@ -30,15 +30,11 @@
                 	<h2 class="h2">농작물 분석하기</h2>
                         <div class="d-flex justify-content-center top">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="seolhyang" checked="checked">
-                                <label class="form-check-label" for="inlineRadio1">설향</label>
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="geumsil" checked="checked">
+                                <label class="form-check-label" for="inlineRadio2">딸기</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="geumsil">
-                                <label class="form-check-label" for="inlineRadio2">금실</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="toamto">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="tomato">
                                 <label class="form-check-label" for="inlineRadio3">토마토</label>
                             </div>
                         </div>
@@ -90,8 +86,9 @@
                 
         </div>
     </main>
-
-
+	<script>
+		var login_num = ${loginMember.mb_num};
+	</script>
     <script src="${cpath}/resources/js/analysis.js"></script>
   </body>
 </html>
