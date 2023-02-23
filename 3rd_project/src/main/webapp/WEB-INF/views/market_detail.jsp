@@ -12,7 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, 그리고 Bootstrap 기여자들">
-    <meta name="generator" content="Hugo 0.104.2">
     <title>직거래_상세보기</title>
 
     <!-- CSS only -->
@@ -23,11 +22,9 @@
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
     <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
     <link rel="stylesheet" href="${cpath}/resources/css/market_detail.css">
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script>
        var my_num = Number('${loginMember.getMb_num()}');

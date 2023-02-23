@@ -43,7 +43,7 @@
  <hr class="featurette-divider">
 
         <div class="row featurette">
-            <div class="col-md-7">
+            <div class="col-md-7 text-center">
               <h1>VEF_과채가채고</h1>
               <p class="p">
                   어려운 과채작물 재배를 쉽고 편리하게 도와드립니다.<br>

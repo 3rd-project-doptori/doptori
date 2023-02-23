@@ -231,6 +231,25 @@ public class FarmDiaryMangeController {
 		return "farm_list";
 	}
 	
+	@RequestMapping("/farm.do")
+	public String farm(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Member loginMember = (Member) session.getAttribute("loginMember");
+		List<farmdiary_manage> list = mapper.FarmDiaryManageList(loginMember.getMb_num());
+		List<farmdiary_manage> list2 = mapper.FarmDiaryManageList2(loginMember.getMb_num());
+		List<farmdiary_manage> list5 = mapper.FarmDiaryManageList5(loginMember.getMb_num());
+		List<farmdiary_manage> list3 = mapper.FarmDiaryManageList3(loginMember.getMb_num());
+		List<farmdiary> list4 = mapper3.FarmDiaryList(loginMember.getMb_num());
+		List<Step> list6 = mapper4.stepList();
+		model.addAttribute("list", list);
+		model.addAttribute("list2", list2);
+		model.addAttribute("list5", list5);
+		model.addAttribute("list3", list3);
+		model.addAttribute("list4", list4);
+		model.addAttribute("list6", list6);
+		return "farm";
+	}
+	
 	@PostMapping("/FarmDiaryUpdate.do")
 	public String FarmDiaryUpdate(farmdiary vo) throws Exception {
 		

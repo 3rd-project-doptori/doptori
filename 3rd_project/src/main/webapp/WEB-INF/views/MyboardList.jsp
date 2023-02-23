@@ -16,6 +16,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="${cpath}/resources/css/lineicons.css" />
     <link rel="stylesheet" href="${cpath}/resources/css/main.css" />
+<style type="text/css">
+th {
+  text-align: center;
+}
+</style>
 </head>
 <body>
     <!-- ======== sidebar-nav start =========== -->
@@ -75,18 +80,7 @@
               <span class="text">내가 쓴 글</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="${cpath}/complain.do">
-              <span class="icon">
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M9.16667 19.25H12.8333C12.8333 20.2584 12.0083 21.0834 11 21.0834C9.99167 21.0834 9.16667 20.2584 9.16667 19.25ZM19.25 17.4167V18.3334H2.75V17.4167L4.58333 15.5834V10.0834C4.58333 7.24171 6.41667 4.76671 9.16667 3.94171V3.66671C9.16667 2.65837 9.99167 1.83337 11 1.83337C12.0083 1.83337 12.8333 2.65837 12.8333 3.66671V3.94171C15.5833 4.76671 17.4167 7.24171 17.4167 10.0834V15.5834L19.25 17.4167ZM15.5833 10.0834C15.5833 7.51671 13.5667 5.50004 11 5.50004C8.43333 5.50004 6.41667 7.51671 6.41667 10.0834V16.5H15.5833V10.0834Z"
-                  />
-                </svg>
-              </span>
-              <span class="text">건의답변</span>
-            </a>
-          </li>
+
           <li class="nav-item">
             <a href="${cpath}/chatting_list.do">
               <span class="icon">
@@ -128,18 +122,21 @@
               <div class="card-style settings-card-1 mb-30">
                 <div class="profile-info">
                   <div id="Accordion_wrap">
-                 <!--    <div class="que">
-                     <span>This is first question.</span>
-                      <div class="arrow-wrap">
-                       <span class="arrow-top">↑</span>
-                       <span class="arrow-bottom">↓</span>
-                      </div>
-                     
+                  
+                   <div class="que" align="left">
+                     <c:choose>
+	                    <c:when test="${loginMember.mb_id=='admin'}">
+	                    	<span>[공지사항]</span>
+	                    </c:when>
+	                    <c:otherwise>
+	                   	    <span>[Q&A]</span>
+	                    </c:otherwise>	
+	                </c:choose>
                     </div>
-                     -->
+                     
                     
                     
-                    
+                    <div class="anw" align="center" style="display: none;">
                     <table class="table">
                     <c:choose>
 	                    <c:when test="${loginMember.mb_id=='admin'}">
@@ -163,7 +160,7 @@
 				    			<c:if test="${vo.bd_mb_num eq loginMember.mb_num}">
 				    			<c:if test="${vo.bd_type =='1' || vo.bd_type =='2'}">
 				    			<tr>
-				    				<th scope="row">${count+1}</th>
+				    				<th scope="row"  text-align="right">${count+1}</th>
 									<%-- <th scope="row">${vo.bd_num}</th> --%>
 									<td>
 									<c:url var="contentlink" value="/boardContent.do/${vo.bd_num}" />		
@@ -178,11 +175,15 @@
 				    		</c:forEach>
 				    	</tbody>
 				    </table>	
+				    </div>
 				    
-				    <br><br>
 				    
+				    <div class="que" align="left">
+				    <span>[직거래]</span>
+                    </div>
 				     
-				    <table class="table">
+				     <div class="anw" align="center" style="display: none;">
+				    <table class="table" >
 				     <h3>[직거래]</h3>
 				    	<thead align="center">
 					    	 <tr style=" font-weight: bold;">
@@ -198,7 +199,7 @@
 				    			<c:if test="${vo.bd_mb_num eq loginMember.mb_num}">
 				    			<c:if test="${vo.bd_type =='3'}">
 				    			<tr>
-				    				<th scope="row">${count+1}</th>
+				    				<th scope="row" text-align="right">${count+1}</th>
 									<%-- <th scope="row">${vo.bd_num}</th> --%>
 									<td>
 									<c:url var="contentlink" value="/market_detail.do/${vo.bd_num}" />		
@@ -213,9 +214,10 @@
 				    		</c:forEach>
 				    	</tbody>
 				    </table>	
+				    </div>
+				    
 				    
 				    <!-- 
-				    	
                     <div class="anw">
                      <span>This is first answer.</span>
                     </div>
@@ -233,6 +235,8 @@
                     </div>
                   </div> -->
               	 </div>
+              	 
+              	 
                 </div>
               </div>
               <!-- end card -->

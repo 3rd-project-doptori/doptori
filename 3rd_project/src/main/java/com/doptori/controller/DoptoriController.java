@@ -68,10 +68,6 @@ public class DoptoriController {
 	public String writing() {
 		return "writing";
 	}
-	@GetMapping("/farm.do")
-	public String farm() {	
-		return "farm";
-	}
 	@GetMapping("/market_detail.do")
 	public String market_detail() {	
 		return "market_detail";

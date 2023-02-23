@@ -23,7 +23,22 @@
 	<title>Document</title>
 
 	<link rel="stylesheet" href="${cpath}/resources/css/write_form.css">
-
+	
+	<style>
+		@font-face {
+		    font-family: 'IBMPlexSansKR-Regular';
+		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+		    font-weight: normal;
+		    font-style: normal;
+		}
+		
+		*{
+			font-family: 'IBMPlexSansKR-Regular';
+		        margin: 0;
+		        padding: 0;
+		}
+		
+	</style>
 </head>
 <body>
  <script type="text/javascript">
