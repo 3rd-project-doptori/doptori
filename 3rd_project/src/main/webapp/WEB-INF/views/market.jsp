@@ -97,7 +97,7 @@
 	                  <c:if test="${vo.bd_type eq 3 && not empty vo.bd_pic}">
 	                     <div class="col">
 	                         <div class="card shadow-sm">      
-		                           <img src="${vo.bd_pic}" class="card-img-top"   alt="...">
+		                           <img src="${cpath}${vo.bd_pic}" class="card-img-top"   alt="...">
 							<a href = ""></a>
 	                             <div class="card-body">
 	                             <p class="card-text">${vo.bd_title}</p>

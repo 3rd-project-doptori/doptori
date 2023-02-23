@@ -8,6 +8,11 @@
     select * from Reserve where re_mb_nums=#{re_mb_nums}
   </select>
   
+  <!-- 구매자가 예약한 목록 보기 -->
+  <select id="ReserveList4buyer" parameterType="int" resultType="com.doptori.entity.Reserve">
+    select * from Reserve where re_mb_nums=#{re_mb_numb}
+  </select>
+  
   <!-- 예약 승인하기 : 원글 컬럼 변경 -->
   <update id="ConfirmReservation" parameterType="com.doptori.entity.Board">
       update Board set bd_re_num=#{bd_re_num}

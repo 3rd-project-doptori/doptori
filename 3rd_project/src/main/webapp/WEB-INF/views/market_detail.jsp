@@ -100,9 +100,9 @@
          document.getElementById('re_memo').innerHTML = cont_info[3];
          document.getElementById('bd_cont').innerHTML = cont_info[4];
          
-         var image_path = "C:\\Users\\user\\git\\doptori\\3rd_project\\src\\main\\webapp\\resources\\images\\" + "${vo.bd_pic}";
+         var image_path = "${cpath}${vo.bd_pic}";
 		$("#show_image").append("<img src='"+image_path+"'>")
-		$("#show_sample_image").append("<img src='"+image_path+"' style='transform:scale(3);opacity:0.5'>")
+		$("#show_sample_image").append("<img src='"+image_path+"' style='transform:scale(8);opacity:0.5'>")
 	}); 
 
       

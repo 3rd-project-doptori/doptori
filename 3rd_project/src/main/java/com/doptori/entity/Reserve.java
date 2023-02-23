@@ -13,7 +13,15 @@ public class Reserve {
 	private	int re_price;
 	private	int re_bd_num;
 	private	String re_memo;
+	private int confirmed;
 	
+
+	public int getConfirmed() {
+		return confirmed;
+	}
+	public void setConfirmed(int confirmed) {
+		this.confirmed = confirmed;
+	}
 	public int getRe_bd_num() {
 		return re_bd_num;
 	}

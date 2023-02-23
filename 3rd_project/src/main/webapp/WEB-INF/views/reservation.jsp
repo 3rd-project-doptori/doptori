@@ -125,6 +125,11 @@
               <div class="card-style settings-card-1 mb-30">
                 <div class="profile-info">
                   <div id="Accordion_wrap">
+                  
+                  
+                  
+                  <!-- 내가 신청을 받은 예약 -->
+                  <!-- 두 개 아코디언으로 분리되서 나오면 좋을 듯 합니다 to 예슬 -->
                   <c:forEach items="${list}" var="vo" varStatus="status">
                     <div class="que">
 	                     <span>${vo.re_date}에 신청된 예약</span>
@@ -155,9 +160,59 @@
 	                     <br>
 	                     <a href="${cpath}/market_detail.do/${vo.re_bd_num}">판매글</a> 
 	                     <br>
+	                     <c:if test='${vo.confirmed eq 1}'>
+	                     승인됨
+	                     </c:if>
+						<c:if test='${vo.confirmed eq 0}'>
+	                     승인되지 않음
+	                     </c:if>
+	                     <br>	                     
 	                	<button type="button" onclick="re_confirm('${vo.re_num}')">승인하기</button>                
 	                    </div>
                     </c:forEach>
+                    
+                    
+                  <!-- 내가 신청한 예약 -->
+                  <c:forEach items="${list4buyer}" var="vo" varStatus="status">
+                    <div class="que">
+	                     <span>${vo.re_date}에 신청한 예약</span>
+	                      <div class="arrow-wrap">
+	                       <span class="arrow-top">↑</span>
+	                       <span class="arrow-bottom">↓</span>
+	                      </div>
+	                    </div>
+	                    <div class="anw">
+	                    <br>
+	                     구매자 : ${memberNames[status.index]}
+	                     <br>
+	                     판매 시간 : ${vo.re_selldate}
+	                     <br>
+	                     판매 장소 : ${vo.re_place}
+	                     <br>
+	                     <c:if test='${vo.re_cp_num eq 1}'>
+	                     품목 : 딸기
+	                     </c:if>
+	                     <c:if test='${vo.re_cp_num eq 2}'>
+	                     품목 : 토마토
+	                     </c:if>
+	                     <br>
+	                     가격 : ${vo.re_price}
+	                     <br>
+	                     무게 : ${vo.re_weight}
+	                     <br>
+	                     <a href="${cpath}/market_detail.do/${vo.re_bd_num}">판매글</a> 
+	                     <br>
+	                     <c:if test='${vo.confirmed eq 1}'>
+	                     승인됨
+	                     </c:if>
+						<c:if test='${vo.confirmed eq 0}'>
+	                     승인되지 않음
+	                     </c:if>
+	                     <br>
+	                	<button type="button" onclick="re_confirm('${vo.re_num}')">승인하기</button>                
+	                    </div>
+                    </c:forEach>
+                    
 
                     
 <!--

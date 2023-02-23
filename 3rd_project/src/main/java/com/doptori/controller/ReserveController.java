@@ -34,13 +34,31 @@ public class ReserveController {
 		HttpSession session = request.getSession();
 		Member loginMember = (Member) session.getAttribute("loginMember");
 		List<Reserve> ReserveList = mapper.ReserveList(loginMember.getMb_num());
-		
 		List<String> memberNames = new ArrayList<>();
 		for (Reserve reserve : ReserveList) {
 			memberNames.add(member_mapper.memberNum2Name(reserve.getRe_mb_numb()));
+			List<Board> list = mapper.ReservedBoard(reserve.getRe_num());
+			if(list.size()!=0) {
+				reserve.setConfirmed(1);
+			}else {
+				reserve.setConfirmed(0);
+			}
 		}
 		model.addAttribute("list", ReserveList);
 		model.addAttribute("memberNames", memberNames);
+		
+		List<Reserve> ReserveList4buyer = mapper.ReserveList4buyer(loginMember.getMb_num());
+		List<String> memberNames4buyer = new ArrayList<>();
+		for (Reserve reserve : ReserveList4buyer) {
+			memberNames4buyer.add(member_mapper.memberNum2Name(reserve.getRe_num()));
+			List<Board> list = mapper.ReservedBoard(reserve.getRe_bd_num());
+			if(list.size()!=0) {
+				reserve.setConfirmed(1);
+			}else {
+				reserve.setConfirmed(0);
+			}
+		}
+		model.addAttribute("list4buyer", ReserveList4buyer);
 
 		return "reservation";
 		

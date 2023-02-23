@@ -12,6 +12,9 @@ public interface ReserveMapper {
 	
 	public List<Reserve> ReserveList(int re_mb_nums);
 	
+	public List<Reserve> ReserveList4buyer(int re_mb_numb);
+	
+	
 	public void ConfirmReservation(Board vo);
 	
 	public List<Board> ReservedBoard(int bd_re_num);
