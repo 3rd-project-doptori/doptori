@@ -242,7 +242,7 @@
 						</div>
 						<div class="modal-footer">
 							<button type="submit" class="btn btn-secondary btn-sm">수정</button>
-                            <button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
+                            <button class='btn btn-outline-secondary' onclick="goDel(${schedule_show.fd_num })">삭제</button>
 						</div>
 					</form>
                     </div>			
@@ -282,6 +282,26 @@ function previewImage(input) {
       reader.readAsDataURL(file);
     }
   }
+  
+function goDel(fdm_num){
+
+	var real = confirm("정말 삭제하시겠습니까???");
+	
+	if(real){
+		
+		$.ajax({
+			 url : "${cpath}/farmdiarylistdelete/" + fd_num,// PathVariable로 넘기기
+	         type : "delete",
+	         success : location.href="/schedule/delete",
+	         error : function(){
+	        	 alert("글삭제 실패!!")
+	         }
+	         
+	    });// ajax
+	
+	}// if문
+	
+} // goDel 함수 끝!
 </script>
 	
 	

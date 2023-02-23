@@ -35,4 +35,7 @@ public interface FarmDiaryMapper {
 	public void FarmDiaryUpdate(farmdiary vo);
 	
 	
+	public void farmdiarylistdelete(int fd_num);
+	
+	
 }
