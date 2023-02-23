@@ -139,7 +139,7 @@
                 <div class="profile-info">
                 
                 
-                <form class="form-horizontal" id="updateMember" action="${cpath}/userUpdate.do" method="post" enctype="multipart/form-data">
+                <form class="form-horizontal" id="updateMember"  onsubmit="return confirm('수정하시겠습니까?');" action="${cpath}/userUpdate.do" method="post" enctype="multipart/form-data">
 					
                   	<!-- 프로필 사진 -->
 					<div class="input-style-1">
