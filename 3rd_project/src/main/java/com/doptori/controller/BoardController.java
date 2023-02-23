@@ -58,6 +58,13 @@ public class BoardController {
 		List<String> memberNames = new ArrayList<>();
 		for (Board board : list) {
 			memberNames.add(mapper.memberNum2Name(board.getBd_mb_num()));
+			if(board.getBd_pic()!=null) {
+				if(board.getBd_pic().length()>53) {
+					String temp = board.getBd_pic().substring(53);
+					temp = temp.replace("\\", "/");
+					board.setBd_pic(temp);
+				}
+			}
 		}
 		model.addAttribute("list", list);
 		model.addAttribute("memberNames", memberNames);
@@ -334,9 +341,16 @@ public class BoardController {
 			vo.setMb_nick(writer.getMb_nick());
 		}
 		
-		List<Comment> list = mapper.commentSelect(bd_num);
+		if(vo.getBd_pic()!=null) {
+			if(vo.getBd_pic().length()>53) {
+				String temp = vo.getBd_pic().substring(53);
+				temp = temp.replace("\\", "/");
+				vo.setBd_pic(temp);
+			}
+		}
 		
-		model.addAttribute("vo", vo);
+		List<Comment> list = mapper.commentSelect(bd_num);
+				model.addAttribute("vo", vo);
 		model.addAttribute("list", list);
 		
 		

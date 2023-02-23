@@ -21,6 +21,10 @@
 	function memberDeleteView(){
 		location.href = "${cpath}/memberDeleteView.do"
 	}
+	//수정
+	function userUpdate() {
+		location.href = "${cpath}/userUpdate.do"
+	}
   </script>
   </head>
   <body>
