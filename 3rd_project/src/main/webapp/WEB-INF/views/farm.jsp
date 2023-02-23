@@ -125,45 +125,235 @@
               <div class="card-style settings-card-1 mb-30">
                 <div class="profile-info">
                   <div id="Accordion_wrap">
-                    <div class="que">
-                     <span>This is first question.</span>
-                      <div class="arrow-wrap">
-                       <span class="arrow-top">↑</span>
-                       <span class="arrow-bottom">↓</span>
-                      </div>
-                     
-                    </div>
-                    <div class="anw">
-                     <span>This is first answer.</span>
-                    </div>
-                    <div class="que">
-                     <span>This is second question.</span>
-                    </div>
-                    <div class="anw">
-                     <span>This is second answer.</span>
-                    </div>
-                    <div class="que">
-                     <span>This is third question.</span>
-                    </div>
-                    <div class="anw">
-                     <span>This is third answer.</span>
-                    </div>
-                  </div>
-               
-                </div>
-              </div>
-              <!-- end card -->
-            </div>
-            <!-- end col -->
+                    <c:forEach items="${list4}" var="vo4">
+											<c:set var="cnt" value="${cnt+1}" />
+												<div class="que" align="left">
+													<span>영농일지 ${cnt} : </span>
+													<span>${vo4.fd_start}</span>
+													<span>${vo4.fd_step}</span>
+												</div>
+												<div class="anw" align="center">
+													<form action="${cpath}/FarmDiaryManageUpdate3.do" method="post" enctype="multipart/form-data">
+														<input type="hidden" class="form-control" name="fd_num" id="fd_num"  value="${vo4.fd_num}">
+														<table>
+															<tr>
+                              <th scope="row">시작일</th>
+                              <td>
+                                  <input type="date" id="fd_start" name="fd_start" value="${vo4.fd_start}">
+                              </td>
+                              <th scope="row">종료일</th>
+                              <td>
+                                  <input type="date" id="fd_end" name="fd_end" value="${vo4.fd_end}">
+                              </td>
+                            </tr>
+                              <tr>
+                                <th scope="row">필지 주소</th>
+                                <td colspan="3">
+                                	<select class="form-control" name="fd_address" id="fd_address">
+                                			<option value="${vo4.fd_address}" selected disabled>${vo4.fd_address}</option>
+										<c:forEach items="${list}" var="vo">
+											<option value="${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri} ${vo.fdm1_detail_address}">${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri} ${vo.fdm1_detail_address}</option>												
+										</c:forEach>
+									</select>
+                                </td>
+                              </tr>
+                              <tr>
+                              <th scope="row">품목</th>
+                              <td>
+                              	  <select class="form-control" name="fd_item" id="fd_item" required>
+									<c:forEach items="${list2}" var="vo2">
+										<option value="${vo2.fdm2_item}" <c:if test ="${vo4.fd_item eq vo2.fdm2_item}">selected="selected"</c:if>>${vo2.fdm2_item}</option>												
+									</c:forEach>
+								  </select>
+                              </td>
+                              <td></td> 
+                              <td></td> 
+                              </tr>
+                              <tr>
+                                <th scope="row">품종</th>
+                                <td>
+                                	<select class="form-control" name="fd_kind" id="fd_kind" required>
+										<c:forEach items="${list2}" var="vo2">
+											<option value="${vo2.fdm2_kind}" <c:if test ="${vo4.fd_kind eq vo2.fdm2_kind}">selected="selected"</c:if>>${vo2.fdm2_kind}</option>												
+										</c:forEach>
+								  	</select>
+                                </td>
+                                <th scope="row">작업 단계</th>
+                                <td>
+                                	<select id="fd_step" class="form-control" name="fd_step" required>
+										<option value="${vo4.fd_step}" selected disabled>${vo4.fd_step}</option>
+										<c:forEach items="${list6}" var="vo6">
+										<option value="${vo6.step_name}" <c:if test ="${vo4.fd_step eq vo6.step_name}">selected="selected"</c:if>>${vo6.step_name}</option>												
+										</c:forEach>
+									</select>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">작업내용</th>
+                                <td>
+                                	<input type="text" class="form-control" id="inlineCheckbox1" name="fd_cont" placeholder="작업내용" value="${vo4.fd_cont}">
+                                </td>
+                                <th scope="row">인력명<br><br><br>투입시간</th>
+                                <td>
+                                	<select class="form-control" name="fd_man_name" id="fd_man_name" required>
+										<c:forEach items="${list3}" var="vo3">
+											<option value="${vo3.fdm5_man_name}" <c:if test ="${vo4.fd_man_name eq vo3.fdm5_man_name}">selected="selected"</c:if>>${vo3.fdm5_man_name}</option>		
+										</c:forEach>
+									</select>
+									<br>
+									<input type="text" class="form-control" id="inlineCheckbox1" name="fd_worktime" placeholder="투입시간" value="${vo4.fd_worktime}">
+                                </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">농약명<br><br><br>살포량</th>
+                                <td>
+                                	<select class="form-control" name="fd_pesticide" id="fd_pesticide" required>
+										<c:forEach items="${list5}" var="vo5">
+											<c:if test="${!empty vo5.fdm3_pesticide}">
+												<option value="${vo5.fdm3_pesticide}" <c:if test ="${vo4.fd_pesticide eq vo5.fdm3_pesticide}">selected="selected"</c:if>>${vo5.fdm3_pesticide}</option>		
+											</c:if>										
+										</c:forEach>
+									</select>
+									<br>
+								  	<input type="text" class="form-control" id="inlineCheckbox1" name="fd_pesticide_amount" placeholder="살포량(kg)" value="${vo4.fd_pesticide_amount}">
+                                </td>
+                                <th scope="row">비료명<br><br><br>사용량</th>
+                                <td>
+                                	<select class="form-control" name="fd_fertilizer" id="fd_fertilizer" required>
+										<c:forEach items="${list5}" var="vo5">
+											<c:if test="${!empty vo5.fdm3_fertilizer}">
+												<option value="${vo5.fdm3_fertilizer}" <c:if test ="${vo4.fd_fertilizer eq vo5.fdm3_fertilizer}">selected="selected"</c:if>>${vo5.fdm3_fertilizer}</option>		
+											</c:if>										
+										</c:forEach>
+									</select> 
+								  	<br>
+								  	<input type="text" class="form-control" id="inlineCheckbox1" name="fd_fertilizer_amount" placeholder="사용량(kg)" value="${vo4.fd_fertilizer_amount}">
+                                </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">날씨 정보</th>
+                                <td>
+											<div class="cont">
+												<div>
+													<ul class="ul">
+														<li class="li"><span class="stitle,weather">날씨</span>
+															<select id="wfKor" name="fd_weather" class="form-control" title="날씨 선택">
+																<option value="맑음" <c:if test ="${vo4.fd_weather eq '맑음'}">selected="selected"</c:if>>맑음</option>
+																<option value="구름 조금" <c:if test ="${vo4.fd_weather eq '구름 조금'}">selected="selected"</c:if>>구름 조금</option>
+																<option value="구름 많음" <c:if test ="${vo4.fd_weather eq '구름 많음'}">selected="selected"</c:if>>구름 많음</option>
+																<option value="흐림" <c:if test ="${vo4.fd_weather eq '흐림'}">selected="selected"</c:if>>흐림</option>
+																<option value="비" <c:if test ="${vo4.fd_weather eq '비'}">selected="selected"</c:if>>비</option>
+																<option value="눈/비" <c:if test ="${vo4.fd_weather eq '눈/비'}">selected="selected"</c:if>>눈/비</option>
+																<option value="눈" <c:if test ="${vo4.fd_weather eq '눈'}">selected="selected"</c:if>>눈</option>
+														</select></li>
+														<li class="li">
+															<div>
+																<span class="stitle">최저기온(℃)</span> <input type="text"
+																	value="${vo4.fd_low_temp}" name="fd_low_temp" id="low_temp" class="form-control"
+																	onkeyup="numberChk('low_temp');">
+															</div>
+														</li>
+														<li class="li">
+															<div>
+																<span class="stitle">최고기온(℃)</span> <input type="text"
+																	name="fd_high_temp" id="high_temp" class="form-control"
+																	onkeyup="numberChk('high_temp');" value="${vo4.fd_high_temp}">
+															</div>
+														</li>
+														<li class="li">
+															<div>
+																<span class="stitle">강수량(mm)</span> <input type="text"
+																	name="fd_precipitation" id="r12" class="form-control"
+																	onkeyup="numberChk('r12');" value="${vo4.fd_precipitation}">
+															</div>
+														</li>
+														<li class="li">
+															<div>
+																<span class="stitle">습도(%)</span> <input type="text"
+																	value="${vo4.fd_humid}" name="fd_humid" id="reh" class="form-control"
+																	onkeyup="numberChk('reh');">
+															</div>
+														</li>
+													</ul>
 
-            
-            <!-- end col -->
-          </div>
-          <!-- end row -->
-        </div>
-        <!-- end container -->
-      </section>
-      <!-- ========== section end ========== -->
+													<!-- <p><span>*강수량 및 습도는 전날 평균량 기준으로 조회됩니다.</span></p> -->
+
+												</div>
+											</div>
+										</td>
+										<td></td>
+										<td></td>
+                              </tr>
+                              <tr>
+                              <th scope="row">사진첨부</th>
+                              <td colspan="2">
+								<div class="mb-3">
+										<input class="form-control" type="file"
+											id="formFileMultiple" name="uploadFile" multiple="multiple" onchange="previewImage2(this)">
+								</div>
+							  </td>
+								<td><img id="preview2" style="width: 10rem;"></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">영농일지 공개 여부</th>
+                                <td colspan="3">
+                                <c:choose>
+									<c:when test="${vo4.fd_open==1}">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio"
+												id="first_radio" name="fd_open" value="1" checked>
+											<label class="form-check-label" for="first_radio">공개</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio"
+												id="second_radio" name="fd_open" value="0"> 
+											<label class="form-check-label" for="second_radio">비공개</label>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio"
+												id="first_radio" name="fd_open" value="1" >
+											<label class="form-check-label" for="first_radio">공개</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio"
+												id="second_radio" name="fd_open" value="0" checked> 
+											<label class="form-check-label" for="second_radio">비공개</label>
+										</div>
+									</c:otherwise>
+								</c:choose>
+                                </td>
+                              </tr>			
+														</table>
+														<table>
+														<tr>
+														<td colspan="3">
+														<button type="submit" class="btn btn-secondary btn-sm">수정</button>
+                            <button class='btn btn-outline-secondary' onclick="goDel(${vo4.fd_num})">삭제</button>
+														</td>
+														</tr>
+														</table>
+													</form>
+												</div>
+											</c:forEach>
+												
+											</div>
+
+										</div>
+									</div>
+									<!-- end card -->
+								</div>
+								<!-- end col -->
+
+
+								<!-- end col -->
+							</div>
+							<!-- end row -->
+						</div>
+						<!-- end container -->
+					</section>
+					<!-- ========== section end ========== -->
 
 
     </main>
