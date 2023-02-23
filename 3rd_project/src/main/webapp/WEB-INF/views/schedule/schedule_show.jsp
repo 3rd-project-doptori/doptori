@@ -152,14 +152,13 @@
 													<ul class="ul">
 														<li class="li"><span class="stitle,weather">날씨</span>
 															<select id="wfKor" name="fd_weather" class="form-control" title="날씨 선택">
-																<option selected disabled>${schedule_show.fd_weather}</option>
-																<option value="맑음">맑음</option>
-																<option value="구름 조금">구름 조금</option>
-																<option value="구름 많음">구름 많음</option>
-																<option value="흐림">흐림</option>
-																<option value="비">비</option>
-																<option value="눈/비">눈/비</option>
-																<option value="눈">눈</option>
+																<option value="맑음" <c:if test ="${schedule_show.fd_weather eq '맑음'}">selected="selected"</c:if>>맑음</option>
+																<option value="구름 조금" <c:if test ="${schedule_show.fd_weather eq '구름 조금'}">selected="selected"</c:if>>구름 조금</option>
+																<option value="구름 많음" <c:if test ="${schedule_show.fd_weather eq '구름 많음'}">selected="selected"</c:if>>구름 많음</option>
+																<option value="흐림" <c:if test ="${schedule_show.fd_weather eq '흐림'}">selected="selected"</c:if>>흐림</option>
+																<option value="비" <c:if test ="${schedule_show.fd_weather eq '비'}">selected="selected"</c:if>>비</option>
+																<option value="눈/비" <c:if test ="${schedule_show.fd_weather eq '눈/비'}">selected="selected"</c:if>>눈/비</option>
+																<option value="눈" <c:if test ="${schedule_show.fd_weather eq '눈'}">selected="selected"</c:if>>눈</option>
 														</select></li>
 														<li class="li">
 															<div>

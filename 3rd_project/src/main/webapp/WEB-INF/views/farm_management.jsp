@@ -9,17 +9,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>영농일지_관리</title>
-<!-- ========== All CSS files linkup ========= -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-	crossorigin="anonymous">
-<link rel="stylesheet" href="${cpath}/resources/css/lineicons.css" />
-<link rel="stylesheet" href="${cpath}/resources/css/farm_management_table.css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link rel="stylesheet" href="${cpath}/resources/css/farm_management.css">
 </head>
 
 <body>
@@ -518,7 +509,7 @@
 															</tr>
 															<tr>
 																<th scope="row"><P>목표 생산량 : </P></th>
-																<td><P><input type="text" class="form-control" name="fdm2_target" id="fdm2_target" placeholder="목표생산량" value="${vo.fdm2_target}">${vo.fdm2_target}</P></td>
+																<td><P><input type="text" class="form-control" name="fdm2_target" id="fdm2_target" placeholder="목표생산량" value="${vo2.fdm2_target}">${vo2.fdm2_target}</P></td>
 																<td><P>kg</P></td>
 															</tr>
 
@@ -1142,7 +1133,7 @@
 										aria-label="Close"></button>
 								</div>
 								<form class="form-horizontal"
-									action="${cpath}/FarmDiaryManage.do" method="post">
+									action="${cpath}/FarmDiaryManage6.do" method="post">
 									<input type="hidden" class="form-control" name="fdm_mb_num" id="fdm_mb_num" value="${loginMember.mb_num}">
 									<input type="hidden" class="form-control" name="fdm_type" id="fdm_type" value="6">
 									<div class="modal-body">
@@ -1208,35 +1199,38 @@
 					</div>
 
 					<!-- 확인하기 -->
-					<!-- ========== section start ========== -->
-					<section class="section">
-						<div class="container-fluid">
-							<div class="row ">
-								<div class="col-lg-7 top">
-									<div class="title-wrapper pt-30">
-										<div class="row text-start">
-											<div class="col-md-3">
-												<div class="title mb-30">
-													<h2>거래처 목록</h2>
-												</div>
-											</div>
-										</div>
-										<!-- end row -->
-									</div>
-									<div class="card-style settings-card-1 mb-30">
-										<div class="profile-info">
-											<div id="Accordion_wrap">
-											<c:forEach items="${list6}" var="vo6">
-											<c:set var="cnt8" value="${cnt8+1}" />
-												<div class="que" align="left">
-													<span>거래처 ${cnt8} : </span>
-													<span>${vo6.fdm6_account}</span>
-												</div>
-												<div class="anw" align="center">
-													<form action="${cpath}/FarmDiaryManageUpdate6.do" method="post">
-														<input type="hidden" class="form-control" name="fdm_num" id="fdm_num"  value="${vo6.fdm_num}">
-														<table>
-															<tr>
+					<table class="table recruit">  
+
+                    <colgroup>  
+                        <col width="10%">
+                        <col>
+                    </colgroup>  
+      				<thead>
+      					<tr>
+      						<th>번호</th>
+      						<th>거래처</th>
+      					</tr>
+      				</thead>	
+                    <tbody>  
+            <c:forEach items="${list6}" var="vo6">
+            <c:set var="cnt8" value="${cnt8+1}" />
+                      <tr class="item">  
+                        <td>${cnt8}</td>
+                        <td>${vo6.fdm6_account}</td>
+                      </tr>  
+          
+                      <tr class="hide">  
+                        <td></td>
+                        <td colspan="2">  
+       		<form action="${cpath}/FarmDiaryManageUpdate6.do" method="post">
+		<input type="hidden" class="form-control" name="fdm_num" id="fdm_num"  value="${vo6.fdm_num}">
+                          <table class="table">
+                            <colgroup>
+                              <col width="18%">
+                              <col>
+                            </colgroup>
+                            <tbody>
+                            <tr>
 													<th scope="row"><P>거래처명 : </P></th>
 													<td>
 														<P><input type="text" class="form-control" name="fdm6_account" id="fdm6_account" placeholder="거래처명을 입력하세요." value="${vo6.fdm6_account}"></P>
@@ -1277,36 +1271,20 @@
 													<td>
 														<P><input type="text" class="form-control" name="fdm6_business" id="fdm6_business" placeholder="업무형태를 입력하세요." value="${vo6.fdm6_business}"></P>
 													</td>
-												</tr>			
-														</table>
-														<table>
-														<tr>
-														<td colspan="3">
-														<button class='btn btn-secondary btn-sm' type="submit">수정</button>
-														<button class='btn btn-outline-secondary' onclick="goDel(${vo6.fdm_num})">삭제</button>
-														</td>
-														</tr>
-														</table>
-													</form>
-												</div>
-											</c:forEach>
-												
-											</div>
-
-										</div>
-									</div>
-									<!-- end card -->
-								</div>
-								<!-- end col -->
-
-
-								<!-- end col -->
-							</div>
-							<!-- end row -->
-						</div>
-						<!-- end container -->
-					</section>
-					<!-- ========== section end ========== -->
+												</tr>
+                            </tbody>
+                          </table>
+                          <div class="d-flex justify-content-end">
+                            <button class='btn btn-secondary btn-sm' type="submit">수정</button>
+							<button class='btn btn-outline-secondary' onclick="goDel(${vo6.fdm_num})">삭제</button>
+                          </div>
+        				</form>
+                        </td>
+                        </tr>
+                        </c:forEach>  
+                    </tbody>  
+            
+                </table>
 
 				</div>
 				
@@ -1605,6 +1583,7 @@ function previewImage2(input) {
 </script>
 	<!-- ========= All Javascript files linkup ======== -->
 	
-	<script src="${cpath}/resources/js/main1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="${cpath}/resources/js/farm_management.js"></script>
 </body>
 </html>
