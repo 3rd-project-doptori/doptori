@@ -87,7 +87,10 @@
         </div>
     </main>
 
-
+	<script>
+		var login_num = ${loginMember.mb_num};
+	
+	</script>
     <script src="${cpath}/resources/js/analysis.js"></script>
   </body>
 </html>
