@@ -16,6 +16,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="${cpath}/resources/css/lineicons.css" />
     <link rel="stylesheet" href="${cpath}/resources/css/main.css" />
+<style type="text/css">
+th {
+  text-align: center;
+}
+</style>
 </head>
 <body>
     <!-- ======== sidebar-nav start =========== -->
@@ -128,18 +133,21 @@
               <div class="card-style settings-card-1 mb-30">
                 <div class="profile-info">
                   <div id="Accordion_wrap">
-                 <!--    <div class="que">
-                     <span>This is first question.</span>
-                      <div class="arrow-wrap">
-                       <span class="arrow-top">↑</span>
-                       <span class="arrow-bottom">↓</span>
-                      </div>
-                     
+                  
+                   <div class="que" align="left">
+                     <c:choose>
+	                    <c:when test="${loginMember.mb_id=='admin'}">
+	                    	<span>[공지사항]</span>
+	                    </c:when>
+	                    <c:otherwise>
+	                   	    <span>[Q&A]</span>
+	                    </c:otherwise>	
+	                </c:choose>
                     </div>
-                     -->
+                     
                     
                     
-                    
+                    <div class="anw" align="center" style="display: none;">
                     <table class="table">
                     <c:choose>
 	                    <c:when test="${loginMember.mb_id=='admin'}">
@@ -163,7 +171,7 @@
 				    			<c:if test="${vo.bd_mb_num eq loginMember.mb_num}">
 				    			<c:if test="${vo.bd_type =='1' || vo.bd_type =='2'}">
 				    			<tr>
-				    				<th scope="row">${count+1}</th>
+				    				<th scope="row"  text-align="right">${count+1}</th>
 									<%-- <th scope="row">${vo.bd_num}</th> --%>
 									<td>
 									<c:url var="contentlink" value="/boardContent.do/${vo.bd_num}" />		
@@ -178,11 +186,15 @@
 				    		</c:forEach>
 				    	</tbody>
 				    </table>	
+				    </div>
 				    
-				    <br><br>
 				    
+				    <div class="que" align="left">
+				    <span>[직거래]</span>
+                    </div>
 				     
-				    <table class="table">
+				     <div class="anw" align="center" style="display: none;">
+				    <table class="table" >
 				     <h3>[직거래]</h3>
 				    	<thead align="center">
 					    	 <tr style=" font-weight: bold;">
@@ -198,7 +210,7 @@
 				    			<c:if test="${vo.bd_mb_num eq loginMember.mb_num}">
 				    			<c:if test="${vo.bd_type =='3'}">
 				    			<tr>
-				    				<th scope="row">${count+1}</th>
+				    				<th scope="row" text-align="right">${count+1}</th>
 									<%-- <th scope="row">${vo.bd_num}</th> --%>
 									<td>
 									<c:url var="contentlink" value="/market_detail.do/${vo.bd_num}" />		
@@ -213,9 +225,10 @@
 				    		</c:forEach>
 				    	</tbody>
 				    </table>	
+				    </div>
+				    
 				    
 				    <!-- 
-				    	
                     <div class="anw">
                      <span>This is first answer.</span>
                     </div>
@@ -233,6 +246,8 @@
                     </div>
                   </div> -->
               	 </div>
+              	 
+              	 
                 </div>
               </div>
               <!-- end card -->
