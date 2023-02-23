@@ -168,3 +168,7 @@ a{
 a:hover{
 	color:black;
 }
+
+.table-group-divider{
+	    font-size: 1.2rem;
+}

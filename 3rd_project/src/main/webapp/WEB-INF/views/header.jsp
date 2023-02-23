@@ -138,7 +138,7 @@
 			                      <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
 			                    </li> --%>
 			                    <li class="dropdown-item">
-			                      <a href="${cpath}/mypage.do"> <i class="lni lni-user"></i> 회원정보수정 </a>
+			                      <a href="${cpath}/mypage.do"> <i class="lni lni-user"></i> 마이페이지 </a>
 			                    </li>
 			                    <li class="dropdown-item">
 			                      <a href="${cpath}/Logout.do"> <i class="lni lni-exit"></i> 로그아웃 </a>

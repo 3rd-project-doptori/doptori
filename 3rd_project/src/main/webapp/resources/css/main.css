@@ -369,8 +369,9 @@ h6,
 }
 
 .btn-sm {
-  padding: 10px 20px;
-  font-weight: 400;
+    padding: 10px 20px;
+    font-weight: 400;
+    font-size: 15px;
 }
 
 /* buttons hover effect */
@@ -626,11 +627,11 @@ h6,
   margin-bottom: 30px;
 }
 .input-style-1 label {
-  font-size: 14px;
-  font-weight: 500;
-  color: #262d3f;
-  display: block;
-  margin-bottom: 10px;
+	font-size: 20px;
+    font-weight: 500;
+    color: #262d3f;
+    display: block;
+    margin-bottom: 10px;
 }
 .input-style-1 input,
 .input-style-1 textarea {
@@ -2119,10 +2120,11 @@ h6,
   transition: all 0.3s ease-out 0s;
 }
 .sidebar-nav-wrapper .sidebar-nav ul .nav-item a span.text {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 20px;
 }
 .sidebar-nav-wrapper .sidebar-nav ul .nav-item a span.pro-badge {
   background: #4a6cf7;
@@ -4198,11 +4200,11 @@ h6,
 	}
 	
 .que{
-	position: relative;
-	padding: 17px 0;
-	cursor: pointer;
-	font-size: 14px;
-	border-bottom: 1px solid #dddddd;
+    position: relative;
+    padding: 17px 0;
+    cursor: pointer;
+    font-size: 20px;
+    border-bottom: 1px solid #dddddd;
 	
 }
 	

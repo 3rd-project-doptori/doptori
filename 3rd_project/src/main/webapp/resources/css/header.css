@@ -92,6 +92,7 @@
     color: rgba(0, 0, 0, 0.7);
     padding: 8px 12px;
     border-radius: 6px;
+    font-size: 1.2rem;
   }
 
   a{
@@ -124,5 +125,10 @@
 
 .nav-link{
 	color: #595959;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+}
+
+
+.dropdown-item{
+	font-size:1.2rem;
 }

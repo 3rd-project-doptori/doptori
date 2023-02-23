@@ -95,7 +95,7 @@
 				<%-- <button type="button" class="login" onclick="javascript:location.href='${cpath}/calendar2.do/${loginMember.getMb_num()}'">
 					Today
 				</button> --%>
-				<button type="button" class="login" onclick="modalClick()" data-bs-toggle="modal" data-bs-target="#exampleModal"data-bs-whatever="@mdo">
+				<button type="button" class="btn login" onclick="modalClick()" data-bs-toggle="modal" data-bs-target="#exampleModal"data-bs-whatever="@mdo">
 					Add Schedule
 				</button>
 			</div>

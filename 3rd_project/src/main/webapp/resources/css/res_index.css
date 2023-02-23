@@ -70,6 +70,7 @@ table{
 
 h3{
     font-weight: 700;
+    font-size: 2.4rem;
 }
 
 .py-5{
@@ -151,4 +152,8 @@ a:hover{
 
 .w-70{
 	width:70%;
+}
+
+.table-group-divider{
+	    font-size: 1.2rem;
 }
