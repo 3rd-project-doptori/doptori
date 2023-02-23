@@ -198,9 +198,9 @@
 					<!-- 작성 완료 / 취소 -->
 					<div class="form-group">
 					<div class="col-12 d-flex justify-content-center">
-						<button type="submit" class="btn btn-secondary">수정</button>
-						<button type="reset" class="btn btn-secondary">되돌리기</button>
-						<a class="btn btn-secondary" href="javascript:history.go(-1)">취소</a>
+						<button type="submit" class="btn btn-sm btn-outline-secondary me-md-2">수정</button>
+						<button type="reset" class="btn btn-sm btn-outline-secondary me-md-2">되돌리기</button>
+						<a class="btn btn-sm btn-outline-secondary me-md-2" href="javascript:history.go(-1)">취소</a>
 					</div>
 					</div>
 				</form>
