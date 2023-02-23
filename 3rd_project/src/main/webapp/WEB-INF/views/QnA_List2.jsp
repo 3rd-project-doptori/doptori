@@ -274,6 +274,4 @@
   <!-- partial -->
   <script  src="${cpath}/resources/js/notice_qa.js"></script>
 </body>
-
->>>>>>> branch 'master' of https://github.com/3rd-project-doptori/doptori.git
 </html>
