@@ -46,7 +46,7 @@
 				<section class="board-wrap write white pd30">
 					<h1 class="command-go-link" data-link="/board/write">글쓰기</h1>
 					
-					<form class="form-horizontal"  action="${cpath}/boardUpdate.do" method="post" enctype="multipart/form-data">
+					<form class="form-horizontal"  onsubmit="return confirm('수정하시겠습니까?');" action="${cpath}/boardUpdate.do" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="bd_num" value="${vo.bd_num}">
 					<div class="division-line"></div>
 					

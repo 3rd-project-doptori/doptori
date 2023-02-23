@@ -100,6 +100,11 @@ $('#comment-form').submit(function(event) {
 		  }
 		}
 	
+ 	function deleteBoard(bd_num) {
+ 	    if (confirm("정말 삭제하시겠습니까?")) {
+ 	        location.href = "<c:url value='/boardDelete.do'/>/" + bd_num;
+ 	    }
+ 	}
  </script>
 
 	<div class="container py-4">
@@ -166,7 +171,7 @@ $('#comment-form').submit(function(event) {
 				 		<button class="btn btn-sm btn-success" onclick="goUpdate()">수정</button>
 				 		</c:if>
 				 		<c:if test="${vo.bd_mb_num eq loginMember.mb_num || loginMember.mb_id=='admin'}">	
-						<a class="btn btn-sm btn-warning" href="<c:url value='/boardDelete.do/${vo.bd_num}'/>">삭제</a>
+						<a class="btn btn-sm btn-warning" href="#" onclick="deleteBoard(${vo.bd_num}); return false;">삭제</a>
                         </c:if>
 				 		<a class="btn btn-sm btn-default" href="javascript:history.go(-1)">뒤로가기</a>
 				 		<%-- <a class="btn btn-sm btn-info" href="<c:url value='/QnA_List.do' />">목록으로 돌아가기</a> --%>
