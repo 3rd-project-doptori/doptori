@@ -247,10 +247,11 @@
                 </td>
               </tr>
               
+              <c:if test="${loginMember != null}">
             <tr>
                 <td colspan="5"><button class="btn btn-sm btn-outline-secondary sub" onclick="goForm()">글쓰기</button></td>
              </tr>
-          
+          	</c:if>
                 
           </table>
             </tfoot>

@@ -141,6 +141,14 @@
                     
                     
                     <table class="table">
+                    <c:choose>
+	                    <c:when test="${loginMember.mb_id=='admin'}">
+	                    	<h3>[공지사항]</h3>
+	                    </c:when>
+	                    <c:otherwise>
+	                   	    <h3>[Q&A]</h3>
+	                    </c:otherwise>	
+	                </c:choose>
 				    	<thead align="center">
 					    	 <tr style=" font-weight: bold;">
 					    	 	<th width="7%" scope="col">번호</th>
@@ -150,10 +158,13 @@
 					    	 </tr>
 				    	</thead>
 				    	<tbody class="table-group-divider">
+				    		<c:set var="count" value="0"/>
 				    		<c:forEach var="vo" items="${list}" varStatus="status">
 				    			<c:if test="${vo.bd_mb_num eq loginMember.mb_num}">
+				    			<c:if test="${vo.bd_type =='1' || vo.bd_type =='2'}">
 				    			<tr>
-									<th scope="row">${vo.bd_num}</th>
+				    				<th scope="row">${count+1}</th>
+									<%-- <th scope="row">${vo.bd_num}</th> --%>
 									<td>
 									<c:url var="contentlink" value="/boardContent.do/${vo.bd_num}" />		
 									<a href="${contentlink}">${vo.bd_title}</a>
@@ -161,12 +172,47 @@
 									<td>${vo.bd_date}</td>  			
 									<%-- <td>${vo.bd_cnt}</td>    --%>  			
 				    			</tr>
+				    			<c:set var="count" value="${count+1}"/>
+				    			</c:if>	
 				    			</c:if>
 				    		</c:forEach>
 				    	</tbody>
 				    </table>	
 				    
+				    <br><br>
 				    
+				     
+				    <table class="table">
+				     <h3>[직거래]</h3>
+				    	<thead align="center">
+					    	 <tr style=" font-weight: bold;">
+					    	 	<th width="7%" scope="col">번호</th>
+					    	 	<th width="65%" scope="col">제목</th>
+					    	 	<th width="28%" scope="col">작성일</th>
+					    	 	<!-- <th scope="col">조회수</th> -->
+					    	 </tr>
+				    	</thead>
+				    	<tbody class="table-group-divider">
+				    		<c:set var="count" value="0"/>
+				    		<c:forEach var="vo" items="${list}" varStatus="status">
+				    			<c:if test="${vo.bd_mb_num eq loginMember.mb_num}">
+				    			<c:if test="${vo.bd_type =='3'}">
+				    			<tr>
+				    				<th scope="row">${count+1}</th>
+									<%-- <th scope="row">${vo.bd_num}</th> --%>
+									<td>
+									<c:url var="contentlink" value="/market_detail.do/${vo.bd_num}" />		
+									<a href="${contentlink}">${vo.bd_title}</a>
+									</td>  			
+									<td>${vo.bd_date}</td>  			
+									<%-- <td>${vo.bd_cnt}</td>    --%>  			
+				    			</tr>
+				    			 <c:set var="count" value="${count+1}"/>
+				    			</c:if>	
+				    			</c:if>
+				    		</c:forEach>
+				    	</tbody>
+				    </table>	
 				    
 				    <!-- 
 				    	
