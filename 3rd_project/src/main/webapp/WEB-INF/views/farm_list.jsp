@@ -556,7 +556,7 @@
 		    }
 		  }
 		
-		function goDel(fdm_num){
+		function goDel(fd_num){
 
 			var real = confirm("정말 삭제하시겠습니까???");
 			

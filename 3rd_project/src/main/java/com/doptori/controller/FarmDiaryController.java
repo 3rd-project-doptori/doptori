@@ -332,13 +332,6 @@ public class FarmDiaryController {
 		return "/schedule/delete";
 	}
 	
-	@DeleteMapping("/farmdiarylistdelete/{fd_num}")
-	public void farmdiarylistdelete(@PathVariable int fd_num) {
-		mapper.farmdiarylistdelete(fd_num);
-	}
-	
-	@DeleteMapping("/farmdiarylistdelete2/{fd_num}")
-	public void farmdiarylistdelete2(@PathVariable int fd_num) {
-		mapper.farmdiarylistdelete(fd_num);
-	}
+
+
 }

@@ -241,19 +241,22 @@
 							</table>
 						</div>
 						<div class="modal-footer">
-							<button type="submit" class="btn btn-secondary btn-sm">수정</button>
-                            <button class='btn btn-outline-secondary' onclick="goDel(${schedule_show.fd_num })">삭제</button>
+							<button type="submit" class="btn btn-secondary btn-sm" >수정</button>
+                            <button class='btn btn-outline-secondary' onclick="goDel_schedule(${schedule_show.fd_num })">삭제</button>
 						</div>
 					</form>
                     </div>			
 				</div>
+				</div>
 	
 <script>
 /* 수정버튼과 삭제버튼 클릭 시 수행되는 코드 */
-$(document).ready(function(){
-	 var formObj = $("form");
+
+	 
 	 
 	 $('button').on("click",function(e){
+		 var formObj = $("form");
+		 
 		 e.preventDefault();
 	 
 		 var operation = $(this).data("oper");
@@ -283,10 +286,9 @@ function previewImage(input) {
     }
   }
   
-function goDel(fdm_num){
+function goDel_schedule(fd_num){
 
 	var real = confirm("정말 삭제하시겠습니까???");
-	
 	if(real){
 		
 		$.ajax({
@@ -301,7 +303,8 @@ function goDel(fdm_num){
 	
 	}// if문
 	
-} // goDel 함수 끝!
+}
+
 </script>
 	
 	
