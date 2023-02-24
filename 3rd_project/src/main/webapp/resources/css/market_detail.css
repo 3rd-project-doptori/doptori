@@ -10,27 +10,8 @@
 }
 
 
-/*   .nav-scroller {
-    position: relative;
-    z-index: 2;
-    height: 2.75rem;
-    overflow-y: hidden;
-  }
 
-  .nav-scroller .nav {
-    display: flex;
-    flex-wrap: nowrap;
-    padding-bottom: 1rem;
-    margin-top: -1px;
-    overflow-x: auto;
-    text-align: center;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-  } */
-  
-  .hei{
-    width: 27%;
-  }
+ 
   .login{
     background-color: #FF809F;
     border: none;
@@ -43,17 +24,20 @@
 
 }
 
-.mar{
-  width: 68.7rem;
-  margin: auto;
-}
-
 
 .for{
     margin-bottom: 2rem;
 }
 
 
-.main{
-  padding-bottom: 2rem;
+.btn{
+	font-size:1.3rem;
+}
+
+.table{
+	    font-size: 1.3rem;
+}
+
+.mb{
+	    margin-bottom: 3rem;
 }

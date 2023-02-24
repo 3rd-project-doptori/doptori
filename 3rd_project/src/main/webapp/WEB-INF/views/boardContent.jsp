@@ -133,7 +133,7 @@ $('#comment-form').submit(function(event) {
 	                    </div>
 	                    ${vo.mb_nick}
                     </th>
-                    <th>제목</th>
+                    <th class="title">제목</th>
                     <td colspan="3">
                     	<h4>${vo.bd_title}</h4>
                     </td>
@@ -146,12 +146,12 @@ $('#comment-form').submit(function(event) {
                 </tr>
                 <tr>
                 	<% pageContext.setAttribute("newline", "\n"); %>
-                    <td colspan="5">
+                    <td colspan="5" style="padding: 30px 0;">
                     <font size="5">
                     <c:if test="${not empty vo.bd_pic}">
 					  <img src="${bd_pic}" alt="게시글 이미지" width="300" height="300">
 					</c:if>
-					<br>
+				<!-- 	<br> -->
 				    ${fn:replace(vo.bd_cont, newline, "<br>")}
 				     </font>
 				    </td>
@@ -163,9 +163,13 @@ $('#comment-form').submit(function(event) {
         <td colspan="5" align="left"><a href="${cpath}/fileDownload.do?bd_pic=${fn:escapeXml(vo.bd_pic)}">${fn:escapeXml(vo.bd_pic)}</a></td>
 
 			</c:if>
+			
+			<c:if test="${empty vo.bd_pic }">
+				<td colspan="5" align="left">첨부파일없음</td>
+			</c:if>
 
 				</tr>
-				<tr>
+				<%-- <tr>
 				 	<td colspan="5" align="right">
 				 		<c:if test="${vo.bd_mb_num eq loginMember.mb_num}">	
 				 		<button class="btn btn-sm btn-success" onclick="goUpdate()">수정</button>
@@ -174,12 +178,12 @@ $('#comment-form').submit(function(event) {
 						<a class="btn btn-sm btn-warning" href="#" onclick="deleteBoard(${vo.bd_num}); return false;">삭제</a>
                         </c:if>
 				 		<a class="btn btn-sm btn-default" href="javascript:history.go(-1)">뒤로가기</a>
-				 		<%-- <a class="btn btn-sm btn-info" href="<c:url value='/QnA_List.do' />">목록으로 돌아가기</a> --%>
-				 		<%-- <c:if test="${loginMember.mb_id=='admin'}">	
+				 		<a class="btn btn-sm btn-info" href="<c:url value='/QnA_List.do' />">목록으로 돌아가기</a>
+						 <c:if test="${loginMember.mb_id=='admin'}">	
 				 		<button class="btn btn-sm btn-danger" onclick="goReply()">답글달기</button>	        
-				 	    </c:if> --%>
+				 	    </c:if>
 				 	</td>
-			 </tr>
+			 </tr> --%>
             </tbody>
         </table>
         </section>
@@ -192,7 +196,7 @@ $('#comment-form').submit(function(event) {
                 <!-- Comment form-->
                 <c:choose>
 				    <c:when test="${empty loginMember}">
-				      	<p>소감을 남기시려면 <a href="${cpath}/signin.do">로그인</a>해주세요</p>
+				      	<p> <a href="${cpath}/signin.do">로그인</a>해주세요</p>
 				    </c:when>
 				    <c:otherwise>
 				        <form class="d-flex for" role="search" action="${cpath}/commentInsert.do?co_bd_num=${vo.bd_num}" method="post" autocomplete="off">

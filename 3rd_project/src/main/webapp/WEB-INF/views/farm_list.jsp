@@ -6,7 +6,7 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>영농일지</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <link rel="stylesheet" href="${cpath}/resources/css/farm_management.css">
@@ -18,7 +18,7 @@
             <div class="row bg-light">
                 <form class="row p-3 gx-3 justify-content-center">
                 <div class="col-auto">
-                    <select class="form-select" id="autoSizingSelect">
+                    <select class="form-select" id="autoSizingSelect" style="width: 126.777778px; margin:0;">
                     <option selected>주소</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
@@ -27,10 +27,10 @@
                 </div>
                 <div class="col-5">
 								<input type="text" class="form-control input-group"
-									id="autoSizingInput" placeholder="검색어를 입력하세요">
+									id="autoSizingInput" placeholder="검색어를 입력하세요" style="width: 523.277778px; margin:0;">
 							</div>
                 <div class="col-auto">
-                    <button type="submit" class="btn btn-primary">검색</button>
+                    <button type="submit" class="btn btn-secondary">검색</button>
                 </div>
                 </form>
             </div>
@@ -262,6 +262,7 @@
 
                     <colgroup>  
                         <col width="10%">
+                        <col width="20%">
                         <col>
                     </colgroup>  
       				<thead>
@@ -281,11 +282,10 @@
                       </tr>  
           
                       <tr class="hide">  
-                        <td></td>
-                        <td colspan="2">  
+                        <td colspan="3" style="padding: 55px 0;">  
        		<form action="${cpath}/FarmDiaryUpdate.do" method="post" enctype="multipart/form-data">
 				<input type="hidden" class="form-control" name="fd_num" id="fd_num"  value="${vo4.fd_num}">
-                          <table class="table">
+                          <table class="table text-center">
                             <colgroup>
                               <col width="18%">
                               <col>
@@ -296,7 +296,7 @@
                               <td>
                                   <input type="date" id="fd_start" name="fd_start" value="${vo4.fd_start}">
                               </td>
-                              <th scope="row">종료일</th>
+                              <th class="color">종료일</th>
                               <td>
                                   <input type="date" id="fd_end" name="fd_end" value="${vo4.fd_end}">
                               </td>
@@ -333,7 +333,7 @@
 										</c:forEach>
 								  	</select>
                                 </td>
-                                <th scope="row">작업 단계</th>
+                                <th class="color">작업 단계</th>
                                 <td>
                                 	<select id="fd_step" class="form-control" name="fd_step" required>
 										<option value="${vo4.fd_step}" selected disabled>${vo4.fd_step}</option>
@@ -346,9 +346,9 @@
                               <tr>
                                 <th scope="row">작업내용</th>
                                 <td>
-                                	<input type="text" class="form-control" id="inlineCheckbox1" name="fd_cont" placeholder="작업내용" value="${vo4.fd_cont}">
+                                	<textarea type="text" class="form-control" id="inlineCheckbox1" name="fd_cont" placeholder="작업내용">${vo4.fd_cont}</textarea>
                                 </td>
-                                <th scope="row">인력명<br><br><br>투입시간</th>
+                                <th scope="row">인력명<br><br>투입시간</th>
                                 <td>
                                 	<select class="form-control" name="fd_man_name" id="fd_man_name" required>
 										<c:forEach items="${list3}" var="vo3">
@@ -360,7 +360,7 @@
                                 </td>
                               </tr>
                               <tr>
-                                <th scope="row">농약명<br><br><br>살포량</th>
+                                <th scope="row">농약명<br><br>살포량</th>
                                 <td>
                                 	<select class="form-control" name="fd_pesticide" id="fd_pesticide" required>
 										<c:forEach items="${list5}" var="vo5">
@@ -372,7 +372,7 @@
 									<br>
 								  	<input type="text" class="form-control" id="inlineCheckbox1" name="fd_pesticide_amount" placeholder="살포량(kg)" value="${vo4.fd_pesticide_amount}">
                                 </td>
-                                <th scope="row">비료명<br><br><br>사용량</th>
+                                <th scope="row">비료명<br><br>사용량</th>
                                 <td>
                                 	<select class="form-control" name="fd_fertilizer" id="fd_fertilizer" required>
 										<c:forEach items="${list5}" var="vo5">
@@ -389,7 +389,6 @@
                                 <th scope="row">날씨 정보</th>
                                 <td>
 											<div class="cont">
-												<div>
 													<ul class="ul">
 														<li class="li"><span class="stitle,weather">날씨</span>
 															<select id="wfKor" name="fd_weather" class="form-control" title="날씨 선택">
@@ -433,7 +432,6 @@
 
 													<!-- <p><span>*강수량 및 습도는 전날 평균량 기준으로 조회됩니다.</span></p> -->
 
-												</div>
 											</div>
 										</td>
 										<td></td>
@@ -483,7 +481,7 @@
                             </tbody>
                           </table>
                           <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-secondary btn-sm">수정</button>
+                            <button type="submit" class="btn btn-secondary btn-sm mb">수정</button>
                             <button class='btn btn-outline-secondary' onclick="goDel(${vo4.fd_num})">삭제</button>
                           </div>
         				</form>

@@ -115,10 +115,51 @@ h4{
   display:table-row;
 }   */
 
+.item th{
+	padding: 15px 0;
+    vertical-align: middle;
+}
+
+
 .item td {
   cursor:pointer;
+  padding: 15px 0;
+    vertical-align: middle;
 }  
 
 .recruit{
   margin-top: 15px;
+  font-size: 1.3rem;
+}
+
+.btn{
+    font-size: 1.3rem;
+}
+
+.form-control, .form-select{
+	font-size:1.3rem;
+    margin: 0 14px;
+    width: 324px;
+}
+
+.show td{
+	padding:15px 0;
+}
+
+.show th{
+	vertical-align: middle;
+    font-size: 1.3rem;
+    background: whitesmoke;
+}
+
+.mb{
+	margin-right: 1rem;
+}
+
+.textarea.form-control{
+	height: 106.027778px;
+}
+
+.ul, .li {
+    list-style: none;
 }

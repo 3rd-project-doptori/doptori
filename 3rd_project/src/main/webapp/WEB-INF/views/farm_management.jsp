@@ -764,7 +764,7 @@
 													<tr>
 														<th scope="row"><P>교육 내용 :</P></th>
 														<td><P>
-																<textarea rows="5" cols="120" name="fdm4_edu_cont"
+																<textarea name="fdm4_edu_cont"
 																	id="fdm4_edu_cont" placeholder="교육내용을 입력해주세요.">${vo4.fdm4_edu_cont}</textarea>
 															</P></td>
 													</tr>
@@ -974,7 +974,7 @@
 													</tr>
 													<tr>
 														<th scope="row"><P>메모 :</P></th>
-														<td><textarea rows="5" cols="120"
+														<td><textarea 
 																name="fdm5_man_memo" id="fdm5_man_memo">${vo3.fdm5_man_memo}</textarea>
 														</td>
 													</tr>

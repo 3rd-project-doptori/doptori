@@ -62,7 +62,7 @@
 
 .sub{
   width: 4rem;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
   border: 1px solid #ced4da;
 }
 
@@ -87,4 +87,22 @@
   background-color: #FF4D79;
   color: white;
 
+}
+
+.card-text{
+	font-size: 1.5rem;
+}
+
+.card-body{
+	    height: 141px;
+}
+
+.btn-group{
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+
+.input-group-text{
+	background: #f8f9fa;
 }

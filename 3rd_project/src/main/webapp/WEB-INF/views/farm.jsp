@@ -124,7 +124,7 @@
 												<div class="anw" align="center">
 													<form action="${cpath}/FarmDiaryManageUpdate3.do" method="post" enctype="multipart/form-data">
 														<input type="hidden" class="form-control" name="fd_num" id="fd_num"  value="${vo4.fd_num}">
-														<table>
+														<table class="table border">
 															<tr>
                               <th scope="row">시작일</th>
                               <td>

@@ -9,7 +9,8 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, 그리고 Bootstrap 기여자들">
     <title>직거래_상세보기</title>
@@ -18,11 +19,7 @@
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     
       <!-- Favicons -->
-    <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
-    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
+
     <link rel="stylesheet" href="${cpath}/resources/css/market_detail.css">
     <!-- Custom styles for this template -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -114,7 +111,9 @@
        <!-- <h2 class="display-7 fw-bold">직거래 상세보기</h2> -->
         <div class="row mb-2 justify-content-md-center main">
             <div class="col-md-5 hei">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <c:if test="${not empty vo.bd_pic }">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" id="show_image">
+                    </c:if>
                     <c:if test="${empty vo.bd_pic}">
                     	<img src="https://health.chosun.com/site/data/img_dir/2022/01/11/2022011100746_0.jpg">
                     <!-- <svg class="bd-placeholder-img" height="350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
@@ -126,14 +125,11 @@
                         <a href="#" class="stretched-link">Continue reading</a>
                     </div> -->
                     </c:if>
-                    <c:if test="${not empty vo.bd_pic }">
+<%--                     <c:if test="${not empty vo.bd_pic }">
                     	<div id="show_image"></div>
-                    </c:if>
+                    </c:if> --%>
                 </div>
-                <div class="d-md-flex justify-content-md-center">
-                    <button class="btn btn-sm btn-outline-secondary me-md-2" type="button">판매중</button>
-                    <button class="btn login" type="button" onclick="start_chat()">채팅하기</button>
-                </div>
+
             </div>
             <div class="col-md-7">
                 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -167,6 +163,10 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+                  	<div class="d-md-flex justify-content-md-center mb">
+	                  <button class="btn btn-sm btn-outline-secondary me-md-2" type="button">판매중</button>
+	                  <button class="btn login" type="button" onclick="start_chat()">채팅하기</button>
                 </div>
             </div>
         </div>

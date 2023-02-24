@@ -245,3 +245,11 @@ html, body {
 textarea.form-control {
 	height: 3rem;
 }
+
+.table{
+	vertical-align:middle;
+}
+
+h4{
+	padding:12px 0;
+}
