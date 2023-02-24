@@ -31,4 +31,8 @@
   	SELECT ad_num, ad_gugun, ad_dong FROM Address GROUP BY ad_dong, ad_gugun, ad_num;
   </select>
   
+  <select id="CropList" resultType="com.doptori.entity.Crop">
+  	SELECT * FROM Crop;
+  </select>
+  
 </mapper>

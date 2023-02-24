@@ -79,7 +79,7 @@
 					</c:if>
 					<c:if test="${loginMember != null}">
 						<div class="carousel-item active">
-	                      <a  href="<c:url value='/market_detail.do'/>"><img src="${cpath}/resources/images/fruit1.jpg" class="d-block w-70" alt="..."></a>
+	                      <a  href="<c:url value='/market_detail.do'/>"><img src="${cpath}/resources/images/6b2e05bf.jpg" class="d-block w-70" alt="..."></a>
 	                    </div>
 	                    <div class="carousel-item">
 	                       <a  href="<c:url value='/market_detail.do'/>"><img src="${cpath}/resources/images/fruit5.jpg" class="d-block w-70" alt="..."></a>

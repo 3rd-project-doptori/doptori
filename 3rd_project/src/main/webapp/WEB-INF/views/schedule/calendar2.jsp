@@ -143,10 +143,7 @@
 							</div>
 							<div>
 								<!-- 달력에 일정 띄우고 클릭 시 수정/삭제 창 띄우는 코드 -->
-								<c:forEach var="scheduleList"
-									items="${dateList.schedule_data_arr}"
-									varStatus="schedule_data_arr_status">
-
+								<c:forEach var="scheduleList" items="${dateList.schedule_data_arr}" varStatus="schedule_data_arr_status">
 									<a href="${cpath}/schedule_show?fd_num=${scheduleList.fd_num}"
 										onclick="window.open(this.href, '_blank', 'width=700,height=800,left=400%, top=200%, toolbars=no,scrollbars=no'); return false;"
 										class="date_subject ">${scheduleList.fd_step}</a>

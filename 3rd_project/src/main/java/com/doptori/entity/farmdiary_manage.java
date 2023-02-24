@@ -52,12 +52,54 @@ public class farmdiary_manage {
 	private String ad_dong;
 	private String ad_ri;
 	
+	private	int an_num;
+	private	String an_pic_pest;
+	private	String an_pic_grow;
+	private	String an_result_pest;
+	private	String an_result_grow;
+	private	String an_date;
 
 	private MultipartFile uploadFile; // 파일 업로드
     private String realName;
     private long size;
 	
 	
+	public int getAn_num() {
+		return an_num;
+	}
+	public void setAn_num(int an_num) {
+		this.an_num = an_num;
+	}
+	public String getAn_pic_pest() {
+		return an_pic_pest;
+	}
+	public void setAn_pic_pest(String an_pic_pest) {
+		this.an_pic_pest = an_pic_pest;
+	}
+	public String getAn_pic_grow() {
+		return an_pic_grow;
+	}
+	public void setAn_pic_grow(String an_pic_grow) {
+		this.an_pic_grow = an_pic_grow;
+	}
+	public String getAn_result_pest() {
+		return an_result_pest;
+	}
+	public void setAn_result_pest(String an_result_pest) {
+		this.an_result_pest = an_result_pest;
+	}
+	public String getAn_result_grow() {
+		return an_result_grow;
+	}
+	public void setAn_result_grow(String an_result_grow) {
+		this.an_result_grow = an_result_grow;
+	}
+	public String getAn_date() {
+		return an_date;
+	}
+	public void setAn_date(String an_date) {
+		this.an_date = an_date;
+	}
 	public int getFdm_num() {
 		return fdm_num;
 	}
@@ -356,6 +398,7 @@ public class farmdiary_manage {
 		this.size = size;
 	}
 	
+	
 	@Override
 	public String toString() {
 		return "farmdiary_manage [fdm_num=" + fdm_num + ", fdm_type=" + fdm_type + ", fdm_mb_num=" + fdm_mb_num
@@ -374,9 +417,12 @@ public class farmdiary_manage {
 				+ fdm6_represent + ", fdm6_regi_num=" + fdm6_regi_num + ", fdm6_phone=" + fdm6_phone + ", fdm6_address="
 				+ fdm6_address + ", fdm6_sectors=" + fdm6_sectors + ", fdm6_business=" + fdm6_business + ", fdm7_date="
 				+ fdm7_date + ", fdm7_analysislist=" + fdm7_analysislist + ", ad_num=" + ad_num + ", ad_sido=" + ad_sido
-				+ ", ad_gugun=" + ad_gugun + ", ad_dong=" + ad_dong + ", ad_ri=" + ad_ri + ", uploadFile=" + uploadFile
+				+ ", ad_gugun=" + ad_gugun + ", ad_dong=" + ad_dong + ", ad_ri=" + ad_ri + ", an_num=" + an_num
+				+ ", an_pic_pest=" + an_pic_pest + ", an_pic_grow=" + an_pic_grow + ", an_result_pest=" + an_result_pest
+				+ ", an_result_grow=" + an_result_grow + ", an_date=" + an_date + ", uploadFile=" + uploadFile
 				+ ", realName=" + realName + ", size=" + size + "]";
 	}
+
 
 	
 	

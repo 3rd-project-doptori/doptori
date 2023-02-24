@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
@@ -1496,137 +1497,134 @@
 						<button class="btn btn-primary">병해충 분석</button>
 						<button class="btn btn-primary">생육과정 분석</button>
 					</div>
-					<%-- <!-- 확인하기 -->
-					<!-- ========== section start ========== -->
-					<section class="section">
-						<div class="container-fluid">
-							<div class="row ">
-								<div class="col-lg-7 top">
-									<div class="title-wrapper pt-30">
-										<div class="row text-start">
-											<div class="col-md-3">
-												<div class="title mb-30">
-													<h2>분석 목록</h2>
-												</div>
-											</div>
-										</div>
-										<!-- end row -->
-									</div>
-									<div class="card-style settings-card-1 mb-30">
-										<div class="profile-info">
-											<div id="Accordion_wrap">
-											<c:forEach items="${list7}" var="vo7">
-											<c:set var="cnt9" value="${cnt9+1}" />
-												<div class="que" align="left">
-													<c:choose>
-														<c:when test="${empty vo7.}">
-															<span>농약 ${cnt7} : </span>
-															<span>${vo5.fdm3_pesticide}</span>	
-														</c:when>
-														<c:when test="${empty vo5.fdm3_pesticide}">
-															<span>비료 ${cnt7} : </span>
-															<span>${vo5.fdm3_fertilizer}</span>
-														</c:when>
-														<c:otherwise>
-															<span>비료 ${cnt7} : </span>	
-															<span>${vo5.fdm3_fertilizer}</span>
-															&emsp;&emsp;
-															<span>농약 ${cnt7} : </span>	
-															<span>${vo5.fdm3_pesticide}</span>
-														</c:otherwise>
-													</c:choose>
-													
-													<span>분석 ${cnt9} : </span>
-													<span>${vo7.ad_sido}</span>
-												</div>
-												<div class="anw" align="center">
-													<form action="${cpath}/FarmDiaryManageUpdate.do" method="post">
-														<table>
-															<tr>
-																<td rowspan="2"><P>필지 주소 : <input type="hidden" class="form-control" name="fdm_num" id="fdm_num"  value="${vo.fdm_num}"></P></td>
-																<td><span>
-																<select id="selectbox" class="area" placeholder="지역">
-																<c:forEach items="${gugunmodelList}" var="vo3">
-																	<option value="${vo3.ad_gugun}" <c:if test ="${vo3.ad_gugun eq vo.ad_gugun}">selected="selected"</c:if>>${vo3.ad_gugun}</option>
-																</c:forEach>
-																</select></span>
-																<span><select id="selectNextbox" name="fdm1_ad_num" class="area2">
-																<c:forEach items="${dongmodelList}" var="vo4">
-																	<option value="${vo4.ad_num}" <c:if test ="${vo4.ad_dong eq vo.ad_dong}">selected="selected"</c:if>>${vo4.ad_dong}</option>
-																</c:forEach>
-																</select></span>
-																</td>
-																<td></td>
-															</tr>
-															<tr>
-																<td><p><input type="text" class="form-control" name="fdm1_detail_address" id="fdm1_detail_address" placeholder="세부 주소" value="${vo.fdm1_detail_address}">
-																</P></td>
-																<td></td>
-															</tr>
-															<tr>
-																<td><P>필지 면적 : </P></td>
-																<td><P><input type="text" class="form-control"
-														name="fdm1_lot_area" id="fdm1_lot_area" placeholder="필지 면적" value="${vo.fdm1_lot_area}"></P></td>
-																<td><P>m<sup>2</sup></P></td>
-															</tr>
-															<tr>
-																<td><P>실재배 면적 : </P></td>
-																<td><P><input type="text" class="form-control"
-														name="fdm1_actual_area" id="fdm1_actual_area" placeholder="실재배 면적" value="${vo.fdm1_actual_area}"></P></td>
-																<td><P>m<sup>2</sup></P></td>
-															</tr>
-															<tr>
-																<td><P>유휴 면적 : </P></td>
-																<td><P><input type="text" class="form-control"
-														name="fdm1_idle_area" id="fdm1_idle_area" placeholder="유휴 면적" value="${vo.fdm1_idle_area}"></P></td>
-																<td><P>m<sup>2</sup></P></td>
-															</tr>
-															<tr>
-																<td><P>토양점검 여부 : </P></td>															
-																<c:choose>
-																	<c:when test="${vo.fdm1_soil_check==1}">
-																		<td colspan="2">
-																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="1" checked> 예
-																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="0" > 아니오
-																		</td>
-																	</c:when>
-																	<c:otherwise>
-																		<td colspan="2">
-																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="1" > 예
-																			<input type="radio" class="form" name="fdm1_soil_check" id="fdm1_soil_check" value="0" checked> 아니오
-																		</td>
-																	</c:otherwise>
-																</c:choose>
-															</tr>				
-														</table>
-														<table>
-														<tr>
-														<td colspan="3">
-														<button class='btn btn-secondary btn-sm' type="submit">수정</button>
-														<button class='btn btn-outline-secondary' onclick="goDel(${vo.fdm_num})">삭제</button>
+					<!-- 확인하기 -->
+					<!-- 확인하기 -->
+					<br> <br>
+					<div class="title mb-30">
+						<h2 align="left">거래처 목록</h2>
+					</div>
+					<table class="table recruit">
+
+						<colgroup>
+							<col width="10%">
+							<col>
+						</colgroup>
+						<thead>
+							<tr>
+								<th>번호</th>
+								<th>분석 날짜</th>
+								<th>품목</th>
+								<th>분석명</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${list7}" var="vo7" varStatus="a">
+								<c:set var="cnt9" value="${cnt9+1}" />
+								<c:set var="crop" value="${CropList}" />
+								<tr class="item">
+									<td>${cnt9}</td>
+									<td>${vo7.an_date}</td>
+									<c:choose>
+									<c:when test="${empty vo7.an_pic_grow}">
+									<td>${fn:split(vo7.an_pic_pest, '/')[2]}</td>
+									<td>병해충 분석</td>
+									</c:when>
+									<c:otherwise>
+									<td>${fn:split(vo7.an_pic_grow, '/')[2]}</td>
+									<td>생육과정 분석</td>
+									</c:otherwise>
+									</c:choose>
+								</tr>
+
+								<tr class="hide">
+									<td></td>
+									<td colspan="2">
+										<form action="${cpath}/FarmDiaryManageUpdate6.do"
+											method="post">
+											<input type="hidden" class="form-control" name="fdm_num"
+												id="fdm_num" value="${vo6.fdm_num}">
+											<table class="table">
+												<colgroup>
+													<col width="18%">
+													<col>
+												</colgroup>
+												<tbody>
+													<tr>
+														<th scope="row"><P>분석날짜 :</P></th>
+														<td>
+															<P>
+																<input type="text" class="form-control"
+																	name="fdm6_account" id="fdm6_account"
+																	placeholder="거래처명을 입력하세요." value="${vo7.an_date}">
+															</P>
 														</td>
-														</tr>
-														</table>
-													</form>
-												</div>
-											</c:forEach>
-												
+													</tr>
+													<tr>
+														<th scope="row"><P>품명 :</P></th>
+														<td>
+															<P>
+															<c:choose>
+									<c:when test="${empty vo7.an_pic_grow}">
+									<td><input type="text" class="form-control"
+																	name="fdm6_represent" id="fdm6_represent"
+																	placeholder="대표자명을 입력하세요."
+																	value="${fn:split(vo7.an_pic_pest, '/')[2]}"></td>
+									</c:when>
+									<c:otherwise>
+									<td><input type="text" class="form-control"
+																	name="fdm6_represent" id="fdm6_represent"
+																	placeholder="대표자명을 입력하세요."
+																	value="${fn:split(vo7.an_pic_grow, '/')[2]}"></td>
+									</c:otherwise>
+									</c:choose>
+															</P>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row"><P>분석명 : </P></th>
+														<td>
+															<P>
+																<c:choose>
+									<c:when test="${empty vo7.an_pic_grow}">
+									<td>병해충 분석</td>
+									</c:when>
+									<c:otherwise>
+									<td>생육과정 분석</td>
+									</c:otherwise>
+									</c:choose>
+															</P>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row"><P>내용 :</P></th>
+														<td>
+															<P>
+																<c:choose>
+									<c:when test="${empty vo7.an_pic_grow}">
+									<td><h5>발생환경</h5><p>병원균은 병든 부위에서 균핵 혹은 분생포자의 형태로 월동하여 전염원이 된다. 시설재배시 기온이 20℃내외이고 습도가 높을 때 많이 발생하며, 노지재배시는 여름철 장마기때 주로 발생한다. 과실의 감염은 주로 꽃이 달린 부위에서부터 시작되므로 과실이 커지면서 꽃이 쉽사리 떨어지지 않는 품종에서 발생이 심하다.</p><h5>증상설명</h5><p>주로 과실에 발생하나 잎, 꽃잎, 잎자루, 과병 등에도 발생한다. 과실에는 작은 수침상의 담갈색 병반으로 나타타고 점차 진전되면 과실이 부패한다. 부패된 과실에는 잿빛의 분생포자로 뒤덮힌다. 잎에는 꽃잎이 떨어져 묻어 있는 부분에서부터 감염이 시작된다. 과병과 잎자루에는 암갈색 병반이 형성되고, 진전되면 줄기가 말라죽으며, 잿빛의 곰팡이가 밀생한다. </p><h5>방제방법</h5><p> - 병든식물체는 비닐봉지 등에 모아 매몰하거나 소각하고, 수확후에 포장관리를 철저히 한다.<br>- 시설내의 온도와 습도관리를 잘 조절해 준다.<br>- 꽃잎이나 병든 잔사물이 과실이나 잎에 붙지 않도록 한다. <br>- 식물체가 웃자라지 않도록 투광에 유의한다.<br>- 병원균은 포자형성량이 매우 높아 한번 번지면 방제하기 어려우므로, 발생초기의 집중방제가 중요하다.<br>- 약제살포는 수화제나 유제보다 분제, 훈연제, 연무제 등이 습도를 높여 주지 않는 점에서 유리 하다.<br>- 본 병원균은 약제내성이 잘 생기므로 계통이 다른 등록약제를 교호살포하는 것이 좋다.</p></td>
+									</c:when>
+									<c:otherwise>
+									<td>'개화기', '고온이나 저온에 오랫동안 놓이게 되면 꽃으로의 양분 공급이 원활하지 못하여 꽃가루 발육이나 자방비대가 심하게 억제된다. 따라서 온도는 가능한 생육에 알맞은 범위에서 관리해 주는 것이 좋다. 땅 온도(지온)도 기온 못지않게 중요한데 특히 겨울철재배 시는 지온중심의 온도관리를 해주어야 한다. 가장 알맞은 지온은 20°C 전후이지만 15∼16°C 정도만 유지시켜도 실제 재배 시에는 큰 문제가 없으므로 햇빛이 잘 들도록 하고 멀칭을 철저히 해준다. 찬물을 일시에 다량관수하면 지온이 심하게 떨어지므로 하우스 내에 저수조 등을 설치하여 수온을 높여주는 것이 좋다.'</td>
+									</c:otherwise>
+									</c:choose>
+															</P>
+														</td>
+													</tr>
+													
+												</tbody>
+											</table>
+											<div class="d-flex justify-content-end">
+												<button class='btn btn-secondary btn-sm' type="submit">수정</button>
+												<button class='btn btn-outline-secondary'
+													onclick="goDel(${vo6.fdm_num})">삭제</button>
 											</div>
+										</form>
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
 
-										</div>
-									</div>
-									<!-- end card -->
-								</div>
-								<!-- end col -->
-
-
-								<!-- end col -->
-							</div>
-							<!-- end row -->
-						</div>
-						<!-- end container -->
-					</section>
-					<!-- ========== section end ========== --> --%>
+					</table>
 
 				</div>
 

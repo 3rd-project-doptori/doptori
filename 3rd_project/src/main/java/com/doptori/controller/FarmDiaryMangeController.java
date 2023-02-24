@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.doptori.entity.Address;
+import com.doptori.entity.Crop;
 import com.doptori.entity.Member;
 import com.doptori.entity.Step;
 import com.doptori.entity.farmdiary;
@@ -123,10 +124,13 @@ public class FarmDiaryMangeController {
 		List<farmdiary_manage> list5 = mapper.FarmDiaryManageList5(loginMember.getMb_num());
 		List<farmdiary_manage> list6 = mapper.FarmDiaryManageList6(loginMember.getMb_num());
 		List<farmdiary_manage> list7 = mapper.FarmDiaryManageList7(loginMember.getMb_num());
+
 		List<Address> gugunmodelList = mapper2.gugunmodelList();
 		List<Address> dongmodelList = mapper2.dongmodelList();
+		List<Crop> CropList = mapper2.CropList();
 		model.addAttribute("dongmodelList", dongmodelList);
 		model.addAttribute("gugunmodelList", gugunmodelList);
+		model.addAttribute("CropList", CropList);
 		model.addAttribute("list", list);
 		model.addAttribute("list2", list2);
 		model.addAttribute("list4", list4);

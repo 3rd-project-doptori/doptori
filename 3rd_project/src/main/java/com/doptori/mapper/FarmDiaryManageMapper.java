@@ -54,5 +54,6 @@ public interface FarmDiaryManageMapper {
 	void FarmDiaryManageUpdate6(farmdiary_manage vo);
 
 
+
 	
 }

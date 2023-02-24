@@ -66,6 +66,7 @@ public class FarmDiaryController {
 		List<farmdiary_manage> list = mapper5.FarmDiaryManageList(loginMember.getMb_num());
 		List<farmdiary_manage> list2 = mapper5.FarmDiaryManageList2(loginMember.getMb_num());
 		List<farmdiary_manage> list5 = mapper5.FarmDiaryManageList5(loginMember.getMb_num());
+		List<farmdiary_manage> list7 = mapper5.FarmDiaryManageList4(loginMember.getMb_num());
 		List<farmdiary_manage> list3 = mapper5.FarmDiaryManageList3(loginMember.getMb_num());
 		List<farmdiary> list4 = mapper3.FarmDiaryList(loginMember.getMb_num());
 		List<Step> list6 = mapper4.stepList();
@@ -75,6 +76,7 @@ public class FarmDiaryController {
 		model.addAttribute("list3", list3);
 		model.addAttribute("list4", list4);
 		model.addAttribute("list6", list6);
+		model.addAttribute("list7", list7);
 		
 		Calendar cal = Calendar.getInstance();
 		DateData2 calendarData;
