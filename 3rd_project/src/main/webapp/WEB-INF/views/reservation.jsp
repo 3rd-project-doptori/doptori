@@ -104,13 +104,13 @@
             <div class="col-lg-7">
 	            <div class="tabs">
 	            <button class="tab active" onclick="openTab(event, 'tab-1')">
-	              <div><span>예약한 내역</span></div>
+	              <div><span>받은 예약</span></div>
 	            </button>
 	            <button class="tab" onclick="openTab(event, 'tab-2')">
-	              <div><span>예약된 내역</span></div>
+	              <div><span>신청한 예약</span></div>
 	            </button>
 	          </div>
-            <div class="content"><!-- 추가함-->
+           <div class="content">
 				
               
  			<div class="content__inner" id="tab-1">
@@ -169,7 +169,7 @@
              </div>
              </div>
              </div>
-          </div><!-- class="content" 끝 -->
+          
                  
              <div class="content__inner" id="tab-2">
               <div class="table-responsive">
@@ -179,9 +179,9 @@
                 <div class="profile-info">
                 <div id="Accordion_wrap">
                   <!-- 내가 신청한 예약 -->
-                  <c:forEach items="${list4buyer}" var="vo" varStatus="status">
+                  <c:forEach items="${list4buyer}" var="bo" varStatus="statusb">
                     <div class="que">
-	                     <span>${vo.re_date}에 신청한 예약</span>
+	                     <span>${bo.re_date}에 신청한 예약</span>
 	                      <div class="arrow-wrap">
 	                       <span class="arrow-top">↑</span>
 	                       <span class="arrow-bottom">↓</span>
@@ -189,33 +189,31 @@
 	                    </div>
 	                    <div class="anw">
 	                    <br>
-	                     구매자 : ${memberNames[status.index]}
+	                     판매자 : ${memberNames4buyer[statusb.index]}
 	                     <br>
-	                     판매 시간 : ${vo.re_selldate}
+	                     판매 시간 : ${bo.re_selldate}
 	                     <br>
-	                     판매 장소 : ${vo.re_place}
+	                     판매 장소 : ${bo.re_place}
 	                     <br>
-	                     <c:if test='${vo.re_cp_num eq 1}'>
+	                     <c:if test='${bo.re_cp_num eq 1}'>
 	                     품목 : 딸기
 	                     </c:if>
-	                     <c:if test='${vo.re_cp_num eq 2}'>
+	                     <c:if test='${bo.re_cp_num eq 2}'>
 	                     품목 : 토마토
 	                     </c:if>
 	                     <br>
-	                     가격 : ${vo.re_price}
+	                     가격 : ${bo.re_price}
 	                     <br>
-	                     무게 : ${vo.re_weight}
+	                     무게 : ${bo.re_weight}
 	                     <br>
-	                     <a href="${cpath}/market_detail.do/${vo.re_bd_num}">판매글</a> 
+	                     <a href="${cpath}/market_detail.do/${bo.re_bd_num}">판매글</a> 
 	                     <br>
-	                     <c:if test='${vo.confirmed eq 1}'>
+	                     <c:if test='${bo.confirmed eq 1}'>
 	                     승인됨
 	                     </c:if>
-						<c:if test='${vo.confirmed eq 0}'>
+						<c:if test='${bo.confirmed eq 0}'>
 	                     승인되지 않음
-	                     </c:if>
-	                     <br>
-	                	<button type="button" onclick="re_confirm('${vo.re_num}')">승인하기</button>                
+	                     </c:if>           
 	                    </div>
 	                    
 	        
@@ -251,7 +249,7 @@
             </div>
             </div>
               
-
+			</div>
               <!-- end card -->
             </div>
             <!-- end col -->

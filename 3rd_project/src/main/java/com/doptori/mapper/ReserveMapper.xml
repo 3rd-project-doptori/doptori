@@ -10,7 +10,7 @@
   
   <!-- 구매자가 예약한 목록 보기 -->
   <select id="ReserveList4buyer" parameterType="int" resultType="com.doptori.entity.Reserve">
-    select * from Reserve where re_mb_nums=#{re_mb_numb}
+    select * from Reserve where re_mb_numb=#{re_mb_numb}
   </select>
   
   <!-- 예약 승인하기 : 원글 컬럼 변경 -->

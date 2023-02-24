@@ -50,7 +50,7 @@ public class ReserveController {
 		List<Reserve> ReserveList4buyer = mapper.ReserveList4buyer(loginMember.getMb_num());
 		List<String> memberNames4buyer = new ArrayList<>();
 		for (Reserve reserve : ReserveList4buyer) {
-			memberNames4buyer.add(member_mapper.memberNum2Name(reserve.getRe_num()));
+			memberNames4buyer.add(member_mapper.memberNum2Name(reserve.getRe_mb_nums()));
 			List<Board> list = mapper.ReservedBoard(reserve.getRe_bd_num());
 			if(list.size()!=0) {
 				reserve.setConfirmed(1);
@@ -59,7 +59,7 @@ public class ReserveController {
 			}
 		}
 		model.addAttribute("list4buyer", ReserveList4buyer);
-
+		model.addAttribute("memberNames4buyer", memberNames4buyer);
 		return "reservation";
 		
 	}
