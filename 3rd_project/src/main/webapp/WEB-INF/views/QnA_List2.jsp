@@ -193,7 +193,7 @@
                        <td align="center" scope="row">${qnalist.size() - status.count + 1}</td>
                        <td align="center">${vo_indexed.mb_nick}</td>
                        <c:url var="contentlink" value="/boardContent.do/${vo_indexed.bd_num}" />
-                       <td align="center"><a href="${contentlink}">${vo_indexed.bd_title}</a></td>
+                       <td><a href="${contentlink}">${vo_indexed.bd_title}</a></td>
                        <td align="center">${vo_indexed.bd_date}</td>
                    </tr>
                </c:forEach>
