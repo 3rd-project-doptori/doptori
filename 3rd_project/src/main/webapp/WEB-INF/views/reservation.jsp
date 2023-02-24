@@ -13,6 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="${cpath}/resources/css/lineicons.css" />
     <link rel="stylesheet" href="${cpath}/resources/css/main.css" />
+    <link rel="stylesheet" href="${cpath}/resources/css/notice_qa.css" />
   </head>
   <body>
      <!-- ======== sidebar-nav start =========== -->
@@ -101,22 +102,24 @@
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-lg-7">
-              <div class="title-wrapper pt-30">
-                <div class="row text-start">
-                  <div class="col-md-3">
-                    <div class="title mb-30">
-                      <h2>예약내역</h2>
-                    </div>
-                  </div>
-                </div>
-                <!-- end row -->
-              </div>
+	            <div class="tabs">
+	            <button class="tab active" onclick="openTab(event, 'tab-1')">
+	              <div><span>예약한 내역</span></div>
+	            </button>
+	            <button class="tab" onclick="openTab(event, 'tab-2')">
+	              <div><span>예약된 내역</span></div>
+	            </button>
+	          </div>
+            <div class="content"><!-- 추가함-->
+				
+              
+ 			<div class="content__inner" id="tab-1">
+              <div class="table-responsive">
+                  <div class="container-fluid">
+                    <div class="row justify-content-center">
               <div class="card-style settings-card-1 mb-30">
                 <div class="profile-info">
-                  <div id="Accordion_wrap">
-                  
-                  
-                  
+                  <div id="Accordion_wrap">              
                   <!-- 내가 신청을 받은 예약 -->
                   <!-- 두 개 아코디언으로 분리되서 나오면 좋을 듯 합니다 to 예슬 -->
                   <c:forEach items="${list}" var="vo" varStatus="status">
@@ -159,8 +162,22 @@
 	                	<button type="button" onclick="re_confirm('${vo.re_num}')">승인하기</button>                
 	                    </div>
                     </c:forEach>
-                    
-                    
+                 </div>
+               </div>
+             </div>
+             </div>
+             </div>
+             </div>
+             </div>
+          </div><!-- class="content" 끝 -->
+                 
+             <div class="content__inner" id="tab-2">
+              <div class="table-responsive">
+                  <div class="container-fluid">
+                    <div class="row justify-content-center">
+              <div class="card-style settings-card-1 mb-30">
+                <div class="profile-info">
+                <div id="Accordion_wrap">
                   <!-- 내가 신청한 예약 -->
                   <c:forEach items="${list4buyer}" var="vo" varStatus="status">
                     <div class="que">
@@ -200,6 +217,8 @@
 	                     <br>
 	                	<button type="button" onclick="re_confirm('${vo.re_num}')">승인하기</button>                
 	                    </div>
+	                    
+	        
                     </c:forEach>
                     
 
@@ -219,9 +238,20 @@
                     </div> -->
                     
                   </div>
+                  
+                  
+                  
+                  
+                  
                
                 </div>
               </div>
+            </div>
+            </div>
+            </div>
+            </div>
+              
+
               <!-- end card -->
             </div>
             <!-- end col -->
@@ -240,7 +270,9 @@
     <!-- ========= All Javascript files linkup ======== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="${cpath}/resources/js/main1.js"></script>    
+    <script src="${cpath}/resources/js/main1.js"></script>
+    <script src="${cpath}/resources/js/notice_qa.js"></script>
+        
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script>
     	function re_confirm(re_num){
