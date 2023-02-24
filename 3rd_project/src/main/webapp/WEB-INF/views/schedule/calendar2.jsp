@@ -243,7 +243,7 @@
 						<input type="hidden" name="month"
 							value="${today_info.search_month-1}" />
 						<div class="modal-body">
-							<table class="table table-bordered">
+							<table class="table table-bordered text-center">
 								<colgroup>
 									<col width="13%">
 									<col>

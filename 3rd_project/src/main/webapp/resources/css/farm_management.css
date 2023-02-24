@@ -163,3 +163,7 @@ h4{
 .ul, .li {
     list-style: none;
 }
+
+.nav-pills .nav-link.active{
+	background-color: #6c757d;
+}

@@ -70,7 +70,7 @@
 					<div class="row bg-light">
 						<form class="row p-3 gx-3 justify-content-center">
 							<div class="col-auto">
-								<select class="form-select" id="autoSizingSelect">
+								<select class="form-select" id="autoSizingSelect" style="width: 126.777778px; margin:0;">
 									<option selected>주소</option>
 									<option value="1">One</option>
 									<option value="2">Two</option>
@@ -79,17 +79,17 @@
 							</div>
 							<div class="col-5">
 								<input type="text" class="form-control input-group"
-									id="autoSizingInput" placeholder="검색어를 입력하세요">
+									id="autoSizingInput" placeholder="검색어를 입력하세요"  style="width: 523.277778px; margin:0;">
 							</div>
 							<div class="col-auto">
-								<button type="submit" class="btn btn-primary">검색</button>
+								<button type="submit" class="btn btn-secondary">검색</button>
 							</div>
 						</form>
 					</div>
 
 					<!-- 모달 -->
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
-						<button class="btn btn-primary" data-bs-toggle="modal"
+						<button class="btn btn-outline-secondary" data-bs-toggle="modal"
 							data-bs-target="#필지관리" data-bs-whatever="@management">등록</button>
 					</div>
 					<div class="modal fade modal-lg" id="필지관리" tabindex="-1"
@@ -163,7 +163,7 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-bs-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-primary">등록하기</button>
+										<button type="submit" class="btn btn-outline-secondary btn-sm">등록하기</button>
 									</div>
 								</form>
 							</div>
@@ -313,7 +313,7 @@
 					<div class="row bg-light">
 						<form class="row p-3 gx-3 justify-content-center">
 							<div class="col-auto">
-								<select class="form-select" id="autoSizingSelect">
+								<select class="form-select" id="autoSizingSelect" style="width: 126.777778px; margin:0;">
 									<option selected>주소</option>
 									<option value="1">One</option>
 									<option value="2">Two</option>
@@ -322,17 +322,17 @@
 							</div>
 							<div class="col-5">
 								<input type="text" class="form-control input-group"
-									id="autoSizingInput" placeholder="검색어를 입력하세요">
+									id="autoSizingInput" placeholder="검색어를 입력하세요" style="width: 523.277778px; margin:0;">
 							</div>
 							<div class="col-auto">
-								<button type="submit" class="btn btn-primary">검색</button>
+								<button type="submit" class="btn btn-secondary">검색</button>
 							</div>
 						</form>
 					</div>
 
 					<!-- 모달 -->
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
-						<button class="btn btn-primary" data-bs-toggle="modal"
+						<button class="btn btn-outline-secondary" data-bs-toggle="modal"
 							data-bs-target="#품목관리" data-bs-whatever="@management">등록</button>
 					</div>
 					<div class="modal fade modal-lg" id="품목관리" tabindex="-1"
@@ -425,7 +425,7 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-bs-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-primary">등록하기</button>
+										<button type="submit" class="btn btn-outline-secondary btn-sm">등록하기</button>
 									</div>
 								</form>
 							</div>
@@ -605,7 +605,7 @@
 					<div class="row bg-light">
 						<form class="row p-3 gx-3 justify-content-center">
 							<div class="col-auto">
-								<select class="form-select" id="autoSizingSelect">
+								<select class="form-select" id="autoSizingSelect" style="width: 126.777778px; margin:0;">
 									<option selected>주소</option>
 									<option value="1">One</option>
 									<option value="2">Two</option>
@@ -614,17 +614,17 @@
 							</div>
 							<div class="col-5">
 								<input type="text" class="form-control input-group"
-									id="autoSizingInput" placeholder="검색어를 입력하세요">
+									id="autoSizingInput" placeholder="검색어를 입력하세요" style="width: 523.277778px; margin:0;">
 							</div>
 							<div class="col-auto">
-								<button type="submit" class="btn btn-primary">검색</button>
+								<button type="submit" class="btn btn-secondary">검색</button>
 							</div>
 						</form>
 					</div>
 
 					<!-- 모달 -->
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
-						<button class="btn btn-primary" data-bs-toggle="modal"
+						<button class="btn btn-outline-secondary" data-bs-toggle="modal"
 							data-bs-target="#교육관리" data-bs-whatever="@management">등록</button>
 					</div>
 					<div class="modal fade modal-lg" id="교육관리" tabindex="-1"
@@ -689,7 +689,7 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-bs-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-primary">등록하기</button>
+										<button type="submit" class="btn btn-outline-secondary btn-sm">등록하기</button>
 									</div>
 								</form>
 							</div>
@@ -808,17 +808,17 @@
 						<form class="row p-3 gx-3 justify-content-center">
 							<div class="col-5">
 								<input type="text" class="form-control input-group"
-									id="autoSizingInput" placeholder="인력명을 입력하세요">
+									id="autoSizingInput" placeholder="인력명을 입력하세요" style="width: 523.277778px; margin:0;">
 							</div>
 							<div class="col-auto">
-								<button type="submit" class="btn btn-primary">검색</button>
+								<button type="submit" class="btn btn-secondary">검색</button>
 							</div>
 						</form>
 					</div>
 
 					<!-- 모달 -->
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
-						<button class="btn btn-primary" data-bs-toggle="modal"
+						<button class="btn btn-outline-secondary" data-bs-toggle="modal"
 							data-bs-target="#인력관리" data-bs-whatever="@management">등록</button>
 					</div>
 					<div class="modal fade modal-lg" id="인력관리" tabindex="-1"
@@ -885,7 +885,7 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-bs-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-primary">등록하기</button>
+										<button type="submit" class="btn btn-outline-secondary btn-sm">등록하기</button>
 									</div>
 								</form>
 							</div>
@@ -1000,7 +1000,7 @@
 					<div class="row bg-light">
 						<form class="row p-3 gx-3 justify-content-center">
 							<div class="col-auto">
-								<select class="form-select" id="autoSizingSelect">
+								<select class="form-select" id="autoSizingSelect" style="width: 126.777778px; margin:0;">
 									<option selected>주소</option>
 									<option value="1">One</option>
 									<option value="2">Two</option>
@@ -1009,17 +1009,17 @@
 							</div>
 							<div class="col-5">
 								<input type="text" class="form-control input-group"
-									id="autoSizingInput" placeholder="검색어를 입력하세요">
+									id="autoSizingInput" placeholder="검색어를 입력하세요" style="width: 523.277778px; margin:0;">
 							</div>
 							<div class="col-auto">
-								<button type="submit" class="btn btn-primary">검색</button>
+								<button type="submit" class="btn btn-secondary">검색</button>
 							</div>
 						</form>
 					</div>
 
 					<!-- 모달 -->
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
-						<button class="btn btn-primary" data-bs-toggle="modal"
+						<button class="btn btn-outline-secondary" data-bs-toggle="modal"
 							data-bs-target="#비료관리" data-bs-whatever="@management">등록</button>
 					</div>
 					<div class="modal fade modal-lg" id="비료관리" tabindex="-1"
@@ -1090,7 +1090,7 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-bs-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-primary">등록하기</button>
+										<button type="submit" class="btn btn-outline-secondary btn-sm">등록하기</button>
 									</div>
 								</form>
 							</div>
@@ -1217,7 +1217,7 @@
 					<div class="row bg-light">
 						<form class="row p-3 gx-3 justify-content-center">
 							<div class="col-auto">
-								<select class="form-select" id="autoSizingSelect">
+								<select class="form-select" id="autoSizingSelect" style="width: 126.777778px; margin:0;">
 									<option selected>주소</option>
 									<option value="1">One</option>
 									<option value="2">Two</option>
@@ -1226,17 +1226,17 @@
 							</div>
 							<div class="col-5">
 								<input type="text" class="form-control input-group"
-									id="autoSizingInput" placeholder="검색어를 입력하세요">
+									id="autoSizingInput" placeholder="검색어를 입력하세요" style="width: 523.277778px; margin:0;">
 							</div>
 							<div class="col-auto">
-								<button type="submit" class="btn btn-primary">검색</button>
+								<button type="submit" class="btn btn-secondary">검색</button>
 							</div>
 						</form>
 					</div>
 
 					<!-- 모달 -->
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
-						<button class="btn btn-primary" data-bs-toggle="modal"
+						<button class="btn btn-outline-secondary" data-bs-toggle="modal"
 							data-bs-target="#거래처관리" data-bs-whatever="@management">등록</button>
 					</div>
 					<div class="modal fade modal-lg" id="거래처관리" tabindex="-1"
@@ -1336,7 +1336,7 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-bs-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-primary">등록하기</button>
+										<button type="submit" class="btn btn-outline-secondary btn-sm">등록하기</button>
 									</div>
 								</form>
 							</div>
@@ -1476,7 +1476,7 @@
 					<div class="row bg-light">
 						<form class="row p-3 gx-3 justify-content-center">
 							<div class="col-auto">
-								<select class="form-select" id="autoSizingSelect">
+								<select class="form-select" id="autoSizingSelect" style="width: 126.777778px; margin:0;">
 									<option selected>주소</option>
 									<option value="1">One</option>
 									<option value="2">Two</option>
@@ -1485,17 +1485,17 @@
 							</div>
 							<div class="col-5">
 								<input type="text" class="form-control input-group"
-									id="autoSizingInput" placeholder="검색어를 입력하세요">
+									id="autoSizingInput" placeholder="검색어를 입력하세요" style="width: 523.277778px; margin:0;">
 							</div>
 							<div class="col-auto">
-								<button type="submit" class="btn btn-primary">검색</button>
+								<button type="submit" class="btn btn-secondary">검색</button>
 							</div>
 						</form>
 					</div>
 
 					<div class="d-grid gap-2 d-md-flex justify-content-md-center mar">
-						<button class="btn btn-primary">병해충 분석</button>
-						<button class="btn btn-primary">생육과정 분석</button>
+						<button class="btn btn-outline-secondary">병해충 분석</button>
+						<button class="btn btn-outline-secondary">생육과정 분석</button>
 					</div>
 					<!-- 확인하기 -->
 					<!-- 확인하기 -->
@@ -1506,6 +1506,8 @@
 					<table class="table recruit">
 
 						<colgroup>
+							<col width="10%">
+							<col width="30%">
 							<col width="10%">
 							<col>
 						</colgroup>
@@ -1537,32 +1539,28 @@
 								</tr>
 
 								<tr class="hide">
-									<td></td>
-									<td colspan="2">
+									
+									<td colspan="4">
 										<form action="${cpath}/FarmDiaryManageUpdate6.do"
 											method="post">
 											<input type="hidden" class="form-control" name="fdm_num"
 												id="fdm_num" value="${vo6.fdm_num}">
 											<table class="table">
-												<colgroup>
-													<col width="18%">
-													<col>
-												</colgroup>
 												<tbody>
 													<tr>
-														<th scope="row"><P>분석날짜 :</P></th>
+														<th scope="row">분석날짜 </th>
 														<td>
-															<P>
+														
 																<input type="text" class="form-control"
 																	name="fdm6_account" id="fdm6_account"
 																	placeholder="거래처명을 입력하세요." value="${vo7.an_date}">
-															</P>
+															
 														</td>
 													</tr>
 													<tr>
-														<th scope="row"><P>품명 :</P></th>
+														<th scope="row">품명 </th>
 														<td>
-															<P>
+														
 															<c:choose>
 									<c:when test="${empty vo7.an_pic_grow}">
 									<td><input type="text" class="form-control"
@@ -1577,13 +1575,13 @@
 																	value="${fn:split(vo7.an_pic_grow, '/')[2]}"></td>
 									</c:otherwise>
 									</c:choose>
-															</P>
+															
 														</td>
 													</tr>
 													<tr>
-														<th scope="row"><P>분석명 : </P></th>
+														<th scope="row">분석명 </th>
 														<td>
-															<P>
+															
 																<c:choose>
 									<c:when test="${empty vo7.an_pic_grow}">
 									<td>병해충 분석</td>
@@ -1592,13 +1590,13 @@
 									<td>생육과정 분석</td>
 									</c:otherwise>
 									</c:choose>
-															</P>
+															
 														</td>
 													</tr>
 													<tr>
-														<th scope="row"><P>내용 :</P></th>
+														<th scope="row">내용 </th>
 														<td>
-															<P>
+															
 																<c:choose>
 									<c:when test="${empty vo7.an_pic_grow}">
 									<td><h5>발생환경</h5><p>병원균은 병든 부위에서 균핵 혹은 분생포자의 형태로 월동하여 전염원이 된다. 시설재배시 기온이 20℃내외이고 습도가 높을 때 많이 발생하며, 노지재배시는 여름철 장마기때 주로 발생한다. 과실의 감염은 주로 꽃이 달린 부위에서부터 시작되므로 과실이 커지면서 꽃이 쉽사리 떨어지지 않는 품종에서 발생이 심하다.</p><h5>증상설명</h5><p>주로 과실에 발생하나 잎, 꽃잎, 잎자루, 과병 등에도 발생한다. 과실에는 작은 수침상의 담갈색 병반으로 나타타고 점차 진전되면 과실이 부패한다. 부패된 과실에는 잿빛의 분생포자로 뒤덮힌다. 잎에는 꽃잎이 떨어져 묻어 있는 부분에서부터 감염이 시작된다. 과병과 잎자루에는 암갈색 병반이 형성되고, 진전되면 줄기가 말라죽으며, 잿빛의 곰팡이가 밀생한다. </p><h5>방제방법</h5><p> - 병든식물체는 비닐봉지 등에 모아 매몰하거나 소각하고, 수확후에 포장관리를 철저히 한다.<br>- 시설내의 온도와 습도관리를 잘 조절해 준다.<br>- 꽃잎이나 병든 잔사물이 과실이나 잎에 붙지 않도록 한다. <br>- 식물체가 웃자라지 않도록 투광에 유의한다.<br>- 병원균은 포자형성량이 매우 높아 한번 번지면 방제하기 어려우므로, 발생초기의 집중방제가 중요하다.<br>- 약제살포는 수화제나 유제보다 분제, 훈연제, 연무제 등이 습도를 높여 주지 않는 점에서 유리 하다.<br>- 본 병원균은 약제내성이 잘 생기므로 계통이 다른 등록약제를 교호살포하는 것이 좋다.</p></td>
@@ -1607,7 +1605,7 @@
 									<td>'개화기', '고온이나 저온에 오랫동안 놓이게 되면 꽃으로의 양분 공급이 원활하지 못하여 꽃가루 발육이나 자방비대가 심하게 억제된다. 따라서 온도는 가능한 생육에 알맞은 범위에서 관리해 주는 것이 좋다. 땅 온도(지온)도 기온 못지않게 중요한데 특히 겨울철재배 시는 지온중심의 온도관리를 해주어야 한다. 가장 알맞은 지온은 20°C 전후이지만 15∼16°C 정도만 유지시켜도 실제 재배 시에는 큰 문제가 없으므로 햇빛이 잘 들도록 하고 멀칭을 철저히 해준다. 찬물을 일시에 다량관수하면 지온이 심하게 떨어지므로 하우스 내에 저수조 등을 설치하여 수온을 높여주는 것이 좋다.'</td>
 									</c:otherwise>
 									</c:choose>
-															</P>
+															
 														</td>
 													</tr>
 													
