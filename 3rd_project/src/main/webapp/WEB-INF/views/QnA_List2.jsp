@@ -29,7 +29,6 @@
    }
   </style>
   <script type="text/javascript">
-
   function signin(){
       location.href = "${cpath}/signin.do"
    }
@@ -55,27 +54,14 @@
           <div class="res">
              <div id="right" style="float:right;"><font size="2">          
                   <select onchange="move(this)" id="pcnt">
-                  <option value="10"> 10건 </option>
-                  <option value="20"> 20건 </option>
-                  <option value="30"> 30건 </option>
-                  <option value="40"> 40건 </option>
-                  <option value="50"> 50건 </option>
+                  <option value="10"> 10개 </option>
+                  <option value="20"> 20개 </option>
+                  <option value="30"> 30개 </option>
+                  <option value="50"> 50개 </option>
                 </select>
                 </font>
              </div>
-                 <form class="d-flex col-sm-3 " role="search" method="post" action="${cpath}/QnA_List2.do" onsubmit="return check(this)">
-                       
-                     <select name="searchType" id="searchType">
-                       <option value="0">선택</option>
-                       <option value="bd_title">제목</option>
-                       <option value="bd_cont">내용</option>
-                       <option value="bd_mb_num">작성자</option>
-                     </select>
-                     <div class="input-group">
-                     <input type="text" id="autoSizingInputGroup" class="form-control"  placeholder="검색어를 입력하세요." autocomplete="off" name="sword" size="20" value="${sword}">
-                     <input  class="input-group-text btn btn-sm btn-outline-secondary" type="button" value="🔍">
-                    </div>
-               </form>
+                 
                     
                   </div>
         <div class="table-responsive">
@@ -84,8 +70,8 @@
             <thead align="center">
                   <tr>
                   <th scope="col">번호</th>
-                  <th scope="col">제목</th>
                   <th scope="col">작성자</th>
+                  <th scope="col">제목</th>
                   <th scope="col">작성일</th>
                   </tr>
               </thead>
@@ -94,9 +80,9 @@
                    <c:set var="vo_indexed" value="${noticelist[noticelist.size() - status.count]}" />
                    <tr>   
                        <td align="center" scope="row">${noticelist.size() - status.count + 1}</td>
+                       <td align="center">${vo_indexed.mb_nick}</td>
                        <c:url var="contentlink" value="/boardContent.do/${vo_indexed.bd_num}" />
                        <td><a href="${contentlink}">${vo_indexed.bd_title}</a></td>
-                       <td align="center">${vo_indexed.mb_nick}</td>
                        <td align="center">${vo_indexed.bd_date}</td>
                    </tr>
                </c:forEach>
@@ -151,12 +137,24 @@
               </tr>
              <c:if test="${loginMember.mb_id=='admin'}">
              <tr>
-                  <td align="right" colspan="5"><button class="btn btn-sm btn-outline-secondary sub" onclick="goForm()">글쓰기</button></td>
+                  <td colspan="5"><button class="btn btn-sm btn-outline-secondary sub" onclick="goForm()">글쓰기</button></td>
              </tr>
              </c:if>
           </tfoot>
           </table>
-               
+                <form class="d-flex col-sm-3 " role="search" method="post" action="${cpath}/QnA_List2.do" onsubmit="return check(this)">
+                       
+                     <select name="searchType" id="searchType">
+                       <option value="0">선 택</option>
+                       <option value="bd_title">제 목</option>
+                       <option value="bd_cont">내 용</option>
+                       <option value="bd_mb_num">작성자</option>
+                     </select>
+                     <div class="input-group">
+                     <input type="text" id="autoSizingInputGroup" class="form-control"  placeholder="검색어를 입력하세요." autocomplete="off" name="sword" size="20" value="${sword}">
+                     <input  class="input-group-text btn btn-sm btn-outline-secondary" type="button" value="🔍">
+                    </div>
+               </form>
           
         </div>
       </div>
@@ -166,27 +164,14 @@
               
          <div id="right" style="float:right;"><font size="2">          
                <select onchange="move(this)" id="pcnt">
-               <option value="10"> 10건 </option>
-               <option value="20"> 20건 </option>
-               <option value="30"> 30건 </option>
-               <option value="40"> 40건 </option>
-               <option value="50"> 50건 </option>
+               <option value="10"> 10개 </option>
+               <option value="20"> 20개 </option>
+               <option value="30"> 30개 </option>
+               <option value="50"> 50개 </option>
              </select>
              </font>
            </div>
-             <form class="d-flex col-sm-3 " role="search" method="post" action="${cpath}/QnA_List2.do" onsubmit="return check(this)">
-                       
-                     <select name="searchType" id="searchType">
-                       <option value="0">선택</option>
-                       <option value="bd_title">제목</option>
-                       <option value="bd_cont">내용</option>
-                       <option value="bd_mb_num">작성자</option>
-                     </select>
-                     <div class="input-group">
-                     <input type="text" id="autoSizingInputGroup" class="form-control"  placeholder="검색어를 입력하세요." autocomplete="off" name="sword" size="20" value="${sword}">
-                     <input  class="input-group-text btn btn-sm btn-outline-secondary" type="button" value="🔍">
-                    </div>
-               </form>
+             
          </div>
         <div class="table-responsive">
           <table class="table">
@@ -194,8 +179,8 @@
               <thead align="center">
                   <tr>
                   <th scope="col">번호</th>
-                  <th scope="col">제목</th>
                   <th scope="col">작성자</th>
+                  <th scope="col">제목</th>
                   <th scope="col">작성일</th>
 
                   </tr>
@@ -205,9 +190,9 @@
                    <c:set var="vo_indexed" value="${qnalist[qnalist.size() - status.count]}" />
                    <tr>   
                        <td align="center" scope="row">${qnalist.size() - status.count + 1}</td>
+                       <td align="center">${vo_indexed.mb_nick}</td>
                        <c:url var="contentlink" value="/boardContent.do/${vo_indexed.bd_num}" />
                        <td><a href="${contentlink}">${vo_indexed.bd_title}</a></td>
-                       <td align="center">${vo_indexed.mb_nick}</td>
                        <td align="center">${vo_indexed.bd_date}</td>
                    </tr>
                </c:forEach>
@@ -263,13 +248,25 @@
               
               <c:if test="${loginMember != null}">
             <tr>
-                <td align="right" colspan="5"><button class="btn btn-sm btn-outline-secondary sub" onclick="goForm()">글쓰기</button></td>
+                <td colspan="5"><button class="btn btn-sm btn-outline-secondary sub" onclick="goForm()">글쓰기</button></td>
              </tr>
           	</c:if>
                 
           </table>
             </tfoot>
-            
+            <form class="d-flex col-sm-3 " role="search" method="post" action="${cpath}/QnA_List2.do" onsubmit="return check(this)">
+                       
+                     <select name="searchType" id="searchType">
+                       <option value="0">선 택</option>
+                       <option value="bd_title">제 목</option>
+                       <option value="bd_cont">내 용</option>
+                       <option value="bd_mb_num">작성자</option>
+                     </select>
+                     <div class="input-group">
+                     <input type="text" id="autoSizingInputGroup" class="form-control"  placeholder="검색어를 입력하세요." autocomplete="off" name="sword" size="20" value="${sword}">
+                     <input  class="input-group-text btn btn-sm btn-outline-secondary" type="button" value="🔍">
+                    </div>
+               </form>
         </div>
       </div>
     </div>
