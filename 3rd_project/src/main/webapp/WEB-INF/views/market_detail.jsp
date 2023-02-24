@@ -98,8 +98,8 @@
          document.getElementById('bd_cont').innerHTML = cont_info[4];
          
          var image_path = "${cpath}${vo.bd_pic}";
-		$("#show_image").append("<img src='"+image_path+"'>")
-		$("#show_sample_image").append("<img src='"+image_path+"' style='transform:scale(8);opacity:0.5'>")
+		$("#show_image").append("<img src='"+image_path+"'style='height:350px'>")
+		$("#show_sample_image").append("<img src='"+image_path+"' style='transform:scale(8);opacity:0.5;'>")
 	}); 
 
       

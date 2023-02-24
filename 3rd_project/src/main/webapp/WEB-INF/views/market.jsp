@@ -81,7 +81,7 @@
          			<c:if test="${vo.bd_type eq 3 && empty vo.bd_pic}">
 	                     <div class="col">
 	                         <div class="card shadow-sm">      
-		                           <img src="https://health.chosun.com/site/data/img_dir/2022/01/11/2022011100746_0.jpg" class="card-img-top"   alt="...">
+		                           <img src="https://health.chosun.com/site/data/img_dir/2022/01/11/2022011100746_0.jpg"  style="height:400px" class="card-img-top"   alt="...">
 							<a href = ""></a>
 	                             <div class="card-body">
 	                             <p class="card-text">${vo.bd_title}</p>
@@ -97,7 +97,7 @@
 	                  <c:if test="${vo.bd_type eq 3 && not empty vo.bd_pic}">
 	                     <div class="col">
 	                         <div class="card shadow-sm">      
-		                           <img src="${cpath}${vo.bd_pic}" class="card-img-top"   alt="...">
+		                           <img src="${cpath}${vo.bd_pic}" class="card-img-top"  style="height:400px" alt="...">
 							<a href = ""></a>
 	                             <div class="card-body">
 	                             <p class="card-text">${vo.bd_title}</p>
