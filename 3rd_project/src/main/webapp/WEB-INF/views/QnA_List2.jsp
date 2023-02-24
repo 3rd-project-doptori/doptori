@@ -58,7 +58,7 @@
                   <option value="10"> 10건 </option>
                   <option value="20"> 20건 </option>
                   <option value="30"> 30건 </option>
-                  <option value="30"> 40건 </option>
+                  <option value="40"> 40건 </option>
                   <option value="50"> 50건 </option>
                 </select>
                 </font>
@@ -169,7 +169,7 @@
                <option value="10"> 10건 </option>
                <option value="20"> 20건 </option>
                <option value="30"> 30건 </option>
-               <option value="30"> 40건 </option>
+               <option value="40"> 40건 </option>
                <option value="50"> 50건 </option>
              </select>
              </font>

@@ -147,9 +147,9 @@
 	    	<div id="left" style="float:left;"> <!-- select 검색 창  -->
 		        <form method="post" action="${cpath}/QnA_List.do" onsubmit="return check(this)">
 		         <select name="searchType" id="searchType">
-		           <option value="0">선 택</option>
-		           <option value="bd_title">제 목</option>
-		           <option value="bd_cont">내 용</option>
+		           <option value="0">선택</option>
+		           <option value="bd_title">제목</option>
+		           <option value="bd_cont">내용</option>
 		           <option value="bd_mb_num">작성자</option>
 		         </select>
 		         <input type="text" id="searchText" placeholder="검색어를 입력하세요." autocomplete="off" name="sword" size="20" value="${sword}">
@@ -160,10 +160,11 @@
 		    
 			<div id="right" style="float:right;"><font size="2">	       
 	         	<select onchange="move(this)" id="pcnt">
-		         <option value="10"> 10개 </option>
-		         <option value="20"> 20개 </option>
-		         <option value="30"> 30개 </option>
-		         <option value="50"> 50개 </option>
+		         <option value="10"> 10건 </option>
+		         <option value="20"> 20건 </option>
+		         <option value="30"> 30건 </option>
+		         <option value="40"> 40건 </option>
+		         <option value="50"> 50건 </option>
 		       </select>
 		       </font>
 		     </div>
