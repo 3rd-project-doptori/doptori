@@ -173,7 +173,23 @@
 					</div>
 
 					<!-- 회원구분-->
-	
+					<div class="input-style-1">
+					     <label class="control-label col-sm-2" for="mb_type">회원구분 : </label>
+							<c:if test="${loginMember.mb_id=='admin'}">
+							<div class="form-check-inline">
+					                   <input name="mb_type" type="radio" class="" value="0">
+					        		ㅤ관리자
+					        </div>
+					        </c:if>
+					        <div class="form-check-inline">
+					             	     <input name="mb_type" type="radio" class="" value="2">
+					       			ㅤ일반인
+					        </div>
+					        <div class="form-check-inline">
+					              	    <input name="mb_type" type="radio" class="" value="1" checked>
+					       			ㅤ영농인
+					       </div>
+					</div>
 
 
 					<!-- 작성 완료 / 취소 -->
