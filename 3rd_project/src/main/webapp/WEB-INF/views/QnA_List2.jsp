@@ -68,7 +68,7 @@
         <div class="table-responsive">
           <table class="table">
           
-            <thead>
+            <thead align="center">
                   <tr>
                   <th scope="col">번호</th>
                   <th scope="col">작성자</th>
@@ -80,11 +80,11 @@
                   <c:forEach items="${noticelist}" var="vo" varStatus="status">
                    <c:set var="vo_indexed" value="${noticelist[noticelist.size() - status.count]}" />
                    <tr>   
-                       <th scope="row">${noticelist.size() - status.count + 1}</th>
-                       <td>${vo_indexed.mb_nick}</td>
+                       <td align="center" scope="row">${noticelist.size() - status.count + 1}</td>
+                       <td align="center">${vo_indexed.mb_nick}</td>
                        <c:url var="contentlink" value="/boardContent.do/${vo_indexed.bd_num}" />
                        <td><a href="${contentlink}">${vo_indexed.bd_title}</a></td>
-                       <td>${vo_indexed.bd_date}</td>
+                       <td align="center">${vo_indexed.bd_date}</td>
                    </tr>
                </c:forEach>
               </tbody>
@@ -177,7 +177,7 @@
         <div class="table-responsive">
           <table class="table">
           
-              <thead>
+              <thead align="center">
                   <tr>
                   <th scope="col">번호</th>
                   <th scope="col">작성자</th>
@@ -190,11 +190,11 @@
                   <c:forEach items="${qnalist}" var="vo" varStatus="status">
                    <c:set var="vo_indexed" value="${qnalist[qnalist.size() - status.count]}" />
                    <tr>   
-                       <th scope="row">${qnalist.size() - status.count + 1}</th>
-                       <td>${vo_indexed.mb_nick}</td>
+                       <td align="center" scope="row">${qnalist.size() - status.count + 1}</td>
+                       <td align="center">${vo_indexed.mb_nick}</td>
                        <c:url var="contentlink" value="/boardContent.do/${vo_indexed.bd_num}" />
-                       <td><a href="${contentlink}">${vo_indexed.bd_title}</a></td>
-                       <td>${vo_indexed.bd_date}</td>
+                       <td align="center"><a href="${contentlink}">${vo_indexed.bd_title}</a></td>
+                       <td align="center">${vo_indexed.bd_date}</td>
                    </tr>
                </c:forEach>
               </tbody>
