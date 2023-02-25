@@ -1500,7 +1500,7 @@
 					<!-- 확인하기 -->
 					<br> <br>
 					<div class="title mb-30">
-						<h2 align="left">거래처 목록</h2>
+						<h2 align="left">분석 목록</h2>
 					</div>
 					<table class="table recruit">
 

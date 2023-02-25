@@ -167,5 +167,13 @@ h4{
 }
 
 .nav-pills .nav-link.active{
-	background-color: #6c757d;
+	background-color: #FF809F;
+}
+
+a:hover{
+	color:black;
+}
+
+.nav{
+	--bs-nav-link-hover-color: none;
 }
