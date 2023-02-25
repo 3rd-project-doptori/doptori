@@ -479,7 +479,7 @@
 													<tr>
 														<th scope="row">필지 주소 </th>
 														<td>
-																<select id="selectbox3" class="form-control"
+																<select id="selectbox2" class="form-control"
 																	name="fdm1_ad_num" id="fdm1_ad_num">
 																	<c:forEach items="${list}" var="vo">
 																		<c:set var="cnt4" value="${cnt4+1}" />
@@ -490,11 +490,11 @@
 																	</c:forEach>
 																</select>
 															</td>
-														<td></td>
+														
 													</tr>
 													<tr>
-														<th scope="row"><P>품목 :</P></th>
-														<td><P>
+														<th scope="row">품목 </th>
+														<td>
 																<select id="selectbox3" class="form-control"
 																	name="fdm2_item" id="fdm2_item"
 																	onchange="changeSelect()">
@@ -512,12 +512,12 @@
 																	<option value="파인애플"
 																		<c:if test ="${vo2.fdm2_item == '파인애플'}">selected="selected"</c:if>>파인애플</option>
 																</select>
-															</P></td>
-														<td></td>
+															</td>
+													
 													</tr>
 													<tr>
-														<th scope="row"><P>품종 :</P></th>
-														<td><P>
+														<th scope="row">품종 </th>
+														<td>
 																<select id="selectbox3" class="form-control"
 																	name="fdm2_kind" id="fdm2_kind">
 																	<option value="">품종을 선택하세요.</option>
@@ -534,52 +534,51 @@
 																	<option value="킹스베리"
 																		<c:if test ="${vo2.fdm2_item eq '킹스베리'}">selected="selected"</c:if>>킹스베리</option>
 																</select>
-															</P></td>
-														<td></td>
+															</td>
+														
 													</tr>
 													<tr>
 														<th scope="row"><P>재배 면적 :</P></th>
-														<td><P>
+														<td>
 																<input type="text" class="form-control"
 																	name="fdm2_culture_area" id="fdm2_culture_area"
 																	placeholder="재배면적" value="${vo2.fdm2_culture_area}">
-															</P></td>
-														<td><P>
 																m<sup>2</sup>
-															</P></td>
+															</td>
+														
 													</tr>
 													<tr>
-														<th scope="row"><P>계약재배 여부 :</P></th>
+														<th scope="row">계약재배 여부 </th>
 														<c:choose>
 															<c:when test="${vo2.fdm2_contract==1}">
-																<td align="center"><P>
+																<td align="center">
 																		<input type="radio" class="form" name="fdm2_contract"
 																			id="fdm2_contract" value="1" checked> 예
 																		&emsp;&emsp; <input type="radio" class="form"
 																			name="fdm2_contract" id="fdm2_contract" value="0">
 																		아니오
-																	</P></td>
-																<td></td>
+																	</td>
+																
 															</c:when>
 															<c:otherwise>
-																<td align="center"><P>
+																<td align="center">
 																		<input type="radio" class="form" name="fdm2_contract"
 																			id="fdm2_contract" value="1"> 예 &emsp;&emsp;
 																		<input type="radio" class="form" name="fdm2_contract"
 																			id="fdm2_contract" value="0" checked> 아니오
-																	</P></td>
-																<td></td>
+																	</td>
+																
 															</c:otherwise>
 														</c:choose>
 													</tr>
 													<tr>
-														<th scope="row"><P>목표 생산량 :</P></th>
-														<td><P>
+														<th scope="row">목표 생산량</th>
+														<td>
 																<input type="text" class="form-control"
 																	name="fdm2_target" id="fdm2_target" placeholder="목표생산량"
 																	value="${vo2.fdm2_target}">
-															</P></td>
-														<td><P>kg</P></td>
+														kg
+															</td>
 													</tr>
 												</tbody>
 											</table>
