@@ -477,9 +477,9 @@
 												</colgroup>
 												<tbody>
 													<tr>
-														<th scope="row"><P>필지 주소 :</P></th>
-														<td><p>
-																<select id="selectbox2" class="form-control"
+														<th scope="row">필지 주소 </th>
+														<td>
+																<select id="selectbox3" class="form-control"
 																	name="fdm1_ad_num" id="fdm1_ad_num">
 																	<c:forEach items="${list}" var="vo">
 																		<c:set var="cnt4" value="${cnt4+1}" />
@@ -489,7 +489,7 @@
 																			${vo.ad_ri} ${vo.fdm1_detail_address}</option>
 																	</c:forEach>
 																</select>
-															</P></td>
+															</td>
 														<td></td>
 													</tr>
 													<tr>
