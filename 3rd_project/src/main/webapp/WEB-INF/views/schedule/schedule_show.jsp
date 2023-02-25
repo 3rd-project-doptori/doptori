@@ -24,9 +24,15 @@
     <%-- <link rel="stylesheet" type="text/css" href="${cpath}/resources/css/calendar.css"> --%>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <%-- <link rel="stylesheet" type="text/css" href="${cpath}/resources/css/schedule_show.css"> --%>
+    <style>
+    	
+		.form-control{width: 70%;}
+		body{font-size:1.08rem;}
+		h1{font-size: 2.2rem; font-weight: 700;}
+    </style>
 </head>
 <body>
-		<div class="normal_manage_board_modal">
+		<div class="normal_manage_board_modal container py-4">
       
       <!-- share 값에 따라 공개, 비공개 체크 상태 -->
 	<!-- <script type="text/javascript">
@@ -40,7 +46,7 @@
 				<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="exampleModalLabel">영농일지</h1>
+						<h1 class="modal-title" id="exampleModalLabel">영농일지</h1>
 						<button type="button" class="btn-close" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
@@ -50,9 +56,9 @@
 					value="${today_info.search_month-1}" />
 						<input type="hidden" name= "fd_num" class="text_type1" value=${schedule_show.fd_num }></input>
 						<div class="modal-body">
-							<table class="table table-bordered">
+							<table class="table table-bordered text-center">
 								<colgroup>
-									<col width="13%">
+									<col width="20%">
 									<col>
 								</colgroup>
 								<thead>
@@ -207,7 +213,7 @@
 										<td><img id="preview" style="width: 10rem;"></td>
 									</tr>
 									<tr>
-										<th scope="row">영농일지 공개 여부</th>
+										<th scope="row">영농일지 <br>공개 여부</th>
 										<td colspan="3">
                                 <c:choose>
 									<c:when test="${schedule_show.fd_open==1}">
@@ -241,7 +247,7 @@
 							</table>
 						</div>
 						<div class="modal-footer">
-							<button type="submit" class="btn btn-secondary btn-sm" >수정</button>
+							<button type="submit" class="btn btn-secondary" style="margin-right: 0.5rem;" >수정</button>
                             <button class='btn btn-outline-secondary' onclick="goDel_schedule(${schedule_show.fd_num })">삭제</button>
 						</div>
 					</form>
