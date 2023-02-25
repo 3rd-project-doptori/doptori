@@ -19,9 +19,7 @@ body {
 	margin-bottom: "0px";
 }
  */
- body{
- font-size: 15px;
- }
+
  
 td {
 
@@ -44,7 +42,7 @@ select {
 }
 
 a:link {
- 	color: #595959;
+	color:black;
 	text-decoration: none;
 }
 
@@ -65,11 +63,12 @@ a:hover {
 
 .day {
 	width: 100px;
-	height: 30px;
-	font-weight: bold;
-	font-size: 15px;
-	font-weight: bold;
-	text-align: center;
+    height: 30px;
+    font-weight: bold;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
 }
 
 .sat {
@@ -113,16 +112,16 @@ a:hover {
 .calendar_body {
 	width: 100%;
 	background-color: #FFFFFF;
-	border: 1px solid #A0D9E2;
+	border: 1px solid #FF809F;
 	margin-bottom: 50px;
 	border-collapse: collapse;
 }
 
 /* 캘린더 꾸미기 */
 .calendar_body .today {
-	border: 1px solid #A0D9E2;
+	border: 1px solid #FF809F;
 	height: 120px;
-	background-color: #EFEFEF;
+	background-color: #f7d6de;
 	text-align: left;
 	vertical-align: top;
 }
@@ -148,7 +147,7 @@ a:hover {
 
 /* 캘린더 꾸미기 */
 .calendar_body .sat_day {
-	border: 1px solid #A0D9E2;
+	border: 1px solid #FF809F;
 	height: 120px;
 	background-color: white;
 	text-align: left;
@@ -165,7 +164,7 @@ a:hover {
 
 /* 캘린더 꾸미기 */
 .calendar_body .sun_day {
-	border: 1px solid #A0D9E2;
+	border: 1px solid #FF809F;
 	height: 120px;
 	background-color: white;
 	text-align: left;
@@ -182,7 +181,7 @@ a:hover {
 
 /* 캘린더 꾸미기 */
 .calendar_body .normal_day {
-	border: 1px solid #A0D9E2;
+	border: 1px solid #FF809F;
 	height: 120px;
 	background-color: white;
 	vertical-align: top;
@@ -340,7 +339,7 @@ a:hover {
 	margin: 0px;
 	margin-bottom: 5px;
 	margin-left: 12px;
-	font-size: 15px;
+	font-size: 17px;
 	font-weight: bold;
 	border: none;
 }
@@ -521,3 +520,12 @@ th:first-child{
 .cont li div input[type="text"] {
     width: 100px;
 }
+
+table.ve{
+	vertical-align: middle;
+}
+
+table.ve th{
+	padding: 15px 0;
+}
+

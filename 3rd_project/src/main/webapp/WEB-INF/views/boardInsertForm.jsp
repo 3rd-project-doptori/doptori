@@ -41,7 +41,7 @@
 <div class="container py-4" id="wrap">
 	<jsp:include page="/WEB-INF/views/header.jsp"/>
 		<main id="main">
-			<div class="main-left-container">
+			<div class="main-left-container border">
 
 				<section class="board-wrap write white pd30">
 					<h1 class="command-go-link" data-link="/board/write">글쓰기</h1>
@@ -116,8 +116,8 @@
 					</ul>
 
 					<div class="button-wrap">
-						<button type="submit" id="addBtn" class="logine">등록</button>
-					    <button type="reset" class="login">초기화</button>
+						<button type="submit" id="addBtn" class="login">등록</button>
+					    <button type="reset" class="logine">초기화</button>
 					    <a class="cancel" href="javascript:history.go(-1)" class="login"><button type="button" class="login">취소</button></a>
 					</div>
 				
@@ -126,7 +126,7 @@
 				</section>
 			</div>
 
-			<aside class="main-right-container">
+			<!-- <aside class="main-right-container"> -->
 
 
 		</main>

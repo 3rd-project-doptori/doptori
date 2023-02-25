@@ -257,7 +257,7 @@
 															</P></td>
 													</tr>
 													<tr>
-														<th scope="row"><P>유휴 면적 :</P></th>
+														<th scope="row">유휴 면적 </th>
 														<td><P>
 																<input type="text" class="form-control"
 																	name="fdm1_idle_area" id="fdm1_idle_area"
@@ -268,7 +268,7 @@
 															</P></td>
 													</tr>
 													<tr>
-														<th scope="row"><P>토양점검 여부 :</P></th>
+														<th scope="row">토양점검 여부 </th>
 														<c:choose>
 															<c:when test="${vo.fdm1_soil_check==1}">
 																<td colspan="2" align="center"><p>

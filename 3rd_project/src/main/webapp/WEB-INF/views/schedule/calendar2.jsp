@@ -96,13 +96,13 @@
 					Today
 				</button> --%>
 				<button type="button" class="btn login" onclick="modalClick()" data-bs-toggle="modal" data-bs-target="#exampleModal"data-bs-whatever="@mdo">
-					Add Schedule
+					일정 등록
 				</button>
 			</div>
 			<table class="calendar_body">
 
 				<thead>
-					<tr bgcolor="#A0D9E2">
+					<tr bgcolor="#FF809F">
 						<td class="day sun">Sun</td>
 						<td class="day">Mon</td>
 						<td class="day">Tue</td>
@@ -243,7 +243,7 @@
 						<input type="hidden" name="month"
 							value="${today_info.search_month-1}" />
 						<div class="modal-body">
-							<table class="table table-bordered text-center">
+							<table class="table table-bordered text-center ve">
 								<colgroup>
 									<col width="13%">
 									<col>
@@ -414,7 +414,7 @@
 													id="formFileMultiple" name="uploadFile" multiple="multiple" onchange="previewImage(this)">
 											</div>
 										</td>
-										<td><img id="preview" style="width: 10rem;"></td>
+										<td>이미지 미리보기<img id="preview" style="width: 10rem;"></td>
 									</tr>
 									<tr>
 										<th scope="row">영농일지 공개 여부</th>
