@@ -104,7 +104,7 @@ INSERT INTO Crop (cp_num, cp_item, cp_kind, cp_type, cp_title, cp_cont) VALUE('3
 - 토마토 재배 시설 주변에 서식하는 토마토황화잎말림병의 중간 다리 역할을 하는 쑥 등 잡초들을 제거해야 한다.
 - 담배가루이 적용 약제는 디노테퓨란 입상수용제, 스피네토람 입상수화제, 피라다벤 수화제, 에마멕틴벤조에이트 유제, 아세타미프리드 수화제, 티아메톡삼 입상수화제, 티아클로프리드 액상수화제, 뷰베리아바시아나지에이치에이 유상현탁제 등이 있다.');
 
-DELETE FROM Crop WHERE cp_type=1;
+DELETE FROM Chat WHERE ch_num=134;
 
 drop table Crop;
 

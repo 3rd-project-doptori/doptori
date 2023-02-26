@@ -1527,12 +1527,16 @@
 									<td>${vo7.an_date}</td>
 									<c:choose>
 									<c:when test="${empty vo7.an_pic_grow}">
-									<td>${fn:split(vo7.an_pic_pest, '/')[2]}</td>
+									<c:if test="${fn:split(vo7.an_pic_pest, '/')[2] eq 'strawberry_disease'}">
+									<td>딸기</td>
 									<td>병해충 분석</td>
+									</c:if>
 									</c:when>
 									<c:otherwise>
-									<td>${fn:split(vo7.an_pic_grow, '/')[2]}</td>
+									<c:if test="${fn:split(vo7.an_pic_grow, '/')[2] eq 'tomato'}">
+									<td>토마토</td>
 									<td>생육과정 분석</td>
+									</c:if>
 									</c:otherwise>
 									</c:choose>
 								</tr>
@@ -1558,28 +1562,36 @@
 													</tr>
 													<tr>
 														<th scope="row">품명 </th>
-														<td>
+														
 														
 															<c:choose>
 									<c:when test="${empty vo7.an_pic_grow}">
-									<td><input type="text" class="form-control"
-																	name="fdm6_represent" id="fdm6_represent"
-																	placeholder="대표자명을 입력하세요."
-																	value="${fn:split(vo7.an_pic_pest, '/')[2]}"></td>
+									<c:if test="${fn:split(vo7.an_pic_pest, '/')[2] eq 'strawberry_disease'}">
+									<td>
+														
+																<input type="text" class="form-control"
+																	name="fdm6_account" id="fdm6_account" value="딸기">
+															
+														</td>
+									</c:if>
 									</c:when>
 									<c:otherwise>
-									<td><input type="text" class="form-control"
-																	name="fdm6_represent" id="fdm6_represent"
-																	placeholder="대표자명을 입력하세요."
-																	value="${fn:split(vo7.an_pic_grow, '/')[2]}"></td>
+									<c:if test="${fn:split(vo7.an_pic_grow, '/')[2] eq 'tomato'}">
+									<td>
+														
+																<input type="text" class="form-control"
+																	name="fdm6_account" id="fdm6_account" value="토마토">
+															
+														</td>
+									</c:if>
 									</c:otherwise>
 									</c:choose>
 															
-														</td>
+														
 													</tr>
 													<tr>
 														<th scope="row">분석명 </th>
-														<td>
+														
 															
 																<c:choose>
 									<c:when test="${empty vo7.an_pic_grow}">
@@ -1590,11 +1602,25 @@
 									</c:otherwise>
 									</c:choose>
 															
-														</td>
+														
+													</tr>
+													<tr>
+														<th scope="row">분석 이미지 </th>
+
+																<c:choose>
+									<c:when test="${empty vo7.an_pic_grow}">
+									<td><img src="C:/Users/user/PycharmProjects/flask/${vo7.an_pic_pest}"/></td>
+									</c:when>
+									<c:otherwise>
+									<td><img src="C:/Users/user/PycharmProjects/flask/${vo7.an_pic_grow}"/></td>
+									</c:otherwise>
+									</c:choose>
+															
+														
 													</tr>
 													<tr>
 														<th scope="row">내용 </th>
-														<td>
+														
 															
 																<c:choose>
 									<c:when test="${empty vo7.an_pic_grow}">
@@ -1605,7 +1631,7 @@
 									</c:otherwise>
 									</c:choose>
 															
-														</td>
+														
 													</tr>
 													
 												</tbody>
