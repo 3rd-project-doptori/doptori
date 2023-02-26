@@ -88,8 +88,7 @@
            
               <form class="d-flex col-sm-4 " role="search" method="post" action="${cpath}/Search.do" >
                      <input type="hidden" name="bd_type" value="1">
-                     <select name="searchType" id="one">
-                       <option value="0">선 택</option>
+                     <select name="searchType">
                        <option value="title">제 목</option>
                        <option value="cont">내 용</option>
                        <option value="nick">작성자</option>
@@ -209,7 +208,7 @@
            </div> -->
              <form class="d-flex col-sm-4 " role="search" method="post" action="${cpath}/Search.do">
                      <input type="hidden" name="bd_type" value="2">
-                     <select name="searchType" id="two">
+                     <select name="searchType">
                        <option value="0">선 택</option>
                        <option value="title">제 목</option>
                        <option value="cont">내 용</option>

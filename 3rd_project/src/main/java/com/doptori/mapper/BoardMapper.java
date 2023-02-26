@@ -98,7 +98,7 @@ public interface BoardMapper {
 	
 	public List<Board> noticelist();
 	
-
+	public List<Board> searchBoardByType(int bd_type);
 	
 	
 	

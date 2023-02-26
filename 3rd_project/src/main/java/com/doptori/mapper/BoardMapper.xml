@@ -61,6 +61,10 @@
     SELECT * FROM Board WHERE bd_type=#{bd_type} and  bd_mb_num=#{bd_mb_num}
 	</select>
   
+  <!-- bd_type에 따른 게시글 -->
+    <select id="searchBoardByType" parameterType="int" resultType="com.doptori.entity.Board">
+    SELECT b.*,m.mb_nick FROM Board b join Member m on b.bd_mb_num =m.mb_num WHERE bd_type=#{bd_type}
+	</select>
   
   
   <select id="getFileList" parameterType="int" resultType="String">

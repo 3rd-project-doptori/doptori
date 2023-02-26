@@ -55,14 +55,11 @@ public class BoardController {
 	@RequestMapping("/market.do")
 	public String Market(Model model, HttpServletRequest request) {
 		
-		HttpSession session = request.getSession();
-		Member loginMember = (Member) session.getAttribute("loginMember");
+		List<Board> list = mapper.searchBoardByType(3);
 
-		List<Board> list = mapper.boardList(loginMember.getMb_num());
-
-		List<String> memberNames = new ArrayList<>();
+		//List<String> memberNames = new ArrayList<>();
 		for (Board board : list) {
-			memberNames.add(mapper.memberNum2Name(board.getBd_mb_num()));
+			//memberNames.add(mapper.memberNum2Name(board.getBd_mb_num()));
 			if(board.getBd_pic()!=null) {
 				if(board.getBd_pic().length()>53) {
 					String temp = board.getBd_pic().substring(53);
@@ -72,7 +69,7 @@ public class BoardController {
 			}
 		}
 		model.addAttribute("list", list);
-		model.addAttribute("memberNames", memberNames);
+		//model.addAttribute("memberNames", memberNames);
 
 		
 		// 게시판 목록 페이징 처리
@@ -545,7 +542,7 @@ public class BoardController {
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("bd_type",bd_type);
 		List<Board> list = null;
-		List<String> memberNames = new ArrayList<>();
+		
 		switch(searchType){
 		case "title":
 			map.put("bd_title",query);
@@ -558,14 +555,11 @@ public class BoardController {
 		case "nick":
 			//회원 닉네임 -> 회원 번호로 바꿔야 함
 			Object bd_mb_num = mmapper.Nick2Num(query);
-			System.out.println(bd_mb_num);
-			System.out.println("here");
 			if(bd_mb_num!=null) {
 				map.put("bd_mb_num",(int) bd_mb_num);
 				list = mapper.searchByNick(map);
 				for (Board board : list) {
 					board.setMb_nick(query);
-					memberNames.add(mapper.memberNum2Name(board.getBd_mb_num()));
 				}
 			}
 			break;
@@ -575,18 +569,36 @@ public class BoardController {
 		}
 		List<Board> noticelist = null;
 		List<Board> qnalist = null;
-		if(bd_type==1) {
+		switch(bd_type) {
+		case 1:
 			noticelist = list;
 			qnalist = mapper.qnalist();
-			
-		}else {
+			model.addAttribute("qnalist", qnalist);
+			model.addAttribute("noticelist", noticelist);
+			break;
+		case 2:
 			noticelist = mapper.noticelist();
 			qnalist = list;
 			model.addAttribute("showQnA", '1');
-		}
-		model.addAttribute("qnalist", qnalist);
-		model.addAttribute("noticelist", noticelist);
-		
+			model.addAttribute("qnalist", qnalist);
+			model.addAttribute("noticelist", noticelist);
+			break;
+		case 3:
+			for (Board board : list) {
+				if(board.getBd_pic()!=null) {
+					if(board.getBd_pic().length()>53) {
+						String temp = board.getBd_pic().substring(53);
+						temp = temp.replace("\\", "/");
+						board.setBd_pic(temp);
+					}
+				
+			}
+			}
+			model.addAttribute("list", list);
+			return "market";
+		default:
+			System.out.println("잘못된 검색 접근입니다");
+		}		
 
 		return "QnA_List2";
 	}

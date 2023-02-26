@@ -67,10 +67,15 @@
           <div class="album">
               <div class="container">
                   <div class="res">
-                      <form class="d-flex col-sm-3 " role="search">
+                      <form class="d-flex col-sm-3 " role="search"  method="post" action="${cpath}/Search.do">
                           <div class="input-group">
-                              <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="검색어를 입력하세요">
-                              <button class="input-group-text btn btn-sm btn-outline-secondary">🔍</button>
+                          <input type="hidden" name="bd_type" value="3">
+	                       <select name="searchType" id="one">
+	                       <option value="title">제 목</option>
+	                       <option value="nick">작성자</option>
+	                       </select>
+                              <input type="text" class="form-control"  name="query"  id="autoSizingInputGroup" placeholder="검색어를 입력하세요">
+                              <button class="input-group-text btn btn-sm btn-outline-secondary" type="submit">🔍</button>
                           </div>
                       </form>
                       <button class="btn btn-sm btn-outline-secondary sub" type="button" onclick="market_write()">등록</button>
@@ -83,7 +88,7 @@
 		                           <img src="https://health.chosun.com/site/data/img_dir/2022/01/11/2022011100746_0.jpg"  style="height:400px" class="card-img-top"   alt="...">
 							<a href = ""></a>
 	                             <div class="card-body">
-	                             <p class="card-text">${vo.bd_title}</p>
+	                             <p class="card-text">${vo.bd_title} : ${vo.mb_nick}</p>
 	                             <div class="d-flex justify-content-end align-items-center">
 	                             <div class="btn-group">
 	                             <button type="button" class="btn btn-sm btn-outline-secondary" onclick="goForm('${vo.bd_num}')">View</button>
@@ -99,7 +104,7 @@
 		                           <img src="${cpath}${vo.bd_pic}" class="card-img-top"  style="height:400px" alt="...">
 							<a href = ""></a>
 	                             <div class="card-body">
-	                             <p class="card-text">${vo.bd_title}</p>
+	                             <p class="card-text">${vo.bd_title} : ${vo.mb_nick}</p>
 	                             <div class="d-flex justify-content-end align-items-center">
 	                             <div class="btn-group">
 	                             <button type="button" class="btn btn-sm btn-outline-secondary" onclick="goForm('${vo.bd_num}')">View</button>
