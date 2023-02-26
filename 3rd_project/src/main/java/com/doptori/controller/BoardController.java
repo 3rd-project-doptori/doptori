@@ -671,6 +671,16 @@ public class BoardController {
 	            }
 	        }
 	        
+	        
+	        //유정: 이미지 보이게 다시 처리
+			if(vo.getBd_pic()!=null) {
+				if(vo.getBd_pic().length()>53) {
+					String temp = vo.getBd_pic().substring(53);
+					temp = temp.replace("\\", "/");
+					vo.setBd_pic(temp);
+				}
+			}
+
 	        model.addAttribute("vo", vo);
 	        model.addAttribute("list", list);
 	       
@@ -679,21 +689,21 @@ public class BoardController {
 	            model.addAttribute("mb_pic", vo.getMb_pic());
 	        }
 	        
-	        // 파일 이미지 출력을 위한 코드
-	        if (vo.getBd_pic() != null) {
-	            String bd_pic = vo.getBd_pic();
-	            String ext = FilenameUtils.getExtension(bd_pic);
-	            String filename = FilenameUtils.getName(bd_pic);
-	            String mimeType = URLConnection.guessContentTypeFromName(filename);
-
-	            if (mimeType == null) {
-	                mimeType = "application/octet-stream";
-	            }
-
-	            byte[] bytes = Files.readAllBytes(Paths.get(bd_pic));
-	            model.addAttribute("bd_pic", "data:" + mimeType + ";base64," + Base64.getEncoder().encodeToString(bytes));
-	            model.addAttribute("bd_pic_ext", ext);
-	        }
+	        
+	        //안되는거 주석처리 함
+			/*
+			 * // 파일 이미지 출력을 위한 코드 if (vo.getBd_pic() != null) { String bd_pic =
+			 * vo.getBd_pic(); String ext = FilenameUtils.getExtension(bd_pic); String
+			 * filename = FilenameUtils.getName(bd_pic); String mimeType =
+			 * URLConnection.guessContentTypeFromName(filename);
+			 * 
+			 * if (mimeType == null) { mimeType = "application/octet-stream"; }
+			 * 
+			 * byte[] bytes = Files.readAllBytes(Paths.get(bd_pic));
+			 * model.addAttribute("bd_pic", "data:" + mimeType + ";base64," +
+			 * Base64.getEncoder().encodeToString(bytes)); model.addAttribute("bd_pic_ext",
+			 * ext); }
+			 */
 
 	    } catch (Exception e) {
 	        model.addAttribute("error", e.getMessage());

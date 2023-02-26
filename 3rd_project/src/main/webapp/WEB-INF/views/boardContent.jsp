@@ -149,15 +149,20 @@ $('#comment-form').submit(function(event) {
                     <td colspan="5" style="padding: 30px 0;">
                     <font size="5">
                     <c:if test="${not empty vo.bd_pic}">
-					  <img src="${bd_pic}" alt="게시글 이미지" width="300" height="300">
+					  <img src="${cpath}${vo.bd_pic}" alt="게시글 이미지" width="300" height="300">
 					</c:if>
 				<!-- 	<br> -->
-				    ${fn:replace(vo.bd_cont, newline, "<br>")}
+				    <%-- ${fn:replace(vo.bd_cont, newline, "<br>")} --%>
+				    <br>
+				    <br>
+				    ${vo.bd_cont}
 				     </font>
 				    </td>
 				   
                 </tr>
-                <tr>
+                
+<!-- 첨부파일 돌아가지도 않은거 주석처리 함 -->
+<%--                 <tr>
 				    <th>첨부파일</th>
 				    <c:if test="${not empty vo.bd_pic}">
         <td colspan="5" align="left"><a href="${cpath}/fileDownload.do?bd_pic=${fn:escapeXml(vo.bd_pic)}">${fn:escapeXml(vo.bd_pic)}</a></td>
@@ -168,7 +173,9 @@ $('#comment-form').submit(function(event) {
 				<td colspan="5" align="left">첨부파일없음</td>
 			</c:if>
 
-				</tr>
+				</tr> --%>
+				
+				
 				<%-- <tr>
 				 	<td colspan="5" align="right">
 				 		<c:if test="${vo.bd_mb_num eq loginMember.mb_num}">	

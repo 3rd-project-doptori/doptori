@@ -59,25 +59,6 @@
       <button class="tab" id="showqna" onclick="openTab(event, 'tab-2')">
         <div><span>Q&A</span></div>
       </button>
-<%--      <c:choose>
-     <c:when test="${not empty showQnA}">
-         <button class="tab" onclick="openTab(event, 'tab-1')">
-        <div><span>공지사항</span></div>
-      </button>
-      <button class="tab active" onclick="openTab(event, 'tab-2')">
-        <div><span>Q&A</span></div>
-      </button>
-     </c:when>
-     <c:otherwise>
-         <button class="tab active" onclick="openTab(event, 'tab-1')">
-        <div><span>공지사항</span></div>
-      </button>
-      <button class="tab" onclick="openTab(event, 'tab-2')">
-        <div><span>Q&A</span></div>
-      </button>
-     
-     </c:otherwise>
-     </c:choose> --%>
 
 
 
@@ -137,14 +118,17 @@
                </c:if>
               </tbody>
           </table>
-             <!-- 페이징 -->
+          
+          
+          
+             
              <div class="fe">
              <c:if test="${loginMember.mb_id=='admin'}">
              <button class="btn btn-sm btn-outline-secondary sub" onclick="goForm()">글쓰기</button>
-             
              </c:if>
              </div>
-             <div class="fc">
+             <!-- 페이징 -->
+<%--              <div class="fc">
                  <!-- 10페이지 단위로 이전 이동하기  :  -->
                 <c:if test="${pstart != 1}"> <!-- 첫번재 그룹이 아닐때는  -->
                     <a href="QnA_List.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> 《 </a>
@@ -188,7 +172,7 @@
                    》 <!-- 넘어가는 꺽세 -->
                 </c:if>
                 </div>
-
+ --%>
 
                
         </div>
@@ -209,7 +193,6 @@
              <form class="d-flex col-sm-4 " role="search" method="post" action="${cpath}/Search.do">
                      <input type="hidden" name="bd_type" value="2">
                      <select name="searchType">
-                       <option value="0">선 택</option>
                        <option value="title">제 목</option>
                        <option value="cont">내 용</option>
                        <option value="nick">작성자</option>
@@ -247,13 +230,15 @@
               </c:if>
               </tbody>
              </table>
-             <!-- 페이징 -->
+            
               <div class="fe"> 
               <c:if test="${loginMember != null}">
           		<button class="btn btn-sm btn-outline-secondary sub" onclick="goForm()">글쓰기</button>
           	</c:if>
           	</div>
-             <div class="fc">
+          	
+          	 <!-- 페이징 -->
+             <%-- <div class="fc">
                  <!-- 10페이지 단위로 이전 이동하기  :  -->
                 <c:if test="${pstart != 1}"> <!-- 첫번재 그룹이 아닐때는  -->
                     <a href="QnA_List.do?page=${pstart-1}&pcnt=${pcnt}&sel=${sel}&sword=${sword}"> 《 </a>
@@ -297,7 +282,7 @@
                    》 <!-- 넘어가는 꺽세 -->
                 </c:if>
               
-               </div>
+               </div> --%>
 
         </div>
       </div>
