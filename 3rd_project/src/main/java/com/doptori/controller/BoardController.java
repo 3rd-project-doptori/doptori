@@ -617,30 +617,22 @@ public class BoardController {
 	        mapper.boardCount(bd_num);
 	        
 	        // 댓글 목록 출력!
-	        List<Comment> list = mapper.commentSelect(co_bd_num);
+	        List<Comment> list = mapper.commentSelect(bd_num);
 	        
-	        for (Comment cvo : list) {
-	            // 댓글 작성자의 프로필 사진 추가
-	            Member co_writer = mapper.getMember(cvo.getCo_mb_num());
-	            if (co_writer != null) {
-	                String fileName = co_writer.getMb_pic();
-	                String realPath = "C:\\Users\\user\\git\\doptori\\3rd_project\\src\\main\\webapp\\resources\\images\\" + fileName;
-	                File file = new File(realPath);
-	                if(file.exists()) {
-	                    try {
-	                        InputStream inputStream = new FileInputStream(file);
-	                        byte[] bytes = new byte[(int) file.length()];
-	                        inputStream.read(bytes);
-	                        String base64 = new String(Base64.getEncoder().encode(bytes));
-	                        String mb_pic_path = "data:image/jpeg;base64," + base64;
-	                        cvo.setMb_pic(mb_pic_path);
-	                        inputStream.close();
-	                    } catch (IOException e) {
-	                        e.printStackTrace();
-	                    }
-	                }
-	            }
-	        }
+	        //유정 : 불필요한 코드로 보여서 주석처리 함
+			/*
+			 * for (Comment cvo : list) { // 댓글 작성자의 프로필 사진 추가 Member co_writer =
+			 * mapper.getMember(cvo.getCo_mb_num()); if (co_writer != null) { String
+			 * fileName = co_writer.getMb_pic(); String realPath =
+			 * "C:\\Users\\user\\git\\doptori\\3rd_project\\src\\main\\webapp\\resources\\images\\"
+			 * + fileName; File file = new File(realPath); if(file.exists()) { try {
+			 * InputStream inputStream = new FileInputStream(file); byte[] bytes = new
+			 * byte[(int) file.length()]; inputStream.read(bytes); String base64 = new
+			 * String(Base64.getEncoder().encode(bytes)); String mb_pic_path =
+			 * "data:image/jpeg;base64," + base64; cvo.setMb_pic(mb_pic_path);
+			 * inputStream.close(); } catch (IOException e) { e.printStackTrace(); } } } }
+			 */
+	        
 	        
 	        if (co_bd_num != 0) {
 	            model.addAttribute("co_bd_num", co_bd_num);
@@ -851,7 +843,7 @@ public class BoardController {
 	    cvo.setCo_mb_num(loginMember.getMb_num());
 	    try {
 	        mapper.commentInsert(cvo);
-	        ra.addAttribute("co_bd_num", cvo.getCo_bd_num());
+	        ra.addAttribute("bd_num", cvo.getCo_bd_num());
 	        return "redirect:/boardContent.do/" + cvo.getCo_bd_num(); // 댓글이 등록된 게시물 페이지로 이동
 	    } catch (Exception e) {
 	        e.printStackTrace();

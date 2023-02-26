@@ -14,7 +14,7 @@ public interface CommentMapper {
 	public int commentCount();
 
 	// 댓글 목록
-	public List<Comment> commentList();
+	public List<Comment> commentList(int co_bd_num);
 
 	// 댓글 등록
 	public int commentInsert(Comment cvo);

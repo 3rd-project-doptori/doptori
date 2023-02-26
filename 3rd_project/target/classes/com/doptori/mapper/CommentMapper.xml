@@ -19,7 +19,7 @@
   
   <!-- 댓글 목록보기 -->
    <select id="commentList"  parameterType="int" resultType="com.doptori.entity.Comment">
-      select * from Comment where co_bd_num = #{co_num}
+      select c.*, m.mb_pic from Comment c join Member m on c.co_mb_num=m.mb_num where co_bd_num = #{co_bd_num}
       order by co_date desc
   </select>
   
