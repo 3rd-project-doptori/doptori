@@ -9,7 +9,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +36,7 @@ import com.doptori.entity.Comment;
 import com.doptori.entity.Member;
 import com.doptori.mapper.BoardMapper;
 import com.doptori.mapper.CommentMapper;
+import com.doptori.mapper.MemberMapper;
 
 @Controller
 public class BoardController {
@@ -44,6 +47,8 @@ public class BoardController {
 	@Autowired
 	private CommentMapper cmapper;
 	
+	@Autowired
+	private MemberMapper mmapper;
 	// @RequestMapping("/boardListFrom.do")
 	// public void boardListFrom() {}
 
@@ -145,6 +150,7 @@ public class BoardController {
 		List<Board> noticelist = mapper.noticelist();
 		model.addAttribute("qnalist", qnalist);
 		model.addAttribute("noticelist", noticelist);
+		
 		return "QnA_List2";
 	}
 
@@ -225,7 +231,7 @@ public class BoardController {
 		model.addAttribute("pcnt",pcnt);  // 페이지당 레코드 갯수
 		model.addAttribute("sel",sel);
 		model.addAttribute("sword",sword);
-
+		
 		
 		return "QnA_List";
 	}
@@ -530,6 +536,60 @@ public class BoardController {
 //	    }
 //	    return "boardContent";
 //	}
+	
+	@PostMapping("/Search.do")
+	public String Search(HttpServletRequest httpServletRequest, Model model) {
+		int bd_type = Integer.valueOf(httpServletRequest.getParameter("bd_type"));
+		String searchType = httpServletRequest.getParameter("searchType");
+		String query = httpServletRequest.getParameter("query");
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("bd_type",bd_type);
+		List<Board> list = null;
+		List<String> memberNames = new ArrayList<>();
+		switch(searchType){
+		case "title":
+			map.put("bd_title",query);
+			list = mapper.searchByTitle(map);
+			break;
+		case "cont":
+			map.put("bd_cont",query);
+			list = mapper.searchByCont(map);
+			break;
+		case "nick":
+			//회원 닉네임 -> 회원 번호로 바꿔야 함
+			Object bd_mb_num = mmapper.Nick2Num(query);
+			System.out.println(bd_mb_num);
+			System.out.println("here");
+			if(bd_mb_num!=null) {
+				map.put("bd_mb_num",(int) bd_mb_num);
+				list = mapper.searchByNick(map);
+				for (Board board : list) {
+					board.setMb_nick(query);
+					memberNames.add(mapper.memberNum2Name(board.getBd_mb_num()));
+				}
+			}
+			break;
+
+		default:
+			System.out.println("Search : 잘못된 접근입니다.");
+		}
+		List<Board> noticelist = null;
+		List<Board> qnalist = null;
+		if(bd_type==1) {
+			noticelist = list;
+			qnalist = mapper.qnalist();
+			
+		}else {
+			noticelist = mapper.noticelist();
+			qnalist = list;
+			model.addAttribute("showQnA", '1');
+		}
+		model.addAttribute("qnalist", qnalist);
+		model.addAttribute("noticelist", noticelist);
+		
+
+		return "QnA_List2";
+	}
 	
 	
 	@RequestMapping("/boardContent.do/{bd_num}")

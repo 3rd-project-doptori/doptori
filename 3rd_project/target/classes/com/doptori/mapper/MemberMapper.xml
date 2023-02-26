@@ -67,4 +67,9 @@
 		select count(*) from Member where mb_id=#{mb_id} and mb_pw=#{mb_pw}
 	</select>
     
+	<!-- 닉네임으로 회원 번호 찾기 -->
+	
+	<select id="Nick2Num" parameterType="String" resultType="Object">
+		select mb_num from Member where mb_nick=#{mb_nick}
+	</select>
 </mapper>

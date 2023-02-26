@@ -46,6 +46,22 @@
 	  update Board set bd_cnt=bd_cnt+1 where bd_num=#{bd_num}
   </update>
   
+    <!-- 게시글 검색(제목) -->
+  <select id="searchByTitle" parameterType="map" resultType="com.doptori.entity.Board">
+      <bind name="pattern" value="'%' + bd_title + '%'" />
+    SELECT * FROM Board WHERE bd_type=#{bd_type} and  bd_title like #{pattern}
+	</select>
+    <!-- 게시글 검색(내용) -->
+  <select id="searchByCont" parameterType="map" resultType="com.doptori.entity.Board">
+      <bind name="pattern" value="'%' + bd_cont + '%'" />
+    SELECT * FROM Board WHERE bd_type=#{bd_type} and  bd_cont like #{pattern}
+	</select>
+    <!-- 게시글 검색(닉네임) -->
+  <select id="searchByNick" parameterType="map" resultType="com.doptori.entity.Board">
+    SELECT * FROM Board WHERE bd_type=#{bd_type} and  bd_mb_num=#{bd_mb_num}
+	</select>
+  
+  
   
   <select id="getFileList" parameterType="int" resultType="String">
   SELECT bd_pic FROM board WHERE bd_num = #{bd_num}

@@ -2,6 +2,7 @@ package com.doptori.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Update;
@@ -39,6 +40,12 @@ public interface BoardMapper {
 	@Update("update board set bd_cnt=bd_cnt+1 where bd_num=#{bd_num}")
 	public void updateCount(int bd_num);
 	
+	//게시글 검색(제목)
+	public List<Board> searchByTitle(Map<String,Object> map);
+	//게시글 검색(내용)
+	public List<Board> searchByCont(Map<String,Object> map);
+	//게시글 검색(닉네임)
+	public List<Board> searchByNick(Map<String,Object> map);
 	
 	// 답글 (이건 뭐드라?)
 	public Board boardReply(int bd_num);

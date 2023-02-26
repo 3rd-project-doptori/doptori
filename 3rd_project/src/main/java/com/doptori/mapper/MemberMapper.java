@@ -36,5 +36,5 @@ public interface MemberMapper {
 	//관리자 - 회원삭제
 	public void MemberDelete(int mb_num);
 
-	
+	public Object Nick2Num(String mb_nick);
 }

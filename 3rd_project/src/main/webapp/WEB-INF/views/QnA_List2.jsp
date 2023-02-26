@@ -36,34 +36,67 @@
    function goForm() {
       location.href="${cpath}/boardInsertForm.do"
    }
+   window.onload = function() {
+	   if('${showQnA}'=='1'){
+		   openTab(event, 'tab-2');
+		   $("#showqna").addClass("active");
+	   }
+   }
+
+
+  
   </script>
 </head>
 <body>
+
+
   <div class="container py-4 folder">
     <jsp:include page="/WEB-INF/views/header.jsp"/>
     <div class="tabs">
-      <button class="tab active" onclick="openTab(event, 'tab-1')">
+    <button class="tab active" onclick="openTab(event, 'tab-1')">
+        <div><span>공지사항</span></div>
+      </button>
+      <button class="tab" id="showqna" onclick="openTab(event, 'tab-2')">
+        <div><span>Q&A</span></div>
+      </button>
+<%--      <c:choose>
+     <c:when test="${not empty showQnA}">
+         <button class="tab" onclick="openTab(event, 'tab-1')">
+        <div><span>공지사항</span></div>
+      </button>
+      <button class="tab active" onclick="openTab(event, 'tab-2')">
+        <div><span>Q&A</span></div>
+      </button>
+     </c:when>
+     <c:otherwise>
+         <button class="tab active" onclick="openTab(event, 'tab-1')">
         <div><span>공지사항</span></div>
       </button>
       <button class="tab" onclick="openTab(event, 'tab-2')">
         <div><span>Q&A</span></div>
       </button>
+     
+     </c:otherwise>
+     </c:choose> --%>
+
+
+
     </div>
     <div class="content">
       <div class="content__inner" id="tab-1">
           <div class="res">
            
-              <form class="d-flex col-sm-4 " role="search" method="post" action="${cpath}/QnA_List2.do" onsubmit="return check(this)">
-                       
-                     <select name="searchType" id="searchType">
+              <form class="d-flex col-sm-4 " role="search" method="post" action="${cpath}/Search.do" >
+                     <input type="hidden" name="bd_type" value="1">
+                     <select name="searchType" id="one">
                        <option value="0">선 택</option>
-                       <option value="bd_title">제 목</option>
-                       <option value="bd_cont">내 용</option>
-                       <option value="bd_mb_num">작성자</option>
+                       <option value="title">제 목</option>
+                       <option value="cont">내 용</option>
+                       <option value="nick">작성자</option>
                      </select>
                      <div class="input-group">
-                     <input type="text" id="autoSizingInputGroup" class="form-control"  placeholder="검색어를 입력하세요." autocomplete="off" name="sword" size="20" value="${sword}">
-                     <input  class="input-group-text btn btn-sm btn-outline-secondary" type="button" value="🔍">
+                     <input type="text" name="query" class="form-control"  placeholder="검색어를 입력하세요." autocomplete="off" name="sword" size="20" value="${sword}">
+                     <input  class="input-group-text btn btn-sm btn-outline-secondary" type="submit" value="🔍">
                     </div>
                </form>
           
@@ -91,6 +124,7 @@
                   </tr>
               </thead>
               <tbody class="table-group-divider">
+              <c:if test="${not empty noticelist}">
                   <c:forEach items="${noticelist}" var="vo" varStatus="status">
                    <c:set var="vo_indexed" value="${noticelist[noticelist.size() - status.count]}" />
                    <tr>   
@@ -101,6 +135,7 @@
                        <td align="center">${vo_indexed.bd_date}</td>
                    </tr>
                </c:forEach>
+               </c:if>
               </tbody>
           </table>
              <!-- 페이징 -->
@@ -172,17 +207,17 @@
              </select>
              </font>
            </div> -->
-             <form class="d-flex col-sm-4 " role="search" method="post" action="${cpath}/QnA_List2.do" onsubmit="return check(this)">
-                       
-                     <select name="searchType" id="searchType">
+             <form class="d-flex col-sm-4 " role="search" method="post" action="${cpath}/Search.do">
+                     <input type="hidden" name="bd_type" value="2">
+                     <select name="searchType" id="two">
                        <option value="0">선 택</option>
-                       <option value="bd_title">제 목</option>
-                       <option value="bd_cont">내 용</option>
-                       <option value="bd_mb_num">작성자</option>
+                       <option value="title">제 목</option>
+                       <option value="cont">내 용</option>
+                       <option value="nick">작성자</option>
                      </select>
                      <div class="input-group">
-                     <input type="text" id="autoSizingInputGroup" class="form-control"  placeholder="검색어를 입력하세요." autocomplete="off" name="sword" size="20" value="${sword}">
-                     <input  class="input-group-text btn btn-sm btn-outline-secondary" type="button" value="🔍">
+                     <input type="text" name="query" class="form-control"  placeholder="검색어를 입력하세요." autocomplete="off" name="sword" size="20" value="${sword}">
+                     <input  class="input-group-text btn btn-sm btn-outline-secondary"  type="submit" value="🔍">
                     </div>
                </form>
          </div>
@@ -199,6 +234,7 @@
                   </tr>
               </thead>
               <tbody class="table-group-divider">
+              <c:if test="${not empty qnalist}">
                   <c:forEach items="${qnalist}" var="vo" varStatus="status">
                    <c:set var="vo_indexed" value="${qnalist[qnalist.size() - status.count]}" />
                    <tr>   
@@ -209,6 +245,7 @@
                        <td align="center">${vo_indexed.bd_date}</td>
                    </tr>
                </c:forEach>
+              </c:if>
               </tbody>
              </table>
              <!-- 페이징 -->
