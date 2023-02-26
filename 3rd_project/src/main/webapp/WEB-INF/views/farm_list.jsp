@@ -305,7 +305,7 @@
                                 <th scope="row">필지 주소</th>
                                 <td colspan="3">
                                 	<select class="form-control" name="fd_address" id="fd_address">
-                                			<option value="${vo4.fd_address}" selected disabled>${vo4.fd_address}</option>
+                                			<option value="${vo4.fd_address}" selected>${vo4.fd_address}</option>
 										<c:forEach items="${list}" var="vo">
 											<option value="${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri} ${vo.fdm1_detail_address}">${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri} ${vo.fdm1_detail_address}</option>												
 										</c:forEach>

@@ -84,7 +84,7 @@
 									<tr>
 										<th scope="row">필지</th>
 										<td colspan="3"><select class="form-control" name="fd_address" id="fd_address">
-                                			<option value="${schedule_show.fd_address}" selected disabled>${schedule_show.fd_address}</option>
+                                			<option value="${schedule_show.fd_address}" selected>${schedule_show.fd_address}</option>
 										<c:forEach items="${list}" var="vo">
 											<option value="${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri} ${vo.fdm1_detail_address}">${vo.ad_sido} ${vo.ad_gugun} ${vo.ad_dong} ${vo.ad_ri} ${vo.fdm1_detail_address}</option>												
 										</c:forEach>
