@@ -37,6 +37,8 @@ public class ReserveRestController {
 		int orign_num = reserve.getRe_bd_num();
 		Board vo = board_mapper.boardContent(orign_num);
 		vo.setBd_re_num(re_num);
+		System.out.println(vo.getBd_re_num());
+		System.out.println(vo.getBd_num());
 		mapper.ConfirmReservation(vo);
 		
 

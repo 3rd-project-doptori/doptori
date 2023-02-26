@@ -59,7 +59,7 @@
          
          var info = new Object();
          //게시판 번호
-         info.re_bd_num = 44;
+         info.re_bd_num = ${vo.bd_num};
          
          //re_cp_name이 딸기면 re_cp_num이 1 아니면 토마토인데 토마토의 경우 2
          var re_cp_name = document.getElementById('re_cp_name').innerHTML;
@@ -167,7 +167,15 @@
                     </div>
                 </div>
                   	<div class="d-md-flex justify-content-md-center mb">
+                  	<c:choose>
+                  	<c:when test="${vo.bd_re_num==0}">
 	                  <button class="btn btn-sm btn-outline-secondary me-md-2" type="button">판매중</button>
+	                 </c:when>
+	                 <c:otherwise>
+	                 <button class="btn btn-sm btn-outline-secondary me-md-2" type="button">판매완료</button>
+	                 </c:otherwise>
+                  	</c:choose>
+
 	                  <button class="btn login" type="button" onclick="start_chat()">채팅하기</button>
                 </div>
             </div>
