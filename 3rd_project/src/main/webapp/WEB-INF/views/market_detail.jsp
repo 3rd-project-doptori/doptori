@@ -50,7 +50,7 @@
       
       function set_reserve(){
          var text = "<div class='bubble my-bubble'>예약 장소 : <input type='text' id='re_place'><br>";
-         text +="예약 시간 : <input type='date' id='re_selldate'><br>";
+         text +="예약 시간 : <input type='datetime-local' id='re_selldate'><br>";
          text += "<button onclick='reserve()'>예약 신청</button></div>"
          $("#chat-box").append(text);
       }
