@@ -115,7 +115,6 @@
             <div class="col-md-5 hei">
                     <c:if test="${not empty vo.bd_pic }">
                 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" id="show_image">
-                </div>
                     </c:if>
                     <c:if test="${empty vo.bd_pic}">
                     	<img src="https://health.chosun.com/site/data/img_dir/2022/01/11/2022011100746_0.jpg">
