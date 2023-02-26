@@ -169,7 +169,7 @@
 	    socket.emit("REGIST",my_num);
 	    
 		socket.on('INVITE',function(who){
-			$('#chat_btn').append("<button class='chat-open-dialog' onclick='go_chat()'> <span class='fa fa-question'></span></button><button class='chat-button-destroy' onclick='exit_chat()'><span class='fa fa-close'></span> </button>");
+			$('#chat_btn').append("<button class='chat-open-dialog' onclick='go_chat("+'"'+who.my_name+'"'+")'> <span class='fa fa-question'></span></button><button class='chat-button-destroy' onclick='exit_chat()'><span class='fa fa-close'></span> </button>");
 			socket.emit("JOIN_ROOM",who);
 			socket.emit('READY');
 		});
@@ -183,6 +183,7 @@
 	    });
 
 		socket.on('CHAT_LOG',function(data_list){
+			$("#chat-box").html('');
 		        var text = "";
 		        for(var i=0; i<data_list.length;i++){
 		            if(data_list[i].ch_mb_num==my_num){
@@ -195,9 +196,10 @@
 		
 		});
 		
-		function go_chat(){
+		function go_chat(your_name){
 			$(".chat-open-dialog").toggleClass("active");
 			$('.chat-popup').toggleClass("active");
+			$("#nick").html(your_name);
 			$('.chat-button-destroy').toggleClass("active");
 		}
 		
@@ -255,9 +257,10 @@
               <div class="chat_container">
                   <div class="header">
                     <button class="back-btn" onclick="close_chat()">
-                      <img src="${cpath}/resources/images/left-arrow.png" width="30" height="30">  
+                      <img src="${cpath}/resources/images/left-arrow.png" width="30" height="30">
+             		
                     </button>
-                    
+                    <div id="nick"></div>
                   </div>
               
                   <div id="chat-box">

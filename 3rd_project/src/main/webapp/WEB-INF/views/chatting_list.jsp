@@ -124,7 +124,7 @@
 
                   <c:forEach items="${list}" var="vo" varStatus="status">
                     <div class="que">
-                     <span onclick="start_chat('${vo.mb_num}')">${vo.mb_nick}</span>
+                     <span onclick="start_chat('${vo.mb_num}','${vo.mb_nick}')">${vo.mb_nick}</span>
                      </div>
                     </c:forEach>
                   </div>
@@ -155,6 +155,7 @@
                     <button class="back-btn" onclick="close_chat()">
                       <img src="${cpath}/resources/images/left-arrow.png" width="30" height="30">  
                     </button>
+                    <div id="nick"></div>
                     
                   </div>
               
@@ -208,6 +209,7 @@
 	    });
 
 		socket.on('CHAT_LOG',function(data_list){
+			$("#chat-box").html('');
 		        var text = "";
 		        for(var i=0; i<data_list.length;i++){
 		            if(data_list[i].ch_mb_num==my_num){
@@ -264,7 +266,8 @@
 	       var my_num = Number('${loginMember.getMb_num()}');
 	       var start_num = 0
 	       
-	      function start_chat(you){
+	      function start_chat(you,nick){
+	    		$("#nick").html(nick);
 
 	          if(start_num==0){
 	            var your_num = you;

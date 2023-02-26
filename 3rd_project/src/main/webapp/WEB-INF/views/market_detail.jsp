@@ -27,7 +27,9 @@
        var my_num = Number('${loginMember.getMb_num()}');
        var try_num = 0;
        var start_num = 0
-       
+       $(document).ready(function(){
+    	   $("#nick").html('${vo.mb_nick}');
+       });
       function start_chat(){
           if(start_num==0){
             var your_num = Number('${vo.bd_mb_num}'); //상대방의 회원번호.
@@ -217,6 +219,9 @@
             </div>
         </section> -->
     </div>
+      
+      
+      
       
   </body>
 </html>
