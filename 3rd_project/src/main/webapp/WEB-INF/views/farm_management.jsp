@@ -1609,10 +1609,10 @@
 
 																<c:choose>
 									<c:when test="${empty vo7.an_pic_grow}">
-									<td><img src="C:/Users/user/PycharmProjects/flask/${vo7.an_pic_pest}"/></td>
+									<td><img src="http://127.0.0.1:8000/${vo7.an_pic_pest}" style="width:80%"/></td>
 									</c:when>
 									<c:otherwise>
-									<td><img src="C:/Users/user/PycharmProjects/flask/${vo7.an_pic_grow}"/></td>
+									<td><img src="http://127.0.0.1:8000/${vo7.an_pic_grow}" style="width:80%"/></td>
 									</c:otherwise>
 									</c:choose>
 															
