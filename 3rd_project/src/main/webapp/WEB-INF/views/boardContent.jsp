@@ -21,6 +21,9 @@
     <title>글 상세보기</title>
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+   	<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+	<!-- Iconos -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="${cpath}/resources/css/notice_detail.css">
 	
 
@@ -218,7 +221,22 @@ $('#comment-form').submit(function(event) {
                 
                 <!-- Single comment-->
                 <div class="d-flex mb-4"> 
-                
+                		<ul id="comments-list" class="comments-list">
+							<li>
+								<div class="comment-main-level">
+									<div class="comment-box">
+										<div class="comment-head">
+											<h6 class="comment-name by-author">Agustin Ortiz</h6>
+											<i class="fa fa-reply"></i>
+											<i class="fa fa-heart"></i>
+										</div>
+										<div class="comment-content">
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+										</div>
+									</div>
+								</div>
+				            </li>
+						</ul>
 			          <div class="flex-shrink-0"></div>
 			          <div class="ms-3">
 			          <ol>	

@@ -70,12 +70,12 @@
                       <form class="d-flex col-sm-3 " role="search"  method="post" action="${cpath}/Search.do">
                           <div class="input-group">
                           <input type="hidden" name="bd_type" value="3">
-	                       <select name="searchType" id="one">
+	                       <select name="searchType" id="one" class="select" style="border-radius: 0.375rem;">
 	                       <option value="title">제 목</option>
 	                       <option value="nick">작성자</option>
 	                       </select>
-                              <input type="text" class="form-control"  name="query"  id="autoSizingInputGroup" placeholder="검색어를 입력하세요">
-                              <button class="input-group-text btn btn-sm btn-outline-secondary" type="submit">🔍</button>
+                              <input type="text" class="form-control"  name="query"  id="autoSizingInputGroup" placeholder="검색어를 입력하세요" style="border-radius: 0.375rem;">
+                              <button class="input-group-text btn btn-sm btn-outline-secondary" type="submit" style="left: -1rem;">🔍</button>
                           </div>
                       </form>
                       <button class="btn btn-sm btn-outline-secondary sub" type="button" onclick="market_write()">등록</button>
