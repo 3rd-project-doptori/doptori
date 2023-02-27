@@ -139,9 +139,9 @@ h4{
 .form-control, .form-select{
     font-size: 1.3rem;
     margin: 0 14px;
-    width: 324px;
     display: inline;
     width: 435px;
+    margin: 1rem;
 }
 
 .show td{
@@ -152,6 +152,7 @@ h4{
 	vertical-align: middle;
     font-size: 1.3rem;
     background: whitesmoke;
+    width: 6rem;
 }
 
 .mb{

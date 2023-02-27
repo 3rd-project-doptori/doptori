@@ -240,9 +240,7 @@
 																<input type="text" class="form-control"
 																	name="fdm1_lot_area" id="fdm1_lot_area"
 																	placeholder="필지 면적" value="${vo.fdm1_lot_area}">
-															</P></td>
-														<td><P>
-																m<sup>2</sup>
+																	m<sup>2</sup>
 															</P></td>
 													</tr>
 													<tr>
@@ -251,10 +249,11 @@
 																<input type="text" class="form-control"
 																	name="fdm1_actual_area" id="fdm1_actual_area"
 																	placeholder="실재배 면적" value="${vo.fdm1_actual_area}">
+																	m<sup>2</sup>
 															</P></td>
-														<td><P>
-																m<sup>2</sup>
-															</P></td>
+														
+																
+															
 													</tr>
 													<tr>
 														<th scope="row">유휴 면적 </th>
@@ -262,9 +261,7 @@
 																<input type="text" class="form-control"
 																	name="fdm1_idle_area" id="fdm1_idle_area"
 																	placeholder="유휴 면적" value="${vo.fdm1_idle_area}">
-															</P></td>
-														<td><P>
-																m<sup>2</sup>
+																	m<sup>2</sup>
 															</P></td>
 													</tr>
 													<tr>
