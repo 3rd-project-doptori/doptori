@@ -221,25 +221,36 @@ $('#comment-form').submit(function(event) {
                 
                 <!-- Single comment-->
                 <div class="d-flex mb-4"> 
+                
+                
+                
                 		<ul id="comments-list" class="comments-list">
+                		<c:forEach var="cvo" items="${list}" >
 							<li>
 								<div class="comment-main-level">
 									<div class="comment-box">
 										<div class="comment-head">
-											<h6 class="comment-name by-author">Agustin Ortiz</h6>
+											<h6 class="comment-name by-author">${cvo.mb_nick}</h6>
 											<i class="fa fa-reply"></i>
 											<i class="fa fa-heart"></i>
 										</div>
 										<div class="comment-content">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+											${cvo.co_cont}
 										</div>
 									</div>
 								</div>
 				            </li>
+				            </c:forEach>
+				            
+				            
 						</ul>
+						
+						
 			          <div class="flex-shrink-0"></div>
 			          <div class="ms-3">
-			          <ol>	
+			          <ol>
+			          
+			   <%--        	
 			      <c:forEach var="cvo" items="${list}" >
 			          	<li>
 			          	<div class="fw-bold">
@@ -261,7 +272,10 @@ $('#comment-form').submit(function(event) {
 				      </c:if>
 				      </li>
 			      </c:forEach>
-			      </ol>
+			      
+			      
+			       --%>
+			      </ol>   
 			      </div>
                </div> 
                 
