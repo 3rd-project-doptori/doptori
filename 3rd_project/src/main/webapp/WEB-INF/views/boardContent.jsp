@@ -224,11 +224,13 @@ $('#comment-form').submit(function(event) {
                 
                 
                 
-                		<ul id="comments-list" class="comments-list">
+                		<ul id="comments-list" class="comments-list" style="
+    left: 15px;
+">
                 		<c:forEach var="cvo" items="${list}" >
 							<li>
-								<div class="comment-main-level">
-									<div class="comment-box">
+								<div class="comment-main-level" >
+									<div class="comment-box" style="width: 75rem;">
 										<div class="comment-head">
 											<h6 class="comment-name by-author">${cvo.mb_nick}</h6>
 											<i class="fa fa-reply"></i>
@@ -247,7 +249,7 @@ $('#comment-form').submit(function(event) {
 						
 						
 			          <div class="flex-shrink-0"></div>
-			          <div class="ms-3">
+			          <div class="ms-3"> 
 			          <ol>
 			          
 			   <%--        	

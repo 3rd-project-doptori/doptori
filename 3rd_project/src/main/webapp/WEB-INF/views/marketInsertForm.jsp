@@ -103,7 +103,11 @@
 								<span>상품명</span>
 							</div>
 							<div class="write-form-right">
-								<input type="text" id="cp_name">				
+							<select name="order" form="cp_name" id="cp_name">
+							    <option value="딸기">딸기</option>
+							    <option value="토마토">토마토</option>
+							</select>
+								<!-- <input type="text" id="cp_name">			 -->	
 							</div>
 						</li>
 						<li class="contents">

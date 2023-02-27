@@ -117,7 +117,7 @@
                 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" id="show_image">
                     </c:if>
                     <c:if test="${empty vo.bd_pic}">
-                    	<img src="https://health.chosun.com/site/data/img_dir/2022/01/11/2022011100746_0.jpg">
+                    	<div><img src="https://health.chosun.com/site/data/img_dir/2022/01/11/2022011100746_0.jpg" style="width:500px">
                     <!-- <svg class="bd-placeholder-img" height="350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
                     <!-- <div class="col p-4 d-flex flex-column position-static">
                         <strong class="d-inline-block mb-2 text-primary">World</strong>
